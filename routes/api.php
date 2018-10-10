@@ -38,6 +38,7 @@ Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
     Route::get('logout', 'AuthController@logout');
     Route::get('refresh', 'AuthController@refresh');
     Route::get('me', 'AuthController@me');
+    
 });
 
 Route::group(['middleware' => 'jwt.auth'], function ($router) {
@@ -54,3 +55,5 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     // Delete category
     Route::delete('category/{id}', 'CategoryController@destroy');
 });
+
+Route::post('register', 'AuthController@register');

@@ -9,7 +9,7 @@ Vue.use(Meta)
 Vue.use(Router)
 
 const router = make(
-  routes({ authGuard, guestGuard })
+	routes({ authGuard, guestGuard })
 )
 
 sync(store, router)
@@ -22,33 +22,33 @@ export default router
  * @param  {Array} routes
  * @return {Router}
  */
-function make (routes) {
-  const router = new Router({
-    routes,
-    scrollBehavior,
-    mode: 'history'
-  })
+function make(routes) {
+	const router = new Router({
+		routes,
+		scrollBehavior,
+		mode: 'history'
+	})
 
-  // Register before guard.
-  router.beforeEach(async (to, from, next) => {
-    if (!store.getters.authCheck && store.getters.authToken) {
-      try {
-        await store.dispatch('fetchUser')
-      } catch (e) { }
-    }
+	// Register before guard.
+	router.beforeEach(async (to, from, next) => {
+		if (!store.getters.authCheck && store.getters.authToken) {
+			try {
+				await store.dispatch('fetchUser')
+			} catch (e) { }
+		}
 
-    setLayout(router, to)
-    next()
-  })
+		setLayout(router, to)
+		next()
+	})
 
-  // Register after hook.
-  router.afterEach((to, from) => {
-    router.app.$nextTick(() => {
-      router.app.$loading.finish()
-    })
-  })
+	// Register after hook.
+	router.afterEach((to, from) => {
+		router.app.$nextTick(() => {
+			router.app.$loading.finish()
+		})
+	})
 
-  return router
+	return router
 }
 
 /**
@@ -57,21 +57,21 @@ function make (routes) {
  * @param {Router} router
  * @param {Route} to
  */
-function setLayout (router, to) {
-  // Get the first matched component.
-  const [component] = router.getMatchedComponents({ ...to })
+function setLayout(router, to) {
+	// Get the first matched component.
+	const [component] = router.getMatchedComponents({ ...to })
 
-  if (component) {
-    router.app.$nextTick(() => {
-      // Start the page loading bar.
-      if (component.loading !== false) {
-        router.app.$loading.start()
-      }
+	if (component) {
+		router.app.$nextTick(() => {
+			// Start the page loading bar.
+			if (component.loading !== false) {
+				router.app.$loading.start()
+			}
 
-      // Set application layout.
-      router.app.setLayout(component.layout || '')
-    })
-  }
+			// Set application layout.
+			router.app.setLayout(component.layout || '')
+		})
+	}
 }
 
 /**
@@ -80,17 +80,17 @@ function setLayout (router, to) {
  * @param  {Array} routes
  * @return {Array}
  */
-function authGuard (routes) {
-  return beforeEnter(routes, (to, from, next) => {
-    if (!store.getters.authCheck) {
-      next({
-        name: 'login',
-        query: { redirect: to.fullPath }
-      })
-    } else {
-      next()
-    }
-  })
+function authGuard(routes) {
+	return beforeEnter(routes, (to, from, next) => {
+		if (!store.getters.authCheck) {
+			next({
+				name: 'login',
+				query: { redirect: to.fullPath }
+			})
+		} else {
+			next()
+		}
+	})
 }
 
 /**
@@ -99,14 +99,14 @@ function authGuard (routes) {
  * @param  {Array} routes
  * @return {Array}
  */
-function guestGuard (routes) {
-  return beforeEnter(routes, (to, from, next) => {
-    if (store.getters.authCheck) {
-      next({ name: 'home' })
-    } else {
-      next()
-    }
-  })
+function guestGuard(routes) {
+	return beforeEnter(routes, (to, from, next) => {
+		if (store.getters.authCheck) {
+			next({ name: 'home' })
+		} else {
+			next()
+		}
+	})
 }
 
 /**
@@ -116,10 +116,10 @@ function guestGuard (routes) {
  * @param  {Function} beforeEnter
  * @return {Array}
  */
-function beforeEnter (routes, beforeEnter) {
-  return routes.map(route => {
-    return { ...route, beforeEnter }
-  })
+function beforeEnter(routes, beforeEnter) {
+	return routes.map(route => {
+		return { ...route, beforeEnter }
+	})
 }
 
 /**
@@ -128,21 +128,21 @@ function beforeEnter (routes, beforeEnter) {
  * @param  {Object|undefined} savedPosition
  * @return {Object}
  */
-function scrollBehavior (to, from, savedPosition) {
-  if (savedPosition) {
-    return savedPosition
-  }
+function scrollBehavior(to, from, savedPosition) {
+	if (savedPosition) {
+		return savedPosition
+	}
 
-  const position = {}
+	const position = {}
 
-  if (to.hash) {
-    position.selector = to.hash
-  }
+	if (to.hash) {
+		position.selector = to.hash
+	}
 
-  if (to.matched.some(m => m.meta.scrollToTop)) {
-    position.x = 0
-    position.y = 0
-  }
+	if (to.matched.some(m => m.meta.scrollToTop)) {
+		position.x = 0
+		position.y = 0
+	}
 
-  return position
+	return position
 }

@@ -3,18 +3,18 @@
 		<v-flex xs12 sm8 offset-sm2 lg4 offset-lg4>
 			<v-card>
 				<progress-bar :show="busy"></progress-bar>
-				<form @submit.prevent="login" @keydown="form.onKeydown($event)">
+				<form @submit.prevent="signin()" @keydown="form.onKeydown($event)">
 					<v-card-title primary-title>
 						<h3 class="headline mb-0">{{ $t('login') }}</h3>
 					</v-card-title>
 					<v-card-text>
 
 						<!-- Email -->
-						<email-input :form="form" :label="$t('email')" :v-errors="errors" :value.sync="form.email" name="email" prepend="person_outline"
+						<email-input :form="form" :label="$t('email')" :v-errors="errors" v-model="login.email" :value.sync="form.email" name="email" prepend="person_outline"
 						 v-validate="'required|email'"></email-input>
 
 						<!-- Password -->
-						<password-input :v-errors="errors" :form="form" :value.sync="form.password" prepend="lock_outline" v-validate="'required|min:8'"></password-input>
+						<password-input :v-errors="errors" :form="form" :value.sync="form.password" v-model="login.password" prepend="lock_outline" v-validate="'required|min:8'"></password-input>
 
 						<!-- Remember Me -->
 						<v-checkbox :label="$t('remember_me')" color="primary" type="checkbox" v-model="remember" value="true"></v-checkbox>
@@ -52,30 +52,51 @@
 			}),
 			eye: true,
 			remember: false,
-			busy: false
+			busy: false,
+			login:{}
 		}),
 
 		methods: {
-			async login() {
-				if (await this.formHasErrors()) return
+			// async login() {
+			// 	if (await this.formHasErrors()) return
+			// 	this.busy = true
+
+			// 	// Submit the form.
+			// 	const { data } = await this.form.post('/api/login')
+
+			// 	// Save the token.
+			// 	this.$store.dispatch('saveToken', {
+			// 		token: data.token,
+			// 		remember: this.remember
+			// 	})
+
+			// 	// Fetch the user.
+			// 	await this.$store.dispatch('fetchUser')
+			// 	this.busy = falserafi.
+
+			// 	// Redirect home.
+			// 	this.$router.push({ name: 'home' })
+			// },
+			signin() {
+				// if (this.formHasErrors()){
+				// 	console.log('Error')
+				// 	return
+				// } 
 				this.busy = true
-
-				// Submit the form.
-				const { data } = await this.form.post('/api/login')
-
-				// Save the token.
-				this.$store.dispatch('saveToken', {
-					token: data.token,
-					remember: this.remember
-				})
-
-				// Fetch the user.
-				await this.$store.dispatch('fetchUser')
-				this.busy = false
-
-				// Redirect home.
-				this.$router.push({ name: 'home' })
-			}
+                axios.post('/api/auth/login', this.login, { headers: { 'X-Requested-With': 'XMLHttpRequest' }})
+				.then(
+					(response) => {
+						console.log(response)
+						this.busy = false
+						this.$router.push({ name: 'home' })
+					}
+				)
+				.catch(
+					(error) => {
+						console.log(error)
+					}
+				)
+            },
 		}
 	}
 </script>

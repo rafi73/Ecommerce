@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\User;
 
 class AuthController extends Controller
 {
@@ -87,4 +88,17 @@ class AuthController extends Controller
     {
         return \Auth::Guard('api');
     }
+
+    protected function register(Request $request)
+    {
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'remember_token' => '',
+            'password' => bcrypt($request['password']),
+        ]);
+        
+        return $user;
+    }
+    
 }

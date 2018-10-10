@@ -8330,7 +8330,7 @@ p {
     left: -8%;
   }
 }
-.v-input--radio-group .v-radio {
+.v-input--radio-group .v-radio:not(:last-child):not(:only-child) {
   margin-bottom: 8px;
 }
 .v-input--radio-group__input {
