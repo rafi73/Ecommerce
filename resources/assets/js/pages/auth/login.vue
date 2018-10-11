@@ -93,6 +93,8 @@
 							remember: this.remember
 						})
 
+						axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
+
 						// Fetch the user.
 						this.$store.dispatch('fetchUser')
 						this.busy = false

@@ -45,7 +45,7 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
 
     # 1.1 category routes
     // List category
-    Route::get('categorys', 'CategoryController@index');
+    Route::get('categories', 'CategoryController@index');
     // List single category
     Route::get('category/{id}', 'CategoryController@show');
     // Create new category
