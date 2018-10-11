@@ -1,20 +1,14 @@
 <template>
 	<v-layout row>
 		<v-flex xs12>
-			<v-card>
-				<progress-bar :show="busy"></progress-bar>
-				<v-card-title primary-title class="grey lighten-4">
-					<h3 class="headline mb-0">{{ $t('category') }}</h3>
-				</v-card-title>
-				<v-divider></v-divider>
-
-
-				<div>
-					<v-toolbar flat color="white">
-						<v-toolbar-title>My CRUD</v-toolbar-title>
-						<v-divider class="mx-2" inset vertical></v-divider>
+			<progress-bar :show="busy"></progress-bar>
+			<v-app id="inspire">
+				<v-card>
+					<v-card-title class="grey lighten-4">
+						<h3 class="headline mb-0">{{ $t('category') }}</h3>
 						<v-spacer></v-spacer>
-						<v-dialog v-model="dialog" max-width="500px">
+						<v-text-field v-model="search" md4 append-icon="search" label="Search" single-line hide-details></v-text-field>
+						<v-dialog v-model="dialog" max-width="1000px">
 							<v-btn slot="activator" color="primary" dark class="mb-2">New Item</v-btn>
 							<v-card>
 								<v-card-title>
@@ -39,6 +33,15 @@
 											<v-flex xs12 sm6 md4>
 												<v-text-field v-model="editedItem.protein" label="Protein (g)"></v-text-field>
 											</v-flex>
+											<v-content>
+												<v-container fluid>
+													<v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
+														<img :src="imageUrl" height="150" v-if="imageUrl" />
+														<v-text-field label="Select Image" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
+														<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked">
+													</v-flex>
+												</v-container>
+											</v-content>
 										</v-layout>
 									</v-container>
 								</v-card-text>
@@ -50,14 +53,17 @@
 								</v-card-actions>
 							</v-card>
 						</v-dialog>
-					</v-toolbar>
-					<v-data-table :headers="headers" :items="desserts" hide-actions class="elevation-1">
+					</v-card-title>
+
+					<v-divider></v-divider>
+					<v-data-table :headers="headers" :items="desserts" :search="search">
 						<template slot="items" slot-scope="props">
 							<td>{{ props.item.name }}</td>
 							<td class="text-xs-right">{{ props.item.calories }}</td>
 							<td class="text-xs-right">{{ props.item.fat }}</td>
 							<td class="text-xs-right">{{ props.item.carbs }}</td>
 							<td class="text-xs-right">{{ props.item.protein }}</td>
+							<td class="text-xs-right">{{ props.item.iron }}</td>
 							<td class="justify-center layout px-0">
 								<v-icon small class="mr-2" @click="editItem(props.item)">
 									edit
@@ -67,12 +73,12 @@
 								</v-icon>
 							</td>
 						</template>
-						<template slot="no-data">
-							<v-btn color="primary" @click="initialize">Reset</v-btn>
-						</template>
+						<v-alert slot="no-results" :value="true" color="error" icon="warning">
+							Your search for "{{ search }}" found no results.
+						</v-alert>
 					</v-data-table>
-				</div>
-			</v-card>
+				</v-card>
+			</v-app>
 		</v-flex>
 	</v-layout>
 </template>
@@ -102,15 +108,16 @@
 				dialog: false,
 				headers: [
 					{
-						text: "Dessert (100g serving)",
-						align: "left",
+						text: 'Dessert (100g serving)',
+						align: 'left',
 						sortable: false,
-						value: "name"
+						value: 'name'
 					},
-					{ text: "Calories", value: "calories" },
-					{ text: "Fat (g)", value: "fat" },
-					{ text: "Carbs (g)", value: "carbs" },
-					{ text: "Protein (g)", value: "protein" },
+					{ text: 'Calories', value: 'calories' },
+					{ text: 'Fat (g)', value: 'fat' },
+					{ text: 'Carbs (g)', value: 'carbs' },
+					{ text: 'Protein (g)', value: 'protein' },
+					{ text: 'Iron (%)', value: 'iron' },
 					{ text: "Actions", value: "name", sortable: false }
 				],
 				desserts: [],
@@ -128,8 +135,9 @@
 					fat: 0,
 					carbs: 0,
 					protein: 0
-				}
-			};
+				},
+				search: '',
+			}
 		},
 		computed: {
 			formTitle() {
@@ -260,27 +268,28 @@
 					this.desserts.push(this.editedItem)
 				}
 				this.close()
-			}
-		},
-		onFilePicked(e) {
-			const files = e.target.files;
-			if (files[0] !== undefined) {
-				this.imageName = files[0].name;
-				if (this.imageName.lastIndexOf(".") <= 0) {
-					return;
+			},
+			onFilePicked(e) {
+				const files = e.target.files;
+				if (files[0] !== undefined) {
+					this.imageName = files[0].name;
+					if (this.imageName.lastIndexOf(".") <= 0) {
+						return;
+					}
+					const fr = new FileReader();
+					fr.readAsDataURL(files[0]);
+					fr.addEventListener("load", () => {
+						this.imageUrl = fr.result;
+						this.imageFile = files[0]; // this is an image file that can be sent to server...
+					});
+				} else {
+					this.imageName = "";
+					this.imageFile = "";
+					this.imageUrl = "";
 				}
-				const fr = new FileReader();
-				fr.readAsDataURL(files[0]);
-				fr.addEventListener("load", () => {
-					this.imageUrl = fr.result;
-					this.imageFile = files[0]; // this is an image file that can be sent to server...
-				});
-			} else {
-				this.imageName = "";
-				this.imageFile = "";
-				this.imageUrl = "";
-			}
+			},
 		},
-		
+
+
 	};
 </script>
