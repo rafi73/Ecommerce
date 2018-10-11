@@ -89,11 +89,13 @@
 						console.log(response)
 						// Save the token.
 						this.$store.dispatch('saveToken', {
-							token: response.data.token,
+							token: response.data.access_token,
 							remember: this.remember
 						})
 
-						axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
+						console.log(response.data.access_token)
+						localStorage.setItem('token', response.data.access_token);
+						axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access_token}`
 
 						// Fetch the user.
 						this.$store.dispatch('fetchUser')

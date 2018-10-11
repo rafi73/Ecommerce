@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Http\Resources\CategoryResource;
 use App\Attachment;
+use App\Helpers\ImageProcessing;
 
 class CategoryController extends Controller
 {
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         // Get Categorys
-        $categories = Category::orderBy('created_at', 'desc')->Where('deactivate', 0)->paginate(10);
+        $categories = Category::orderBy('created_at', 'desc')->Where('active', 1)->paginate(10);
 
         // Return collection of Categorys as a resource
         return CategoryResource::collection($categories);
@@ -32,12 +33,10 @@ class CategoryController extends Controller
     {
         $category = $request->isMethod('put') ? Category::findOrFail($request->id) : new Category;
 
-        $category->subject= $request->input('subject');
-        $category->detail= $request->input('detail');
-        $category->file= $request->input('file');
-        $category->deactivate= $request->input('deactivate');
-        $category->created_by= $request->input('created_by');
-        $category->updated_by= $request->input('updated_by');
+        $category->name= $request->input('name');
+        $category->description= $request->input('description');
+        $category->image = $request->input('image')? ImageProcessing::saveBase64ImagePng($request->input('image')) : NULL;
+        $category->active= $request->input('active');
         if($category->save()) {
             return new CategoryResource($category);
         }

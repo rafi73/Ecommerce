@@ -16,13 +16,10 @@ class CategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'subject' => $this->subject,
-            'detail' => $this->detail,
-            'file' => $this->file,
-            'attachments' => $this->attachments,
-            'deactivate'=>$this->deactivate,
-            'created_by' => $this->created_by,
-            'updated_by' => $this->updated_by,
+            'name' => $this->name,
+            'description' => $this->description,
+            'image' => $this->image,
+            'active' => $this->active == 1 ? true : false,
             'created_at' => $this->created_at->format('Y-m-d'),
             'updated_at' => $this->updated_at->format('Y-m-d'),
         ];

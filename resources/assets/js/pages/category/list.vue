@@ -44,15 +44,13 @@
 					</v-card-title>
 
 					<v-divider></v-divider>
-					<v-data-table :headers="headers" :items="desserts" :search="search">
+					<v-data-table :headers="headers" :items="categories" :search="search">
 						<template slot="items" slot-scope="props">
 							<td>{{ props.item.name }}</td>
-							<td class="text-xs-right">{{ props.item.calories }}</td>
-							<td class="text-xs-right">{{ props.item.fat }}</td>
-							<td class="text-xs-right">{{ props.item.carbs }}</td>
-							<td class="text-xs-right">{{ props.item.protein }}</td>
-							<td class="text-xs-right">{{ props.item.iron }}</td>
-							<td class="justify-center layout px-0">
+							<td>{{ props.item.description }}</td>
+							<td>{{ props.item.image }}</td>
+							<td>{{ props.item.active }}</td>
+							<td>
 								<v-icon small class="mr-2" @click="editItem(props.item)">
 									edit
 								</v-icon>
@@ -68,7 +66,22 @@
 				</v-card>
 			</v-app>
 		</v-flex>
-		{{category}}
+		<v-dialog v-model="dialogConfirm" max-width="500">
+			<v-card>
+				<v-card-title class="headline">{{ $t('delete_confirm_title') }}</v-card-title>
+				<v-card-text>{{ $t('delete_confirm_text') }}</v-card-text>
+				<v-card-actions>
+					<v-spacer></v-spacer>
+					<v-btn color="green darken-1" flat="flat" @click="dialogConfirm = false">
+						Disagree
+					</v-btn>
+
+					<v-btn color="green darken-1" flat="flat" @click="erase()" >
+						Agree
+					</v-btn>
+				</v-card-actions>
+			</v-card>
+		</v-dialog>
 	</v-layout>
 </template>
 
@@ -98,17 +111,26 @@
 				dialog: false,
 				headers: [
 					{
-						text: 'Dessert (100g serving)',
-						align: 'left',
-						sortable: false,
+						text: 'Name',
 						value: 'name'
 					},
-					{ text: 'Calories', value: 'calories' },
-					{ text: 'Fat (g)', value: 'fat' },
-					{ text: 'Carbs (g)', value: 'carbs' },
-					{ text: 'Protein (g)', value: 'protein' },
-					{ text: 'Iron (%)', value: 'iron' },
-					{ text: "Actions", value: "name", sortable: false }
+					{
+						text: 'Description',
+						value: 'description'
+					},
+					{
+						text: 'Image',
+						value: 'image'
+					},
+					{
+						text: 'Active',
+						value: 'active'
+					},
+					{
+						text: "Actions",
+						value: "name",
+						sortable: false
+					}
 				],
 				desserts: [],
 				editedIndex: -1,
@@ -127,6 +149,8 @@
 					protein: 0
 				},
 				search: '',
+				categories: [],
+				dialogConfirm: false
 			}
 		},
 		computed: {
@@ -140,7 +164,8 @@
 			}
 		},
 		created() {
-			this.initialize();
+			//this.initialize();
+			this.fetchAll()
 		},
 		methods: {
 			async update() {
@@ -236,14 +261,18 @@
 				]
 			},
 			editItem(item) {
-				this.editedIndex = this.desserts.indexOf(item)
-				this.editedItem = Object.assign({}, item)
+				// this.editedIndex = this.desserts.indexOf(item)
+				// this.editedItem = Object.assign({}, item)
+
+				this.category = item
 				this.dialog = true
 
 			},
 			deleteItem(item) {
-				const index = this.desserts.indexOf(item)
-				confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
+				//const index = this.desserts.indexOf(item)
+				this.dialogConfirm = true
+				this.category = item
+				//confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
 			},
 			close() {
 				this.dialog = false
@@ -258,31 +287,38 @@
 					Object.assign(this.desserts[this.editedIndex], this.editedItem)
 					console.log('edit', this.editedItem)
 
-					
+					axios.put('/api/category', this.category)
+						.then(
+							(response) => {
+								console.log(response)
+								this.fetchAll()
+							}
+						)
+						.catch(
+							(error) => {
+								console.log(error)
+							}
+						)
 				} else {
 					this.desserts.push(this.editedItem)
 					console.log('save', this.editedItem)
 
-					console.log(this.$store.state.token)
-
-					// axios.post('/api/category', this.category,{
-                    //     headers: {
-                    //         Authorization: 'Bearer ' + localStorage.getItem('token')
-                    //     }
-                    // })
-					// 	.then(
-					// 		(response) => {
-					// 			console.log(response)
-					// 		}
-					// 	)
-					// 	.catch(
-					// 		(error) => {
-					// 			console.log(error)
-					// 		}
-					// 	)
+					axios.post('/api/category', this.category)
+						.then(
+							(response) => {
+								console.log(response)
+								this.fetchAll()
+							}
+						)
+						.catch(
+							(error) => {
+								console.log(error)
+							}
+						)
 				}
 				this.close()
 				this.busy = false
+
 			},
 			onFilePicked(e) {
 				const files = e.target.files;
@@ -305,8 +341,39 @@
 					this.imageUrl = "";
 				}
 			},
-		},
+			fetchAll() {
+				this.busy = true
+				axios.get(`/api/categories`, {
+					headers: {
+						Authorization: 'Bearer ' + localStorage.getItem('token')
+					}
+				})
+				.then(response => {
+					this.categories = response.data.data
+					console.log(response.data.data)
+					this.busy = false
+				})
+				.catch(error => {
+					if (error.response) {
+						console.log(error.response);
 
-
-	};
+					}
+				})
+			},
+			erase() {
+				this.dialogConfirm = false
+				this.busy = true
+				axios.delete(`/api/category/${this.category.id}`)
+				.then(response => {
+					this.busy = false
+					this.fetchAll()
+				})
+				.catch(error => {
+					if (error.response) {
+						console.log(error.response)
+					}
+				})
+			}
+		}
+	}
 </script>
