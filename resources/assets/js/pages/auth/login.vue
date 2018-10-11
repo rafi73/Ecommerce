@@ -83,11 +83,20 @@
 				// 	return
 				// } 
 				this.busy = true
-                axios.post('/api/auth/login', this.login, { headers: { 'X-Requested-With': 'XMLHttpRequest' }})
+                axios.post('/api/auth/login', this.login)
 				.then(
 					(response) => {
 						console.log(response)
+						// Save the token.
+						this.$store.dispatch('saveToken', {
+							token: response.data.token,
+							remember: this.remember
+						})
+
+						// Fetch the user.
+						this.$store.dispatch('fetchUser')
 						this.busy = false
+
 						this.$router.push({ name: 'home' })
 					}
 				)
