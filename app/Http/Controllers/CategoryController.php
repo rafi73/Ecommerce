@@ -3,8 +3,109 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Http\Resources\CategoryResource;
+use App\Attachment;
 
 class CategoryController extends Controller
 {
-    //
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        // Get Categorys
+        $categories = Category::orderBy('created_at', 'desc')->Where('deactivate', 0)->paginate(10);
+
+        // Return collection of Categorys as a resource
+        return CategoryResource::collection($categories);
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $category = $request->isMethod('put') ? Category::findOrFail($request->id) : new Category;
+
+        $category->subject= $request->input('subject');
+        $category->detail= $request->input('detail');
+        $category->file= $request->input('file');
+        $category->deactivate= $request->input('deactivate');
+        $category->created_by= $request->input('created_by');
+        $category->updated_by= $request->input('updated_by');
+        if($category->save()) {
+            return new CategoryResource($category);
+        }
+    }
+    /**
+     * Display the specified resource.
+     *$
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        // Get Categorys
+        $category = Category::findOrFail($id);
+
+        // Return single Categorys as a resource
+        return new CategoryResource($category);
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        // Get Categorys
+        $category = Category::findOrFail($id);
+
+        if($category->delete()) {
+            return new CategoryResource($category);
+        }    
+    }
+
+    /**
+     * Display a listing of the resource with requested parameters.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getCategoryData(Request $request)
+    {
+         // Get Kawarabis
+         $search = $request->input('search');
+         $kawarabis = Category::Where('subject', 'like', '%' . $search . '%')->orderBy('created_at', 'desc')->paginate(10);
+ 
+         // Return collection of Kawarabis as a resource
+         return CategoryResource::collection($kawarabis);
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+     public function getCategoryDataFront()
+     {
+        // Get Categorys
+        $categories = Category::orderBy('updated_at', 'desc')->Where('deactivate', 0)->take(4)->get();
+
+        foreach($categories as $category)
+        {
+            $files = explode(",", $category['file']);
+            $category['attachments'] =  Attachment::WhereIn('id', $files)->get();
+        }
+ 
+         // Return collection of Categorys as a resource
+         return CategoryResource::collection($categories);
+     }
+}
 }

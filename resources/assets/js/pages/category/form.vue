@@ -1,81 +1,75 @@
 <template>
-    <v-layout row>
-        <v-flex xs12 sm8 offset-sm2 lg4 offset-lg4>
-            <v-card>
-                <progress-bar :show="form.busy"></progress-bar>
-                <form @submit.prevent="register()" @keydown="form.onKeydown($event)">
-                    <v-card-title primary-title>
-                        <h3 class="headline mb-0">{{ $t('register') }}</h3>
-                    </v-card-title>
-                    <v-card-text>
-                        <!-- Name -->
-                        <text-input :form="form" :label="$t('name')" :v-errors="errors" :value.sync="form.name"
-                            browser-autocomplete="name" counter="30" v-model="user.name" name="name" v-validate="'required|max:30'"></text-input>
+	<v-layout row>
+		<v-flex xs12 >
+			<v-card>
+				<progress-bar :show="busy"></progress-bar>
+				<v-card-title primary-title class="grey lighten-4">
+					<h3 class="headline mb-0">{{ $t('category') }}</h3>
+				</v-card-title>
+				<v-divider></v-divider>
 
-                        <!-- Email -->
-                        <email-input :form="form" :label="$t('email')" v-model="user.email" :v-errors="errors" :value.sync="form.email" name="email"
-                            v-validate="'required|email'"></email-input>
+				<v-card flat>
+                    <form @submit.prevent="update" @keydown="form.onKeydown($event)">
+                        <v-card-title primary-title>
+                            <h5 class="subheading mb-0">{{ $t('your_info') }}</h5>
+                        </v-card-title>
+                        <v-card-text>
 
-                        <!-- Password -->
-                        <password-input :form="form" :hint="$t('password_length_hint')" :v-errors="errors" :value.sync="form.password"
-                            browser-autocomplete="new-password" v-on:eye="eye = $event" v-model="user.password" name="password" v-validate="'required|min:8'"></password-input>
+                            <!-- Name -->
+                            <text-input :form="form" :label="$t('name')" :v-errors="errors" :value.sync="form.name" counter="30" name="name"
+                            v-validate="'required|max:30'"></text-input>
 
-                        <!-- Password Confirmation -->
-                        <password-input :form="form" :hide="eye" :label="$t('confirm_password')" :v-errors="errors"
-                            :value.sync="form.password_confirmation" browser-autocomplete="new-password" data-vv-as="password"
-                            hide-icon="true" v-model="user.confirmPassword" name="password_confirmation" v-validate="'required|confirmed:password'"></password-input>
+                            <!-- Email -->
+                            <email-input :form="form" :label="$t('email')" :v-errors="errors" :value.sync="form.email" name="email" v-validate="'required|email'"></email-input>
 
-                    </v-card-text>
-                    <v-card-actions>
-                        <submit-button :form="form" :label="$t('register')"></submit-button>
-                    </v-card-actions>
-                </form>
-            </v-card>
-        </v-flex>
-    </v-layout>
-
+                        </v-card-text>
+                        <v-card-actions>
+                            <submit-button :flat="true" :form="form" :label="$t('update')"></submit-button>
+                        </v-card-actions>
+                    </form>
+                </v-card>
+			</v-card>
+		</v-flex>
+	</v-layout>
 </template>
 
 <script>
-    import Form from 'vform'
+	import Profile from '~/pages/settings/profile'
+    import Password from '~/pages/settings/password'
+    import Form from "vform";
+	import { mapGetters } from "vuex";
 
-    export default {
-        name: 'register-view',
-        metaInfo() {
-            return { title: this.$t('register') }
+	export default {
+		name: 'settings-view',
+		components: {
+			'profile-view': Profile,
+			'password-view': Password
+		},
+		data() {
+			return {
+                busy: false,
+                form: new Form({
+                    name: "",
+                    email: ""
+                })
+			}
         },
-
-        data: () => ({
-            form: new Form({
-                name: '',
-                email: '',
-                password: '',
-                password_confirmation: ''
-            }),
-            eye: true,
-            user:{}
-        }),
-
         methods: {
-            register() {
-                if(this.user.password !== this.user.confirmPassword){
-                    console.log('Password is not same')
-                    return
-                }
-                axios.post('/api/register', this.user, { headers: { 'X-Requested-With': 'XMLHttpRequest' }})
-                .then(
-                    (response) => {
-                        console.log(response)
-                        this.$router.push(`/login`)
-                    }
-                )
-                .catch(
-                    (error) => {
-                        console.log(error)
-                        
-                    }
-                );
-            },
-        }
-    }
+			async update() {
+				if (await this.formHasErrors()) return;
+
+				this.$emit("busy", true);
+
+				const { data } = await this.form.patch("/api/settings/profile");
+
+				await this.$store.dispatch("updateUser", { user: data });
+				this.$emit("busy", false);
+
+				this.$store.dispatch("responseMessage", {
+					type: "success",
+					text: this.$t("info_updated")
+				});
+			}
+		}
+	}
 </script>
