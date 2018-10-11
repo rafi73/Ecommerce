@@ -49,6 +49,16 @@ export default ({ authGuard, guestGuard }) => [
 				}
 			]
 		},
+		{ 
+			path: '/sub-category', 
+			name: 'sub-category', 
+			component: require('~/pages/subCategory/index.vue') 
+		},
+		{ 
+			path: '/product', 
+			name: 'product', 
+			component: require('~/pages/product/index.vue') 
+		},
 	]),
 
 	// Guest routes.

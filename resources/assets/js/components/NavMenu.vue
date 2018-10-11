@@ -50,6 +50,41 @@
 							path: '/category' 
 						} 
 					},
+					{ 
+						title: 'Sub Category', 
+						icon: 'category', 
+						route: { 
+							path: '/sub-category' 
+						} 
+					},
+					{ 
+						title: 'Product', 
+						icon: 'category', 
+						route: { 
+							path: '/product' 
+						} 
+					},
+					{ 
+						title: 'Specification', 
+						icon: 'category', 
+						route: { 
+							path: '/product' 
+						} 
+					},
+					{ 
+						title: 'Specification Details', 
+						icon: 'category', 
+						route: { 
+							path: '/product' 
+						} 
+					},
+					{ 
+						title: 'Product wise Specification', 
+						icon: 'category', 
+						route: { 
+							path: '/product' 
+						} 
+					},
 				]
 			}
 		}
