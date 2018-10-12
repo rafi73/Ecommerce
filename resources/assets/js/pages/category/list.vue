@@ -8,24 +8,23 @@
 						<h3 class="headline mb-0">{{ $t('category') }}</h3>
 						<v-spacer></v-spacer>
 						<v-text-field v-model="search" md4 append-icon="search" label="Search" single-line hide-details></v-text-field>
-						<v-dialog v-model="dialog" max-width="1000px">
-							<v-btn slot="activator" color="primary" dark class="mb-2">{{ $t('new_item') }}</v-btn>
+						<v-btn @click.prevent="addNew()" slot="activator" color="primary" dark class="mb-2">{{ $t('new_item') }}</v-btn>
+						<v-dialog v-model="dialogInput" max-width="1000px">
 							<v-card>
 								<v-card-title>
 									<span class="headline">{{ formTitle }}</span>
 								</v-card-title>
-
 								<v-card-text>
 									<v-container grid-list-md>
 										<v-layout wrap>
 											<v-flex xs12 sm12 md12>
-												<v-text-field v-model="category.name" :label="`${$t('category_name')}`"></v-text-field>
+												<v-text-field v-validate="'required|max:10'" v-model="category.name" :counter="10" :error-messages="errors.collect('name')" :label="`${$t('category_name')}`" data-vv-name="name" required ></v-text-field>
 											</v-flex>
 											<v-flex xs12 sm12 md12>
-												<v-text-field v-model="category.description" :label="`${$t('category_description')}`"></v-text-field>
+												<v-textarea v-validate="'required|max:10'" v-model="category.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('category_description')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
 											<v-flex xs12 sm12 md12>
-												<img :src="imageUrl" height="150" v-if="imageUrl" />
+												<img :src="imgInput" height="150" v-if="imgInput" />
 												<v-text-field :label="`${$t('category_image')}`" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
 												<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked">
 											</v-flex>
@@ -36,8 +35,8 @@
 
 								<v-card-actions>
 									<v-spacer></v-spacer>
-									<v-btn color="blue darken-1" flat @click.native="close">{{ $t('cancel') }}</v-btn>
-									<v-btn color="blue darken-1" flat @click.native="save">{{ $t('save') }}</v-btn>
+									<v-btn color="blue darken-1" flat @click.native="close()">{{ $t('cancel') }}</v-btn>
+									<v-btn color="blue darken-1" flat @click.native="save()">{{ $t('save') }}</v-btn>
 								</v-card-actions>
 							</v-card>
 						</v-dialog>
@@ -48,7 +47,11 @@
 						<template slot="items" slot-scope="props">
 							<td>{{ props.item.name }}</td>
 							<td>{{ props.item.description }}</td>
-							<td>{{ props.item.image }}</td>
+							<td>
+								<div class="image-container">
+									<img class="object-fit-cover" :src="props.item.image || '/img/v.png'" />
+								</div>
+							</td>
 							<td>{{ props.item.active }}</td>
 							<td>
 								<v-icon small class="mr-2" @click="editItem(props.item)">
@@ -106,7 +109,7 @@
 					email: ""
 				}),
 				imageName: "",
-				imageUrl: "",
+				imgInput: "",
 				imageFile: "",
 				dialog: false,
 				headers: [
@@ -150,7 +153,9 @@
 				},
 				search: '',
 				categories: [],
-				dialogConfirm: false
+				dialogConfirm: false,
+				edit : false,
+				dialogInput : false
 			}
 		},
 		computed: {
@@ -186,139 +191,69 @@
 			pickFile() {
 				this.$refs.image.click();
 			},
-			initialize() {
-				this.desserts = [
-					{
-						name: 'Frozen Yogurt',
-						calories: 159,
-						fat: 6.0,
-						carbs: 24,
-						protein: 4.0
-					},
-					{
-						name: 'Ice cream sandwich',
-						calories: 237,
-						fat: 9.0,
-						carbs: 37,
-						protein: 4.3
-					},
-					{
-						name: 'Eclair',
-						calories: 262,
-						fat: 16.0,
-						carbs: 23,
-						protein: 6.0
-					},
-					{
-						name: 'Cupcake',
-						calories: 305,
-						fat: 3.7,
-						carbs: 67,
-						protein: 4.3
-					},
-					{
-						name: 'Gingerbread',
-						calories: 356,
-						fat: 16.0,
-						carbs: 49,
-						protein: 3.9
-					},
-					{
-						name: 'Jelly bean',
-						calories: 375,
-						fat: 0.0,
-						carbs: 94,
-						protein: 0.0
-					},
-					{
-						name: 'Lollipop',
-						calories: 392,
-						fat: 0.2,
-						carbs: 98,
-						protein: 0
-					},
-					{
-						name: 'Honeycomb',
-						calories: 408,
-						fat: 3.2,
-						carbs: 87,
-						protein: 6.5
-					},
-					{
-						name: 'Donut',
-						calories: 452,
-						fat: 25.0,
-						carbs: 51,
-						protein: 4.9
-					},
-					{
-						name: 'KitKat',
-						calories: 518,
-						fat: 26.0,
-						carbs: 65,
-						protein: 7
-					}
-				]
-			},
 			editItem(item) {
-				// this.editedIndex = this.desserts.indexOf(item)
-				// this.editedItem = Object.assign({}, item)
-
-				this.category = item
-				this.dialog = true
-
+				this.category = Object.assign({}, item)
+				this.imgInput = this.category.image
+				this.dialogInput = true
+				this.edit = true
 			},
 			deleteItem(item) {
 				//const index = this.desserts.indexOf(item)
-				this.dialogConfirm = true
+				this.dialogInputConfirm = true
 				this.category = item
 				//confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
 			},
 			close() {
-				this.dialog = false
+				this.dialogInput = false
 				setTimeout(() => {
 					this.editedItem = Object.assign({}, this.defaultItem)
 					this.editedIndex = -1
 				}, 300)
 			},
 			save() {
-				this.busy = true
-				if (this.editedIndex > -1) {
-					Object.assign(this.desserts[this.editedIndex], this.editedItem)
-					console.log('edit', this.editedItem)
+				//if (this.formHasErrors()) return
+				this.$validator.validate().then(result => {
+                    if (result){
+						this.busy = true
+						if (this.edit) {
+							// Object.assign(this.desserts[this.editedIndex], this.editedItem)
+							console.log('edit', this.editedItem)
 
-					axios.put('/api/category', this.category)
-						.then(
-							(response) => {
-								console.log(response)
-								this.fetchAll()
-							}
-						)
-						.catch(
-							(error) => {
-								console.log(error)
-							}
-						)
-				} else {
-					this.desserts.push(this.editedItem)
-					console.log('save', this.editedItem)
+							axios.put('/api/category', this.category)
+								.then(
+									(response) => {
+										console.log(response)
+										this.fetchAll()
+									}
+								)
+								.catch(
+									(error) => {
+										console.log(error)
+									}
+								)
+						} else {
+							//this.desserts.push(this.editedItem)
+							console.log('save', this.editedItem)
 
-					axios.post('/api/category', this.category)
-						.then(
-							(response) => {
-								console.log(response)
-								this.fetchAll()
-							}
-						)
-						.catch(
-							(error) => {
-								console.log(error)
-							}
-						)
-				}
-				this.close()
-				this.busy = false
-
+							axios.post('/api/category', this.category)
+								.then(
+									(response) => {
+										console.log(response)
+										this.fetchAll()
+									}
+								)
+								.catch(
+									(error) => {
+										console.log(error)
+									}
+								)
+						}
+						this.close()
+						this.busy = false
+						this.edit = false
+					}
+				})
+				
 			},
 			onFilePicked(e) {
 				const files = e.target.files;
@@ -330,15 +265,15 @@
 					const fr = new FileReader();
 					fr.readAsDataURL(files[0]);
 					fr.addEventListener("load", () => {
-						this.imageUrl = fr.result
+						this.imgInput = fr.result
 						this.imageFile = files[0] // this is an image file that can be sent to server...
-						this.category.image = this.imageUrl
-						//console.log(this.imageUrl, this.imageFile)
+						this.category.image = this.imgInput
+						//console.log(this.imgInput, this.imageFile)
 					});
 				} else {
 					this.imageName = "";
 					this.imageFile = "";
-					this.imageUrl = "";
+					this.imgInput = "";
 				}
 			},
 			fetchAll() {
@@ -355,13 +290,12 @@
 				})
 				.catch(error => {
 					if (error.response) {
-						console.log(error.response);
-
+						console.log(error.response)
 					}
 				})
 			},
 			erase() {
-				this.dialogConfirm = false
+				this.dialogInputConfirm = false
 				this.busy = true
 				axios.delete(`/api/category/${this.category.id}`)
 				.then(response => {
@@ -373,6 +307,12 @@
 						console.log(error.response)
 					}
 				})
+			},
+			addNew(){
+				this.category = {}
+				this.imgInput = ``
+				this.dialogInput = true
+				this.edit = false
 			}
 		}
 	}

@@ -11005,4 +11005,15 @@ a:hover {
   max-width: 100vw;
   min-width: 100vw;
 }
+.image-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  min-width: 100%;
+}
+.object-fit-cover {
+  height: 40px;
+}
 /*# sourceMappingURL=resources/assets/stylus/app.css.map */
