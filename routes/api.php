@@ -54,6 +54,18 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::put('category', 'CategoryController@store');
     // Delete category
     Route::delete('category/{id}', 'CategoryController@destroy');
+
+     # 1.1 sub-category routes
+    // List sub-category
+    Route::get('sub-categories', 'SubCategoryController@index');
+    // List single sub-category
+    Route::get('sub-category/{id}', 'SubCategoryController@show');
+    // Create new sub-category
+    Route::post('sub-category', 'SubCategoryController@store');
+    // Update sub-category
+    Route::put('sub-category', 'SubCategoryController@store');
+    // Delete sub-category
+    Route::delete('sub-category/{id}', 'SubCategoryController@destroy');
 });
 
 Route::post('register', 'AuthController@register');

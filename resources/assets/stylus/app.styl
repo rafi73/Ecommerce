@@ -1,6 +1,7 @@
 // @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons')
 @import '~vuetify/src/stylus/main'
 @require '~vuetify/src/stylus/settings/_colors'
+@import "~vue-multiselect/dist/vue-multiselect.min.css";
 
 a
   cursor: pointer
@@ -26,5 +27,15 @@ a
 
 .object-fit-cover {
     height:40px;
+}
+
+/* Multiselect */
+.multiselect__option--highlight:after{
+	background:#1976D2 !important;
+	color:#fff
+}
+
+.multiselect__option--highlight{
+	background:#1976D2 !important;
 }
     
