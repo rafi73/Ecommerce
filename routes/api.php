@@ -66,6 +66,18 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::put('sub-category', 'SubCategoryController@store');
     // Delete sub-category
     Route::delete('sub-category/{id}', 'SubCategoryController@destroy');
+
+    # 1.1 specification routes
+    // List specification
+    Route::get('specifications', 'SpecificationController@index');
+    // List single specification
+    Route::get('specification/{id}', 'SpecificationController@show');
+    // Create new specification
+    Route::post('specification', 'SpecificationController@store');
+    // Update specification
+    Route::put('specification', 'SpecificationController@store');
+    // Delete specification
+    Route::delete('specification/{id}', 'SpecificationController@destroy');
 });
 
 Route::post('register', 'AuthController@register');

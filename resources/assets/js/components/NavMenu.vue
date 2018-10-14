@@ -58,14 +58,14 @@
 						} 
 					},
 					{ 
-						title: 'Product', 
+						title: 'Specification', 
 						icon: 'category', 
 						route: { 
-							path: '/product' 
+							path: '/specification' 
 						} 
 					},
 					{ 
-						title: 'Specification', 
+						title: 'Product', 
 						icon: 'category', 
 						route: { 
 							path: '/product' 
