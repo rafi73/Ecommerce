@@ -19,10 +19,35 @@
 							</v-flex>
 						</v-layout>
 					</v-container>
+
+					<v-flex xs12 sm8 offset-sm2 lg8 offset-lg2>
+						<v-data-table v-model="selected" :headers="headers" :items="specifications" :pagination.sync="pagination" select-all item-key="name" class="elevation-1">
+							<template slot="headers" slot-scope="props">
+								<tr>
+									<th>
+										<v-checkbox :input-value="props.all" :indeterminate="props.indeterminate" primary hide-details @click.native="toggleAll()"></v-checkbox>
+									</th>
+									<th v-for="header in props.headers" :key="header.text" :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+									 @click="changeSort(header.value)">
+										<v-icon small>arrow_upward</v-icon>
+										{{ header.text }}
+									</th>
+								</tr>
+							</template>
+							<template slot="items" slot-scope="props">
+								<tr :active="props.selected" @click="props.selected = !props.selected">
+									<td>
+										<v-checkbox :input-value="props.selected" primary hide-details></v-checkbox>
+									</td>
+									<td>{{ props.item.name }}</td>
+									<td class="text-xs-right">{{ props.item.description }}</td>
+								</tr>
+							</template>
+						</v-data-table>
+					</v-flex>
 				</v-card-text>
 			</v-card>
 			<v-card flat>
-
 			</v-card>
 		</v-flex>
 	</v-layout>
@@ -62,15 +87,6 @@
 					{
 						text: 'Description',
 						value: 'description'
-					},
-					{
-						text: 'Active',
-						value: 'active'
-					},
-					{
-						text: "Actions",
-						value: "name",
-						sortable: false
 					}
 				],
 				desserts: [],
@@ -96,6 +112,10 @@
 				dialogInput: false,
 				selectedCategory: null,
 				categories: [],
+				pagination: {
+					sortBy: 'name'
+				},
+				selected: [],
 
 			}
 		},
@@ -113,6 +133,7 @@
 			//this.initialize();
 			this.fetchAll()
 			this.fetchCategories()
+			this.fetchSpecification()
 		},
 		methods: {
 			async update() {
@@ -273,6 +294,32 @@
 						}
 					})
 			},
+			fetchSpecification() {
+				this.busy = true
+				axios.get(`/api/specification`)
+					.then(response => {
+						this.specifications = response.data.data
+						console.log(response.data.data)
+						this.busy = false
+					})
+					.catch(error => {
+						if (error.response) {
+							console.log(error.response)
+						}
+					})
+			},
+			toggleAll() {
+				if (this.selected.length) this.selected = []
+				else this.selected = this.specifications.slice()
+			},
+			changeSort(column) {
+				if (this.pagination.sortBy === column) {
+					this.pagination.descending = !this.pagination.descending
+				} else {
+					this.pagination.sortBy = column
+					this.pagination.descending = false
+				}
+			}
 		}
 	}
 </script>
