@@ -47,5 +47,11 @@
   "sub_category_name": "Name",
   "sub_category_description": "Description",
   "sub_category_image": "Image",
-  "sub_category_active": "Active"
+  "sub_category_active": "Active",
+
+  "brand": "Brand",
+  "brand_name": "Name",
+  "brand_description": "Description",
+  "brand_image": "Image",
+  "brand_active": "Active"
 }

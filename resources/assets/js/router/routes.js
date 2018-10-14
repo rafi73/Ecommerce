@@ -60,6 +60,16 @@ export default ({ authGuard, guestGuard }) => [
 			component: require('~/pages/specification/index.vue') 
 		},
 		{ 
+			path: '/category-wise-specification', 
+			name: 'category-wise-specification', 
+			component: require('~/pages/categoryWiseSpecification/index.vue') 
+		},
+		{ 
+			path: '/brand', 
+			name: 'brand', 
+			component: require('~/pages/brand/index.vue') 
+		},
+		{ 
 			path: '/product', 
 			name: 'product', 
 			component: require('~/pages/product/index.vue') 

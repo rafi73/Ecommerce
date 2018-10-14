@@ -78,6 +78,31 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::put('specification', 'SpecificationController@store');
     // Delete specification
     Route::delete('specification/{id}', 'SpecificationController@destroy');
+
+     # 1.1 specification routes
+    // List specification
+    Route::get('category-wise-specifications', 'CategoryWiseSpecificationController@index');
+    // List single specification
+    Route::get('category-wise-specification/{id}', 'CategoryWiseSpecificationController@show');
+    // Create new specification
+    Route::post('category-wise-specification', 'CategoryWiseSpecificationController@store');
+    // Update specification
+    Route::put('category-wise-specification', 'CategoryWiseSpecificationController@store');
+    // Delete specification
+    Route::delete('category-wise-specification/{id}', 'CategoryWiseSpecificationController@destroy');
+
+
+    # 1.1 brand routes
+    // List brand
+    Route::get('brands', 'BrandController@index');
+    // List single brand
+    Route::get('brand/{id}', 'BrandController@show');
+    // Create new brand
+    Route::post('brand', 'BrandController@store');
+    // Update brand
+    Route::put('brand', 'BrandController@store');
+    // Delete brand
+    Route::delete('brand/{id}', 'BrandController@destroy');
 });
 
 Route::post('register', 'AuthController@register');

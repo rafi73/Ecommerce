@@ -65,6 +65,20 @@
 						} 
 					},
 					{ 
+						title: 'Category Wise Specification', 
+						icon: 'category', 
+						route: { 
+							path: '/category-wise-specification' 
+						} 
+					},
+					{ 
+						title: 'Brand', 
+						icon: 'category', 
+						route: { 
+							path: '/brand' 
+						} 
+					},
+					{ 
 						title: 'Product', 
 						icon: 'category', 
 						route: { 
