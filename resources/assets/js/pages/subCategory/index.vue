@@ -19,7 +19,7 @@
 										<v-layout wrap>
 											<v-flex xs12 sm12 md12>
 												<multiselect v-model="selectedCategory" :options="categories" @select="onSelectCategory" track-by="id" label="name"
-													placeholder="Select" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
+													placeholder="Select Category" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
 													data-vv-as="category">
 												</multiselect>
 											</v-flex>
@@ -52,7 +52,7 @@
 					<v-data-table :headers="headers" :items="subCategories" :search="search">
 						<template slot="items" slot-scope="props">
 							<td>{{ props.item.name }}</td>
-							<td>{{ props.item.description }}</td>
+							<td>{{ props.item.category.name }}</td>
 							<td>
 								<div class="image-container">
 									<img class="object-fit-cover" :src="props.item.image || '/img/v.png'" />
@@ -75,17 +75,17 @@
 				</v-card>
 			</v-app>
 		</v-flex>
-		<v-dialog v-model="dialogConfirm" max-width="500">
+		<v-dialog v-model="dialogConfirmDelete" max-width="500">
 			<v-card>
 				<v-card-title class="headline">{{ $t('delete_confirm_title') }}</v-card-title>
 				<v-card-text>{{ $t('delete_confirm_text') }}</v-card-text>
 				<v-card-actions>
 					<v-spacer></v-spacer>
-					<v-btn color="green darken-1" flat="flat" @click="dialogConfirm = false">
+					<v-btn color="blue darken-1" flat="flat" @click="dialogConfirmDelete = false">
 						Disagree
 					</v-btn>
 
-					<v-btn color="green darken-1" flat="flat" @click="erase()" >
+					<v-btn color="red darken-1" flat="flat" @click="erase()" >
 						Agree
 					</v-btn>
 				</v-card-actions>
@@ -126,8 +126,8 @@
 						value: 'name'
 					},
 					{
-						text: 'Description',
-						value: 'description'
+						text: 'Category',
+						value: 'category'
 					},
 					{
 						text: 'Image',
@@ -161,10 +161,10 @@
 				},
 				search: '',
 				subCategories: [],
-				dialogConfirm: false,
+				dialogConfirmDelete: false,
 				edit : false,
 				dialogInput : false,
-				selectedCategory : {},
+				selectedCategory : null,
 				categories: [],
 
 			}
@@ -206,13 +206,13 @@
 			editItem(item) {
 				this.subCategory = Object.assign({}, item)
 				this.imgInput = this.subCategory.image
-				this.selectedCategory = this.categories.find(x => x.id === this.subCategory.category_id)
+				this.selectedCategory = this.categories.find(x => x.id === this.subCategory.category.id)
 				this.dialogInput = true
 				this.edit = true
 			},
 			deleteItem(item) {
 				//const index = this.desserts.indexOf(item)
-				this.dialogInputConfirm = true
+				this.dialogConfirmDelete = true
 				this.subCategory = item
 				//confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
 			},
@@ -304,7 +304,7 @@
 				})
 			},
 			erase() {
-				this.dialogInputConfirm = false
+				this.dialogConfirmDelete = false
 				this.busy = true
 				axios.delete(`/api/sub-category/${this.subCategory.id}`)
 				.then(response => {
@@ -320,7 +320,7 @@
 			addNew(){
 				this.subCategory = {active: true}
 				this.imgInput = ``
-				this.selectedCategory = {}
+				this.selectedCategory = null
 				this.dialogInput = true
 				this.edit = false
 			},

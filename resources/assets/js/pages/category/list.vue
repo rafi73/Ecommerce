@@ -18,10 +18,10 @@
 									<v-container grid-list-md>
 										<v-layout wrap>
 											<v-flex xs12 sm12 md12>
-												<v-text-field v-validate="'required|max:10'" v-model="category.name" :counter="10" :error-messages="errors.collect('name')" :label="`${$t('category_name')}`" data-vv-name="name" required ></v-text-field>
+												<v-text-field v-validate="'required|max:255'" v-model="category.name" :counter="255" :error-messages="errors.collect('name')" :label="`${$t('category_name')}`" data-vv-name="name" required ></v-text-field>
 											</v-flex>
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required|max:10'" v-model="category.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('category_description')}`" data-vv-name="description" required ></v-textarea>
+												<v-textarea v-validate="'required|max:255'" v-model="category.description" :counter="255" :error-messages="errors.collect('description')" :label="`${$t('category_description')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
 											<v-flex xs12 sm12 md12>
 												<img :src="imgInput" height="150" v-if="imgInput" />
@@ -69,17 +69,17 @@
 				</v-card>
 			</v-app>
 		</v-flex>
-		<v-dialog v-model="dialogConfirm" max-width="500">
+		<v-dialog v-model="dialogConfirmDelete" max-width="500">
 			<v-card>
 				<v-card-title class="headline">{{ $t('delete_confirm_title') }}</v-card-title>
 				<v-card-text>{{ $t('delete_confirm_text') }}</v-card-text>
 				<v-card-actions>
 					<v-spacer></v-spacer>
-					<v-btn color="green darken-1" flat="flat" @click="dialogConfirm = false">
+					<v-btn color="blue darken-1" flat="flat" @click="dialogConfirmDelete = false">
 						Disagree
 					</v-btn>
 
-					<v-btn color="green darken-1" flat="flat" @click="erase()" >
+					<v-btn color="red darken-1" flat="flat" @click="erase()" >
 						Agree
 					</v-btn>
 				</v-card-actions>
@@ -153,9 +153,10 @@
 				},
 				search: '',
 				categories: [],
-				dialogConfirm: false,
+				dialogConfirmDelete: false,
 				edit : false,
 				dialogInput : false
+
 			}
 		},
 		computed: {
@@ -199,7 +200,8 @@
 			},
 			deleteItem(item) {
 				//const index = this.desserts.indexOf(item)
-				this.dialogInputConfirm = true
+				console.log(item)
+				this.dialogConfirmDelete = true
 				this.category = item
 				//confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
 			},
@@ -295,7 +297,8 @@
 				})
 			},
 			erase() {
-				this.dialogInputConfirm = false
+				console.log('erase clicked')
+				this.dialogConfirmDelete = false
 				this.busy = true
 				axios.delete(`/api/category/${this.category.id}`)
 				.then(response => {
