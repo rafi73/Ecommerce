@@ -90,6 +90,8 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::put('category-wise-specification', 'CategoryWiseSpecificationController@store');
     // Delete specification
     Route::delete('category-wise-specification/{id}', 'CategoryWiseSpecificationController@destroy');
+    // List single specification
+    Route::get('category-wise-specification/{id}/category', 'CategoryWiseSpecificationController@getCategoryWiseSpecification');
 
 
     # 1.1 brand routes

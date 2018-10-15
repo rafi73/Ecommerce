@@ -17,7 +17,7 @@ class CategoryWiseSpecificationResouerce extends JsonResource
         return [
             'id' => $this->id,
             'category_id' => $this->category_id,
-            'specification_id' => $this->specification_id,
+            'specification' => $this->specification,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
             'created_at' => $this->created_at->format('Y-m-d'),

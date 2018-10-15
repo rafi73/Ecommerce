@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CategoryWiseSpecification;
+use App\Specification;
 use App\Http\Resources\CategoryWiseSpecificationResouerce;
 
 class CategoryWiseSpecificationController extends Controller
@@ -29,15 +30,18 @@ class CategoryWiseSpecificationController extends Controller
      */
     public function store(Request $request)
     {
-        $categoryWiseResource = $request->isMethod('put') ? CategoryWiseSpecification::findOrFail($request->id) : new Category;
+        // dd($request);
+        // $categoryWiseResource = $request->isMethod('put') ? CategoryWiseSpecification::findOrFail($request->id) : new CategoryWiseSpecification;
 
-        $categoryWiseResource->category_id= $request->input('category_id');
-        $categoryWiseResource->specification_id= $request->input('specification_id');
-        $categoryWiseResource->created_by= $request->input('created_by');
-        $categoryWiseResource->updated_by= $request->input('updated_by');
-        if($categoryWiseResource->save()) {
-            return new CategoryWiseSpecificationResouerce($categoryWiseResource);
-        }
+        // $categoryWiseResource->category_id= $request->input('category_id');
+        // $categoryWiseResource->specification_id= $request->input('specification_id');
+        // $categoryWiseResource->created_by= $request->input('created_by');
+        // $categoryWiseResource->updated_by= $request->input('updated_by');
+        // if($categoryWiseResource->save()) {
+        //     return new CategoryWiseSpecificationResouerce($categoryWiseResource);
+        // }
+
+        CategoryWiseSpecification::insert($request->input('data'));
     }
     /**
      * Display the specified resource.
@@ -104,4 +108,21 @@ class CategoryWiseSpecificationController extends Controller
          // Return collection of Categorys as a resource
          return CategoryWiseSpecificationResouerce::collection($categories);
      }
+
+     /**
+     * Display the specified resource.
+     *$
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getCategoryWiseSpecification($categoryId)
+    {
+        // Get Categorys
+        $categoryWiseResource = Specification::leftJoin('category_wise_specifications', 'specifications.id', '=', 'category_wise_specifications.specification_id')
+                                                //->where('category_wise_specifications.category_id', $categoryId)
+                                                ->get();
+
+        // Return single Categorys as a resource
+        return response()->json(['data' => $categoryWiseResource]);
+    }
 }
