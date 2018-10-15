@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\CategoryWiseSpecification;
 use App\Specification;
 use App\Http\Resources\CategoryWiseSpecificationResouerce;
+use DB;
 
 class CategoryWiseSpecificationController extends Controller
 {
@@ -30,17 +31,11 @@ class CategoryWiseSpecificationController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $categoryWiseResource = $request->isMethod('put') ? CategoryWiseSpecification::findOrFail($request->id) : new CategoryWiseSpecification;
-
-        // $categoryWiseResource->category_id= $request->input('category_id');
-        // $categoryWiseResource->specification_id= $request->input('specification_id');
-        // $categoryWiseResource->created_by= $request->input('created_by');
-        // $categoryWiseResource->updated_by= $request->input('updated_by');
-        // if($categoryWiseResource->save()) {
-        //     return new CategoryWiseSpecificationResouerce($categoryWiseResource);
-        // }
-
+        $data = $request->input('data');
+        if(count($data))
+        {
+            CategoryWiseSpecification::where('category_id',$data[0]['category_id'])->delete();
+        }
         CategoryWiseSpecification::insert($request->input('data'));
     }
     /**
@@ -118,11 +113,31 @@ class CategoryWiseSpecificationController extends Controller
     public function getCategoryWiseSpecification($categoryId)
     {
         // Get Categorys
-        $categoryWiseResource = Specification::leftJoin('category_wise_specifications', 'specifications.id', '=', 'category_wise_specifications.specification_id')
-                                                //->where('category_wise_specifications.category_id', $categoryId)
-                                                ->get();
+        // $categoryWiseResource = //Specification::leftJoin('category_wise_specifications', 'specifications.id', '=', 'category_wise_specifications.specification_id')
+        //                                         //->where('category_wise_specifications.category_id', $categoryId)
+        //                                         //->get();
+
+        //                                         Specification::select('*', DB::raw('specifications.id AS id, specifications.name, category_wise_specifications.category_id'))
+        //                                             ->leftJoin('category_wise_specifications', function($join) {
+        //                                             $join->on('specifications.id', '=', 'category_wise_specifications.specification_id');
+        //                                           })
+        //                                           ->whereNull('category_wise_specifications.specification_id')
+        //                                           ->where('category_wise_specifications.category_id', $categoryId)
+        //                                           ->get();
+        //                                           //->whereNull('category_wise_specifications.specification_id');
+
+
+        $specifications = Specification::where('active', 1)->get()->toArray();
+        $categoryWiseSpecifications = CategoryWiseSpecification::where('category_id', $categoryId)->get()->toArray();
+
+        foreach ($specifications as $key => $value) 
+        {
+            $specifications[$key]['checked'] = (string)array_search($value['id'], array_column($categoryWiseSpecifications, 'specification_id'));
+        }
+
+        //dd($specifications);
 
         // Return single Categorys as a resource
-        return response()->json(['data' => $categoryWiseResource]);
+        return response()->json(['data' => $specifications]);
     }
 }

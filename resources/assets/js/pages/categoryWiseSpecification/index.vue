@@ -77,7 +77,6 @@
 			<v-card flat>
 			</v-card>
 		</v-flex>
-		{{selected}}
 	</v-layout>
 </template>
 
@@ -159,10 +158,7 @@
 			}
 		},
 		created() {
-			//this.initialize();
-			this.fetchAll()
 			this.fetchCategories()
-			
 		},
 		methods: {
 			async update() {
@@ -281,20 +277,6 @@
 					this.imgInput = "";
 				}
 			},
-			fetchAll() {
-				this.busy = true
-				axios.get(`/api/specifications`)
-					.then(response => {
-						this.specifications = response.data.data
-						console.log(response.data.data)
-						this.busy = false
-					})
-					.catch(error => {
-						if (error.response) {
-							console.log(error.response)
-						}
-					})
-			},
 			erase() {
 				this.dialogConfirmDelete = false
 				this.busy = true
@@ -320,6 +302,7 @@
 				if (selectedOption) {
 					this.specification.category_id = selectedOption.id
 					this.fetchSpecification(selectedOption.id)
+					this.selected = []
 				}
 			},
 			fetchCategories() {
@@ -341,6 +324,11 @@
 				axios.get(`/api/category-wise-specification/${categoryId}/category`)
 					.then(response => {
 						this.specifications = response.data.data
+
+						this.specifications.forEach(element => {
+							if(element.checked)
+							this.selected.push(element)
+						})
 						console.log(response.data.data)
 						this.busy = false
 					})
