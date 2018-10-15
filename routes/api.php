@@ -66,6 +66,8 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::put('sub-category', 'SubCategoryController@store');
     // Delete sub-category
     Route::delete('sub-category/{id}', 'SubCategoryController@destroy');
+     // List single sub-category
+     Route::get('sub-category/{id}/category', 'SubCategoryController@getByCategory');
 
     # 1.1 specification routes
     // List specification

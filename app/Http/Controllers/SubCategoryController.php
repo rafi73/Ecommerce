@@ -107,4 +107,19 @@ class SubCategoryController extends Controller
          // Return collection of Categorys as a resource
          return SubCategoryResource::collection($subCategories);
      }
+
+     /**
+     * Display the specified resource.
+     *$
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getByCategory($categoryId)
+    {
+        // Get Categorys
+        $subCategories = SubCategory::where('category_id', $categoryId)->get();
+
+        // Return single Categorys as a resource
+        return SubCategoryResource::collection($subCategories);
+    }
 }
