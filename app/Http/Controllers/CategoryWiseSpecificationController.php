@@ -110,7 +110,7 @@ class CategoryWiseSpecificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getCategoryWiseSpecification($categoryId)
+    public function getCategoryWiseSpecificationJoint($categoryId)
     {
         // Get Categorys
         // $categoryWiseResource = //Specification::leftJoin('category_wise_specifications', 'specifications.id', '=', 'category_wise_specifications.specification_id')
@@ -139,5 +139,19 @@ class CategoryWiseSpecificationController extends Controller
 
         // Return single Categorys as a resource
         return response()->json(['data' => $specifications]);
+    }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getCategoryWiseSpecification($categoryId)
+    {
+        $categoryWiseSpecifications = CategoryWiseSpecification::where('category_id', $categoryId)->get();
+
+        // Return single Categorys as a resource
+        return CategoryWiseSpecificationResouerce::collection($categoryWiseSpecifications);
     }
 }

@@ -9,7 +9,7 @@
 						<v-spacer></v-spacer>
 						<v-text-field v-model="search" md4 append-icon="search" label="Search" single-line hide-details></v-text-field>
 						<v-btn @click.prevent="addNew()" slot="activator" color="primary" dark class="mb-2">{{ $t('new_item') }}</v-btn>
-						<v-dialog v-model="dialogInput" max-width="1000px">
+						<v-dialog v-model="dialogInput" max-width="1000">
 							<v-card>
 								<v-card-title>
 									<span class="headline">{{ formTitle }}</span>
@@ -17,32 +17,41 @@
 								<v-card-text>
 									<v-container grid-list-md>
 										<v-layout wrap>
-											<v-flex xs12 sm6 md6>
+											<v-flex xs12 sm4 md4>
 												<multiselect v-model="selectedCategory" :options="categories" @select="onSelectCategory" track-by="id" label="name"
 													placeholder="Select Category" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
 													data-vv-as="category">
 												</multiselect>
 											</v-flex>
-											<v-flex xs12 sm6 md6>
+											<v-flex xs12 sm4 md4>
 												<multiselect v-model="selectedSubCategory" :options="subCategories" @select="onSelectSubCategory" track-by="id" label="name"
-													placeholder="Select Category" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
+													placeholder="Select Sub Category" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
 													data-vv-as="category">
 												</multiselect>
 											</v-flex>
-											<v-flex xs12 sm12 md12>
-												<v-text-field v-validate="'required'" v-model="subCategory.name" :counter="10" :error-messages="errors.collect('name')" :label="`${$t('sub_category_name')}`" data-vv-name="name" required ></v-text-field>
+											<v-flex xs12 sm4 md4>
+												<multiselect v-model="selectedBrand" :options="brands" @select="onSelectBrand" track-by="id" label="name"
+													placeholder="Select Brand" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
+													data-vv-as="category">
+												</multiselect>
 											</v-flex>
-											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="subCategory.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
+
+											<v-flex xs12 sm12 md12 v-for="(specification, index) in categoryWiseSpecifications" :key="index">
+									
+												<v-text-field v-validate="'required'" v-model="productSpecifications[specification.specification.id]" :counter="10" :error-messages="errors.collect('name')" :label="`${specification.specification.name}`" data-vv-name="name" required ></v-text-field>
+											</v-flex>
+											<!-- <v-flex xs12 sm12 md12>
+												<v-textarea v-validate="'required'" v-model="product.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
 											<v-flex xs12 sm12 md12>
 												<img :src="imgInput" height="150" v-if="imgInput" />
 												<v-text-field :label="`${$t('sub_category_image')}`" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
 												<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked">
 											</v-flex>
-											<v-checkbox :label="`${$t('sub_category_active')}: ${subCategory.active}`" ></v-checkbox>
+											<v-checkbox :label="`${$t('sub_category_active')}: ${product.active}`" ></v-checkbox> -->
 										</v-layout>
 									</v-container>
+									{{productSpecifications}}
 								</v-card-text>
 
 								<v-card-actions>
@@ -116,7 +125,9 @@
 		},
 		data() {
 			return {
-				subCategory: {},
+				product: {
+					specification: {}
+				},
 				busy: false,
 				form: new Form({
 					name: "",
@@ -173,7 +184,10 @@
 				selectedCategory : null,
 				selectedSubCategory : null,
 				categories: [],
-
+				selectedBrand : null,
+				brands: [],
+				categoryWiseSpecifications: [],
+				productSpecifications: {}
 			}
 		},
 		computed: {
@@ -187,9 +201,8 @@
 			}
 		},
 		created() {
-			//this.initialize();
-			this.fetchAll()
 			this.fetchCategories()
+			this.fetchBrands()
 		},
 		methods: {
 			async update() {
@@ -211,8 +224,8 @@
 				this.$refs.image.click();
 			},
 			editItem(item) {
-				this.subCategory = Object.assign({}, item)
-				this.imgInput = this.subCategory.image
+				this.product = Object.assign({}, item)
+				this.imgInput = this.product.image
 				this.selectedCategory = this.categories.find(x => x.id === this.subCategory.category.id)
 				this.dialogInput = true
 				this.edit = true
@@ -220,7 +233,7 @@
 			deleteItem(item) {
 				//const index = this.desserts.indexOf(item)
 				this.dialogConfirmDelete = true
-				this.subCategory = item
+				this.product = item
 				//confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
 			},
 			close() {
@@ -239,7 +252,7 @@
 							// Object.assign(this.desserts[this.editedIndex], this.editedItem)
 							console.log('edit', this.editedItem)
 
-							axios.put('/api/sub-category', this.subCategory)
+							axios.put('/api/sub-category', this.product)
 								.then(
 									(response) => {
 										console.log(response)
@@ -255,7 +268,9 @@
 							//this.desserts.push(this.editedItem)
 							console.log('save', this.editedItem)
 
-							axios.post('/api/sub-category', this.subCategory)
+
+
+							axios.post('/api/product', this.product)
 								.then(
 									(response) => {
 										console.log(response)
@@ -287,7 +302,7 @@
 					fr.addEventListener("load", () => {
 						this.imgInput = fr.result
 						this.imageFile = files[0] // this is an image file that can be sent to server...
-						this.subCategory.image = this.imgInput
+						this.product.image = this.imgInput
 						//console.log(this.imgInput, this.imageFile)
 					});
 				} else {
@@ -296,24 +311,10 @@
 					this.imgInput = "";
 				}
 			},
-			fetchAll() {
-				this.busy = true
-				axios.get(`/api/sub-categories`)
-				.then(response => {
-					this.subCategories = response.data.data
-					console.log(response.data.data)
-					this.busy = false
-				})
-				.catch(error => {
-					if (error.response) {
-						console.log(error.response)
-					}
-				})
-			},
 			erase() {
 				this.dialogConfirmDelete = false
 				this.busy = true
-				axios.delete(`/api/sub-category/${this.subCategory.id}`)
+				axios.delete(`/api/sub-category/${this.product.id}`)
 				.then(response => {
 					this.busy = false
 					this.fetchAll()
@@ -325,7 +326,7 @@
 				})
 			},
 			addNew(){
-				this.subCategory = {active: true}
+				this.product = {active: true}
 				this.imgInput = ``
 				this.selectedCategory = null
 				this.dialogInput = true
@@ -334,7 +335,9 @@
 			onSelectCategory(selectedOption, id){
                 if(selectedOption){
 					this.product.category_id = selectedOption.id
+					console.log(selectedOption.id)
 					this.fetchSubCategories(selectedOption.id)
+					this.fetchCategoryWiseSpecifications(selectedOption.id)
 				}
 			},
 			fetchCategories() {
@@ -358,9 +361,42 @@
 			},
 			fetchSubCategories(categoryId) {
 				this.busy = true
-				axios.get(`/api/sub-categories/${categoryId}/category`)
+				axios.get(`/api/sub-category/${categoryId}/category`)
 				.then(response => {
 					this.subCategories = response.data.data
+					console.log(response.data.data)
+					this.busy = false
+				})
+				.catch(error => {
+					if (error.response) {
+						console.log(error.response)
+					}
+				})
+			},
+			onSelectBrand(selectedOption, id){
+                if(selectedOption){
+					this.product.brand_id = selectedOption.id
+				}
+			},
+			fetchBrands() {
+				this.busy = true
+				axios.get(`/api/brands`)
+				.then(response => {
+					this.brands = response.data.data
+					console.log(response.data.data)
+					this.busy = false
+				})
+				.catch(error => {
+					if (error.response) {
+						console.log(error.response)
+					}
+				})
+			},
+			fetchCategoryWiseSpecifications(catgoryId) {
+				this.busy = true
+				axios.get(`/api/category-wise-specification/${catgoryId}/category`)
+				.then(response => {
+					this.categoryWiseSpecifications = response.data.data
 					console.log(response.data.data)
 					this.busy = false
 				})

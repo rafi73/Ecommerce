@@ -67,7 +67,7 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     // Delete sub-category
     Route::delete('sub-category/{id}', 'SubCategoryController@destroy');
      // List single sub-category
-     Route::get('sub-category/{id}/category', 'SubCategoryController@getByCategory');
+    Route::get('sub-category/{id}/category', 'SubCategoryController@getByCategory');
 
     # 1.1 specification routes
     // List specification
@@ -93,7 +93,21 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     // Delete specification
     Route::delete('category-wise-specification/{id}', 'CategoryWiseSpecificationController@destroy');
     // List single specification
+    Route::get('category-wise-specification-joint/{id}/category', 'CategoryWiseSpecificationController@getCategoryWiseSpecificationJoint');
+    // List single specification
     Route::get('category-wise-specification/{id}/category', 'CategoryWiseSpecificationController@getCategoryWiseSpecification');
+
+    # 1.1 specification routes
+    // List specification
+    Route::get('product-wise-specifications', 'ProductWiseSpecificationController@index');
+    // List single specification
+    Route::get('product-wise-specification/{id}', 'ProductWiseSpecificationController@show');
+    // Create new specification
+    Route::post('product-wise-specification', 'ProductWiseSpecificationController@store');
+    // Update specification
+    Route::put('product-wise-specification', 'ProductWiseSpecificationController@store');
+    // Delete specification
+    Route::delete('product-wise-specification/{id}', 'ProductWiseSpecificationController@destroy');
 
 
     # 1.1 brand routes

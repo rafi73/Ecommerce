@@ -92,13 +92,6 @@
 							path: '/product' 
 						} 
 					},
-					{ 
-						title: 'Product wise Specification', 
-						icon: 'category', 
-						route: { 
-							path: '/product' 
-						} 
-					},
 				]
 			}
 		}

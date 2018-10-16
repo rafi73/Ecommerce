@@ -320,8 +320,8 @@
 					})
 			},
 			fetchSpecification(categoryId) {
-				this.busy = true
-				axios.get(`/api/category-wise-specification/${categoryId}/category`)
+				//this.busy = true
+				axios.get(`/api/category-wise-specification-joint/${categoryId}/category`)
 					.then(response => {
 						this.specifications = response.data.data
 
@@ -330,7 +330,7 @@
 							this.selected.push(element)
 						})
 						console.log(response.data.data)
-						this.busy = false
+						//this.busy = false
 					})
 					.catch(error => {
 						if (error.response) {
