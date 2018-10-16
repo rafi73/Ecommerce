@@ -17,6 +17,7 @@ class CreateProductWiseSpecificationsTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('specification_id');
+            $table->longtext('description');
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

@@ -85,13 +85,6 @@
 							path: '/product' 
 						} 
 					},
-					{ 
-						title: 'Specification Details', 
-						icon: 'category', 
-						route: { 
-							path: '/product' 
-						} 
-					},
 				]
 			}
 		}

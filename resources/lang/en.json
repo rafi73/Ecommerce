@@ -53,5 +53,17 @@
   "brand_name": "Name",
   "brand_description": "Description",
   "brand_image": "Image",
-  "brand_active": "Active"
+  "brand_active": "Active",
+
+  "product": "Product",
+  "product_name": "Name",
+  "product_description": "Description",
+  "product_image": "Image",
+  "product_reference": "Reference",
+  "product_conditoin": "Conditoin",
+  "product_price": "Price",
+  "product_discount_price": "Discount Price",
+  "product_more_info": "More Info",
+  "product_inside_box": "Inside Box",
+  "product_active": "Active"
 }

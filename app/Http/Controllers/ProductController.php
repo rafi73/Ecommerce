@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\ProductWiseSpecification;
 use App\Http\Resources\ProductResource;
+use App\Helpers\ImageProcessing;
 
 class ProductController extends Controller
 {
@@ -31,17 +33,39 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request)
-        // $product = $request->isMethod('put') ? Product::findOrFail($request->id) : new Product;
+        $product = $request->isMethod('put') ? Product::findOrFail($request->id) : new Product;
 
-        // $product->name= $request->input('name');
-        // $product->description= $request->input('description');
-        // $product->active= $request->input('active');
-        // $product->created_by= $request->input('created_by');
-        // $product->updated_by= $request->input('updated_by');
-        // if($product->save()) {
-        //     return new ProductResource($product);
-        // }
+        $product->name= $request->input('name');
+        $product->category_id= $request->input('category_id');
+        $product->sub_category_id= $request->input('sub_category_id');
+        $product->brand_id= $request->input('brand_id');
+        $product->description= $request->input('description');
+        $product->image= $request->input('image')? ImageProcessing::saveBase64ImagePng($request->input('image')) : NULL;
+        $product->reference= $request->input('reference');
+        $product->condition= $request->input('description');
+        $product->price= $request->input('price');
+        $product->discount_price= $request->input('discount_price');
+        $product->more_info= $request->input('more_info');
+        $product->inside_box= $request->input('inside_box');
+        $product->active= $request->input('active');
+        $product->created_by= $request->input('created_by');
+        $product->updated_by= $request->input('updated_by');
+
+        if($product->save()) {
+            $specifications = $request->input('specification');
+            foreach ($specifications as $key => $value) 
+            {
+                $productWiseSpecification = new ProductWiseSpecification;
+                $productWiseSpecification->product_id = $product->id;
+                $productWiseSpecification->specification_id = $key;
+                $productWiseSpecification->description = $value;
+                $productWiseSpecification->created_by = $request->input('created_by');
+                $productWiseSpecification->updated_by = $request->input('updated_by');
+                $productWiseSpecification->save();
+            }
+
+            return new ProductResource($product);
+        }
     }
 
 

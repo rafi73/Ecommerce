@@ -5,11 +5,11 @@
 			<v-app id="inspire">
 				<v-card>
 					<v-card-title class="grey lighten-4">
-						<h3 class="headline mb-0">{{ $t('sub_category') }}</h3>
+						<h3 class="headline mb-0">{{ $t('product') }}</h3>
 						<v-spacer></v-spacer>
 						<v-text-field v-model="search" md4 append-icon="search" label="Search" single-line hide-details></v-text-field>
 						<v-btn @click.prevent="addNew()" slot="activator" color="primary" dark class="mb-2">{{ $t('new_item') }}</v-btn>
-						<v-dialog v-model="dialogInput" max-width="1000">
+						<v-dialog v-model="dialogInput" max-width="1000dp">
 							<v-card>
 								<v-card-title>
 									<span class="headline">{{ formTitle }}</span>
@@ -36,71 +36,59 @@
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.name" :counter="10" 
-												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+												<v-text-field v-validate="'required'" v-model="product.name" :counter="200" 
+												:error-messages="errors.collect('name')" :label="`${ $t('product_name')}`" ></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="product.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
+												<v-textarea v-validate="'required'" v-model="product.description" :counter="200" :error-messages="errors.collect('description')" 
+												:label="`${$t('product_description')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
 												<img :src="imgInput" height="150" v-if="imgInput" />
-												<v-text-field :label="`${$t('sub_category_image')}`" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
+												<v-text-field :label="`${$t('product_image')}`" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
 												<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked">
 											</v-flex>
 											
 											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.reference" :counter="10" 
-												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+												<v-text-field v-validate="'required'" v-model="product.reference" :counter="200" 
+												:error-messages="errors.collect('name')" :label="`${ $t('product_reference')}`" ></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.condition" :counter="10" 
-												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+												<v-text-field v-validate="'required'" v-model="product.condition" :counter="200" 
+												:error-messages="errors.collect('name')" :label="`${ $t('product_conditoin')}`" ></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.price" :counter="10" 
-												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+												<v-text-field v-validate="'required'" v-model="product.price" :counter="200" 
+												:error-messages="errors.collect('name')" :label="`${ $t('product_price')}`" ></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.discount_price" :counter="10" 
-												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+												<v-text-field v-validate="'required'" v-model="product.discount_price" :counter="200" 
+												:error-messages="errors.collect('name')" :label="`${ $t('product_discount_price')}`" ></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="product.more_info" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
+												<v-textarea v-validate="'required'" v-model="product.more_info" :counter="200" :error-messages="errors.collect('description')" 
+												:label="`${$t('product_more_info')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="product.inside_box" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
-											</v-flex>
-
-											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.name" :counter="10" 
-												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+												<v-textarea v-validate="'required'" v-model="product.inside_box" :counter="200" :error-messages="errors.collect('description')" 
+												:label="`${$t('product_inside_box')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 v-for="(specification, index) in categoryWiseSpecifications" :key="index">
-												<v-text-field v-validate="'required'" v-model="productSpecifications[specification.specification.id]" :counter="10" 
+												<v-text-field v-validate="'required'" v-model="productSpecifications[specification.specification.id]" :counter="200" 
 												:error-messages="errors.collect('name')" :label="`${specification.specification.name}`" ></v-text-field>
 											</v-flex>
 
-											<v-checkbox :label="`${$t('sub_category_active')}: ${product.active}`" ></v-checkbox>
-											<!-- <v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="product.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
-											</v-flex>
-											<v-flex xs12 sm12 md12>
-												<img :src="imgInput" height="150" v-if="imgInput" />
-												<v-text-field :label="`${$t('sub_category_image')}`" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
-												<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked">
-											</v-flex>
-											<v-checkbox :label="`${$t('sub_category_active')}: ${product.active}`" ></v-checkbox> -->
+											<v-checkbox :label="`${$t('product_active')}: ${product.active}`" ></v-checkbox>
 										</v-layout>
 									</v-container>
-									{{productSpecifications}}
 								</v-card-text>
 
 								<v-card-actions>
@@ -113,7 +101,7 @@
 					</v-card-title>
 
 					<v-divider></v-divider>
-					<v-data-table :headers="headers" :items="subCategories" :search="search">
+					<v-data-table :headers="headers" :items="products" :search="search">
 						<template slot="items" slot-scope="props">
 							<td>{{ props.item.name }}</td>
 							<td>{{ props.item.category.name }}</td>
@@ -236,7 +224,9 @@
 				selectedBrand : null,
 				brands: [],
 				categoryWiseSpecifications: [],
-				productSpecifications: {}
+				productSpecifications: {},
+				products: [],
+				productWiseSpecifications: []
 			}
 		},
 		computed: {
@@ -250,8 +240,10 @@
 			}
 		},
 		created() {
+			this.fetchAll()
 			this.fetchCategories()
 			this.fetchBrands()
+
 		},
 		methods: {
 			async update() {
@@ -275,7 +267,11 @@
 			editItem(item) {
 				this.product = Object.assign({}, item)
 				this.imgInput = this.product.image
-				this.selectedCategory = this.categories.find(x => x.id === this.subCategory.category.id)
+				this.selectedCategory = this.categories.find(x => x.id === this.product.category.id)
+				this.selectedSubCategory = this.subCategories.find(x => x.id === this.product.sub_category_id)
+				this.selectedBrand = this.brands.find(x => x.id === this.product.brand_id)
+				this.fetchProductWiseSpecifications(this.product.id)
+				this.fetchCategoryWiseSpecifications(this.product.category.id)
 				this.dialogInput = true
 				this.edit = true
 			},
@@ -318,6 +314,8 @@
 							console.log('save', this.editedItem)
 
 							this.product.specification = this.productSpecifications
+							this.product.created_by = 0
+							this.product.updated_by = 0
 
 							axios.post('/api/product', this.product)
 								.then(
@@ -359,6 +357,20 @@
 					this.imageFile = "";
 					this.imgInput = "";
 				}
+			},
+			fetchAll() {
+				this.busy = true
+				axios.get(`/api/products`)
+				.then(response => {
+					this.products = response.data.data
+					console.log(response.data.data)
+					this.busy = false
+				})
+				.catch(error => {
+					if (error.response) {
+						console.log(error.response)
+					}
+				})
 			},
 			erase() {
 				this.dialogConfirmDelete = false
@@ -405,7 +417,7 @@
 			},
 			onSelectSubCategory(selectedOption, id){
                 if(selectedOption){
-					this.product.category_id = selectedOption.id
+					this.product.sub_category_id = selectedOption.id
 				}
 			},
 			fetchSubCategories(categoryId) {
@@ -446,6 +458,30 @@
 				axios.get(`/api/category-wise-specification/${catgoryId}/category`)
 				.then(response => {
 					this.categoryWiseSpecifications = response.data.data
+					console.log(response.data.data)
+					this.busy = false
+				})
+				.catch(error => {
+					if (error.response) {
+						console.log(error.response)
+					}
+				})
+			},
+			fetchProductWiseSpecifications(productId) {
+				this.busy = true
+				axios.get(`/api/product-wise-specification/${productId}/product`)
+				.then(response => {
+					this.productWiseSpecifications = response.data.data
+
+					let temp = {}
+
+					this.productSpecifications = {}
+					this.productWiseSpecifications.forEach((element, index) => {
+						this.productSpecifications[element.specification_id] = element.description
+					})
+
+					console.log('check', this.productSpecifications)
+
 					console.log(response.data.data)
 					this.busy = false
 				})

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\ProductWiseSpecification;
+use App\Specification;
+use App\Http\Resources\ProductWiseSpecificationResouerce;
 class ProductWiseSpecificationController extends Controller
 {
      /**
@@ -62,5 +64,19 @@ class ProductWiseSpecificationController extends Controller
         if($productWiseSpecification->delete()) {
             return new ProductWiseSpecificationResouerce($productWiseSpecification);
         }    
+    }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getProductWiseSpecification($productId)
+    {
+        $productWiseSpecifications = ProductWiseSpecification::where('product_id', $productId)->get();
+
+        // Return single Categorys as a resource
+        return ProductWiseSpecificationResouerce::collection($productWiseSpecifications);
     }
 }
