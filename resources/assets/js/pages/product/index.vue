@@ -19,8 +19,7 @@
 										<v-layout wrap>
 											<v-flex xs12 sm4 md4>
 												<multiselect v-model="selectedCategory" :options="categories" @select="onSelectCategory" track-by="id" label="name"
-													placeholder="Select Category" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
-													data-vv-as="category">
+													placeholder="Select Category" selectLabel="" :error-messages="errors.collect('category')" deselectLabel="" selectedLabel="" v-validate="'required'" name="category">
 												</multiselect>
 											</v-flex>
 											<v-flex xs12 sm4 md4>
@@ -36,10 +35,60 @@
 												</multiselect>
 											</v-flex>
 
-											<v-flex xs12 sm12 md12 v-for="(specification, index) in categoryWiseSpecifications" :key="index">
-									
-												<v-text-field v-validate="'required'" v-model="productSpecifications[specification.specification.id]" :counter="10" :error-messages="errors.collect('name')" :label="`${specification.specification.name}`" data-vv-name="name" required ></v-text-field>
+											<v-flex xs12 sm12 md12 >
+												<v-text-field v-validate="'required'" v-model="product.name" :counter="10" 
+												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
 											</v-flex>
+
+											<v-flex xs12 sm12 md12>
+												<v-textarea v-validate="'required'" v-model="product.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
+											</v-flex>
+
+											<v-flex xs12 sm12 md12>
+												<img :src="imgInput" height="150" v-if="imgInput" />
+												<v-text-field :label="`${$t('sub_category_image')}`" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
+												<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked">
+											</v-flex>
+											
+											<v-flex xs12 sm12 md12 >
+												<v-text-field v-validate="'required'" v-model="product.reference" :counter="10" 
+												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+											</v-flex>
+
+											<v-flex xs12 sm12 md12 >
+												<v-text-field v-validate="'required'" v-model="product.condition" :counter="10" 
+												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+											</v-flex>
+
+											<v-flex xs12 sm12 md12 >
+												<v-text-field v-validate="'required'" v-model="product.price" :counter="10" 
+												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+											</v-flex>
+
+											<v-flex xs12 sm12 md12 >
+												<v-text-field v-validate="'required'" v-model="product.discount_price" :counter="10" 
+												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+											</v-flex>
+
+											<v-flex xs12 sm12 md12>
+												<v-textarea v-validate="'required'" v-model="product.more_info" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
+											</v-flex>
+
+											<v-flex xs12 sm12 md12>
+												<v-textarea v-validate="'required'" v-model="product.inside_box" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
+											</v-flex>
+
+											<v-flex xs12 sm12 md12 >
+												<v-text-field v-validate="'required'" v-model="product.name" :counter="10" 
+												:error-messages="errors.collect('name')" :label="`${ $t('new_item')}`" ></v-text-field>
+											</v-flex>
+
+											<v-flex xs12 sm12 md12 v-for="(specification, index) in categoryWiseSpecifications" :key="index">
+												<v-text-field v-validate="'required'" v-model="productSpecifications[specification.specification.id]" :counter="10" 
+												:error-messages="errors.collect('name')" :label="`${specification.specification.name}`" ></v-text-field>
+											</v-flex>
+
+											<v-checkbox :label="`${$t('sub_category_active')}: ${product.active}`" ></v-checkbox>
 											<!-- <v-flex xs12 sm12 md12>
 												<v-textarea v-validate="'required'" v-model="product.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
@@ -268,7 +317,7 @@
 							//this.desserts.push(this.editedItem)
 							console.log('save', this.editedItem)
 
-
+							this.product.specification = this.productSpecifications
 
 							axios.post('/api/product', this.product)
 								.then(
