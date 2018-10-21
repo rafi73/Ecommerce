@@ -1,83 +1,5 @@
 <template>
-    <html class="no-js" lang="zxx">
-
-    <head>
-        <!-- Basic page needs
-        ============================================ -->
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Home 2 || Alice Fashion Responsive Bootstrap Theme</title>
-        <meta name="description" content="">
-        <!-- Mobile specific metas
-        ============================================ -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- favicon.ico
-        ============================================ -->
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-
-        <!-- All CSS
-        ============================================ -->
-        <!-- normalize css
-        ============================================ -->
-        <link rel="stylesheet" href="css/normalize.css">
-
-        <!-- font-awesome css
-        ============================================ -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-
-        <!-- material css
-        ============================================ -->
-        <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
-
-        <!-- bootstrap css
-        ============================================ -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-
-        <!-- animate css
-        ============================================ -->
-        <link rel="stylesheet" href="css/animate.css">
-
-        <!-- TimeCircles css
-        ============================================ -->
-        <link rel="stylesheet" href="css/TimeCircles.css">
-
-        <!-- owl carousel css
-        ============================================ -->
-        <link rel="stylesheet" href="css/owl.carousel.css">
-
-        <!-- slicknav css
-        ============================================ -->
-        <link rel="stylesheet" href="css/slicknav.min.css">
-
-        <!-- nivo-slider css
-        ============================================ -->
-        <link rel="stylesheet" href="lib/css/nivo-slider.css">
-        <link rel="stylesheet" href="lib/css/preview.css">
-
-        <!-- jquery ui css
-        ============================================ -->
-        <link rel="stylesheet" href="css/jquery-ui.css">
-
-        <!-- style css
-        ============================================ -->
-        <link rel="stylesheet" href="style.css">
-
-        <!-- responsive css
-        ============================================ -->
-        <link rel="stylesheet" href="css/responsive.css">
-
-        <!-- user custom css
-        ============================================ -->
-        <link rel="stylesheet" href="css/custom.css">
-
-        <!-- modernizr-2 js
-        ============================================ -->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-
-    </head>
-
-    <body>
+    <div>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -126,7 +48,7 @@
                                                 <li><a href="#">Euro(EUR)</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">My Account <i class="fa fa-angle-down"></i> </a>
+                                        <li><a href="#">My Account <i class="fa fa-angle-down"></i> </a> 
                                             <ul>
                                                 <li><a href="#">my account</a></li>
                                                 <li><a href="#">my wishlist</a></li>
@@ -142,7 +64,7 @@
                 </div>
             </div>
             <!-- header top end -->
-
+            
             <!-- main header start -->
             <div class="main-header-area">
                 <div class="container">
@@ -161,78 +83,78 @@
                                             <form action="#" method="GET">
                                                 <input type="text" placeholder="Search entire store here ...">
                                                 <span>
-                                                    <select name="select" id="select">
-                                                        <option value="">All Categories</option>
-                                                        <option value="12">Fashion</option>
-                                                        <option value="22">--Dresses</option>
-                                                        <option value="26">---Sweater</option>
-                                                        <option value="27">---Evening</option>
-                                                        <option value="28">---Day</option>
-                                                        <option value="29">---Sports</option>
-                                                        <option value="23">--Handbags</option>
-                                                        <option value="30">---Shoulder</option>
-                                                        <option value="31">---Satchels</option>
-                                                        <option value="32">---kids</option>
-                                                        <option value="33">---coats</option>
-                                                        <option value="24">--shoes</option>
-                                                        <option value="34">---Ankle Boots</option>
-                                                        <option value="35">---Clog sandals</option>
-                                                        <option value="36">---run</option>
-                                                        <option value="37">---Books</option>
-                                                        <option value="25">--Clothing</option>
-                                                        <option value="38">---Coats Jackets</option>
-                                                        <option value="39">---Raincoats</option>
-                                                        <option value="40">---Jackets</option>
-                                                        <option value="41">---T-shirts</option>
-                                                        <option value="13">Electronics</option>
-                                                        <option value="42">--Laptops</option>
-                                                        <option value="46">---Dell Laptops</option>
-                                                        <option value="47">---HP Laptops</option>
-                                                        <option value="48">---Lenovo Laptops</option>
-                                                        <option value="49">---Apple Laptops</option>
-                                                        <option value="43">--Camera</option>
-                                                        <option value="50">---Digital Cameras</option>
-                                                        <option value="51">---Camcorders</option>
-                                                        <option value="52">---Photo Accessories</option>
-                                                        <option value="53">---Memory Cards</option>
-                                                        <option value="44">--Smart Phone</option>
-                                                        <option value="54">---Apple Phones</option>
-                                                        <option value="55">---Samsung Phones</option>
-                                                        <option value="56">---Motorola Phones</option>
-                                                        <option value="57">---Lenovo Phones</option>
-                                                        <option value="45">--Television</option>
-                                                        <option value="58">---All-in-One Computers</option>
-                                                        <option value="59">---Towers Only</option>
-                                                        <option value="60">---Refurbished Desktops</option>
-                                                        <option value="61">---Gaming Desktops</option>
-                                                        <option value="14">Furnitured & Decor</option>
-                                                        <option value="62">--Chair</option>
-                                                        <option value="65">---Dining room</option>
-                                                        <option value="66">---bedroom</option>
-                                                        <option value="67">--- Home & Office</option>
-                                                        <option value="68">---living room</option>
-                                                        <option value="63">--Lighting</option>
-                                                        <option value="69">---Ceiling Lighting</option>
-                                                        <option value="70">---Wall Lighting</option>
-                                                        <option value="71">---Outdoor Lighting</option>
-                                                        <option value="72">---Smart Lighting</option>
-                                                        <option value="64">--Sofa</option>
-                                                        <option value="73">---Fabric Sofas</option>
-                                                        <option value="74">---Leather Sofas</option>
-                                                        <option value="75">---Corner Sofas</option>
-                                                        <option value="76">---Sofa Beds</option>
-                                                        <option value="15">Jewelry & Watches</option>
-                                                        <option value="16">Health & Beauty</option>
-                                                        <option value="17">Books & Office</option>
-                                                        <option value="18">Sport & Outdoor</option>
-                                                        <option value="19">Smart phone & Tablets</option>
-                                                        <option value="20">Computer - Laptop</option>
-                                                        <option value="21">Accessories</option>
-                                                        <option value="77">--Bags & Belts</option>
-                                                        <option value="78">--Sunglasses & Readers</option>
-                                                        <option value="79">--Socks & Tights</option>
-                                                        <option value="80">--Scarves & Gloves</option>
-                                                    </select>
+                                                <select name="select" id="select">
+                                                    <option value="">All Categories</option>
+                                                    <option value="12" >Fashion</option>
+                                                    <option value="22" >--Dresses</option>
+                                                    <option value="26" >---Sweater</option>
+                                                    <option value="27" >---Evening</option>
+                                                    <option value="28" >---Day</option>
+                                                    <option value="29" >---Sports</option>
+                                                    <option value="23" >--Handbags</option>
+                                                    <option value="30" >---Shoulder</option>
+                                                    <option value="31" >---Satchels</option>
+                                                    <option value="32" >---kids</option>
+                                                    <option value="33" >---coats</option>
+                                                    <option value="24" >--shoes</option>
+                                                    <option value="34" >---Ankle Boots</option>
+                                                    <option value="35" >---Clog sandals</option>
+                                                    <option value="36" >---run</option>
+                                                    <option value="37" >---Books</option>
+                                                    <option value="25" >--Clothing</option>
+                                                    <option value="38" >---Coats Jackets</option>
+                                                    <option value="39" >---Raincoats</option>
+                                                    <option value="40" >---Jackets</option>
+                                                    <option value="41" >---T-shirts</option>
+                                                    <option value="13" >Electronics</option>
+                                                    <option value="42" >--Laptops</option>
+                                                    <option value="46" >---Dell Laptops</option>
+                                                    <option value="47" >---HP Laptops</option>
+                                                    <option value="48" >---Lenovo Laptops</option>
+                                                    <option value="49" >---Apple Laptops</option>
+                                                    <option value="43" >--Camera</option>
+                                                    <option value="50" >---Digital Cameras</option>
+                                                    <option value="51" >---Camcorders</option>
+                                                    <option value="52" >---Photo Accessories</option>
+                                                    <option value="53" >---Memory Cards</option>
+                                                    <option value="44" >--Smart Phone</option>
+                                                    <option value="54" >---Apple Phones</option>
+                                                    <option value="55" >---Samsung Phones</option>
+                                                    <option value="56" >---Motorola Phones</option>
+                                                    <option value="57" >---Lenovo Phones</option>
+                                                    <option value="45" >--Television</option>
+                                                    <option value="58" >---All-in-One Computers</option>
+                                                    <option value="59" >---Towers Only</option>
+                                                    <option value="60" >---Refurbished Desktops</option>
+                                                    <option value="61" >---Gaming Desktops</option>
+                                                    <option value="14" >Furnitured & Decor</option>
+                                                    <option value="62" >--Chair</option>
+                                                    <option value="65" >---Dining room</option>
+                                                    <option value="66" >---bedroom</option>
+                                                    <option value="67" >--- Home & Office</option>
+                                                    <option value="68" >---living room</option>
+                                                    <option value="63" >--Lighting</option>
+                                                    <option value="69" >---Ceiling Lighting</option>
+                                                    <option value="70" >---Wall Lighting</option>
+                                                    <option value="71" >---Outdoor Lighting</option>
+                                                    <option value="72" >---Smart Lighting</option>
+                                                    <option value="64" >--Sofa</option>
+                                                    <option value="73" >---Fabric Sofas</option>
+                                                    <option value="74" >---Leather Sofas</option>
+                                                    <option value="75" >---Corner Sofas</option>
+                                                    <option value="76" >---Sofa Beds</option>
+                                                    <option value="15" >Jewelry & Watches</option>
+                                                    <option value="16" >Health & Beauty</option>
+                                                    <option value="17" >Books & Office</option>
+                                                    <option value="18" >Sport & Outdoor</option>
+                                                    <option value="19" >Smart phone & Tablets</option>
+                                                    <option value="20" >Computer - Laptop</option>
+                                                    <option value="21" >Accessories</option>
+                                                    <option value="77" >--Bags & Belts</option>
+                                                    <option value="78" >--Sunglasses & Readers</option>
+                                                    <option value="79" >--Socks & Tights</option>
+                                                    <option value="80" >--Scarves & Gloves</option>
+                                                </select>
                                                 </span>
                                                 <button type="submit">
                                                     <i class="zmdi zmdi-search"></i>
@@ -246,42 +168,41 @@
                                     <!-- total cart start -->
                                     <div class="total-cart">
                                         <div class="cart-button">
-                                            <a href="#"> <i class="zmdi zmdi-shopping-cart"></i> <strong> MY CART
-                                                </strong> <span class="price"></span>Price: $55.98</a>
+                                            <a href="#">  <i class="zmdi zmdi-shopping-cart"></i>  <strong> MY CART </strong> <span class="price"></span>Price: $55.98</a>
                                         </div>
                                         <div class="cart-item">
                                             <div class="single-item">
                                                 <div class="item-img">
                                                     <a href="#">
-                                                        <img src="img/cart/item1.jpg" alt="" class="img-responsive">
+                                                        <img src="img/cart/item1.jpg" alt="" class="img-responsive"> 
                                                     </a>
                                                 </div>
                                                 <div class="item-info">
                                                     <a href="#" class="title"> <span> 1 x </span> Special sa...</a>
                                                     <a href="#">S,</a>
                                                     <a href="#"> Yellow</a>
-                                                    <span>$28.98</span>
+                                                    <span>$28.98</span> 
                                                 </div>
                                             </div>
                                             <div class="single-item">
                                                 <div class="item-img">
                                                     <a href="#">
-                                                        <img src="img/cart/item2.jpg" alt="" class="img-responsive">
+                                                        <img src="img/cart/item2.jpg" alt="" class="img-responsive"> 
                                                     </a>
                                                 </div>
                                                 <div class="item-info">
                                                     <a href="#" class="title"> <span> 1 x </span>Skmei Luxu...</a>
                                                     <a href="#">S,</a>
                                                     <a href="#"> Yellow</a>
-                                                    <span>$27.00</span>
+                                                    <span>$27.00</span> 
                                                 </div>
                                             </div>
                                             <div class="subtotal">
-                                                <h3> Shipping: <span>$7.00</span> </h3>
-                                                <h3> Total: <span>$62.98</span> </h3>
+                                                <h3> Shipping: <span>$7.00</span> </h3>  
+                                                <h3> Total: <span>$62.98</span> </h3>  
                                             </div>
                                             <div class="checkout">
-                                                <a href="#"> check out <i class="fa fa-angle-right"></i> </a>
+                                                <a href="#"> check out <i class="fa fa-angle-right"></i> </a>   
                                             </div>
                                         </div>
                                     </div>
@@ -293,7 +214,7 @@
                 </div>
             </div>
             <!-- main header end -->
-
+            
             <!-- header bottom start -->
             <div id="sticker" class="header-bottom">
                 <div class="container">
@@ -323,17 +244,17 @@
                                                         <a href="#">Satchels</a>
                                                         <a href="#">kids</a>
                                                         <a href="#">coats</a>
-                                                    </span>
+                                                    </span> 
                                                     <span>
                                                         <a href="#">shoes</a>
                                                         <a href="#">Ankle Boots</a>
                                                         <a href="#">Clog sandals </a>
                                                         <a href="#">run</a>
                                                         <a href="#">Books</a>
-                                                    </span>
+                                                    </span> 
                                                     <span>
                                                         <a href="#">Clothing</a>
-                                                        <a href="#">Coats Jackets </a>
+                                                        <a href="#">Coats  Jackets </a>
                                                         <a href="#">Raincoats</a>
                                                         <a href="#">Jackets</a>
                                                         <a href="#">T-shirts</a>
@@ -347,8 +268,7 @@
                                             </div>
                                             <!-- category mega menu end -->
                                         </li>
-                                        <li class="arrow"> <a href="#"> <img src="img/menu-icon/2.jpg" alt="">
-                                                Electronics</a>
+                                        <li class="arrow"> <a href="#"> <img src="img/menu-icon/2.jpg" alt=""> Electronics</a>
                                             <!-- category mega menu start -->
                                             <div class="c-mega-menu">
                                                 <div class="block">
@@ -365,14 +285,14 @@
                                                         <a href="#">Camcorders</a>
                                                         <a href="#">Photo Accessories</a>
                                                         <a href="#">Memory Cards</a>
-                                                    </span>
+                                                    </span> 
                                                     <span>
                                                         <a href="#">Smart Phone</a>
                                                         <a href="#">Apple Phones</a>
                                                         <a href="#">Samsung Phones </a>
                                                         <a href="#">Motorola Phones</a>
                                                         <a href="#">Lenovo Phones</a>
-                                                    </span>
+                                                    </span> 
                                                     <span>
                                                         <a href="#">Television</a>
                                                         <a href="#">All-in-One Computers</a>
@@ -384,8 +304,7 @@
                                             </div>
                                             <!-- category mega menu end -->
                                         </li>
-                                        <li class="arrow"> <a href="#"> <img src="img/menu-icon/3.jpg" alt="">
-                                                Furnitured & Decor</a>
+                                        <li class="arrow"> <a href="#"> <img src="img/menu-icon/3.jpg" alt=""> Furnitured & Decor</a>
                                             <!-- category mega menu start -->
                                             <div class="c-mega-menu item-3">
                                                 <div class="block">
@@ -402,7 +321,7 @@
                                                         <a href="#">Wall Lighting</a>
                                                         <a href="#">Outdoor Lighting</a>
                                                         <a href="#">Smart Lighting</a>
-                                                    </span>
+                                                    </span> 
                                                     <span>
                                                         <a href="#">Sofa</a>
                                                         <a href="#">Fabric Sofas</a>
@@ -424,22 +343,14 @@
                                             </ul>
                                             <!-- category sub menu end -->
                                         </li>
-                                        <li> <a href="#"> <img src="img/menu-icon/5.jpg" alt=""> Jewelry & Watches</a>
-                                        </li>
-                                        <li> <a href="#"> <img src="img/menu-icon/6.jpg" alt=""> Health & Beauty</a>
-                                        </li>
-                                        <li> <a href="#"> <img src="img/menu-icon/7.jpg" alt=""> Books & Office</a>
-                                        </li>
-                                        <li> <a href="#"> <img src="img/menu-icon/8.jpg" alt=""> Sport & Outdoor</a>
-                                        </li>
-                                        <li> <a href="#"> <img src="img/menu-icon/9.jpg" alt=""> Smart phone & Tablets</a>
-                                        </li>
-                                        <li class="more-catagory"> <a href="#"> <i class="zmdi zmdi-plus-circle"></i>
-                                                More Catagories</a> </li>
-                                        <li class="more-catagory-item"> <a href="#"> <img src="img/menu-icon/10.jpg"
-                                                    alt=""> Computer - Laptop</a> </li>
-                                        <li class="less-catagory"> <a href="#"> <i class="zmdi zmdi-minus-circle"></i>
-                                                Less Catagories</a> </li>
+                                        <li> <a href="#"> <img src="img/menu-icon/5.jpg" alt=""> Jewelry & Watches</a> </li>
+                                        <li> <a href="#"> <img src="img/menu-icon/6.jpg" alt=""> Health & Beauty</a> </li>
+                                        <li> <a href="#"> <img src="img/menu-icon/7.jpg" alt=""> Books & Office</a> </li>
+                                        <li> <a href="#"> <img src="img/menu-icon/8.jpg" alt=""> Sport & Outdoor</a> </li>
+                                        <li> <a href="#"> <img src="img/menu-icon/9.jpg" alt=""> Smart phone & Tablets</a> </li>
+                                        <li class="more-catagory"> <a href="#"> <i class="zmdi zmdi-plus-circle"></i> More Catagories</a> </li>
+                                        <li class="more-catagory-item"> <a href="#"> <img src="img/menu-icon/10.jpg" alt=""> Computer - Laptop</a> </li>
+                                        <li class="less-catagory"> <a href="#"> <i class="zmdi zmdi-minus-circle"></i> Less Catagories</a> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -524,8 +435,8 @@
                 <div class="bend niceties preview-1">
                     <!-- slider images start -->
                     <div id="nivoslider" class="slides">
-                        <img src="img/slider/4.jpg" alt="slider_1" />
-                        <img src="img/slider/3.jpg" alt="slider_2" />
+                        <img src="img/slider/4.jpg" alt="slider_1"/>
+                        <img src="img/slider/3.jpg" alt="slider_2"/>
                     </div>
                     <!-- slider images end -->
                 </div>
@@ -557,7 +468,7 @@
                     </div>
                 </div>
                 <!-- banner end -->
-
+                
                 <!-- electronics section heading start -->
                 <div class="row" id="electronics">
                     <div class="col-lg-9 col-md-12">
@@ -565,8 +476,7 @@
                             <div class="row">
                                 <!-- section title start -->
                                 <div class="col-md-4 col-sm-5">
-                                    <h2 class="blue small-icon-size"> <img src="img/icon/icon_electronics.jpg" alt="">
-                                        electronics</h2>
+                                    <h2 class="blue small-icon-size"> <img src="img/icon/icon_electronics.jpg" alt=""> electronics</h2>
                                 </div>
                                 <!-- section title end -->
                                 <div class="col-md-8 col-sm-7 col-xs-12">
@@ -597,8 +507,7 @@
                                             <span class="sale"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -611,12 +520,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -629,8 +535,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -643,12 +548,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -660,8 +562,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -674,12 +575,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -691,8 +589,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -700,17 +597,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -722,8 +616,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -736,12 +629,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -753,8 +643,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -767,12 +656,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -788,8 +674,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -802,12 +687,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -820,8 +702,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -834,12 +715,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -851,8 +729,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -865,12 +742,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -882,8 +756,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -891,17 +764,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -913,8 +783,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -927,12 +796,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -944,8 +810,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -958,12 +823,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -975,8 +837,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -989,12 +850,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1006,8 +864,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1020,12 +877,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1037,8 +891,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1051,12 +904,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1072,8 +922,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1086,12 +935,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1104,8 +950,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1118,12 +963,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1135,8 +977,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1149,12 +990,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1166,8 +1004,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1175,17 +1012,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1197,8 +1031,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1211,12 +1044,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1228,8 +1058,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1242,12 +1071,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1286,8 +1112,7 @@
                             <div class="row">
                                 <!-- section title start -->
                                 <div class="col-md-4 col-sm-5">
-                                    <h2 class="sweet small-icon-size"> <img src="img/icon/icon_fashion.jpg" alt="">
-                                        fashion</h2>
+                                    <h2 class="sweet small-icon-size"> <img src="img/icon/icon_fashion.jpg" alt=""> fashion</h2>
                                 </div>
                                 <!-- section title end -->
                                 <div class="col-md-8 col-sm-7 col-xs-12">
@@ -1323,8 +1148,7 @@
                                             <span class="sale"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1337,12 +1161,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1355,8 +1176,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1369,12 +1189,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1386,8 +1203,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1400,12 +1216,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1417,8 +1230,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1426,17 +1238,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1448,8 +1257,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1462,12 +1270,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1479,8 +1284,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1493,12 +1297,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1514,8 +1315,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1528,12 +1328,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1546,8 +1343,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1560,12 +1356,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1577,8 +1370,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1591,12 +1383,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1608,8 +1397,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1617,17 +1405,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1639,8 +1424,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1653,12 +1437,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1670,8 +1451,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1684,12 +1464,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1701,8 +1478,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1715,12 +1491,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1732,8 +1505,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1746,12 +1518,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1763,8 +1532,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1777,12 +1545,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1798,8 +1563,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1812,12 +1576,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1830,8 +1591,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1844,12 +1604,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1861,8 +1618,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1875,12 +1631,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1892,8 +1645,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1901,17 +1653,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1923,8 +1672,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1937,12 +1685,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1954,8 +1699,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -1968,12 +1712,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2012,8 +1753,7 @@
                             <div class="row">
                                 <!-- section title start -->
                                 <div class="col-md-4 col-sm-5">
-                                    <h2 class="brown small-icon-size"> <img src="img/icon/icon_Furniture.jpg" alt="">
-                                        Furnitured & Decor</h2>
+                                    <h2 class="brown small-icon-size"> <img src="img/icon/icon_Furniture.jpg" alt=""> Furnitured & Decor</h2>
                                 </div>
                                 <!-- section title end -->
                                 <div class="col-md-8 col-sm-7 col-xs-12">
@@ -2044,8 +1784,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2058,12 +1797,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2076,8 +1812,7 @@
                                             <span class="sale"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2090,12 +1825,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2107,8 +1839,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2121,12 +1852,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2138,8 +1866,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2147,17 +1874,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2169,8 +1893,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2183,12 +1906,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2200,8 +1920,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2214,12 +1933,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2235,8 +1951,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2249,12 +1964,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2267,8 +1979,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2281,12 +1992,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2298,8 +2006,7 @@
                                             <span class="sale"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2312,12 +2019,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2329,8 +2033,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2338,17 +2041,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2360,8 +2060,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2374,12 +2073,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2391,8 +2087,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2405,12 +2100,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2422,8 +2114,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2436,12 +2127,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2453,8 +2141,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2467,12 +2154,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2488,8 +2172,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2502,12 +2185,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2520,8 +2200,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2534,12 +2213,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2551,8 +2227,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2565,12 +2240,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2582,8 +2254,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2591,17 +2262,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2613,8 +2281,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2627,12 +2294,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2644,8 +2308,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2658,12 +2321,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2702,8 +2362,7 @@
                             <div class="row">
                                 <!-- section title start -->
                                 <div class="col-md-4 col-sm-5">
-                                    <h2 class="green small-icon-size"> <img src="img/icon/icon_sunglass.jpg" alt="">
-                                        Accessories</h2>
+                                    <h2 class="green small-icon-size"> <img src="img/icon/icon_sunglass.jpg" alt=""> Accessories</h2>
                                 </div>
                                 <!-- section title end -->
                                 <div class="col-md-8 col-sm-7 col-xs-12">
@@ -2739,8 +2398,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2753,12 +2411,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2771,8 +2426,7 @@
                                             <span class="sale"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2785,12 +2439,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2802,8 +2453,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2816,12 +2466,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2833,8 +2480,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2842,17 +2488,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2864,8 +2507,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2878,12 +2520,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2899,8 +2538,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2913,12 +2551,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2931,8 +2566,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2945,12 +2579,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2962,8 +2593,7 @@
                                             <span class="sale"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -2976,12 +2606,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2993,8 +2620,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -3002,17 +2628,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -3024,8 +2647,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -3038,12 +2660,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -3055,8 +2674,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -3069,12 +2687,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -3086,8 +2701,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Original New Samsung
-                                                    Galaxy On7 G6000G6100...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Original New Samsung Galaxy On7 G6000G6100...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -3100,12 +2714,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -3117,8 +2728,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile
-                                                    phone MTK6580 5.0" IPS HD</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Blackview A8 mobile phone MTK6580 5.0" IPS HD</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -3131,12 +2741,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -3152,8 +2759,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5
-                                                    Dual Sim Unlocked Cell...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Samsung galaxy J5 Dual Sim Unlocked Cell...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -3166,12 +2772,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -3184,8 +2787,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand
-                                                    Mens Sports Watches...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Skmei Luxury Brand Mens Sports Watches...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -3198,12 +2800,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -3215,8 +2814,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch
-                                                    Computer Screen...</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Customized 19Inch Computer Screen...</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -3229,12 +2827,9 @@
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -3246,8 +2841,7 @@
                                             <span class="new"></span>
                                         </a>
                                         <div class="item-info text-center">
-                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6''
-                                                    LapTop 1920x1080 RAM 4G</a></h2>
+                                            <h2><a href="product-details.html" class="item-title">Chuwi LapBook 15.6'' LapTop 1920x1080 RAM 4G</a></h2>
                                             <div class="ratings">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -3255,17 +2849,14 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <h3 class="item-price"> $18.98 </h3>
+                                            <h3 class="item-price"> $18.98  </h3>
                                             <div class="actions">
                                                 <a href="#" class="single-action">add to cart</a>
                                             </div>
                                             <div class="hover-content">
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                </a>
-                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                    <i class="zmdi zmdi-search"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i> </a>
+                                                <a href="#" class="single-action" data-toggle="modal" data-target="#item-modal"> <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -3472,13 +3063,12 @@
                                         <p class="view-count"><i class="fa fa-eye"></i>views(47)</p>
                                     </div>
                                     <p class="blog-description">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum...
+                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum...
                                     </p>
                                 </div>
                             </div>
                             <!-- single blog post end -->
-
+                            
                             <!-- single blog post start -->
                             <div class="single-blog">
                                 <a href="blog-details.html" class="blog-img">
@@ -3491,8 +3081,7 @@
                                         <p class="view-count"><i class="fa fa-eye"></i>views(47)</p>
                                     </div>
                                     <p class="blog-description">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum...
+                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum...
                                     </p>
                                 </div>
                             </div>
@@ -3627,10 +3216,9 @@
                             </div>
                             <div class="widget-address">
                                 <p> <span> address : </span> 123 Main Street, Anytown, CA 12345 USA.</p>
-                                <p> <span> Phone : </span> <a href="tel:880123456789"></a> (800) 123 456 789</p>
-                                <p> <span> Email : </span> <a href="mailto:demo@yourdomain.com"></a>
-                                    demo@yourdomain.com</p>
-                                <p> <span> Fax : </span> (800) 123 456 789</p>
+                                <p> <span> Phone  : </span>  <a href="tel:880123456789"></a> (800) 123 456 789</p>
+                                <p> <span> Email  : </span>  <a href="mailto:demo@yourdomain.com"></a> demo@yourdomain.com</p>
+                                <p> <span> Fax : </span>  (800) 123 456 789</p>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 xs-mt-40">
@@ -3665,7 +3253,7 @@
                                 <a href="#">fashion</a>
                                 <a href="#">electronics</a>
                                 <a href="#">furnitured & decor</a>
-                                <a href="#">jewelry & warches</a>
+                                <a href="#">jewelry  & warches</a>
                                 <a href="#">health & beauty</a>
                             </div>
                         </div>
@@ -3691,137 +3279,94 @@
 
         <!-- Product item details Modal start -->
         <div class="modal fade" id="item-modal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <!-- close button start -->
-                        <div class="close-button" data-dismiss="modal"><i class="fa fa-times-circle"></i></div>
-                        <!-- product modal details start -->
-                        <div class="product-modal">
-                            <!-- single product item start -->
-                            <div class="single-product-item floating">
-                                <a href="product-details.html" class="item-img">
-                                    <img src="img/products/1.jpg" alt="">
-                                    <span class="sale"></span>
-                                </a>
-                                <div class="item-info">
-                                    <h2><span class="item-title large">Special sales Cotton stretch Men T shirt men's
-                                            o-neck short-sleeve</span></h2>
-                                    <div class="info">
-                                        <p>Reference: <span>demo_33</span></p>
-                                        <p>Condition: <span>New product</span></p>
-                                    </div>
-                                    <h3 class="item-price"> $28.98 <span class="old-price">$30.51</span> </h3>
-                                    <p class="product-descriptions"> Long printed dress with thin adjustable straps.
-                                        V-neckline and wiring under the bust with ruffles at the bottom of the dress.</p>
-                                    <div class="cart-plus-minus">
-                                        <label>Quantity: </label>
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                    </div>
-                                    <div class="actions">
-                                        <a href="#" class="single-action">add to cart</a>
-                                        <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>
-                                        <a href="#" class="single-action"> <i class="fa fa-print"></i> </a>
-                                        <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                        </a>
-                                    </div>
-                                    <div class="size">
-                                        size
-                                        <form action="#">
-                                            <select name="size" id="size">
-                                                <option value="1">s</option>
-                                                <option value="2">m</option>
-                                                <option value="3">l</option>
-                                            </select>
-                                        </form>
-                                    </div>
-                                    <div class="color">
-                                        color
-                                        <form action="#">
-                                            <div class="single-color">
-                                                <span></span>
-                                                <input type="radio" name="color" value="color1">
-                                            </div>
-                                            <div class="single-color">
-                                                <span></span>
-                                                <input type="radio" name="color" value="color2">
-                                            </div>
-                                            <div class="single-color">
-                                                <span></span>
-                                                <input type="radio" name="color" value="color3">
-                                            </div>
-                                            <div class="single-color">
-                                                <span></span>
-                                                <input type="radio" name="color" value="color4">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="stock">
-                                        <p> 300 Items <span>In stock</span></p>
-                                    </div>
-                                    <div class="social-share">
-                                        <a href="#" target="_blank"><i class="fa fa-twitter"></i> twitter</a>
-                                        <a href="#" target="_blank"><i class="fa fa-facebook"></i> share</a>
-                                        <a href="#" target="_blank"><i class="fa fa-google-plus"></i> Google+</a>
-                                        <a href="#" target="_blank"><i class="fa fa-pinterest"></i> pinterest</a>
-                                    </div>
-                                </div>
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <!-- close button start -->
+                <div class="close-button" data-dismiss="modal"><i class="fa fa-times-circle"></i></div>
+                <!-- product modal details start -->
+                <div class="product-modal">
+                    <!-- single product item start -->
+                    <div class="single-product-item floating">
+                        <a href="product-details.html" class="item-img">
+                            <img src="img/products/1.jpg" alt="">
+                            <span class="sale"></span>
+                        </a>
+                        <div class="item-info">
+                            <h2><span class="item-title large">Special sales Cotton stretch Men T shirt men's o-neck short-sleeve</span></h2>
+                            <div class="info">
+                                <p>Reference: <span>demo_33</span></p>
+                                <p>Condition: <span>New product</span></p>
                             </div>
-                            <!-- single product item end -->
+                            <h3 class="item-price"> $28.98 <span class="old-price">$30.51</span> </h3>
+                            <p class="product-descriptions"> Long printed dress with thin adjustable straps. V-neckline and wiring under the bust with ruffles at the bottom of the dress.</p>
+                            <div class="cart-plus-minus">
+                                <label>Quantity: </label>
+                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                            </div>
+                            <div class="actions">
+                                <a href="#" class="single-action">add to cart</a>
+                                <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>
+                                <a href="#" class="single-action"> <i class="fa fa-print"></i> </a>
+                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a>
+                            </div>
+                            <div class="size">
+                                size
+                                <form action="#">
+                                    <select name="size" id="size">
+                                        <option value="1">s</option>
+                                        <option value="2">m</option>
+                                        <option value="3">l</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="color">
+                                color
+                                <form action="#">
+                                    <div class="single-color">
+                                        <span></span>
+                                        <input type="radio" name="color" value="color1"> 
+                                    </div>
+                                    <div class="single-color">
+                                        <span></span>
+                                        <input type="radio" name="color" value="color2"> 
+                                    </div>
+                                    <div class="single-color">
+                                        <span></span>
+                                        <input type="radio" name="color" value="color3"> 
+                                    </div>
+                                    <div class="single-color">
+                                        <span></span>
+                                        <input type="radio" name="color" value="color4"> 
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="stock">
+                                <p> 300 Items <span>In stock</span></p>
+                            </div>
+                            <div class="social-share">
+                                <a href="#" target="_blank"><i class="fa fa-twitter"></i> twitter</a>
+                                <a href="#" target="_blank"><i class="fa fa-facebook"></i> share</a>
+                                <a href="#" target="_blank"><i class="fa fa-google-plus"></i> Google+</a>
+                                <a href="#" target="_blank"><i class="fa fa-pinterest"></i> pinterest</a>
+                            </div>
                         </div>
-                        <!-- product modal details end -->
                     </div>
-                    <!-- close button end -->
+                    <!-- single product item end -->
                 </div>
+                <!-- product modal details end -->
+              </div>
+                <!-- close button end -->
             </div>
+          </div>
         </div>
         <!-- Product item details Modal end -->
 
-
-        <!-- All JS
-        =========================================== -->
-        <!-- JQuery library
-        =========================================== -->
-        <script src="js/vendor/jquery-1.12.4.min.js"></script>
-
-        <!-- Bootstrap js
-        =========================================== -->
-        <script src="js/bootstrap.min.js"></script>
-
-        <!-- price slider js
-        =========================================== -->
-        <script src="js/jquery-price-slider.js"></script>
-
-        <!-- TimeCircles js
-        =========================================== -->
-        <script src="js/TimeCircles.js"></script>
-
-        <!-- easing js
-        =========================================== -->
-        <script src="js/jquery.easing.js"></script>
-
-        <!-- slicknav js
-        =========================================== -->
-        <script src="js/jquery.slicknav.min.js"></script>
-
-        <!-- owl carousel js
-        =========================================== -->
-        <script src="js/owl.carousel.min.js"></script>
-
-        <!-- nivo.slider js
-        =========================================== -->
-        <script src="lib/js/jquery.nivo.slider.js"></script>
-        <script src="lib/home.js"></script>
-
-        <!-- plugins js
-        =========================================== -->
-        <script src="js/plugins.js"></script>
-
-        <!-- Main js
-        =========================================== -->
-        <script src="js/main.js"></script>
-    </body>
-
-    </html>
-
+    </div>
 </template>
+
+<script>
+export default {
+    
+}
+</script>

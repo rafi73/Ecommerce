@@ -11,10 +11,19 @@
 |
 */
 
-Route::get('{path}', function () {
-    return view('index');
-})->where('path', '(.*)');
+// Route::get('{path}', function () {
+//     return view('index');
+// })->where('path', '(.*)');
 
-Route::get('password/reset/{token}', function () {
+// Route::get('password/reset/{token}', function () {
+//     return view('index');
+// })->name('password.reset');
+
+
+Route::get('/admin/{any}', function () {
     return view('index');
-})->name('password.reset');
+})->where('any', '.*');
+
+Route::get('{any}', function () {
+    return view('frontend');
+})->where('any', '.*');
