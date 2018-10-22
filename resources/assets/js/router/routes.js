@@ -82,7 +82,16 @@ export default ({ authGuard, guestGuard }) => [
 		{ path: '/register', name: 'register', component: require('~/pages/auth/register.vue') },
 		{ path: '/password/reset', name: 'password.request', component: require('~/pages/auth/password/email.vue') },
 		{ path: '/password/reset/:token', name: 'password.reset', component: require('~/pages/auth/password/reset.vue') },
-		{ path: '/frontend', name: 'frontend', component: require('~/pages/auth/login.vue') },
+		{ 
+			path: '/', 
+			name: 'frontend', 
+			component: require('~/pages/frontend.vue') 
+		},
+		{ 
+			path: '/', 
+			name: 'frontend', 
+			component: require('~/pages/frontend.vue') 
+		},
 	]),
 
 	{ path: '*', component: require('~/pages/errors/404.vue') }
