@@ -47,42 +47,42 @@
 						title: 'Category', 
 						icon: 'category', 
 						route: { 
-							path: '/category' 
+							path: '/admin/category' 
 						} 
 					},
 					{ 
 						title: 'Sub Category', 
 						icon: 'category', 
 						route: { 
-							path: '/sub-category' 
+							path: '/admin/sub-category' 
 						} 
 					},
 					{ 
 						title: 'Specification', 
 						icon: 'category', 
 						route: { 
-							path: '/specification' 
+							path: '/admin/specification' 
 						} 
 					},
 					{ 
 						title: 'Category Wise Specification', 
 						icon: 'category', 
 						route: { 
-							path: '/category-wise-specification' 
+							path: '/admin/category-wise-specification' 
 						} 
 					},
 					{ 
 						title: 'Brand', 
 						icon: 'category', 
 						route: { 
-							path: '/brand' 
+							path: '/admin/brand' 
 						} 
 					},
 					{ 
 						title: 'Product', 
 						icon: 'category', 
 						route: { 
-							path: '/product' 
+							path: '/admin/product' 
 						} 
 					},
 				]
