@@ -8,46 +8,51 @@
 				</v-card-title>
 				<v-divider></v-divider>
 				<v-spacer></v-spacer>
-				<v-card-text>
-					<v-container grid-list-md>
-						<v-layout wrap>
-							<v-flex xs12 sm8 offset-sm2 lg8 offset-lg2>
-								<multiselect v-model="selectedCategory" :options="categories" @select="onSelectCategory" track-by="id" label="name"
-								 placeholder="Select Category" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
-								 data-vv-as="category">
-								</multiselect>
-							</v-flex>
-						</v-layout>
-					</v-container>
 
-					<v-flex xs12 sm8 offset-sm2 lg8 offset-lg2>
-						<v-toolbar-title>Specifications</v-toolbar-title>
-						<v-divider class="mx-2" inset vertical></v-divider>
-						 <v-btn slot="activator" color="primary" @click.prevent="save()" dark class="mb-2">Save</v-btn>
-						<v-data-table v-model="selected" :headers="headers" :items="specifications" select-all item-key="name" class="elevation-1">
-							<template slot="headers" slot-scope="props">
-								<tr>
-									<th>
-										<v-checkbox :input-value="props.all" :indeterminate="props.indeterminate" primary hide-details @click.native="toggleAll()"></v-checkbox>
-									</th>
-									<th v-for="header in props.headers" :key="header.text" :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
-									 @click="changeSort(header.value)">
-										<v-icon small>arrow_upward</v-icon>
-										{{ header.text }}
-									</th>
-								</tr>
-							</template>
-							<template slot="items" slot-scope="props">
-								<tr :active="props.selected" @click="props.selected = !props.selected">
-									<td>
-										<v-checkbox :input-value="props.selected" primary hide-details></v-checkbox>
-									</td>
-									<td>{{ props.item.name }}</td>
-									<td class="text-xs-right">{{ props.item.description }}</td>
-								</tr>
-							</template>
-						</v-data-table>
-						<!-- <v-data-table :headers="headers" :items="specifications" hide-actions select-all item-key="name"  class="elevation-1">
+			</v-card>
+			<v-card-text>
+				<v-container grid-list-md>
+					<v-layout wrap>
+						<v-flex xs12 sm8 offset-sm2 lg8 offset-lg2>
+							<multiselect v-model="selectedCategory" :options="categories" @select="onSelectCategory" track-by="id" label="name"
+							 placeholder="Select Category" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
+							 data-vv-as="category">
+							</multiselect>
+						</v-flex>
+					</v-layout>
+				</v-container>
+
+				<v-container grid-list-md>
+					<v-layout wrap>
+						<v-flex xs12 sm8 offset-sm2 lg8 offset-lg2>
+
+							<v-data-table v-model="selected" :headers="headers" :items="specifications" select-all item-key="name" class="elevation-1">
+								<template slot="headers" slot-scope="props">
+									<tr>
+										<th>
+											<v-checkbox :input-value="props.all" :indeterminate="props.indeterminate" primary hide-details @click.native="toggleAll()"></v-checkbox>
+										</th>
+										<th v-for="header in props.headers" :key="header.text" :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+										 @click="changeSort(header.value)">
+											<v-icon small>arrow_upward</v-icon>
+											{{ header.text }}
+										</th>
+									</tr>
+								</template>
+								<template slot="items" slot-scope="props">
+									<tr :active="props.selected" @click="props.selected = !props.selected">
+										<td>
+											<v-checkbox :input-value="props.selected" primary hide-details></v-checkbox>
+										</td>
+										<td>{{ props.item.name }}</td>
+										<td class="text-xs-right">{{ props.item.description }}</td>
+									</tr>
+								</template>
+							</v-data-table>
+							<!-- <v-toolbar-title>Specifications</v-toolbar-title> -->
+							<!-- <v-divider class="mx-2" inset vertical></v-divider> -->
+							<v-btn slot="activator" color="primary" @click.prevent="save()" dark class="mb-2">Save</v-btn>
+							<!-- <v-data-table :headers="headers" :items="specifications" hide-actions select-all item-key="name"  class="elevation-1">
 							<template slot="headers" slot-scope="props">
 								<tr>
 									<th>
@@ -70,10 +75,10 @@
 								</tr>
 							</template>
 						</v-data-table> -->
-					</v-flex>
-					
-				</v-card-text>
-			</v-card>
+						</v-flex>
+					</v-layout>
+				</v-container>
+			</v-card-text>
 			<v-card flat>
 			</v-card>
 		</v-flex>
@@ -228,11 +233,11 @@
 							let temp = []
 							this.selected.forEach(element => {
 								temp.push({
-											'category_id': this.specification.category_id, 
-											'specification_id': element.id,
-											'created_by':0,
-											'updated_by':0
-										})
+									'category_id': this.specification.category_id,
+									'specification_id': element.id,
+									'created_by': 0,
+									'updated_by': 0
+								})
 							})
 
 							this.categoryWiseSpecification.data = temp
@@ -326,8 +331,8 @@
 						this.specifications = response.data.data
 
 						this.specifications.forEach(element => {
-							if(element.checked)
-							this.selected.push(element)
+							if (element.checked)
+								this.selected.push(element)
 						})
 						console.log(response.data.data)
 						//this.busy = false

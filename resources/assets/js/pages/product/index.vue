@@ -9,7 +9,7 @@
 						<v-spacer></v-spacer>
 						<v-text-field v-model="search" md4 append-icon="search" label="Search" single-line hide-details></v-text-field>
 						<v-btn @click.prevent="addNew()" slot="activator" color="primary" dark class="mb-2">{{ $t('new_item') }}</v-btn>
-						<v-dialog v-model="dialogInput" max-width="1000dp">
+						<v-dialog v-model="dialogInput" max-width="1000">
 							<v-card>
 								<v-card-title>
 									<span class="headline">{{ formTitle }}</span>
@@ -62,28 +62,28 @@
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.price" :counter="200" 
-												:error-messages="errors.collect('name')" :label="`${ $t('product_price')}`" ></v-text-field>
+												<v-text-field v-validate="'required|decimal:2'" v-model="product.price" :counter="10" 
+												:error-messages="errors.collect('price')" :label="`${ $t('product_price')}`" data-vv-name="price" required></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.discount_price" :counter="200" 
-												:error-messages="errors.collect('name')" :label="`${ $t('product_discount_price')}`" ></v-text-field>
+												<v-text-field v-validate="'required|decimal:2'" v-model="product.discount_price" :counter="10" 
+												:error-messages="errors.collect('discount price')" :label="`${ $t('product_discount_price')}`" data-vv-name="discount_price" required ></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="product.more_info" :counter="200" :error-messages="errors.collect('description')" 
-												:label="`${$t('product_more_info')}`" data-vv-name="description" required ></v-textarea>
+												<v-textarea v-validate="'required'" v-model="product.more_info" :counter="200" :error-messages="errors.collect('more info')" 
+												:label="`${$t('product_more_info')}`" name="more_info" data-vv-name="more info" required ></v-textarea>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="product.inside_box" :counter="200" :error-messages="errors.collect('description')" 
-												:label="`${$t('product_inside_box')}`" data-vv-name="description" required ></v-textarea>
+												<v-textarea v-validate="'required'" v-model="product.inside_box" :counter="200" :error-messages="errors.collect('inside_box')" 
+												:label="`${$t('product_inside_box')}`" data-vv-name="inside_box" required ></v-textarea>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 v-for="(specification, index) in categoryWiseSpecifications" :key="index">
 												<v-text-field v-validate="'required'" v-model="productSpecifications[specification.specification.id]" :counter="200" 
-												:error-messages="errors.collect('name')" :label="`${specification.specification.name}`" ></v-text-field>
+												:error-messages="errors.collect('name')" :label="`${specification.specification.name}`" required></v-text-field>
 											</v-flex>
 
 											<v-checkbox :label="`${$t('product_active')}: ${product.active}`" ></v-checkbox>
