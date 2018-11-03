@@ -138,3 +138,13 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
 });
 
 Route::post('register', 'AuthController@register');
+// List category
+Route::get('frontend-categories', 'CategoryController@getCategoriesFrontend');
+
+// List category
+Route::get('frontend-brands', 'BrandController@getBrandForCategoryFrontend');
+
+// List category
+Route::get('frontend-products', 'ProductController@getProductFrontend');
+
+

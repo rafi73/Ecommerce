@@ -20,10 +20,16 @@
 // })->name('password.reset');
 
 
-Route::get('/admin/{any}', function () {
-    return view('index');
-})->where('any', '.*');
+
+
+
+
+Route::view('/site/category', 'category')->name('category');
+
+Route::view('/site/product', 'product')->name('product');
+
+Route::view('/site/home', 'home')->name('home');
 
 Route::get('{any}', function () {
-    return view('frontend');
+    return view('index');
 })->where('any', '.*');

@@ -1,15 +1,15 @@
 export default ({ authGuard, guestGuard }) => [
-	{ path: '/admin/', name: 'welcome', component: require('~/pages/welcome.vue') },
+	{ path: '/', name: 'welcome', component: require('~/pages/welcome.vue') },
 
 	// Authenticated routes.
 	...authGuard([
 		{
-			path: '/admin/home',
+			path: '/home',
 			name: 'home',
 			component: require('~/pages/home.vue')
 		},
 		{
-			path: '/admin/settings',
+			path: '/settings',
 			component: require('~/pages/settings/index.vue'),
 			children: [
 				{
@@ -31,7 +31,7 @@ export default ({ authGuard, guestGuard }) => [
 			]
 		},
 		{
-			path: '/admin/category',
+			path: '/category',
 			redirect: '/category/list',
 			component: {
 				render(c) { return c('router-view'); }
@@ -50,27 +50,27 @@ export default ({ authGuard, guestGuard }) => [
 			]
 		},
 		{
-			path: '/admin/sub-category',
+			path: '/sub-category',
 			name: 'sub-category',
 			component: require('~/pages/subCategory/index.vue')
 		},
 		{
-			path: '/admin/specification',
+			path: '/specification',
 			name: 'specification',
 			component: require('~/pages/specification/index.vue')
 		},
 		{
-			path: '/admin/category-wise-specification',
+			path: '/category-wise-specification',
 			name: 'category-wise-specification',
 			component: require('~/pages/categoryWiseSpecification/index.vue')
 		},
 		{
-			path: '/admin/brand',
+			path: '/brand',
 			name: 'brand',
 			component: require('~/pages/brand/index.vue')
 		},
 		{
-			path: '/admin/product',
+			path: '/product',
 			name: 'product',
 			component: require('~/pages/product/index.vue')
 		},
@@ -82,16 +82,6 @@ export default ({ authGuard, guestGuard }) => [
 		{ path: '/register', name: 'register', component: require('~/pages/auth/register.vue') },
 		{ path: '/password/reset', name: 'password.request', component: require('~/pages/auth/password/email.vue') },
 		{ path: '/password/reset/:token', name: 'password.reset', component: require('~/pages/auth/password/reset.vue') },
-		{ 
-			path: '/', 
-			name: 'frontend', 
-			component: require('~/pages/frontend.vue') 
-		},
-		{ 
-			path: '/', 
-			name: 'frontend', 
-			component: require('~/pages/frontend.vue') 
-		},
 	]),
 
 	{ path: '*', component: require('~/pages/errors/404.vue') }

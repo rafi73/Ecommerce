@@ -106,4 +106,18 @@ class CategoryController extends Controller
          // Return collection of Categorys as a resource
          return CategoryResource::collection($categories);
      }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getCategoriesFrontend()
+    {
+        // Get Categorys
+        $categories = Category::orderBy('created_at', 'desc')->paginate(10);
+
+        // Return collection of Categorys as a resource
+        return CategoryResource::collection($categories);
+    }
 }

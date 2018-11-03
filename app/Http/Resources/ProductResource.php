@@ -24,6 +24,7 @@ class ProductResource extends JsonResource
             'reference' => $this->reference,
             'price' => $this->price,
             'discount_price' => $this->discount_price,
+            'quantity' => 1,
             'more_info' => $this->more_info,
             'inside_box' => $this->inside_box,
             'active' => $this->active == 1 ? true : false,
