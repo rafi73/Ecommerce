@@ -501,7 +501,6 @@
                     <div class="row">
                         <div class="col-lg-9 col-md-12">
                             <div class="tab-content mt-30">
-                                <div class="tab-pane active fade in" id="tab-1">
                                     <div class="multiple-items">
                                         <!-- single product item start -->
                                         <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item">
@@ -538,12 +537,11 @@
 
                                         <!-- single product item end -->
                                     </div>
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-3 hidden-md hidden-sm hidden-xs mt-minus-53">
                             <a href="#" class="banner-hover">
-                                <img src="{{asset('themes/frontend/img/banner/banner15.jpg')}}" alt="">
+                                <img src="{{asset('img/banner.png')}}" alt="">
                             </a>
                         </div>
                     </div>
@@ -564,11 +562,11 @@
                                     <!-- section title end -->
                                     <div class="col-md-8 col-sm-7 col-xs-12">
                                         <!-- tab menu start -->
-                                        <!-- <ul class="product-tab">
+                                         <ul class="product-tab">
                                             <li class="active"><a data-toggle="tab" href="#tab-4"> bestseller </a></li>
                                             <li><a data-toggle="tab" href="#tab-5"> featured </a></li>
                                             <li><a data-toggle="tab" href="#tab-6"> speical </a></li>
-                                        </ul> -->
+                                        </ul> 
                                         <!-- tab menu end -->
                                     </div>
                                 </div>
@@ -581,12 +579,11 @@
                     <div class="row">
                         <div class="col-lg-3 hidden-md hidden-sm hidden-xs mt-minus-53">
                             <a href="#" class="banner-hover">
-                                <img src="{{asset('themes/frontend/img/banner/banner15.jpg')}}" alt="">
+                                <img src="{{asset('img/banner.png')}}" alt="">
                             </a>
                         </div>
                         <div class="col-md-12 col-lg-9">
                             <div class="tab-content mt-30">
-                                <div class="tab-pane fade" id="tab-5">
                                     <div class="multiple-items">
                                         <!-- single product item start -->
                                         <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item">
@@ -623,7 +620,6 @@
 
                                         <!-- single product item end -->
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -637,7 +633,7 @@
 
 
             <!-- banner start -->
-            <div class="row mt-40">
+            {{-- <div class="row mt-40">
                 <div class="col-sm-6">
                     <a href="#" class="banner-hover">
                         <img src="{{asset('themes/frontend/img/banner/banner2.jpg')}}" alt="">
@@ -648,7 +644,7 @@
                         <img src="{{asset('themes/frontend/img/banner/banner3.jpg')}}" alt="">
                     </a>
                 </div>
-            </div>
+            </div> --}}
             <!-- banner end -->
 
 
