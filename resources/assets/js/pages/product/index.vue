@@ -24,8 +24,7 @@
 											</v-flex>
 											<v-flex xs12 sm4 md4>
 												<multiselect v-model="selectedSubCategory" :options="subCategories" @select="onSelectSubCategory" track-by="id" label="name"
-													placeholder="Select Sub Category" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
-													data-vv-as="category">
+													placeholder="Select Sub Category" selectLabel="" deselectLabel="" selectedLabel=""  name="category">
 												</multiselect>
 											</v-flex>
 											<v-flex xs12 sm4 md4>
@@ -296,8 +295,9 @@
 						if (this.edit) {
 							// Object.assign(this.desserts[this.editedIndex], this.editedItem)
 							console.log('edit', this.editedItem)
+							this.product.specification = this.productSpecifications
 
-							axios.put('/api/sub-category', this.product)
+							axios.put('/api/product', this.product)
 								.then(
 									(response) => {
 										console.log(response)
@@ -313,7 +313,7 @@
 							//this.desserts.push(this.editedItem)
 							console.log('save', this.editedItem)
 
-							this.product.specification = this.productSpecifications
+							
 							this.product.created_by = 0
 							this.product.updated_by = 0
 

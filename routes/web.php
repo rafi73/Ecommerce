@@ -26,9 +26,13 @@
 
 Route::view('/site/category', 'category')->name('category');
 
-Route::view('/site/product', 'product')->name('product');
+Route::view('/site/product/{id}', 'product')->name('product');
 
 Route::view('/site/home', 'home')->name('home');
+
+Route::view('/site/cart', 'cart')->name('cart');
+
+Route::view('/site/checkout', 'checkout')->name('checkout');
 
 Route::get('{any}', function () {
     return view('index');

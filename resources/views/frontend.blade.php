@@ -70,6 +70,8 @@
         ============================================ -->
     <link rel="stylesheet" href="{{asset('themes/frontend/css/custom.css')}}">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- modernizr-2 js
         ============================================ -->
     <script src="{{asset('themes/frontend/js/vendor/modernizr-2.8.3.min.js')}}"></script>

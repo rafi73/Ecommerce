@@ -171,23 +171,24 @@
                                     <div class="cart-item">
                                         <div  v-bind:key="product.id" v-for="product in cartProducts" class="single-item">
                                             <div class="item-img">
-                                                <a href="#">
+                                                <a href="#" @click.prevent="goToProduct(product)">
                                                     <img :src="product.image || '/img/logo.png'" />
                                                 </a>
                                             </div>
                                             <div class="item-info">
-                                                <a href="#" class="title"> <span> @{{product.quantity}} x </span>@{{product.name}}</a>
+                                                <a href="#" @click.prevent="goToProduct(product)" class="title"> <span> @{{product.quantity}} x </span>@{{product.name}}</a>
                                                     <a href="#">S,</a>
                                                     <a href="#"> Yellow</a>
                                                 <span>@{{product.price}}</span>
                                             </div>
+                                            <span class="single-item-remove" @click.precent="removeProduct(product)">x</span>
                                         </div>
                                         <div class="subtotal">
                                             <h3> Shipping: <span>$7.00</span> </h3>
                                         <h3> Total: <span>@{{total}}</span> </h3>
                                         </div>
                                         <div class="checkout">
-                                            <a href="#"> check out <i class="fa fa-angle-right"></i> </a>
+                                            <a href="{{ URL::route('cart') }}"> check out <i class="fa fa-angle-right"></i> </a>
                                         </div>
                                     </div>
                                 </div>
@@ -354,14 +355,8 @@
                     <div class="col-md-9">
                         <div class="mainmenu hidden-xs">
                             <ul>
-                                <li><a href="index.html">Home <i class="fa fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="index.html">home version 1</a></li>
-                                        <li><a href="index-2.html">home version 2</a></li>
-                                        <li><a href="index-3.html">home version 3</a></li>
-                                        <li><a href="index-4.html">home version 4</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{ URL::route('home') }}">Home</a></li>
+                                <li><a href="{{ URL::route('category') }}">Category</a></li>
                                 <li><a href="">shop <i class="fa fa-angle-down"></i></a>
                                     <ul>
                                         <li><a href="shop.html">shop default</a></li>
@@ -641,7 +636,7 @@
                 <div class="col-md-9 col-sm-12 sm-mt-30 xs-mt-30">
                     <!-- category images start -->
                     <div class="category-img">
-                        <img src="{{asset('themes/frontend/img/banner/banner27.jpg')}}" alt="">
+                        <img src="{{asset('img/27.jpg')}}" alt="">
                     </div>
                     <!-- category images end -->
 
@@ -688,7 +683,7 @@
                                         <div class="gird-items">
                                             <!-- single product item start -->
                                             <div v-bind:key="product.id" v-for="product in products" class="single-product-item">
-                                                <a href="product-details.html" class="item-img">
+                                                <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                                     <img :src="product.image || '/img/logo.png'" />
 
                                                     <span class="sale"></span>
@@ -719,8 +714,6 @@
                                                 </div>
                                             </div>
                                             <!-- single product item end -->
-
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -731,7 +724,7 @@
                                         <div class="list-category-items">
                                             <!-- single product item start -->
                                             <div v-bind:key="product.id" v-for="product in products" class="single-product-item floating">
-                                                <a href="product-details.html" class="item-img">
+                                                <a href="#" @click.prevent="goToProduct(product)"  class="item-img">
                                                     <img :src="product.image || '/img/logo.png'" />
                                                     <span class="sale"></span>
                                                 </a>
@@ -792,7 +785,7 @@
                     <div class="product-modal">
                         <!-- single product item start -->
                         <div class="single-product-item floating">
-                            <a href="product-details.html" class="item-img">
+                            <a href="#" @click.prevent="goToProduct(selectedProduct)" class="item-img">
                                 <img :src="selectedProduct.image || '/img/logo.png'" />
                                 <span class="sale"></span>
                             </a>
@@ -1007,11 +1000,8 @@
             },
             addToCart(product){
                     
-               debugger
                 if( localStorage.getItem("cart")){
                     json = JSON.parse(localStorage.getItem("cart"))
-                    //debugger
-                    //var arr = []
                     this.cartProducts = []
                     for (var prop in json) {
                         this.cartProducts.push(json[prop])
@@ -1047,6 +1037,29 @@
                     }
                     console.log(this.cartProducts)
                 }
+            },
+            goToProduct(product){
+                console.log(product)
+                let url = "{{ route('product', ':id') }}"
+                url = url.replace(':id', product.id)
+                document.location.href=url
+            },
+            removeProduct(product){
+                if( localStorage.getItem("cart")){
+                    json = JSON.parse(localStorage.getItem("cart"))
+                    this.cartProducts = []
+                    for (var prop in json) {
+                        this.cartProducts.push(json[prop])
+                    }
+                }
+                this.cartProducts = this.cartProducts.filter(function( obj ) {
+                    return obj.id !== product.id
+                })
+
+                localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+            },
+            goToCart(){
+
             }
         }
     })

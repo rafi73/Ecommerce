@@ -18,6 +18,7 @@ class BrandResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'products' => $this->products,
             'active' => $this->active == 1 ? true : false,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,

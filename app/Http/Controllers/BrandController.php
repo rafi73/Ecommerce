@@ -88,4 +88,18 @@ class BrandController extends Controller
         // Return collection of Brands as a resource
         return BrandResource::collection($brands);
     } 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getBrandWithProducts()
+    {
+        // Get Brands
+        $brands = Brand::orderBy('created_at', 'desc')->Where('active', 1)->get();
+
+        // Return collection of Brands as a resource
+        return BrandResource::collection($brands);
+    } 
 }

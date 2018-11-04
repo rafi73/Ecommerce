@@ -147,4 +147,8 @@ Route::get('frontend-brands', 'BrandController@getBrandForCategoryFrontend');
 // List category
 Route::get('frontend-products', 'ProductController@getProductFrontend');
 
+// List single product
+Route::get('frontend-product/{id}', 'ProductController@show');
+// List category
+Route::get('frontend-home-brands', 'BrandController@getBrandWithProducts');
 
