@@ -468,7 +468,7 @@
                 </div>
             </div> --}}
             <!-- banner end -->
-             <!-- LEFT -->
+            <!-- LEFT -->
             <div v-bind:key="index" v-for="(brand, index) in brands">
                 <div v-if="index%2==0">
                     <!-- electronics section heading start -->
@@ -478,7 +478,8 @@
                                 <div class="row">
                                     <!-- section title start -->
                                     <div class="col-md-4 col-sm-5">
-                                        <h2 class="blue small-icon-size"> <img src="{{asset('themes/frontend/img/icon/icon_electronics.jpg')}}" alt="">
+                                        <h2 class="blue small-icon-size"> <img src="{{asset('themes/frontend/img/icon/icon_electronics.jpg')}}"
+                                                alt="">
                                             @{{brand.name}}</h2>
                                     </div>
                                     <!-- section title end -->
@@ -501,42 +502,42 @@
                     <div class="row">
                         <div class="col-lg-9 col-md-12">
                             <div class="tab-content mt-30">
-                                    <div class="multiple-items">
-                                        <!-- single product item start -->
-                                        <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item">
-                                            <a href="#" @click.prevent="goToProduct(product)" class="item-img">
-                                                <img :src="product.image || '/img/logo.png'" />
-                                                <span class="sale"></span>
-                                            </a>
-                                            <div class="item-info text-center">
-                                                <h2><a href="#" @click.prevent="goToProduct(product)" class="item-title">@{{product.name}}</a></h2>
-                                                <div class="ratings">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <h3 class="item-price"> @{{product.price}} <span class="old-price">$30.51</span>
-                                                </h3>
-                                                <div class="actions">
-                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action">add
-                                                        to cart</a>
-                                                </div>
-                                                <div class="hover-content">
-                                                    <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                    </a>
-                                                    <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                    </a>
-                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action"
-                                                        data-toggle="modal" data-target="#item-modal">
-                                                        <i class="zmdi zmdi-search"></i> </a>
-                                                </div>
+                                <div class="multiple-items">
+                                    <!-- single product item start -->
+                                    <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item">
+                                        <a href="#" @click.prevent="goToProduct(product)" class="item-img">
+                                            <img :src="product.image || '/img/logo.png'" />
+                                            <span class="sale"></span>
+                                        </a>
+                                        <div class="item-info text-center">
+                                            <h2><a href="#" @click.prevent="goToProduct(product)" class="item-title">@{{product.name}}</a></h2>
+                                            <div class="ratings">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <h3 class="item-price"> @{{product.price}} <span class="old-price">$30.51</span>
+                                            </h3>
+                                            <div class="actions">
+                                                <a href="#" @click.prevent="addToCart(product)" class="single-action">add
+                                                    to cart</a>
+                                            </div>
+                                            <div class="hover-content">
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
+                                                </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
+                                                </a>
+                                                <a href="#" @click.prevent="singleProductModal(product)" class="single-action"
+                                                    data-toggle="modal" data-target="#item-modal">
+                                                    <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
-
-                                        <!-- single product item end -->
                                     </div>
+
+                                    <!-- single product item end -->
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-3 hidden-md hidden-sm hidden-xs mt-minus-53">
@@ -555,18 +556,18 @@
                                 <div class="row">
                                     <!-- section title start -->
                                     <div class="col-md-4 col-sm-5">
-                                        <h2 class="sweet small-icon-size"> 
+                                        <h2 class="sweet small-icon-size">
                                             <img src="{{asset('themes/frontend/img/icon/icon_electronics.jpg')}}" alt="">
                                             @{{brand.name}}</h2>
                                     </div>
                                     <!-- section title end -->
                                     <div class="col-md-8 col-sm-7 col-xs-12">
                                         <!-- tab menu start -->
-                                         <ul class="product-tab">
+                                        <ul class="product-tab">
                                             <li class="active"><a data-toggle="tab" href="#tab-4"> bestseller </a></li>
                                             <li><a data-toggle="tab" href="#tab-5"> featured </a></li>
                                             <li><a data-toggle="tab" href="#tab-6"> speical </a></li>
-                                        </ul> 
+                                        </ul>
                                         <!-- tab menu end -->
                                     </div>
                                 </div>
@@ -584,42 +585,42 @@
                         </div>
                         <div class="col-md-12 col-lg-9">
                             <div class="tab-content mt-30">
-                                    <div class="multiple-items">
-                                        <!-- single product item start -->
-                                        <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item">
-                                            <a href="#" @click.prevent="goToProduct(product)" class="item-img">
-                                                <img :src="product.image || '/img/logo.png'" />
-                                                <span class="sale"></span>
-                                            </a>
-                                            <div class="item-info text-center">
-                                                <h2><a href="#" @click.prevent="goToProduct(product)" class="item-title">@{{product.name}}</a></h2>
-                                                <div class="ratings">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <h3 class="item-price"> @{{product.price}} <span class="old-price">$30.51</span>
-                                                </h3>
-                                                <div class="actions">
-                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action">add
-                                                        to cart</a>
-                                                </div>
-                                                <div class="hover-content">
-                                                    <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                                    </a>
-                                                    <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                    </a>
-                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action"
-                                                        data-toggle="modal" data-target="#item-modal">
-                                                        <i class="zmdi zmdi-search"></i> </a>
-                                                </div>
+                                <div class="multiple-items">
+                                    <!-- single product item start -->
+                                    <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item">
+                                        <a href="#" @click.prevent="goToProduct(product)" class="item-img">
+                                            <img :src="product.image || '/img/logo.png'" />
+                                            <span class="sale"></span>
+                                        </a>
+                                        <div class="item-info text-center">
+                                            <h2><a href="#" @click.prevent="goToProduct(product)" class="item-title">@{{product.name}}</a></h2>
+                                            <div class="ratings">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <h3 class="item-price"> @{{product.price}} <span class="old-price">$30.51</span>
+                                            </h3>
+                                            <div class="actions">
+                                                <a href="#" @click.prevent="addToCart(product)" class="single-action">add
+                                                    to cart</a>
+                                            </div>
+                                            <div class="hover-content">
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
+                                                </a>
+                                                <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
+                                                </a>
+                                                <a href="#" @click.prevent="singleProductModal(product)" class="single-action"
+                                                    data-toggle="modal" data-target="#item-modal">
+                                                    <i class="zmdi zmdi-search"></i> </a>
                                             </div>
                                         </div>
-
-                                        <!-- single product item end -->
                                     </div>
+
+                                    <!-- single product item end -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -647,168 +648,258 @@
             </div> --}}
             <!-- banner end -->
 
+            <!-- category section heading start -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading mt-40">
+                        <div class="row">
+                            <!-- section title start -->
+                            <div class="col-md-4 col-lg-3">
+                                <h2> <img src="img/icon/icon_categories.png" alt=""> Our Categories</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- category section heading end -->
 
-        </div>
-
-        <!-- Product item details Modal start -->
-        <div class="modal fade" id="item-modal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <!-- close button start -->
-                        <div class="close-button" data-dismiss="modal"><i class="fa fa-times-circle"></i></div>
-                        <!-- product modal details start -->
-                        <div class="product-modal">
-                            <!-- single product item start -->
-                            <div class="single-product-item floating">
-                                <a href="#" @click.prevent="goToProduct(selectedProduct)" class="item-img">
-                                    <img :src="selectedProduct.image || '/img/logo.png'" />
-                                    <span class="sale"></span>
-                                </a>
-                                <div class="item-info">
-                                    <h2><span class="item-title large">@{{selectedProduct.name}}</span></h2>
-                                    <div class="info">
-                                        <p>Reference: <span>@{{selectedProduct.reference}}</span></p>
-                                        <p>Condition: <span>@{{selectedProduct.condition}}</span></p>
-                                    </div>
-                                    <h3 class="item-price"> @{{selectedProduct.price}} <span class="old-price">$30.51</span>
-                                    </h3>
-                                    <p class="product-descriptions">@{{selectedProduct.description}}</p>
-                                    <div class="cart-plus-minus">
-                                        <label>Quantity: </label>
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                    </div>
-                                    <div class="actions">
-                                        <a href="#" @click.prevent="addToCart(selectedProduct)" class="single-action">add
-                                            to cart</a>
-                                        <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>
-                                        <a href="#" class="single-action"> <i class="fa fa-print"></i> </a>
-                                        <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                        </a>
-                                    </div>
-                                    <div class="stock">
-                                        <p> 300 Items <span>In stock</span></p>
-                                    </div>
-                                    <div class="social-share">
-                                        <a href="#" target="_blank"><i class="fa fa-twitter"></i> twitter</a>
-                                        <a href="#" target="_blank"><i class="fa fa-facebook"></i> share</a>
-                                        <a href="#" target="_blank"><i class="fa fa-google-plus"></i> Google+</a>
-                                        <a href="#" target="_blank"><i class="fa fa-pinterest"></i> pinterest</a>
-                                    </div>
+            <!-- box items area start -->
+            <div class="row mt-30">
+                <div class="col-md-12">
+                    <div class="box-items">
+                        <!-- box item start -->
+                        <div v-bind:key="category.id" v-for="category in categories.slice(0,2)"  class="box-item">
+                            <!-- single box item start -->
+                            <div  class="single-box-item">
+                                <div class="box-item-img">
+                                    <a href="#"><img :src="category.image || '/img/logo.png'" /></a>
+                                </div>
+                                <div class="box-content">
+                                <a href="#">@{{category.name}}</a>
+                                    <ul class="item-list">
+                                        <li><a href="shop.html" target="_blank">All-in-One Computers</a></li>
+                                        <li><a href="shop.html" target="_blank">towers only</a></li>
+                                        <li><a href="shop.html" target="_blank">Refurbished Desktops</a></li>
+                                        <li><a href="shop.html" target="_blank">Gaming Desktops</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <!-- single product item end -->
+                            <!-- single box item end -->
                         </div>
-                        <!-- product modal details end -->
+                        <!-- box item end -->
+
+                        <!-- box item start -->
+                        <div v-bind:key="category.id" v-for="category in categories.slice(2,4)"  class="box-item">
+                            <!-- single box item start -->
+                            <div  class="single-box-item">
+                                <div class="box-item-img">
+                                    <a href="#"><img :src="category.image || '/img/logo.png'" /></a>
+                                </div>
+                                <div class="box-content">
+                                <a href="#">@{{category.name}}</a>
+                                    <ul class="item-list">
+                                        <li><a href="shop.html" target="_blank">All-in-One Computers</a></li>
+                                        <li><a href="shop.html" target="_blank">towers only</a></li>
+                                        <li><a href="shop.html" target="_blank">Refurbished Desktops</a></li>
+                                        <li><a href="shop.html" target="_blank">Gaming Desktops</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- single box item end -->
+                        </div>
+                        <!-- box item end -->
+
+                        <!-- box item start -->
+                        <div v-bind:key="category.id" v-for="category in categories.slice(4,6)"  class="box-item">
+                            <!-- single box item start -->
+                            <div  class="single-box-item">
+                                <div class="box-item-img">
+                                    <a href="#"><img :src="category.image || '/img/logo.png'" /></a>
+                                </div>
+                                <div class="box-content">
+                                <a href="#">@{{category.name}}</a>
+                                    <ul class="item-list">
+                                        <li><a href="shop.html" target="_blank">All-in-One Computers</a></li>
+                                        <li><a href="shop.html" target="_blank">towers only</a></li>
+                                        <li><a href="shop.html" target="_blank">Refurbished Desktops</a></li>
+                                        <li><a href="shop.html" target="_blank">Gaming Desktops</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- single box item end -->
+                        </div>
+                        <!-- box item end -->
+                        
                     </div>
-                    <!-- close button end -->
+                </div>
+            </div>
+            <!-- box items area end -->
+
+        </div>
+
+
+
+
+    </div>
+
+    <!-- Product item details Modal start -->
+    <div class="modal fade" id="item-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!-- close button start -->
+                    <div class="close-button" data-dismiss="modal"><i class="fa fa-times-circle"></i></div>
+                    <!-- product modal details start -->
+                    <div class="product-modal">
+                        <!-- single product item start -->
+                        <div class="single-product-item floating">
+                            <a href="#" @click.prevent="goToProduct(selectedProduct)" class="item-img">
+                                <img :src="selectedProduct.image || '/img/logo.png'" />
+                                <span class="sale"></span>
+                            </a>
+                            <div class="item-info">
+                                <h2><span class="item-title large">@{{selectedProduct.name}}</span></h2>
+                                <div class="info">
+                                    <p>Reference: <span>@{{selectedProduct.reference}}</span></p>
+                                    <p>Condition: <span>@{{selectedProduct.condition}}</span></p>
+                                </div>
+                                <h3 class="item-price"> @{{selectedProduct.price}} <span class="old-price">$30.51</span>
+                                </h3>
+                                <p class="product-descriptions">@{{selectedProduct.description}}</p>
+                                <div class="cart-plus-minus">
+                                    <label>Quantity: </label>
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                </div>
+                                <div class="actions">
+                                    <a href="#" @click.prevent="addToCart(selectedProduct)" class="single-action">add
+                                        to cart</a>
+                                    <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>
+                                    <a href="#" class="single-action"> <i class="fa fa-print"></i> </a>
+                                    <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
+                                    </a>
+                                </div>
+                                <div class="stock">
+                                    <p> 300 Items <span>In stock</span></p>
+                                </div>
+                                <div class="social-share">
+                                    <a href="#" target="_blank"><i class="fa fa-twitter"></i> twitter</a>
+                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i> share</a>
+                                    <a href="#" target="_blank"><i class="fa fa-google-plus"></i> Google+</a>
+                                    <a href="#" target="_blank"><i class="fa fa-pinterest"></i> pinterest</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- single product item end -->
+                    </div>
+                    <!-- product modal details end -->
+                </div>
+                <!-- close button end -->
+            </div>
+        </div>
+    </div>
+    <!-- Product item details Modal end -->
+
+    <!-- footer area start -->
+    <footer class="footer-area mt-40">
+        <div class="newsletter-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="newsletter-title">
+                            <h2>Sign Up for Newsletters</h2>
+                            Get e-mail updates about our latest shop and special offers.
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-7 xs-mt-20">
+                        <div class="newsletter-form">
+                            <form action="#" method="POST">
+                                <input type="email" placeholder="enter your email">
+                                <button type="submit">subscribe !</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-5 xs-mt-20">
+                        <div class="social-icons text-right">
+                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-rss"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Product item details Modal end -->
-
-        <!-- footer area start -->
-        <footer class="footer-area mt-40">
-            <div class="newsletter-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-12">
-                            <div class="newsletter-title">
-                                <h2>Sign Up for Newsletters</h2>
-                                Get e-mail updates about our latest shop and special offers.
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-sm-7 xs-mt-20">
-                            <div class="newsletter-form">
-                                <form action="#" method="POST">
-                                    <input type="email" placeholder="enter your email">
-                                    <button type="submit">subscribe !</button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-5 xs-mt-20">
-                            <div class="social-icons text-right">
-                                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-rss"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-widget-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6 xs-mt-40">
-                            <div class="widget-title">
-                                <h3>about us</h3>
-                            </div>
-                            <div class="widget-address">
-                                <p> <span> address : </span> 123 Main Street, Anytown, CA 12345 USA.</p>
-                                <p> <span> Phone : </span> <a href="tel:880123456789"></a> (800) 123 456 789</p>
-                                <p> <span> Email : </span> <a href="mailto:demo@yourdomain.com"></a>
-                                    demo@yourdomain.com</p>
-                                <p> <span> Fax : </span> (800) 123 456 789</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 xs-mt-40">
-                            <div class="widget-title">
-                                <h3>my account</h3>
-                            </div>
-                            <div class="widget-menu">
-                                <a href="#">my orders</a>
-                                <a href="#">my account</a>
-                                <a href="#">my credit slips</a>
-                                <a href="#">my addresses</a>
-                                <a href="#">my personal info</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 sm-mt-40 xs-mt-40">
-                            <div class="widget-title">
-                                <h3>information</h3>
-                            </div>
-                            <div class="widget-menu">
-                                <a href="#">specials</a>
-                                <a href="#">new products</a>
-                                <a href="#">best sellers</a>
-                                <a href="#">our stores</a>
-                                <a href="#">contact us</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 sm-mt-40 xs-mt-40">
-                            <div class="widget-title">
-                                <h3>categories</h3>
-                            </div>
-                            <div class="widget-menu">
-                                <a href="#">fashion</a>
-                                <a href="#">electronics</a>
-                                <a href="#">furnitured & decor</a>
-                                <a href="#">jewelry & warches</a>
-                                <a href="#">health & beauty</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-widget-area">
             <div class="container">
-                <div class="footer-bottom-area">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-12">
-                            <div class="footer-copyright">
-                                Copyright &copy; <a href="#">devitems</a>. All Rights Reserved
-                            </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 xs-mt-40">
+                        <div class="widget-title">
+                            <h3>about us</h3>
                         </div>
-                        <div class="col-md-7 col-sm-12 sm-mt-40 text-right xs-mt-40">
-                            <a href="#"><img src="{{asset('themes/frontend/img/payment.png')}}" alt=""></a>
+                        <div class="widget-address">
+                            <p> <span> address : </span> 123 Main Street, Anytown, CA 12345 USA.</p>
+                            <p> <span> Phone : </span> <a href="tel:880123456789"></a> (800) 123 456 789</p>
+                            <p> <span> Email : </span> <a href="mailto:demo@yourdomain.com"></a>
+                                demo@yourdomain.com</p>
+                            <p> <span> Fax : </span> (800) 123 456 789</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 xs-mt-40">
+                        <div class="widget-title">
+                            <h3>my account</h3>
+                        </div>
+                        <div class="widget-menu">
+                            <a href="#">my orders</a>
+                            <a href="#">my account</a>
+                            <a href="#">my credit slips</a>
+                            <a href="#">my addresses</a>
+                            <a href="#">my personal info</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 sm-mt-40 xs-mt-40">
+                        <div class="widget-title">
+                            <h3>information</h3>
+                        </div>
+                        <div class="widget-menu">
+                            <a href="#">specials</a>
+                            <a href="#">new products</a>
+                            <a href="#">best sellers</a>
+                            <a href="#">our stores</a>
+                            <a href="#">contact us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 sm-mt-40 xs-mt-40">
+                        <div class="widget-title">
+                            <h3>categories</h3>
+                        </div>
+                        <div class="widget-menu">
+                            <a href="#">fashion</a>
+                            <a href="#">electronics</a>
+                            <a href="#">furnitured & decor</a>
+                            <a href="#">jewelry & warches</a>
+                            <a href="#">health & beauty</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- footer area end -->
-    </div>
+        </div>
+        <div class="container">
+            <div class="footer-bottom-area">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12">
+                        <div class="footer-copyright">
+                            Copyright &copy; <a href="#">devitems</a>. All Rights Reserved
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-12 sm-mt-40 text-right xs-mt-40">
+                        <a href="#"><img src="{{asset('themes/frontend/img/payment.png')}}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
     @endsection
 
     @section('js')
@@ -832,6 +923,7 @@
                 console.log('Testing console. from Home')
                 this.getCartProducts()
                 this.getBrands()
+                this.getCategories()
             },
             methods: {
                 getCartProducts() {
@@ -908,6 +1000,17 @@
                     })
 
                     localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+                },
+                getCategories(){
+                    let ref = this
+                    axios.get(`/api/frontend-categories`)
+                        .then(function (response) {
+                            console.log(response)
+                            ref.categories = response.data.data
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
                 },
             },
         })
