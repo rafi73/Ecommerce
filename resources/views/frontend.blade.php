@@ -12,8 +12,6 @@
 
 
     @section('css')
-    
-
     <!-- All CSS
         ============================================ -->
     <!-- normalize css
@@ -82,18 +80,32 @@
 </head>
 
 <body>
-    <div>
-        @yield('content')
-    </div>
+    <div id="app">
+        @include('partials.header')
 
-    @section('js')
+        @include('partials.scrollItem')
+
+        @include('partials.breadcrumb')
+
+        <div>
+            @yield('content')
+        </div>
+
+        @include('partials.singleProductModal')
+
+        @include('partials.footer')
+    </div>
     
-    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> --}}
+    @section('js')
+
+    {{--
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> --}}
 
     <script src="{{asset('vue.js')}}"></script>
     <script src="{{asset('axios.js')}}"></script>
 
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script> --}}
+    {{--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script> --}}
 
     <!-- All JS
             =========================================== -->
@@ -138,7 +150,147 @@
             =========================================== -->
     <script src="{{asset('themes/frontend/js/main.js')}}"></script>
 
-    
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'hellow world',
+                categories: [],
+                brands: [],
+                products: [],
+                selectedProduct: {},
+                cartProducts: [],
+                total: 0,
+                brands: [],
+                products: [],
+                product:{}
+            },
+            created() {
+                console.log('Testing console. from Home')
+                this.getCartProducts()
+                this.getBrands()
+                this.getCategories()
+                this.getProducts()
+
+                if(window.location.pathname.split('/')[2] == 'product'){
+                    let productId = window.location.pathname.split('/')[3]
+                    this.getProduct(productId)
+                }
+                
+            },
+            methods: {
+                getCartProducts() {
+                    if (localStorage.getItem("cart")) {
+                        json = JSON.parse(localStorage.getItem("cart"))
+
+                        //var arr = []
+                        for (var prop in json) {
+                            this.cartProducts.push(json[prop])
+                            this.total = this.total + parseFloat(json[prop].price)
+                        }
+                        console.log(this.cartProducts)
+                    }
+                },
+                getBrands() {
+                    let ref = this
+                    axios.get(`/api/frontend-home-brands`)
+                        .then(function (response) {
+                            console.log(response)
+                            ref.brands = response.data.data
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                },
+                goToProduct(product) {
+                    console.log(product)
+                    let url = "{{ route('product', ':id') }}"
+                    url = url.replace(':id', product.id)
+                    document.location.href = url
+                },
+                addToCart(product) {
+
+                    if (localStorage.getItem("cart")) {
+                        json = JSON.parse(localStorage.getItem("cart"))
+                        this.cartProducts = []
+                        for (var prop in json) {
+                            this.cartProducts.push(json[prop])
+                        }
+
+
+                    }
+                    let obj = this.cartProducts.find(x => x.id === product.id)
+                    if (obj) {
+                        obj.quantity = parseInt(obj.quantity + 1)
+                        console.log('already added')
+
+                    }
+                    else {
+                        this.cartProducts.push(product)
+                    }
+
+
+                    localStorage.setItem("cart", JSON.stringify(this.cartProducts));
+
+                    console.log(this.cartProducts)
+
+                    //this.getCartProducts()
+                },
+                singleProductModal(product) {
+                    console.log(product)
+                    this.selectedProduct = product
+                },
+                removeProduct(product) {
+                    if (localStorage.getItem("cart")) {
+                        json = JSON.parse(localStorage.getItem("cart"))
+                        this.cartProducts = []
+                        for (var prop in json) {
+                            this.cartProducts.push(json[prop])
+                        }
+                    }
+                    this.cartProducts = this.cartProducts.filter(function (obj) {
+                        return obj.id !== product.id
+                    })
+
+                    localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+                },
+                getCategories() {
+                    let ref = this
+                    axios.get(`/api/frontend-categories`)
+                        .then(function (response) {
+                            console.log(response)
+                            ref.categories = response.data.data
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                },
+                getProducts(){
+                    let ref = this
+                    axios.get(`/api/frontend-products`)
+                        .then(function (response) {
+                            console.log(response)
+                            ref.products = response.data.data
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                },
+                getProduct(id) {
+                    let ref = this
+                    axios.get(`/api/frontend-product/${id}`)
+                        .then(function (response) {
+                            ref.product = response.data.data
+                            console.log(response)
+                            //ref.products = response.data.data
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                },
+            },
+        })
+    </script>
     @show
 </body>
 
