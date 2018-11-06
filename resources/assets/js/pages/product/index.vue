@@ -390,6 +390,8 @@
 				this.product = {active: true}
 				this.imgInput = ``
 				this.selectedCategory = null
+				this.selectedSubCategory = null
+				this.selectedBrand = null
 				this.dialogInput = true
 				this.edit = false
 			},

@@ -30,6 +30,8 @@ Route::view('/site/product/{id}', 'product')->name('product');
 
 Route::view('/site/home', 'home')->name('home');
 
+Route::get('/site/home', ['as'=>'home','uses'=>'BrandController@getBrandWithProducts']);
+
 Route::view('/site/cart', 'cart')->name('cart');
 
 Route::view('/site/checkout', 'checkout')->name('checkout');

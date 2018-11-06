@@ -68,7 +68,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
                         <!-- logo start -->
-                        <a href="index.html" class="logo"> <img src="{{asset('themes/frontend/img/logo.jpg')}}" alt=""> </a>
+                        <a href="{{ URL::route('home') }}"> <img src="{{asset('themes/frontend/img/logo.jpg')}}" alt="">
                         <!-- logo end -->
                     </div>
                     <div class="col-md-9 col-sm-12">

@@ -104,7 +104,7 @@ select option {
 	padding-top: 30px;
 }
 .pt-40 {
-	padding-top: 40px;
+	padding-top: 0px;
 }
 .pt-50 {
 	padding-top: 50px;
@@ -343,9 +343,9 @@ header {
 6.  Main header
 =====================*/
 
-.main-header-area {
+/* .main-header-area {
   padding: 30px 0px;
-}
+} */
 .catagory-bar, .total-cart {
   padding-top: 15px;
 }
@@ -2759,4 +2759,8 @@ form .single-color:nth-child(4) span:after {
 }
 .author-comment a.reply:hover {
     color: #ee2050;
+}
+
+.container-header{
+  padding: 0px !important
 }

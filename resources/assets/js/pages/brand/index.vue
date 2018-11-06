@@ -23,6 +23,16 @@
 											<v-flex xs12 sm12 md12>
 												<v-textarea v-model="brand.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('brand_description')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
+											<v-flex xs12 sm12 md12>
+												<img :src="imgInput" height="150" v-if="imgInput" />
+												<v-text-field :label="`${$t('brand_logo')}`" @click='pickLogo()' v-model='logo' prepend-icon='attach_file'></v-text-field>
+												<input type="file" style="display: none" ref="logo" accept="image/*" @change="onLogoPicked()">
+											</v-flex>
+											<v-flex xs12 sm12 md12>
+												<img :src="imgInput" height="150" v-if="imgInput" />
+												<v-text-field :label="`${$t('brand_banner')}`" @click='pickBanner()' v-model='banner' prepend-icon='attach_file'></v-text-field>
+												<input type="file" style="display: none" ref="banner" accept="image/*" @change="onBannerPicked()">
+											</v-flex>
 											<v-checkbox :label="`${$t('brand_active')}: ${brand.active}`" ></v-checkbox>
 										</v-layout>
 									</v-container>
@@ -100,7 +110,8 @@
 					name: "",
 					email: ""
 				}),
-				imageName: "",
+				logo: "",
+				banner: "",
 				imgInput: "",
 				imageFile: "",
 				dialog: false,
@@ -180,8 +191,11 @@
 					text: this.$t("info_updated")
 				});
 			},
-			pickFile() {
-				this.$refs.image.click();
+			pickLogo() {
+				this.$refs.logo.click();
+			},
+			pickBanner() {
+				this.$refs.banner.click();
 			},
 			editItem(item) {
 				this.brand = Object.assign({}, item)
@@ -248,11 +262,11 @@
 				})
 				
 			},
-			onFilePicked(e) {
+			onLogoPicked(e) {
 				const files = e.target.files;
 				if (files[0] !== undefined) {
-					this.imageName = files[0].name;
-					if (this.imageName.lastIndexOf(".") <= 0) {
+					this.logo = files[0].name;
+					if (this.logo.lastIndexOf(".") <= 0) {
 						return;
 					}
 					const fr = new FileReader();
@@ -260,11 +274,32 @@
 					fr.addEventListener("load", () => {
 						this.imgInput = fr.result
 						this.imageFile = files[0] // this is an image file that can be sent to server...
-						this.brand.image = this.imgInput
+						this.brand.logo = this.imgInput
 						//console.log(this.imgInput, this.imageFile)
 					});
 				} else {
-					this.imageName = "";
+					this.logo = "";
+					this.imageFile = "";
+					this.imgInput = "";
+				}
+			},
+			onBannerPicked(e) {
+				const files = e.target.files;
+				if (files[0] !== undefined) {
+					this.logo = files[0].name;
+					if (this.logo.lastIndexOf(".") <= 0) {
+						return;
+					}
+					const fr = new FileReader();
+					fr.readAsDataURL(files[0]);
+					fr.addEventListener("load", () => {
+						this.imgInput = fr.result
+						this.imageFile = files[0] // this is an image file that can be sent to server...
+						this.brand.banner = this.imgInput
+						//console.log(this.imgInput, this.imageFile)
+					});
+				} else {
+					this.logo = "";
 					this.imageFile = "";
 					this.imgInput = "";
 				}

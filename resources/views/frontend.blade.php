@@ -14,7 +14,6 @@
     @section('css')
     
 
-    <link type="text/css" rel="stylesheet" href="{{ elixir('/css/app.css') }}" />
     <!-- All CSS
         ============================================ -->
     <!-- normalize css
@@ -88,7 +87,7 @@
     </div>
 
     @section('js')
-    <script src="{{ elixir('/js/app.js') }}"></script>
+    
     {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> --}}
 
     <script src="{{asset('vue.js')}}"></script>

@@ -100,6 +100,7 @@ class BrandController extends Controller
         $brands = Brand::orderBy('created_at', 'desc')->Where('active', 1)->get();
 
         // Return collection of Brands as a resource
-        return BrandResource::collection($brands);
+        //return BrandResource::collection($brands);
+        return view('home', compact('brands'));
     } 
 }

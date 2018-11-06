@@ -52,7 +52,8 @@
   "brand": "Brand",
   "brand_name": "Name",
   "brand_description": "Description",
-  "brand_image": "Image",
+  "brand_logo": "Logo",
+  "brand_banner": "Banner",
   "brand_active": "Active",
 
   "product": "Product",
