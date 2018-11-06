@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Brand;
 use App\Http\Resources\BrandResource;
+use App\Helpers\ImageProcessing;
 class BrandController extends Controller
 {
     /**
@@ -34,6 +35,8 @@ class BrandController extends Controller
 
         $brand->name= $request->input('name');
         $brand->description= $request->input('description');
+        $brand->logo= $request->input('logo')? ImageProcessing::saveBase64ImagePng($request->input('logo')) : NULL;
+        $brand->banner= $request->input('banner')? ImageProcessing::saveBase64ImagePng($request->input('banner')) : NULL;
         $brand->active= $request->input('active');
         $brand->created_by= $request->input('created_by');
         $brand->updated_by= $request->input('updated_by');

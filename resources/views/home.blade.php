@@ -10,7 +10,11 @@
     <nav class="collapse navbar-collapse">
         <ul>
             @foreach ($brands as $index => $brand)
-                <li><a href="#{{$brand->name}}" class="smooth"><img src="{{asset('themes/frontend/img/icon/icon_electronics.jpg')}}" alt=""></a></li>
+                <li>
+                    <a href="#{{$brand->name}}" class="smooth">
+                        <img src="{{asset($brand->logo)}}" alt="">
+                    </a>
+                </li>
             @endforeach
             <li id="scrollUp"> <a href="#"><i class="fa fa-angle-double-up"></i><span>back to top</span></a></li>
         </ul>
@@ -32,7 +36,7 @@
                             <!-- section title start -->
                             <div class="col-md-4 col-sm-5">
                                 <h2 class="blue small-icon-size">
-                                    <img src="{{asset('themes/frontend/img/icon/icon_electronics.jpg')}}" alt="">
+                                    <img src="{{asset($brand->logo)}}" alt="">
                                     {{$brand->name}}
                                 </h2>
                             </div>
@@ -96,7 +100,7 @@
                 </div>
                 <div class="col-lg-3 hidden-md hidden-sm hidden-xs mt-minus-53">
                     <a href="#" class="banner-hover">
-                        <img src="{{asset('img/banner.png')}}" alt="">
+                        <img src="{{asset($brand->banner)}}" alt="">
                     </a>
                 </div>
             </div>
@@ -110,7 +114,7 @@
                             <!-- section title start -->
                             <div class="col-md-4 col-sm-5">
                                 <h2 class="sweet small-icon-size">
-                                    <img src="{{asset('themes/frontend/img/icon/icon_electronics.jpg')}}" alt="">
+                                    <img src="{{asset($brand->logo)}}" alt="">
                                     {{$brand->name}}
                             </div>
                             <!-- section title end -->
@@ -133,7 +137,7 @@
             <div class="row">
                 <div class="col-lg-3 hidden-md hidden-sm hidden-xs mt-minus-53">
                     <a href="#" class="banner-hover">
-                        <img src="{{asset('img/banner.png')}}" alt="">
+                        <img src="{{asset($brand->banner)}}" alt="">
                     </a>
                 </div>
                 <div class="col-md-12 col-lg-9">

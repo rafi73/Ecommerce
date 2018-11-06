@@ -76,7 +76,7 @@
                                 <tr>
                                     <td colspan="3" rowspan="3"></td>
                                     <td colspan="3"> <strong> Total products</strong></td>
-                                    <td colspan="1">@{{cartProducts.reduce((a, b) => +a + +b.price, 0)}}</td>
+                                    <td colspan="1">@{{totalPrice}}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"><strong>Total shipping</strong></td>
@@ -84,7 +84,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3"><strong>Total</strong></td>
-                                    <td colspan="1">@{{cartProducts.reduce((a, b) => +a + +b.price, 0)}}</td>
+                                    <td colspan="1">@{{totalPrice}}</td>
                                 </tr>
                             </tfoot>
                         </table>

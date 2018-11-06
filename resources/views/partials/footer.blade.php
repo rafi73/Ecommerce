@@ -32,19 +32,18 @@
     <div class="footer-widget-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-6 xs-mt-40">
+                <div class="col-md-9 col-sm-6 xs-mt-40">
                     <div class="widget-title">
                         <h3>about us</h3>
                     </div>
                     <div class="widget-address">
-                        <p> <span> address : </span> 123 Main Street, Anytown, CA 12345 USA.</p>
-                        <p> <span> Phone : </span> <a href="tel:880123456789"></a> (800) 123 456 789</p>
-                        <p> <span> Email : </span> <a href="mailto:demo@yourdomain.com"></a>
-                            demo@yourdomain.com</p>
-                        <p> <span> Fax : </span> (800) 123 456 789</p>
+                        <p> <span> address : </span> licknet Technology Sdn Bhd, Unit 16, Digital Center, F1.39B, Sunway Pyramid, 3, Jalan PJS 11/15, Bandar Sunway, 46150 Subang Jaya, Selangor.</p>
+                        <p> <span> Phone : </span> <a href="tel:0356120015"></a> 03 5612 0015</p>
+                        <p> <span> Email : </span> <a href="mailto:sales@clicknet.com.my"></a>
+                            sales@clicknet.com.my</p>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 xs-mt-40">
+                {{-- <div class="col-md-3 col-sm-6 xs-mt-40">
                     <div class="widget-title">
                         <h3>my account</h3>
                     </div>
@@ -67,17 +66,13 @@
                         <a href="#">our stores</a>
                         <a href="#">contact us</a>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-md-3 col-sm-6 sm-mt-40 xs-mt-40">
                     <div class="widget-title">
                         <h3>categories</h3>
                     </div>
-                    <div class="widget-menu">
-                        <a href="#">fashion</a>
-                        <a href="#">electronics</a>
-                        <a href="#">furnitured & decor</a>
-                        <a href="#">jewelry & warches</a>
-                        <a href="#">health & beauty</a>
+                    <div v-bind:key="category.id" v-for="category in categories" class="widget-menu">
+                        <a href="#">@{{category.name}}</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +88,7 @@
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-12 sm-mt-40 text-right xs-mt-40">
-                    <a href="#"><img src="{{asset('themes/frontend/img/payment.png')}}" alt=""></a>
+                    {{-- <a href="#"><img src="{{asset('themes/frontend/img/payment.png')}}" alt=""></a> --}}
                 </div>
             </div>
         </div>

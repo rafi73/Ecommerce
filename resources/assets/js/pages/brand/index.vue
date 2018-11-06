@@ -23,16 +23,19 @@
 											<v-flex xs12 sm12 md12>
 												<v-textarea v-model="brand.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('brand_description')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
+											
 											<v-flex xs12 sm12 md12>
-												<img :src="imgInput" height="150" v-if="imgInput" />
-												<v-text-field :label="`${$t('brand_logo')}`" @click='pickLogo()' v-model='logo' prepend-icon='attach_file'></v-text-field>
-												<input type="file" style="display: none" ref="logo" accept="image/*" @change="onLogoPicked()">
+												<img :src="logo.imgInput" height="150" v-if="logo.imgInput" />
+												<v-text-field :label="`${$t('brand_logo')}`" @click='pickFileLogo' v-model='logo.imageName' prepend-icon='attach_file'></v-text-field>
+												<input type="file" style="display: none" ref="logo" accept="image/*" @change="onFilePickedLogo">
 											</v-flex>
+
 											<v-flex xs12 sm12 md12>
-												<img :src="imgInput" height="150" v-if="imgInput" />
-												<v-text-field :label="`${$t('brand_banner')}`" @click='pickBanner()' v-model='banner' prepend-icon='attach_file'></v-text-field>
-												<input type="file" style="display: none" ref="banner" accept="image/*" @change="onBannerPicked()">
+												<img :src="banner.imgInput" height="150" v-if="banner.imgInput" />
+												<v-text-field :label="`${$t('brand_banner')}`" @click='pickFileBanner()' v-model='banner.imageName' prepend-icon='attach_file'></v-text-field>
+												<input type="file" style="display: none" ref="banner" accept="image/*" @change="onFilePickedBanner">
 											</v-flex>
+											
 											<v-checkbox :label="`${$t('brand_active')}: ${brand.active}`" ></v-checkbox>
 										</v-layout>
 									</v-container>
@@ -110,10 +113,6 @@
 					name: "",
 					email: ""
 				}),
-				logo: "",
-				banner: "",
-				imgInput: "",
-				imageFile: "",
 				dialog: false,
 				headers: [
 					{
@@ -157,6 +156,17 @@
 				dialogInput : false,
 				selectedCategory : null,
 				categories: [],
+				logo : {
+					imageName: "",
+					imgInput: "",
+					imageFile: "",
+				},
+				banner : {
+					imageName: "",
+					imgInput: "",
+					imageFile: "",
+				}
+				
 
 			}
 		},
@@ -201,6 +211,10 @@
 				this.brand = Object.assign({}, item)
 				this.dialogInput = true
 				this.edit = true
+				this.logo.imageName = null
+				this.logo.imgInput = this.brand.logo
+				this.banner.imageName = null
+				this.banner.imgInput = this.brand.banner
 			},
 			deleteItem(item) {
 				//const index = this.desserts.indexOf(item)
@@ -272,15 +286,15 @@
 					const fr = new FileReader();
 					fr.readAsDataURL(files[0]);
 					fr.addEventListener("load", () => {
-						this.imgInput = fr.result
-						this.imageFile = files[0] // this is an image file that can be sent to server...
-						this.brand.logo = this.imgInput
-						//console.log(this.imgInput, this.imageFile)
+						this.logo.imgInput = fr.result
+						this.logo.imageFile = files[0] // this is an image file that can be sent to server...
+						this.brand.logo = this.logo.imgInput
+						//console.log(this.logo.imgInput, this.logo.imageFile)
 					});
 				} else {
 					this.logo = "";
-					this.imageFile = "";
-					this.imgInput = "";
+					this.logo.imageFile = "";
+					this.logo.imgInput = "";
 				}
 			},
 			onBannerPicked(e) {
@@ -293,15 +307,15 @@
 					const fr = new FileReader();
 					fr.readAsDataURL(files[0]);
 					fr.addEventListener("load", () => {
-						this.imgInput = fr.result
-						this.imageFile = files[0] // this is an image file that can be sent to server...
-						this.brand.banner = this.imgInput
-						//console.log(this.imgInput, this.imageFile)
+						this.logo.imgInput = fr.result
+						this.logo.imageFile = files[0] // this is an image file that can be sent to server...
+						this.brand.banner = this.logo.imgInput
+						//console.log(this.logo.imgInput, this.logo.imageFile)
 					});
 				} else {
 					this.logo = "";
-					this.imageFile = "";
-					this.imgInput = "";
+					this.logo.imageFile = "";
+					this.logo.imgInput = "";
 				}
 			},
 			fetchAll() {
@@ -334,10 +348,14 @@
 			},
 			addNew(){
 				this.brand = {active: true}
-				this.imgInput = ``
+				this.logo.imgInput = ``
 				this.selectedCategory = null
 				this.dialogInput = true
 				this.edit = false
+				this.logo.imageName = null
+				this.banner.imageName = null
+				this.logo.imgInput = null
+				this.banner.imgInput = null
 			},
 			onSelectCategory(selectedOption, id){
                 if(selectedOption){
@@ -357,6 +375,54 @@
 						console.log(error.response)
 					}
 				})
+			},
+			pickFileLogo() {
+				this.$refs.logo.click();
+			},
+			onFilePickedLogo(e) {
+				const files = e.target.files;
+				if (files[0] !== undefined) {
+					this.logo.imageName = files[0].name;
+					if (this.logo.imageName.lastIndexOf(".") <= 0) {
+						return;
+					}
+					const fr = new FileReader();
+					fr.readAsDataURL(files[0]);
+					fr.addEventListener("load", () => {
+						this.logo.imgInput = fr.result
+						this.logo.imageFile = files[0] // this is an image file that can be sent to server...
+						this.brand.logo = this.logo.imgInput
+						//console.log(this.logo.imgInput, this.logo.imageFile)
+					});
+				} else {
+					this.logo.imageName = "";
+					this.logo.imageFile = "";
+					this.logo.imgInput = "";
+				}
+			},
+			pickFileBanner() {
+				this.$refs.banner.click();
+			},
+			onFilePickedBanner(e) {
+				const files = e.target.files;
+				if (files[0] !== undefined) {
+					this.banner.imageName = files[0].name;
+					if (this.banner.imageName.lastIndexOf(".") <= 0) {
+						return;
+					}
+					const fr = new FileReader();
+					fr.readAsDataURL(files[0]);
+					fr.addEventListener("load", () => {
+						this.banner.imgInput = fr.result
+						this.banner.imageFile = files[0] // this is an image file that can be sent to server...
+						this.brand.banner = this.banner.imgInput
+						//console.log(this.banner.imgInput, this.banner.imageFile)
+					});
+				} else {
+					this.banner.imageName = "";
+					this.banner.imageFile = "";
+					this.banner.imgInput = "";
+				}
 			},
 		}
 	}

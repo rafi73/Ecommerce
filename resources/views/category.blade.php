@@ -267,7 +267,7 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                 </div>
-                                                <h3 class="item-price"> $28.98 <span class="old-price">$30.51</span>
+                                                <h3 class="item-price"> @{{product.price}} <span class="old-price">$30.51</span>
                                                 </h3>
                                                 <div class="actions">
                                                     <a href="#" @click.prevent="addToCart(product)" class="single-action">add
