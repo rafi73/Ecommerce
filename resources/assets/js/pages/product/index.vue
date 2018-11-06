@@ -273,6 +273,7 @@
 				this.fetchCategoryWiseSpecifications(this.product.category.id)
 				this.dialogInput = true
 				this.edit = true
+				this.productSpecifications = {}
 			},
 			deleteItem(item) {
 				//const index = this.desserts.indexOf(item)
@@ -288,6 +289,8 @@
 				}, 300)
 			},
 			save() {
+				this.product.specification = this.productSpecifications
+
 				//if (this.formHasErrors()) return
 				this.$validator.validate().then(result => {
                     if (result){
@@ -295,7 +298,7 @@
 						if (this.edit) {
 							// Object.assign(this.desserts[this.editedIndex], this.editedItem)
 							console.log('edit', this.editedItem)
-							this.product.specification = this.productSpecifications
+							
 
 							axios.put('/api/product', this.product)
 								.then(
@@ -333,6 +336,7 @@
 						this.close()
 						this.busy = false
 						this.edit = false
+						this.productSpecifications = {}
 					}
 				})
 				
@@ -375,7 +379,7 @@
 			erase() {
 				this.dialogConfirmDelete = false
 				this.busy = true
-				axios.delete(`/api/sub-category/${this.product.id}`)
+				axios.delete(`/api/product/${this.product.id}`)
 				.then(response => {
 					this.busy = false
 					this.fetchAll()
@@ -387,13 +391,14 @@
 				})
 			},
 			addNew(){
-				this.product = {active: true}
+				this.product = {image: null, active: true}
 				this.imgInput = ``
 				this.selectedCategory = null
 				this.selectedSubCategory = null
 				this.selectedBrand = null
 				this.dialogInput = true
-				this.edit = false
+				this.edit = false,
+				this.imageName = null
 			},
 			onSelectCategory(selectedOption, id){
                 if(selectedOption){

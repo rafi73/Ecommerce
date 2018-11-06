@@ -28,7 +28,7 @@ Route::view('/site/category', 'category')->name('category');
 
 Route::view('/site/product/{id}', 'product')->name('product');
 
-Route::view('/site/home', 'home')->name('home');
+//Route::view('/site/home', 'home')->name('home');
 
 Route::get('/site/home', ['as'=>'home','uses'=>'BrandController@getBrandWithProducts']);
 

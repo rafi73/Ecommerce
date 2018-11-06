@@ -431,7 +431,7 @@ header {
     display: block;
     position: relative;
 }
-.cart-button a span.price:after {
+/* .cart-button a span.price:after {
 	content: "2";
 	position: absolute;
 	margin-left: -26px;
@@ -456,7 +456,7 @@ header {
 	margin-left: -28px;
 	z-index: 9;
 	transform: rotate(45deg);
-}
+} */
 .cart-button a i {
     display: inline-block;
     height: 40px;
@@ -2763,4 +2763,16 @@ form .single-color:nth-child(4) span:after {
 
 .container-header{
   padding: 0px !important
+}
+
+.cart-quantity {
+  position: absolute;
+  top: 25px;
+  left: 53px;
+  width: 30px;
+  height: 31px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 10px;
+  background: url("https://www.nbplaza.com.my/themes/pos_alice2/css/modules/blockcart/../../../img/bg_qtcart.png") no-repeat;
 }

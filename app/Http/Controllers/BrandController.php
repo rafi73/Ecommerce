@@ -97,7 +97,9 @@ class BrandController extends Controller
     public function getBrandWithProducts()
     {
         // Get Brands
-        $brands = Brand::orderBy('created_at', 'desc')->Where('active', 1)->get();
+        $brands = Brand::with('products')->orderBy('created_at', 'desc')->Where('active', 1)->get();
+
+        //dd($brands);
 
         // Return collection of Brands as a resource
         //return BrandResource::collection($brands);

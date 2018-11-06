@@ -52,6 +52,7 @@ class ProductController extends Controller
         $product->updated_by= $request->input('updated_by');
 
         if($product->save()) {
+            ProductWiseSpecification::where('product_id', $product->id)->delete();
             $specifications = $request->input('specification');
             foreach ($specifications as $key => $value) 
             {

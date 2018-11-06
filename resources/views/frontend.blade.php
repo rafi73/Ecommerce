@@ -82,9 +82,7 @@
 <body>
     <div id="app">
         @include('partials.header')
-
-        @include('partials.scrollItem')
-
+        
         @include('partials.breadcrumb')
 
         <div>
@@ -95,7 +93,7 @@
 
         @include('partials.footer')
     </div>
-    
+
     @section('js')
 
     {{--
@@ -148,6 +146,7 @@
 
     <!-- Main js
             =========================================== -->
+    
     <script src="{{asset('themes/frontend/js/main.js')}}"></script>
 
     <script>
@@ -163,20 +162,26 @@
                 total: 0,
                 brands: [],
                 products: [],
-                product:{}
+                product: {}
             },
             created() {
                 console.log('Testing console. from Home')
                 this.getCartProducts()
-                this.getBrands()
+                //this.getBrands()
                 this.getCategories()
                 this.getProducts()
 
-                if(window.location.pathname.split('/')[2] == 'product'){
+                if (window.location.pathname.split('/')[2] == 'product') {
                     let productId = window.location.pathname.split('/')[3]
                     this.getProduct(productId)
                 }
-                
+
+            },
+            mounted: function () {
+                var vm = this
+                Vue.nextTick(function () {
+                    vm.installOwlCarousel()
+                }.bind(vm))
             },
             methods: {
                 getCartProducts() {
@@ -209,32 +214,23 @@
                     document.location.href = url
                 },
                 addToCart(product) {
-
                     if (localStorage.getItem("cart")) {
                         json = JSON.parse(localStorage.getItem("cart"))
                         this.cartProducts = []
                         for (var prop in json) {
                             this.cartProducts.push(json[prop])
                         }
-
-
                     }
+                   
                     let obj = this.cartProducts.find(x => x.id === product.id)
                     if (obj) {
                         obj.quantity = parseInt(obj.quantity + 1)
-                        console.log('already added')
-
                     }
                     else {
                         this.cartProducts.push(product)
                     }
 
-
-                    localStorage.setItem("cart", JSON.stringify(this.cartProducts));
-
-                    console.log(this.cartProducts)
-
-                    //this.getCartProducts()
+                    localStorage.setItem("cart", JSON.stringify(this.cartProducts))
                 },
                 singleProductModal(product) {
                     console.log(product)
@@ -265,7 +261,7 @@
                             console.log(error)
                         })
                 },
-                getProducts(){
+                getProducts() {
                     let ref = this
                     axios.get(`/api/frontend-products`)
                         .then(function (response) {
@@ -288,7 +284,16 @@
                             console.log(error)
                         })
                 },
+                installOwlCarousel: function () {
+                   
+                },
+                
             },
+            computed: {
+                totalPrice() {
+                    return this.cartProducts.reduce((acc, item) => acc + parseFloat(item.price * item.quantity), 0);
+                }
+            }
         })
     </script>
     @show
