@@ -372,7 +372,6 @@
                     <div class="mainmenu hidden-xs">
                         <ul>
                             <li><a href="{{ URL::route('home') }}">Home</a></li>
-                            <li><a href="{{ URL::route('category') }}">Category</a></li>
                             <li><a href="">my account <i class="fa fa-angle-down"></i></a>
                                 <ul>
                                     <li><a href="my-account.html">my account</a></li>

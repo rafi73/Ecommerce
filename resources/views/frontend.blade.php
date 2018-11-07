@@ -218,6 +218,12 @@
                     let url = "{{ route('product', ':id') }}"
                     url = url.replace(':id', product.id)
                     document.location.href = url
+				},
+				goToBrand(brand) {
+                    console.log(brand)
+                    let url = "{{ route('brand', ':id') }}"
+                    url = url.replace(':id', brand.id)
+                    document.location.href = url
                 },
                 addToCart(product) {
                     if (localStorage.getItem("cart")) {
@@ -263,7 +269,7 @@
                             console.log(response)
                             ref.categories = response.data.data
 
-                             Vue.nextTick(function () {
+							Vue.nextTick(function () {
                                 ref.installCategoriesCarousel()
                             }.bind(ref))
                         })
@@ -276,7 +282,11 @@
                     axios.get(`/api/frontend-products`)
                         .then(function (response) {
                             console.log(response)
-                            ref.products = response.data.data
+							ref.products = response.data.data
+							
+							Vue.nextTick(function () {
+                                ref.installNewArrivalCarousel()
+                            }.bind(ref))
                         })
                         .catch(function (error) {
                             console.log(error)
@@ -312,7 +322,9 @@
                                 items: 4
                             }
                         }
-                    })
+					})
+					
+					$('body').scrollspy({ target: '.navbar-collapse',offset: 95 })
                 },
                 installCategoriesCarousel: function () {
                     $(".box-items").owlCarousel({
@@ -343,9 +355,34 @@
                             }
                         }
 
-                    });
+                    })
                 },
-                
+                installNewArrivalCarousel: function () {
+					$(".new-arrival-items").owlCarousel({
+						items: 1,
+						nav: true,
+						dots: false,
+						autoplay: false,
+						loop: true,
+						navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+						mouseDrag: false,
+						touchDrag: false,
+						responsive : {
+							// breakpoint from 0 up
+							0 : {
+								items : 1,
+							},
+							// breakpoint from 768 up
+							768 : {
+								items : 2,
+							},
+							// breakpoint from 768 up
+							1024 : {
+								items : 1,
+							}
+						}
+					})
+				},  
             },
             computed: {
                 totalPrice() {

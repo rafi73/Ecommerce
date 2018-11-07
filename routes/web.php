@@ -24,13 +24,15 @@
 
 
 
-Route::view('/site/category', 'category')->name('category');
+//Route::view('/site/category', 'category')->name('category');
+
+Route::view('/site/brand/{id}', 'brand')->name('brand');
 
 Route::view('/site/product/{id}', 'product')->name('product');
 
-//Route::view('/site/home', 'home')->name('home');
+Route::view('/site/home', 'home')->name('home');
 
-Route::get('/site/home', ['as'=>'home','uses'=>'BrandController@getBrandWithProducts']);
+// Route::get('/site/home', ['as'=>'home','uses'=>'BrandController@getBrandWithProducts']);
 
 Route::view('/site/cart', 'cart')->name('cart');
 

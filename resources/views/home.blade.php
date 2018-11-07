@@ -9,13 +9,11 @@
 <div class="scroll-item">
     <nav class="collapse navbar-collapse">
         <ul>
-            @foreach ($brands as $index => $brand)
-            <li>
-                <a href="#{{$brand->name}}" class="smooth">
-                    <img src="{{asset($brand->logo)}}" alt="">
+            <li v-bind:key="index" v-for="(brand, index) in brands">
+                <a :href="brand.name" class="smooth">
+                    <img src="@{{asset(brand.logo)}}" alt="">
                 </a>
             </li>
-            @endforeach
             <li id="scrollUp"> <a href="#"><i class="fa fa-angle-double-up"></i><span>back to top</span></a></li>
         </ul>
     </nav>
@@ -29,7 +27,7 @@
         <div v-bind:key="index" v-for="(brand, index) in brands">
             <div v-if="index % 2== 0">
                 <!-- electronics section heading start -->
-                <div class="row" id="electronics">
+                <div class="row" v-bind:id="brand.name">
                     <div class="col-lg-9 col-md-12">
                         <div class="section-heading mt-40">
                             <div class="row">
@@ -91,8 +89,9 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-lg-3 hidden-md hidden-sm hidden-xs mt-minus-53">
-                        <a href="#" class="banner-hover">
+                        <a href="#" @click.prevent="goToBrand(brand)" class="banner-hover">
                             <img :src="brand.banner || '/img/logo.png'" />
                         </a>
                     </div>
@@ -101,7 +100,7 @@
             </div>
             <div v-else>
                 <!-- electronics section heading start -->
-                <div class="row" id="electronics">
+                <div class="row" v-bind:id="brand.name">
                     <div class="col-lg-9 col-lg-offset-3 col-md-12">
                         <div class="section-heading mt-40">
                             <div class="row">
@@ -130,7 +129,7 @@
                 <!-- electronics items start -->
                 <div class="row">
                     <div class="col-lg-3 hidden-md hidden-sm hidden-xs mt-minus-53">
-                        <a href="#" class="banner-hover">
+                        <a href="#" @click.prevent="goToBrand(brand)" class="banner-hover">
                             <img :src="brand.banner || '/img/logo.png'" />
                         </a>
                     </div>
