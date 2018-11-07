@@ -91,7 +91,7 @@
                     </div>
                     <!-- cart table end -->
                     <div class="buttons mt-20">
-                        <a href="{{ URL::route('category') }}" class="stock"> <span><i class="fa fa-angle-left"></i> continue shopping</span></a>
+                        <a href="{{ url()->previous() }}" class="stock"> <span><i class="fa fa-angle-left"></i> continue shopping</span></a>
                         <a href="{{ URL::route('checkout') }}" class="stock"> <span> proceed to checkout <i class="fa fa-angle-right"></i></span></a>
                     </div>
                 </div>

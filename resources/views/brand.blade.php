@@ -13,7 +13,7 @@
                     <!-- categories start -->
                     <div class="sidebar-widget">
                         <h3 class="sidebar-title">categories</h3>
-                        <div v-bind:key="category.id" v-for="category in categories" class="input-box">
+                        <div v-bind:key="category.id" v-for="brand in brands" class="input-box">
                             <input type="checkbox" name="category" value="dresses" id="dresses">
                             <label for="dresses">@{{category.name}}</label>
                         </div>
@@ -252,7 +252,7 @@
                                 <div class="col-md-12">
                                     <div class="gird-items">
                                         <!-- single product item start -->
-                                        <div v-bind:key="product.id" v-for="product in products" class="single-product-item">
+                                        <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item">
                                             <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                                 <img :src="product.image || '/img/logo.png'" />
 

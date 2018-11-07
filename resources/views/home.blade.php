@@ -10,8 +10,8 @@
     <nav class="collapse navbar-collapse">
         <ul>
             <li v-bind:key="index" v-for="(brand, index) in brands">
-                <a :href="brand.name" class="smooth">
-                    <img src="@{{asset(brand.logo)}}" alt="">
+                <a :href="'#'+ brand.name" class="smooth">
+                    <img :src="brand.logo || '/img/logo.png'" />
                 </a>
             </li>
             <li id="scrollUp"> <a href="#"><i class="fa fa-angle-double-up"></i><span>back to top</span></a></li>
@@ -59,12 +59,12 @@
                         <div class="tab-content mt-30">
                             <div class="products">
                                 <div v-bind:key="product.id" v-for="product in brand.products" class="item">
-                                    <a href="product-details.html" class="item-img">
+                                    <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                         <img :src="product.image || '/img/logo.png'" />
                                         <span class="sale"></span>
                                     </a>
                                     <div class="item-info text-center">
-                                        <h2><a href="product-details.html" class="item-title">@{{product.name}}</a></h2>
+                                        <h2><a href="#" @click.prevent="goToProduct(product)" class="item-title">@{{product.name}}</a></h2>
                                         {{-- <div class="ratings">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -137,12 +137,12 @@
                         <div class="tab-content mt-30">
                             <div class="products">
                                 <div v-bind:key="product.id" v-for="product in brand.products" class="item">
-                                    <a href="product-details.html" class="item-img">
+                                    <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                         <img :src="product.image || '/img/logo.png'" />
                                         <span class="sale"></span>
                                     </a>
                                     <div class="item-info text-center">
-                                        <h2><a href="product-details.html" class="item-title">@{{product.name}}</a></h2>
+                                        <h2><a href="#" @click.prevent="goToProduct(product)" class="item-title">@{{product.name}}</a></h2>
                                         {{-- <div class="ratings">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
