@@ -67,11 +67,14 @@
         ============================================ -->
     <link rel="stylesheet" href="{{asset('themes/frontend/css/custom.css')}}">
 
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- modernizr-2 js
         ============================================ -->
     <script src="{{asset('themes/frontend/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
+    
     @show
 
     <script>
@@ -149,6 +152,8 @@
     
     <script src="{{asset('themes/frontend/js/main.js')}}"></script>
 
+    
+
     <script>
         new Vue({
             el: '#app',
@@ -160,14 +165,14 @@
                 selectedProduct: {},
                 cartProducts: [],
                 total: 0,
-                brands: [],
                 products: [],
-                product: {}
+                product: {},
+                category:{}
             },
             created() {
                 console.log('Testing console. from Home')
                 this.getCartProducts()
-                //this.getBrands()
+                this.getBrands()
                 this.getCategories()
                 this.getProducts()
 
@@ -178,10 +183,7 @@
 
             },
             mounted: function () {
-                var vm = this
-                Vue.nextTick(function () {
-                    vm.installOwlCarousel()
-                }.bind(vm))
+               
             },
             methods: {
                 getCartProducts() {
@@ -198,10 +200,14 @@
                 },
                 getBrands() {
                     let ref = this
-                    axios.get(`/api/frontend-home-brands`)
+                    axios.get(`/api/frontend-brands`)
                         .then(function (response) {
                             console.log(response)
                             ref.brands = response.data.data
+
+                            Vue.nextTick(function () {
+                                ref.installProductsCarousel()
+                            }.bind(ref))
                         })
                         .catch(function (error) {
                             console.log(error)
@@ -256,6 +262,10 @@
                         .then(function (response) {
                             console.log(response)
                             ref.categories = response.data.data
+
+                             Vue.nextTick(function () {
+                                ref.installCategoriesCarousel()
+                            }.bind(ref))
                         })
                         .catch(function (error) {
                             console.log(error)
@@ -278,20 +288,68 @@
                         .then(function (response) {
                             ref.product = response.data.data
                             console.log(response)
-                            //ref.products = response.data.data
                         })
                         .catch(function (error) {
                             console.log(error)
                         })
                 },
-                installOwlCarousel: function () {
-                   
+                installProductsCarousel: function () {
+                    var owl = $('.products');
+                    owl.owlCarousel({
+                        margin: 10,
+                        loop: true,
+                        responsive: {
+                            0: {
+                                items: 1
+                            },
+                            600: {
+                                items: 2
+                            },
+                            1000: {
+                                items: 3
+                            },
+                            1600: {
+                                items: 4
+                            }
+                        }
+                    })
+                },
+                installCategoriesCarousel: function () {
+                    $(".box-items").owlCarousel({
+                        items: 3,
+                        nav: true,
+                        dots: false,
+                        autoplay: false,
+                        loop: true,
+                        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+                        mouseDrag: false,
+                        touchDrag: false,
+                        responsive : {
+                            // breakpoint from 0 up
+                            0 : {
+                                items : 1,
+                            },
+                            // breakpoint from 480 up
+                            480 : {
+                                items : 1,
+                            },
+                            // breakpoint from 768 up
+                            768 : {
+                                items : 2,
+                            },
+                            // breakpoint from 768 up
+                            1024 : {
+                                items : 3,
+                            }
+                        }
+
+                    });
                 },
                 
             },
             computed: {
                 totalPrice() {
-                    return this.cartProducts.reduce((acc, item) => acc + parseFloat(item.price * item.quantity), 0);
+                    return this.cartProducts.reduce((acc, item) => acc + parseFloat(item.price * item.quantity), 0).toFixed(2);
                 }
             }
         })

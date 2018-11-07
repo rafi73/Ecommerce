@@ -120,4 +120,19 @@ class CategoryController extends Controller
         // Return collection of Categorys as a resource
         return CategoryResource::collection($categories);
     }
+
+    
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getCategoryFrontend()
+    {
+        // Get Categorys
+        $category = Category::findOrFail($id);
+
+        // Return collection of Categorys as a resource
+        return new CategoryResource($category);
+    }
 }

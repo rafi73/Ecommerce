@@ -184,7 +184,8 @@
                                         <span class="single-item-remove" @click.precent="removeProduct(product)">x</span>
                                     </div>
                                     <div class="subtotal">
-                                        <h3> Shipping: <span>$7.00</span> </h3>
+                                        <h3> Tax: <span>0.00</span> </h3>
+                                        <h3> Shipping: <span>0.00</span> </h3>
                                         <h3> Total: <span>@{{totalPrice}}</span> </h3>
                                     </div>
                                     <div class="checkout">

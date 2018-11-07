@@ -99,13 +99,13 @@
                                     </a>
                                     <div class="item-info">
                                         <h2><a href="product-details.html" class="item-title">@{{product.name}}</a></h2>
-                                        <div class="ratings">
+                                        {{-- <div class="ratings">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                        </div>
+                                        </div> --}}
                                         <h3 class="item-price"> @{{product.price}}</h3>
                                     </div>
                                 </div>
@@ -126,13 +126,13 @@
                                         <h2><a href="product-details.html" class="item-title">10FT Paracord 7
                                                 Strand
                                                 Parachute Cord...</a></h2>
-                                        <div class="ratings">
+                                        {{-- <div class="ratings">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
-                                        </div>
+                                        </div> --}}
                                         <h3 class="item-price"> $50.78 </h3>
                                     </div>
                                 </div>
@@ -260,27 +260,27 @@
                                             </a>
                                             <div class="item-info text-center">
                                                 <h2><a href="product-details.html" class="item-title">@{{product.name}}</a></h2>
-                                                <div class="ratings">
+                                                {{-- <div class="ratings">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div>
-                                                <h3 class="item-price"> @{{product.price}} <span class="old-price">$30.51</span>
+                                                </div> --}}
+                                                <h3 class="item-price"> @{{product.price}} 
+                                                    {{-- <span class="old-price">$30.51</span> --}}
                                                 </h3>
                                                 <div class="actions">
-                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action">add
-                                                        to cart</a>
+                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action">add to cart</a>
                                                 </div>
                                                 <div class="hover-content">
-                                                    <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
+                                                    {{-- <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
                                                     </a>
                                                     <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
+                                                    </a> --}}
+                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
+                                                        <i class="zmdi zmdi-search"></i> 
                                                     </a>
-                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action"
-                                                        data-toggle="modal" data-target="#item-modal">
-                                                        <i class="zmdi zmdi-search"></i> </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -301,26 +301,27 @@
                                             </a>
                                             <div class="item-info">
                                                 <h2><a href="product-details.html" class="item-title large">@{{product.name}}</a></h2>
-                                                <div class="ratings">
+                                                {{-- <div class="ratings">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                </div>
-                                                <h3 class="item-price">@{{product.price}}<span class="old-price">$30.51</span>
+                                                </div> --}}
+                                                <h3 class="item-price">@{{product.price}}
+                                                    {{-- <span class="old-price">$30.51</span> --}}
                                                 </h3>
                                                 <p class="product-descriptions"> @{{product.description}}</p>
                                                 <div class="actions">
-                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action">add
+                                                    {{-- <a href="#" @click.prevent="addToCart(product)" class="single-action">add
                                                         to cart</a>
                                                     <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
                                                     </a>
                                                     <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
+                                                    </a> --}}
+                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
+                                                        <i class="zmdi zmdi-search"></i> 
                                                     </a>
-                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action"
-                                                        data-toggle="modal" data-target="#item-modal">
-                                                        <i class="zmdi zmdi-search"></i> </a>
                                                 </div>
                                                 <div class="stock">
                                                     <p><span>In stock</span></p>

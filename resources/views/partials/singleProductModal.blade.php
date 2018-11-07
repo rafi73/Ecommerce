@@ -19,20 +19,25 @@
                                 <p>Reference: <span>@{{selectedProduct.reference}}</span></p>
                                 <p>Condition: <span>@{{selectedProduct.condition}}</span></p>
                             </div>
-                            <h3 class="item-price"> @{{selectedProduct.price}} <span class="old-price">$30.51</span>
+                            <h3 class="item-price"> @{{selectedProduct.price}}
+                                {{-- <span class="old-price">$30.51</span> --}}
                             </h3>
                             <p class="product-descriptions">@{{selectedProduct.description}}</p>
-                            <div class="cart-plus-minus">
+                            <!-- <div class="cart-plus-minus">
                                 <label>Quantity: </label>
                                 <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                            </div> -->
+                            <div ><label>Quantity: </label> 
+                                <input type="text" name="qtybutton" value="1" class="cart-plus-minus-box">
+                                <div  class="dec qtybutton">-</div>
+                                <div class="inc qtybutton">+</div>
                             </div>
                             <div class="actions">
-                                <a href="#" @click.prevent="addToCart(selectedProduct)" class="single-action">add
-                                    to cart</a>
-                                <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>
+                                <a href="#" @click.prevent="addToCart(selectedProduct)" class="single-action">add to
+                                    cart</a>
+                                {{-- <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>
                                 <a href="#" class="single-action"> <i class="fa fa-print"></i> </a>
-                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
-                                </a>
+                                <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i></a> --}}
                             </div>
                             <div class="stock">
                                 <p> 300 Items <span>In stock</span></p>

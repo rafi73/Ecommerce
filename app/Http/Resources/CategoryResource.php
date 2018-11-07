@@ -18,6 +18,7 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'products' => $this->products,
             'image' => $this->image,
             'active' => $this->active == 1 ? true : false,
             'created_at' => $this->created_at->format('Y-m-d'),
