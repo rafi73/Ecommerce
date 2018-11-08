@@ -8,11 +8,11 @@
                     <div class="col-lg-6">
                         <div class="header-address">
                             <span>Hotline:</span>
-                            <a href="tel:0123456789"> 0123-456-789</a>
+                            <a href="tel:0123456789"> 03 5612 0015</a>
                         </div>
                         <div class="header-address">
                             <span>Email:</span>
-                            <a href="mailto:sales@yourcompany.com">sales@yourcompany.com</a>
+                            <a href="mailto:sales@yourcompany.com">sales@clicknet.com.my</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -69,80 +69,7 @@
                                 <div class="header-search">
                                     <form action="#" method="GET">
                                         <input type="text" placeholder="Search entire store here ...">
-                                        <span>
-                                            <select name="select" id="select">
-                                                <option value="">All Categories</option>
-                                                <option value="12">Fashion</option>
-                                                <option value="22">--Dresses</option>
-                                                <option value="26">---Sweater</option>
-                                                <option value="27">---Evening</option>
-                                                <option value="28">---Day</option>
-                                                <option value="29">---Sports</option>
-                                                <option value="23">--Handbags</option>
-                                                <option value="30">---Shoulder</option>
-                                                <option value="31">---Satchels</option>
-                                                <option value="32">---kids</option>
-                                                <option value="33">---coats</option>
-                                                <option value="24">--shoes</option>
-                                                <option value="34">---Ankle Boots</option>
-                                                <option value="35">---Clog sandals</option>
-                                                <option value="36">---run</option>
-                                                <option value="37">---Books</option>
-                                                <option value="25">--Clothing</option>
-                                                <option value="38">---Coats Jackets</option>
-                                                <option value="39">---Raincoats</option>
-                                                <option value="40">---Jackets</option>
-                                                <option value="41">---T-shirts</option>
-                                                <option value="13">Electronics</option>
-                                                <option value="42">--Laptops</option>
-                                                <option value="46">---Dell Laptops</option>
-                                                <option value="47">---HP Laptops</option>
-                                                <option value="48">---Lenovo Laptops</option>
-                                                <option value="49">---Apple Laptops</option>
-                                                <option value="43">--Camera</option>
-                                                <option value="50">---Digital Cameras</option>
-                                                <option value="51">---Camcorders</option>
-                                                <option value="52">---Photo Accessories</option>
-                                                <option value="53">---Memory Cards</option>
-                                                <option value="44">--Smart Phone</option>
-                                                <option value="54">---Apple Phones</option>
-                                                <option value="55">---Samsung Phones</option>
-                                                <option value="56">---Motorola Phones</option>
-                                                <option value="57">---Lenovo Phones</option>
-                                                <option value="45">--Television</option>
-                                                <option value="58">---All-in-One Computers</option>
-                                                <option value="59">---Towers Only</option>
-                                                <option value="60">---Refurbished Desktops</option>
-                                                <option value="61">---Gaming Desktops</option>
-                                                <option value="14">Furnitured & Decor</option>
-                                                <option value="62">--Chair</option>
-                                                <option value="65">---Dining room</option>
-                                                <option value="66">---bedroom</option>
-                                                <option value="67">--- Home & Office</option>
-                                                <option value="68">---living room</option>
-                                                <option value="63">--Lighting</option>
-                                                <option value="69">---Ceiling Lighting</option>
-                                                <option value="70">---Wall Lighting</option>
-                                                <option value="71">---Outdoor Lighting</option>
-                                                <option value="72">---Smart Lighting</option>
-                                                <option value="64">--Sofa</option>
-                                                <option value="73">---Fabric Sofas</option>
-                                                <option value="74">---Leather Sofas</option>
-                                                <option value="75">---Corner Sofas</option>
-                                                <option value="76">---Sofa Beds</option>
-                                                <option value="15">Jewelry & Watches</option>
-                                                <option value="16">Health & Beauty</option>
-                                                <option value="17">Books & Office</option>
-                                                <option value="18">Sport & Outdoor</option>
-                                                <option value="19">Smart phone & Tablets</option>
-                                                <option value="20">Computer - Laptop</option>
-                                                <option value="21">Accessories</option>
-                                                <option value="77">--Bags & Belts</option>
-                                                <option value="78">--Sunglasses & Readers</option>
-                                                <option value="79">--Socks & Tights</option>
-                                                <option value="80">--Scarves & Gloves</option>
-                                            </select>
-                                        </span>
+                                       
                                         <button type="submit">
                                             <i class="zmdi zmdi-search"></i>
                                         </button>
@@ -237,31 +164,9 @@
                     <div class="mainmenu hidden-xs">
                         <ul>
                             <li><a href="{{ URL::route('home') }}">Home</a></li>
-                            <li><a href="">my account <i class="fa fa-angle-down"></i></a>
-                                <ul>
-                                    <li><a href="my-account.html">my account</a></li>
-                                    <li><a href="authentication.html">authentication</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">blog <i class="fa fa-angle-down"></i></a>
-                                <ul>
-                                    <li><a href="blog.html">blog default</a></li>
-                                    <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-                                    <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                                    <li><a href="blog-details.html">blog details</a></li>
-                                    <li><a href="blog-details-left-sidebar.html">blog details left sidebar</a></li>
-                                    <li><a href="blog-details-right-sidebar.html">blog details right sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">other pages <i class="fa fa-angle-down"></i></a>
-                                <ul>
-                                    <li><a href="checkout.html">checkout</a></li>
-                                    <li><a href="cart.html">cart</a></li>
-                                    <li><a href="cart-empty.html">cart empty</a></li>
-                                    <li><a href="wishlist.html">wishlist</a></li>
-                                    <li><a href="wishlist-empty.html">wishlist empty</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{{ URL::route('about') }}">About Us</a></li>
+                            <li><a href="{{ URL::route('contact') }}">Contact</a></li>
+                            
                         </ul>
                     </div>
                     <div id="mobileMenu"></div>
