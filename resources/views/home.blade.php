@@ -124,6 +124,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- electronics section heading end -->
 
                 <!-- electronics items start -->

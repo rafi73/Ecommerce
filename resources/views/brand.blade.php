@@ -294,7 +294,7 @@
                                 <div class="col-md-12">
                                     <div class="list-category-items">
                                         <!-- single product item start -->
-                                        <div v-bind:key="product.id" v-for="product in products" class="single-product-item floating">
+                                        <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item floating">
                                             <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                                 <img :src="product.image || '/img/logo.png'" />
                                                 <span class="sale"></span>

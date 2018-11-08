@@ -216,7 +216,10 @@
                         <div class="catagory-list-menu hidden-menu">
                             <ul>
                                 <li v-bind:key="category.id" v-for="category in categories" v-bind:class="category.sub_categories.length ? 'arrow': ''"> 
-                                    <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/1.jpg')}}" alt=""> @{{category.name}}</a>
+                                    <a href="#"> 
+                                        {{-- <img src="{{asset('themes/frontend/img/menu-icon/10.jpg')}}" alt="">  --}}
+                                        @{{category.name}}
+                                    </a>
                                      <!-- category sub menu start -->
                                      <ul v-if="category.sub_categories.length" class="c-sub-menu">
                                         <li v-if="subcategory" v-bind:key="subcategory.id" v-for="subcategory in category.sub_categories"> 
