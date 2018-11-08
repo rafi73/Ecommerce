@@ -153,7 +153,7 @@ Route::get('frontend-product/{id}', 'ProductController@show');
 Route::get('frontend-brands', 'BrandController@getBrands');
 
 // List category
-Route::get('frontend-category/{id}', 'CategoryController@getCategoryFrontend');
+Route::get('frontend-categories', 'CategoryController@getCategoryFrontend');
 
 // List single product
 Route::get('frontend-brand/{id}', 'BrandController@show');

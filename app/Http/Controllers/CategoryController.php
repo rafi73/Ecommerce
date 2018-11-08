@@ -92,19 +92,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function getCategoryDataFront()
+     public function getCategoryFrontend()
      {
         // Get Categorys
-        $categories = Category::orderBy('updated_at', 'desc')->Where('deactivate', 0)->take(4)->get();
+        $categories = Category::with('subCategories')->orderBy('created_at', 'desc')->Where('active', 1)->get();
 
-        foreach($categories as $category)
-        {
-            $files = explode(",", $category['file']);
-            $category['attachments'] =  Attachment::WhereIn('id', $files)->get();
-        }
- 
          // Return collection of Categorys as a resource
-         return CategoryResource::collection($categories);
+         //return CategoryResource::collection($categories);
+         return response()->json(['data' => $categories]);
      }
 
      /**
@@ -121,18 +116,4 @@ class CategoryController extends Controller
         return CategoryResource::collection($categories);
     }
 
-    
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getCategoryFrontend()
-    {
-        // Get Categorys
-        $category = Category::findOrFail($id);
-
-        // Return collection of Categorys as a resource
-        return new CategoryResource($category);
-    }
 }

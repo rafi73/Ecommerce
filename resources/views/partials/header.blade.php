@@ -215,154 +215,16 @@
                         </div>
                         <div class="catagory-list-menu hidden-menu">
                             <ul>
-                                <li class="arrow"> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/1.jpg')}}"
-                                            alt=""> fashion</a>
-                                    <!-- category mega menu start -->
-                                    <div class="c-mega-menu">
-                                        <div class="block">
-                                            <span>
-                                                <a href="#">Dresses </a>
-                                                <a href="#">Sweater</a>
-                                                <a href="#">Evening</a>
-                                                <a href="#">Day</a>
-                                                <a href="#">Sports</a>
-                                            </span>
-                                            <span>
-                                                <a href="#">Handbags </a>
-                                                <a href="#">Shoulder</a>
-                                                <a href="#">Satchels</a>
-                                                <a href="#">kids</a>
-                                                <a href="#">coats</a>
-                                            </span>
-                                            <span>
-                                                <a href="#">shoes</a>
-                                                <a href="#">Ankle Boots</a>
-                                                <a href="#">Clog sandals </a>
-                                                <a href="#">run</a>
-                                                <a href="#">Books</a>
-                                            </span>
-                                            <span>
-                                                <a href="#">Clothing</a>
-                                                <a href="#">Coats Jackets </a>
-                                                <a href="#">Raincoats</a>
-                                                <a href="#">Jackets</a>
-                                                <a href="#">T-shirts</a>
-                                            </span>
-                                        </div>
-                                        <div class="banner">
-                                            <a href="#" class="banner-hover">
-                                                <img src="{{asset('themes/frontend/img/banner/menu.jpg')}}" alt="banner">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- category mega menu end -->
-                                </li>
-                                <li class="arrow"> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/2.jpg')}}"
-                                            alt="">
-                                        Electronics</a>
-                                    <!-- category mega menu start -->
-                                    <div class="c-mega-menu">
-                                        <div class="block">
-                                            <span>
-                                                <a href="#">Laptops </a>
-                                                <a href="#">Dell Laptops</a>
-                                                <a href="#">HP Laptops</a>
-                                                <a href="#">Lenovo Laptops</a>
-                                                <a href="#">Apple Laptops</a>
-                                            </span>
-                                            <span>
-                                                <a href="#">Camera </a>
-                                                <a href="#">Digital Cameras</a>
-                                                <a href="#">Camcorders</a>
-                                                <a href="#">Photo Accessories</a>
-                                                <a href="#">Memory Cards</a>
-                                            </span>
-                                            <span>
-                                                <a href="#">Smart Phone</a>
-                                                <a href="#">Apple Phones</a>
-                                                <a href="#">Samsung Phones </a>
-                                                <a href="#">Motorola Phones</a>
-                                                <a href="#">Lenovo Phones</a>
-                                            </span>
-                                            <span>
-                                                <a href="#">Television</a>
-                                                <a href="#">All-in-One Computers</a>
-                                                <a href="#">Towers Only</a>
-                                                <a href="#">Refurbished Desktops</a>
-                                                <a href="#">Gaming Desktops</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- category mega menu end -->
-                                </li>
-                                <li class="arrow"> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/3.jpg')}}"
-                                            alt="">
-                                        Furnitured & Decor</a>
-                                    <!-- category mega menu start -->
-                                    <div class="c-mega-menu item-3">
-                                        <div class="block">
-                                            <span>
-                                                <a href="#">Chair </a>
-                                                <a href="#">Dining room</a>
-                                                <a href="#">bedroom</a>
-                                                <a href="#">Home & Office</a>
-                                                <a href="#">living room</a>
-                                            </span>
-                                            <span>
-                                                <a href="#">Lighting </a>
-                                                <a href="#">Ceiling Lighting</a>
-                                                <a href="#">Wall Lighting</a>
-                                                <a href="#">Outdoor Lighting</a>
-                                                <a href="#">Smart Lighting</a>
-                                            </span>
-                                            <span>
-                                                <a href="#">Sofa</a>
-                                                <a href="#">Fabric Sofas</a>
-                                                <a href="#">Leather Sofas </a>
-                                                <a href="#">Corner Sofas</a>
-                                                <a href="#">Sofa Beds</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- category mega menu end -->
-                                </li>
-                                <li class="arrow"> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/4.jpg')}}"
-                                            alt="">Accessories</a>
-                                    <!-- category sub menu start -->
-                                    <ul class="c-sub-menu">
-                                        <li> <a href="#">Bags & Belts</a> </li>
-                                        <li> <a href="#">Sunglasses & Readers</a> </li>
-                                        <li> <a href="#">Socks & Tights</a> </li>
-                                        <li> <a href="#">Scarves & Gloves</a> </li>
+                                <li v-bind:key="category.id" v-for="category in categories" v-bind:class="category.sub_categories.length ? 'arrow': ''"> 
+                                    <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/1.jpg')}}" alt=""> @{{category.name}}</a>
+                                     <!-- category sub menu start -->
+                                     <ul v-if="category.sub_categories.length" class="c-sub-menu">
+                                        <li v-if="subcategory" v-bind:key="subcategory.id" v-for="subcategory in category.sub_categories"> 
+                                            <a href="#">@{{subcategory.name}}</a> 
+                                        </li>
                                     </ul>
                                     <!-- category sub menu end -->
                                 </li>
-                                <li> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/5.jpg')}}"
-                                            alt="">
-                                        Jewelry & Watches</a>
-                                </li>
-                                <li> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/6.jpg')}}"
-                                            alt="">
-                                        Health & Beauty</a>
-                                </li>
-                                <li> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/7.jpg')}}"
-                                            alt="">
-                                        Books & Office</a>
-                                </li>
-                                <li> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/8.jpg')}}"
-                                            alt="">
-                                        Sport & Outdoor</a>
-                                </li>
-                                <li> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/9.jpg')}}"
-                                            alt="">
-                                        Smart phone & Tablets</a>
-                                </li>
-                                <li class="more-catagory"> <a href="#"> <i class="zmdi zmdi-plus-circle"></i>
-                                        More Catagories</a> </li>
-                                <li class="more-catagory-item"> <a href="#"> <img src="{{asset('themes/frontend/img/menu-icon/10.jpg')}}"
-                                            alt=""> Computer - Laptop</a> </li>
-                                <li class="less-catagory"> <a href="#"> <i class="zmdi zmdi-minus-circle"></i>
-                                        Less Catagories</a> </li>
                             </ul>
                         </div>
                     </div>

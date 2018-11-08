@@ -763,8 +763,8 @@
                     let ref = this
                     axios.get(`/api/frontend-categories`)
                         .then(function (response) {
-                            console.log(response)
                             ref.categories = response.data.data
+                            console.log('categories',  ref.categories)
 
                             Vue.nextTick(function () {
                                 ref.installCategoriesCarousel()
