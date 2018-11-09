@@ -86,7 +86,7 @@
     <div id="app">
         @include('partials.header')
 
-        @include('partials.breadcrumb')
+        {{-- @include('partials.breadcrumb') --}}
 
         <div>
             @yield('content')
@@ -141,7 +141,7 @@
     <!-- nivo.slider js
             =========================================== -->
     <script src="{{asset('themes/frontend/lib/js/jquery.nivo.slider.js')}}"></script>
-    <script src="{{asset('themes/frontend/lib/home.js')}}"></script>
+    {{-- <script src="{{asset('themes/frontend/lib/home.js')}}"></script> --}}
 
     <!-- plugins js
             =========================================== -->
@@ -191,6 +191,21 @@
             mounted: function () {
                 let ref = this
                 Vue.nextTick(function () {
+
+                    $('#nivoslider').nivoSlider({
+                        effect: 'random',
+                        slices: 15,
+                        boxCols: 8,
+                        boxRows: 4,
+                        animSpeed: 500,
+                        pauseTime: 5000,
+                        startSlide: 0,
+                        directionNav: false,
+                        controlNavThumbs: false,
+                        controlNav: true,
+                        pauseOnHover: true,
+                        manualAdvance: false
+                    });
 
                     /*====================
                     00. Top banner hide
@@ -636,8 +651,7 @@
                             $("#amount").val("$" + ui.values[0] + " -- $" + ui.values[1]);
                         }
                     });
-                    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-                        " -- $" + $("#slider-range").slider("values", 1));
+                    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " -- $" + $("#slider-range").slider("values", 1));
 
 
                     /*******************

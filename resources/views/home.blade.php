@@ -156,6 +156,17 @@
                                             <a href="#" @click.prevent="addToCart(product)" class="single-action">add to cart</a>
                                             <a href="#" @click.prevent="singleProductModal(product)" class="single-action">check</a>
                                         </div>
+                                        <div class="actions">
+                                            {{-- <a href="#" @click.prevent="addToCart(product)" class="single-action">add
+                                                to cart</a>
+                                            <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
+                                            </a>
+                                            <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
+                                            </a> --}}
+                                            <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
+                                                <i class="zmdi zmdi-search"></i> 
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
