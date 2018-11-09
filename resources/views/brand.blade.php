@@ -272,7 +272,7 @@
                                                     {{-- <span class="old-price">$30.51</span> --}}
                                                 </h3>
                                                 <div class="actions">
-                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action">add to cart</a>
+                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
                                                 </div>
                                                 <div class="hover-content">
                                                     {{-- <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
@@ -282,6 +282,7 @@
                                                     <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
                                                         <i class="zmdi zmdi-search"></i> 
                                                     </a>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -320,9 +321,9 @@
                                                     </a>
                                                     <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
                                                     </a> --}}
-                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
+                                                    {{-- <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
                                                         <i class="zmdi zmdi-search"></i> 
-                                                    </a>
+                                                    </a> --}}
                                                 </div>
                                                 <div class="stock">
                                                     <p><span>In stock</span></p>

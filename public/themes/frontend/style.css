@@ -3351,3 +3351,12 @@ form .single-color:nth-child(4) span:after {
 .item:hover {
     transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+
+.vl {
+    border-left: 1px solid rgb(7, 7, 7);
+    height: 100%;
+}
+
+.modal.fade {
+    z-index: 10000000 !important;
+  }

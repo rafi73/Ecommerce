@@ -84,15 +84,16 @@
 
 <body>
     <div id="app">
+        @include('partials.addedToCartModal')
         @include('partials.header')
-
-        
 
         <div>
             @yield('content')
         </div>
 
         @include('partials.singleProductModal')
+
+       
 
         @include('partials.footer')
     </div>
@@ -168,7 +169,8 @@
                 products: [],
                 product: {},
                 category: {},
-                brand: {}
+                brand: {},
+
             },
             created() {
                 console.log('Testing console. from Home')
@@ -494,41 +496,7 @@
                             }
                         }
 
-                    });
-
-                    /*******************
-                    13. Box Items
-                    ********************/
-
-                    // $(".box-items").owlCarousel({
-                    //     items: 3,
-                    //     nav: true,
-                    //     dots: false,
-                    //     autoplay: false,
-                    //     loop: true,
-                    //     navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-                    //     mouseDrag: false,
-                    //     touchDrag: false,
-                    //     responsive : {
-                    //         // breakpoint from 0 up
-                    //         0 : {
-                    //             items : 1,
-                    //         },
-                    //         // breakpoint from 480 up
-                    //         480 : {
-                    //             items : 1,
-                    //         },
-                    //         // breakpoint from 768 up
-                    //         768 : {
-                    //             items : 2,
-                    //         },
-                    //         // breakpoint from 768 up
-                    //         1024 : {
-                    //             items : 3,
-                    //         }
-                    //     }
-
-                    // });
+                    })
 
                     /*******************
                     14. Different Items
@@ -736,6 +704,7 @@
                     document.location.href = url
                 },
                 addToCart(product) {
+                    this.selectedProduct = product
                     if (localStorage.getItem("cart")) {
                         json = JSON.parse(localStorage.getItem("cart"))
                         this.cartProducts = []

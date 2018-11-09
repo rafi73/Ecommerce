@@ -27,14 +27,15 @@
                                 <label>Quantity: </label>
                                 <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
                             </div> -->
-                            <div ><label>Quantity: </label> 
-                                <input type="text" name="qtybutton" value="1" class="cart-plus-minus-box">
+                            <div >
+                                <label>Quantity: </label> 
+                                <input type="text" name="qtybutton" v-model="selectedProduct.quantity" class="cart-plus-minus-box">
                                 <div  class="dec qtybutton">-</div>
                                 <div class="inc qtybutton">+</div>
+                                <a href="#" @click.prevent="addToCart(selectedProduct)" class="single-action">add to cart</a>
                             </div>
                             <div class="actions">
-                                <a href="#" @click.prevent="addToCart(selectedProduct)" class="single-action">add to
-                                    cart</a>
+                               
                                 {{-- <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>
                                 <a href="#" class="single-action"> <i class="fa fa-print"></i> </a>
                                 <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i></a> --}}
