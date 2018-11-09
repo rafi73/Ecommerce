@@ -42,6 +42,10 @@ Route::view('/site/about-us', 'about')->name('about');
 
 Route::view('/site/contact', 'contact')->name('contact');
 
+Route::view('/site/category/{id}', 'category')->name('category');
+
+Route::view('/site/sub-category', 'subCategory')->name('subCategory');
+
 Route::get('{any}', function () {
     return view('index');
 })->where('any', '.*');

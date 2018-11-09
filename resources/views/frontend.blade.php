@@ -170,6 +170,7 @@
                 product: {},
                 category: {},
                 brand: {},
+                categoryWiseProducts: []
 
             },
             created() {
@@ -184,10 +185,17 @@
                     this.getProduct(productId)
                 }
 
-                if (window.location.pathname.split('/')[2] == 'brand') {
+                else if (window.location.pathname.split('/')[2] == 'brand') {
                     let brandId = window.location.pathname.split('/')[3]
                     this.getBrand(brandId)
                 }
+
+                else if (window.location.pathname.split('/')[2] == 'category') {
+                    let categoryId = window.location.pathname.split('/')[3]
+                    this.getCategorywiseProducts(categoryId)
+                }
+
+                
 
             },
             mounted: function () {
@@ -703,6 +711,12 @@
                     url = url.replace(':id', brand.id)
                     document.location.href = url
                 },
+                goToCategory(category) {
+                    console.log(category)
+                    let url = "{{ route('category', ':id') }}"
+                    url = url.replace(':id', category.id)
+                    document.location.href = url
+                },
                 addToCart(product) {
                     this.selectedProduct = product
                     if (localStorage.getItem("cart")) {
@@ -789,6 +803,21 @@
                         .then(function (response) {
                             ref.brand = response.data.data
                             console.log(response)
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                },
+                getCategorywiseProducts(categoryId) {
+                    let ref = this
+                    axios.get(`/api/frontend-category-wise-products/${categoryId}`)
+                        .then(function (response) {
+                            console.log(response)
+                            ref.categoryWiseProducts = response.data.data
+
+                            Vue.nextTick(function () {
+                                ref.installNewArrivalCarousel()
+                            }.bind(ref))
                         })
                         .catch(function (error) {
                             console.log(error)

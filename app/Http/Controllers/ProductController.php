@@ -115,4 +115,19 @@ class ProductController extends Controller
         // Return collection of Products as a resource
         return ProductResource::collection($products);
     }
+
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getProductsByCategory($categoryId)
+    {
+        // Get Products
+        $products = Product::orderBy('created_at', 'desc')->Where('category_id', $categoryId)->Where('active', 1)->paginate(10);
+
+        // Return collection of Products as a resource
+        return ProductResource::collection($products);
+    }
 }

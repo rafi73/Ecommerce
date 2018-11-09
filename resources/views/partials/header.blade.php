@@ -143,7 +143,7 @@
                         <div class="catagory-list-menu hidden-menu">
                             <ul>
                                 <li v-bind:key="category.id" v-for="category in categories" v-bind:class="category.sub_categories.length ? 'arrow': ''"> 
-                                    <a href="#"> 
+                                    <a href="#" @click.prevent="goToCategory(category)"> 
                                         {{-- <img src="{{asset('themes/frontend/img/menu-icon/10.jpg')}}" alt="">  --}}
                                         @{{category.name}}
                                     </a>

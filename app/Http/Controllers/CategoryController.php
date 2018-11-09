@@ -92,7 +92,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function getCategoryFrontend()
+     public function getCategoriesFrontend()
      {
         // Get Categorys
         $categories = Category::with('subCategories')->orderBy('created_at', 'desc')->Where('active', 1)->get();
@@ -102,18 +102,20 @@ class CategoryController extends Controller
          return response()->json(['data' => $categories]);
      }
 
+
      /**
-     * Display a listing of the resource.
-     *
+     * Display the specified resource.
+     *$
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getCategoriesFrontend()
+    public function getCategoryFrontend($id)
     {
         // Get Categorys
-        $categories = Category::orderBy('created_at', 'desc')->paginate(10);
+        $category = Category::findOrFail($id);
 
-        // Return collection of Categorys as a resource
-        return CategoryResource::collection($categories);
+        // Return single Categorys as a resource
+        return new CategoryResource($category);
     }
 
 }
