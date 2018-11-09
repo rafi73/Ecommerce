@@ -38,6 +38,10 @@ Route::view('/site/cart', 'cart')->name('cart');
 
 Route::view('/site/checkout', 'checkout')->name('checkout');
 
+Route::view('/site/about-us', 'about')->name('about');
+
+Route::view('/site/contact', 'contact')->name('contact');
+
 Route::get('{any}', function () {
     return view('index');
 })->where('any', '.*');

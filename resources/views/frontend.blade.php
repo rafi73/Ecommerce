@@ -86,7 +86,7 @@
     <div id="app">
         @include('partials.header')
 
-        {{-- @include('partials.breadcrumb') --}}
+        
 
         <div>
             @yield('content')
@@ -828,20 +828,30 @@
                 installProductsCarousel: function () {
                     var owl = $('.products');
                     owl.owlCarousel({
-                        margin: 10,
+                        items: 4,
+                        nav: true,
+                        dots: false,
+                        autoplay: false,
                         loop: true,
+                        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+                        mouseDrag: false,
+                        touchDrag: false,
                         responsive: {
+                            // breakpoint from 0 up
                             0: {
-                                items: 1
+                                items: 1,
                             },
-                            600: {
-                                items: 2
+                            // breakpoint from 480 up
+                            480: {
+                                items: 2,
                             },
-                            1000: {
-                                items: 3
+                            // breakpoint from 768 up
+                            768: {
+                                items: 3,
                             },
-                            1600: {
-                                items: 4
+                            // breakpoint from 768 up
+                            1024: {
+                                items: 4,
                             }
                         }
                     })

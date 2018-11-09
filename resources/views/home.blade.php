@@ -1,7 +1,6 @@
 @extends('frontend')
 @section('content')
 
-@section('navigation', 'Home')
 
 @include('partials.slider')
 
@@ -40,11 +39,11 @@
                                 <!-- section title end -->
                                 <div class="col-md-8 col-sm-7 col-xs-12">
                                     <!-- tab menu start -->
-                                    {{-- <ul class="product-tab">
-                                        <li class="active"><a data-toggle="tab" href="#tab-1"> bestseller </a></li>
-                                        <li><a data-toggle="tab" href="#tab-2"> featured </a></li>
-                                        <li><a data-toggle="tab" href="#tab-3"> speical </a></li>
-                                    </ul> --}}
+                                    <ul class="product-tab">
+                                        <li class="active"><a data-toggle="tab" href="#tab-1"> new </a></li>
+                                        {{-- <li><a data-toggle="tab" href="#tab-2"> featured </a></li>
+                                        <li><a data-toggle="tab" href="#tab-3"> speical </a></li> --}}
+                                    </ul>
                                     <!-- tab menu end -->
                                 </div>
                             </div>
@@ -57,7 +56,7 @@
                 <div class="row">
                     <div class="col-lg-9 col-md-12">
                         <div class="tab-content mt-30">
-                            <div class="products">
+                            <div  class="products">
                                 <div v-bind:key="product.id" v-for="product in brand.products" class="item">
                                     <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                         <img :src="product.image || '/img/logo.png'" />
@@ -114,8 +113,8 @@
                                 <div class="col-md-8 col-sm-7 col-xs-12">
                                     <!-- tab menu start -->
                                     <ul class="product-tab">
-                                        {{-- <li class="active"><a data-toggle="tab" href="#tab-1"> bestseller </a></li>
-                                        <li><a data-toggle="tab" href="#tab-2"> featured </a></li>
+                                        <li class="active"><a data-toggle="tab" href="#tab-1"> new </a></li>
+                                        {{-- <li><a data-toggle="tab" href="#tab-2"> featured </a></li>
                                         <li><a data-toggle="tab" href="#tab-3"> speical </a></li> --}}
                                     </ul>
                                     <!-- tab menu end -->

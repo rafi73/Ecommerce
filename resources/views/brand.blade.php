@@ -1,6 +1,7 @@
 @extends('frontend')
 @section('content')
 
+@include('partials.breadcrumb')
 @section('navigation', 'Shop')
 
 <!-- products area start -->
