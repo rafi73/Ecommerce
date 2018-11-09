@@ -150,7 +150,7 @@
                                      <!-- category sub menu start -->
                                      <ul v-if="category.sub_categories.length" class="c-sub-menu">
                                         <li v-if="subcategory" v-bind:key="subcategory.id" v-for="subcategory in category.sub_categories"> 
-                                            <a href="#">@{{subcategory.name}}</a> 
+                                            <a href="#" @click.prevent="goToSubCategory(subcategory)">@{{subcategory.name}}</a> 
                                         </li>
                                     </ul>
                                     <!-- category sub menu end -->

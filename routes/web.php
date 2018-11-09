@@ -44,7 +44,7 @@ Route::view('/site/contact', 'contact')->name('contact');
 
 Route::view('/site/category/{id}', 'category')->name('category');
 
-Route::view('/site/sub-category', 'subCategory')->name('subCategory');
+Route::view('/site/sub-category/{id}', 'subCategory')->name('sub-category');
 
 Route::get('{any}', function () {
     return view('index');

@@ -170,7 +170,8 @@
                 product: {},
                 category: {},
                 brand: {},
-                categoryWiseProducts: []
+                categoryWiseProducts: [],
+                subCategoryWiseProducts: []
 
             },
             created() {
@@ -193,6 +194,11 @@
                 else if (window.location.pathname.split('/')[2] == 'category') {
                     let categoryId = window.location.pathname.split('/')[3]
                     this.getCategorywiseProducts(categoryId)
+                }
+
+                else if (window.location.pathname.split('/')[2] == 'sub-category') {
+                    let subCategoryId = window.location.pathname.split('/')[3]
+                    this.getSubCategorywiseProducts(subCategoryId)
                 }
 
                 
@@ -717,6 +723,12 @@
                     url = url.replace(':id', category.id)
                     document.location.href = url
                 },
+                goToSubCategory(subCategory) {
+                    console.log(subCategory)
+                    let url = "{{ route('sub-category', ':id') }}"
+                    url = url.replace(':id', subCategory.id)
+                    document.location.href = url
+                },
                 addToCart(product) {
                     this.selectedProduct = product
                     if (localStorage.getItem("cart")) {
@@ -814,10 +826,17 @@
                         .then(function (response) {
                             console.log(response)
                             ref.categoryWiseProducts = response.data.data
-
-                            Vue.nextTick(function () {
-                                ref.installNewArrivalCarousel()
-                            }.bind(ref))
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                },
+                getSubCategorywiseProducts(subCategoryId) {
+                    let ref = this
+                    axios.get(`/api/frontend-sub-category-wise-products/${subCategoryId}`)
+                        .then(function (response) {
+                            console.log(response)
+                            ref.subCategoryWiseProducts = response.data.data
                         })
                         .catch(function (error) {
                             console.log(error)

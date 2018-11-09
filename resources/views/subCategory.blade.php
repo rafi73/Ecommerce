@@ -9,73 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-8 col-sm-offset-2 col-md-offset-0">
-                <!-- sidebar start -->
-                <div class="sidebar">
-                    <!-- categories start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">categories</h3>
-                        <div v-bind:key="category.id" v-for="brand in brands" class="input-box">
-                            <input type="checkbox" name="category" value="dresses" id="dresses">
-                            <label for="dresses">@{{category.name}}</label>
-                        </div>
-                        {{-- <div class="input-box">
-                            <input type="checkbox" name="category" value="handbags" id="handbags">
-                            <label for="handbags">handbags (9)</label>
-                        </div>
-                        <div class="input-box">
-                            <input type="checkbox" name="category" value="shoes" id="shoes">
-                            <label for="shoes">shoes (9)</label>
-                        </div>
-                        <div class="input-box">
-                            <input type="checkbox" name="category" value="clothing" id="clothing">
-                            <label for="clothing">clothing (9)</label>
-                        </div> --}}
-                    </div>
-                    <!-- categories end -->
-
-                    <!-- Availability start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Availability</h3>
-                        <div class="input-box">
-                            <input type="checkbox" name="instock" value="instock" id="stock">
-                            <label for="stock">in stock (9)</label>
-                        </div>
-                    </div>
-                    <!-- Availability end -->
-
-                    <!-- conditions start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">conditions</h3>
-                        <div class="input-box">
-                            <input type="checkbox" name="new" value="new" id="new">
-                            <label for="new"> new (9)</label>
-                        </div>
-                    </div>
-                    <!-- conditions end -->
-
-                    <!-- Manufacturer start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Brand</h3>
-                        <div v-bind:key="brand.id" v-for="brand in brands" class="input-box">
-                            <input type="checkbox" name="FashionManufacturer" value="FashionManufacturer" id="manufac">
-                            <label for="manufac">@{{brand.name}}</label>
-                        </div>
-                    </div>
-                    <!-- Manufacturer end -->
-
-                    <!-- Price start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Price</h3>
-                        <div class="price-slider-amount">
-                            Range: <input type="text" id="amount" name="price" placeholder="Add Your Price" />
-                        </div>
-                        <div id="slider-range"></div>
-                    </div>
-                    <!-- Price end -->
-
-
-                </div>
-                <!-- sidebar end -->
+               
 
                 <!-- top seller items start -->
                 <div class="row">
@@ -253,7 +187,7 @@
                                 <div class="col-md-12">
                                     <div class="gird-items">
                                         <!-- single product item start -->
-                                        <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item">
+                                        <div v-bind:key="product.id" v-for="product in subCategoryWiseProducts" class="single-product-item">
                                             <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                                 <img :src="product.image || '/img/logo.png'" />
 
