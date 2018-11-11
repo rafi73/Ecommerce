@@ -37,7 +37,7 @@
                                         <i class="fa fa-angle-left"></i>continue shopping
                                     </span>
                                 </a>
-                                <a href="{{ URL::route('checkout') }}" class="stock">
+                                <a href="{{ URL::route('cart') }}" class="stock">
                                     <span> checkout
                                         <i class="fa fa-angle-right"></i>
                                     </span>

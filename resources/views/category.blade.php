@@ -144,7 +144,7 @@
                 <!-- category options start -->
                 <div class="category-options mt-40">
                     <div class="category-title">
-                        <h2>fashion <span class="text-right">there are @{{categoryWiseProducts.length}} products</span></h2>
+                        <h2>Category <span class="text-right">there are @{{categoryWiseProducts.length}} products</span></h2>
                     </div>
                     <div class="category-bar">
                         <!-- tab menu start -->
@@ -190,7 +190,7 @@
                                                 <span class="sale"></span>
                                             </a>
                                             <div class="item-info text-center">
-                                                <h2><a href="product-details.html" class="item-title">@{{product.name}}</a></h2>
+                                                <h2><a href="#" @click.prevent="goToProduct(product)"  class="item-title">@{{product.name}}</a></h2>
                                                 {{-- <div class="ratings">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -204,16 +204,16 @@
                                                 <div class="actions">
                                                     <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
                                                 </div>
-                                                <div class="hover-content">
-                                                    {{-- <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
+                                                {{-- <div class="hover-content">
+                                                    <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
                                                     </a>
                                                     <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                    </a> --}}
+                                                    </a>
                                                     <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
                                                         <i class="zmdi zmdi-search"></i> 
                                                     </a>
                                                     
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                         <!-- single product item end -->
@@ -232,7 +232,7 @@
                                                 <span class="sale"></span>
                                             </a>
                                             <div class="item-info">
-                                                <h2><a href="product-details.html" class="item-title large">@{{product.name}}</a></h2>
+                                                <h2><a href="#" @click.prevent="goToProduct(product)"  class="item-title large">@{{product.name}}</a></h2>
                                                 {{-- <div class="ratings">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -244,17 +244,17 @@
                                                     {{-- <span class="old-price">$30.51</span> --}}
                                                 </h3>
                                                 <p class="product-descriptions"> @{{product.description}}</p>
-                                                <div class="actions">
-                                                    {{-- <a href="#" @click.prevent="addToCart(product)" class="single-action">add
+                                                {{-- <div class="actions">
+                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action">add
                                                         to cart</a>
                                                     <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
                                                     </a>
                                                     <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
-                                                    </a> --}}
-                                                    {{-- <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
+                                                    </a> 
+                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
                                                         <i class="zmdi zmdi-search"></i> 
-                                                    </a> --}}
-                                                </div>
+                                                    </a>
+                                                </div> --}}
                                                 <div class="stock">
                                                     <p><span>In stock</span></p>
                                                 </div>

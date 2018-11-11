@@ -165,3 +165,6 @@ Route::get('frontend-sub-category-wise-products/{id}', 'ProductController@getPro
 // List category
 Route::get('frontend-search-products/{term}', 'ProductController@getSearchedProductFrontend');
 
+Route::post('customer-register', 'CustomerController@store');
+
+Route::post('customer-login', 'CustomerController@login');

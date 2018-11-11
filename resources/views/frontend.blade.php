@@ -172,7 +172,19 @@
                 categoryWiseProducts: [],
                 subCategoryWiseProducts: [],
                 searchTerm: null,
-                searchedProducts: []
+                searchedProducts: [],
+                register:{
+                    name: null,
+                    email: null,
+                    password: null
+                },
+                login:{
+                    email:null,
+                    password: null
+                },
+                loggedInCustomer: {
+                    name: null
+                }
 
             },
             created() {
@@ -208,7 +220,7 @@
                     this.searchTerm = term
                 }
 
-                
+                this.loggedInCustomer.name = localStorage.getItem('customer')
 
             },
             mounted: function () {
@@ -955,6 +967,54 @@
                         .catch(function (error) {
                             console.log(error)
                         })
+                },
+                customerRegistration(){
+                    console.log(this.register)
+
+                    if(this.register.password !== this.register.confirmPassword){
+                        console.log('Password is not same')
+                        return
+                    }
+                    axios.post('/api/customer-register', this.register)
+                    .then(
+                        (response) => {
+                            console.log(response)
+                            document.location.href = "{{ route('home') }}"
+                        }
+                    )
+                    .catch(
+                        (error) => {
+                            console.log(error)
+                            
+                        }
+                    )
+                },
+                customerLogin(){
+                    console.log(this.login)
+
+                    axios.post('/api/customer-login', this.login)
+                    .then(
+                        (response) => {
+                            console.log(response)
+                            //document.location.href = "{{ route('home') }}"\
+                            if(response){
+                                this.loggedInCustomer = response.data.data
+                                localStorage.setItem('customer', this.loggedInCustomer.name)
+                                document.location.href = "{{ route('home') }}"
+                            }
+                               
+                        }   
+                    )
+                    .catch(
+                        (error) => {
+                            console.log(error)
+                            
+                        }
+                    )
+                },
+                customerLogout(){
+                    localStorage.removeItem('customer')
+                    this.loggedInCustomer = {}
                 }
             },
             computed: {

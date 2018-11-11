@@ -57,8 +57,7 @@
                     <!-- vat cost -->
                     <p class="no-border">vat <span class="pull-right">$00.00</span> </p>
                     <!-- grand total -->
-                    <p class="total-price">grand total <span class="pull-right">@{{cartProducts.reduce((a, b) => +a +
-                            +b.price, 0)}}</span> </p>
+                    <p class="total-price">grand total <span class="pull-right">@{{cartProducts.reduce((a, b) => +a + +b.price, 0)}}</span> </p>
                 </div>
                 <!-- total cart area end -->
                 <!-- payment method start -->

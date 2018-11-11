@@ -213,7 +213,7 @@
                 <!-- category options start -->
                 <div class="category-options mt-40">
                     <div class="category-title">
-                        <h2>fashion <span class="text-right">there are @{{products.length}} products</span></h2>
+                        <h2>Brand <span class="text-right">there are @{{products.length}} products</span></h2>
                     </div>
                     <div class="category-bar">
                         <!-- tab menu start -->

@@ -33,14 +33,33 @@
                                         <li><a href="#">Euro(EUR)</a></li>
                                     </ul>
                                 </li> --}}
-                                <li><a href="#">My Account <i class="fa fa-angle-down"></i> </a>
+                                <li v-if="loggedInCustomer.name">
+                                    <a href="#"> 
+                                        <span > @{{loggedInCustomer.name}}
+                                        </span>
+                                    </a>
+                                </li>
+                                <li v-if="loggedInCustomer.name">
+                                    <a href="#" @click.prevent="customerLogout()"> 
+                                        <span> Logout 
+                                        </span>
+                                    </a>
+                                </li>
+                                <li v-else>
+                                        <a href="{{ URL::route('authentication') }}" > 
+                                            <span> Login 
+                                            </span>
+                                        </a>
+                                    </li>
+                               
+                                {{-- <li><a href="#">My Account <i class="fa fa-angle-down"></i> </a>
                                     <ul>
                                         <li><a href="#">my account</a></li>
                                         <li><a href="#">my wishlist</a></li>
                                         <li><a href="#">checkout</a></li>
                                         <li><a href="#">login</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
