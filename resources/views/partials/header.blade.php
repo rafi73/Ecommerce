@@ -56,9 +56,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <!-- logo start -->
-                    <a href="{{ URL::route('home') }}"> <img src="{{asset('themes/frontend/img/logo.jpg')}}"
-                            alt="">
-                    </a>
+                    <a href="{{ URL::route('home') }}"> <img src="{{asset('themes/frontend/img/logo.jpg')}}" alt=""></a>
                     <!-- logo end -->
                 </div>
                 <div class="col-md-9 col-sm-12">
@@ -68,9 +66,9 @@
                             <div class="catagory-bar">
                                 <div class="header-search">
                                     <form action="#" method="GET">
-                                        <input type="text" placeholder="Search entire store here ...">
+                                        <input type="text" v-model="searchTerm" @keyup.enter.native="goToSearch(searchTerm)" placeholder="Search entire store here ...">
                                        
-                                        <button type="submit">
+                                        <button @click.prevent="goToSearch(searchTerm)" type="submit">
                                             <i class="zmdi zmdi-search"></i>
                                         </button>
                                     </form>

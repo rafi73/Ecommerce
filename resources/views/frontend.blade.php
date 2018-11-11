@@ -85,6 +85,7 @@
 <body>
     <div id="app">
         @include('partials.addedToCartModal')
+        
         @include('partials.header')
 
         <div>
@@ -92,8 +93,6 @@
         </div>
 
         @include('partials.singleProductModal')
-
-       
 
         @include('partials.footer')
     </div>
@@ -171,7 +170,9 @@
                 category: {},
                 brand: {},
                 categoryWiseProducts: [],
-                subCategoryWiseProducts: []
+                subCategoryWiseProducts: [],
+                searchTerm: null,
+                searchedProducts: []
 
             },
             created() {
@@ -199,6 +200,12 @@
                 else if (window.location.pathname.split('/')[2] == 'sub-category') {
                     let subCategoryId = window.location.pathname.split('/')[3]
                     this.getSubCategorywiseProducts(subCategoryId)
+                }
+
+                else if (window.location.pathname.split('/')[2] == 'search') {
+                    let term = window.location.pathname.split('/')[3]
+                    this.searchProduct(term)
+                    this.searchTerm = term
                 }
 
                 
@@ -932,6 +939,23 @@
                         }
                     })
                 },
+                goToSearch(term){
+                    console.log(term)
+                    let url = "{{ route('search', ':id') }}"
+                    url = url.replace(':id', term)
+                    document.location.href = url
+                },
+                searchProduct(term){
+                    let ref = this
+                    axios.get(`/api/frontend-search-products/${term}`)
+                        .then(function (response) {
+                            console.log(response)
+                            ref.searchedProducts = response.data.data
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                }
             },
             computed: {
                 totalPrice() {

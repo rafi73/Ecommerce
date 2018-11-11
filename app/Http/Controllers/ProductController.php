@@ -144,4 +144,19 @@ class ProductController extends Controller
         // Return collection of Products as a resource
         return ProductResource::collection($products);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getSearchedProductFrontend($term)
+    {
+        // Get Products
+        $products = Product::where('name', 'LIKE', "%$term%")->get();
+
+        // Return collection of Products as a resource
+        return ProductResource::collection($products);
+    }
+
 }

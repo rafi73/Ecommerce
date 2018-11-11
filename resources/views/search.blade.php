@@ -1,89 +1,62 @@
 @extends('frontend')
 @section('content')
 
-@include('partials.breadcrumb', ['pageName' => 'Brand'])
+@include('partials.breadcrumb', ['pageName' => 'Search'])
 
 <!-- products area start -->
 <div class="pt-40">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-8 col-sm-offset-2 col-md-offset-0">
-                <!-- sidebar start -->
-                <div class="sidebar">
-                    <!-- categories start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">categories</h3>
-                        <div v-bind:key="category.id" v-for="brand in brands" class="input-box">
-                            <input type="checkbox" name="category" value="dresses" id="dresses">
-                            <label for="dresses">@{{category.name}}</label>
-                        </div>
-                        {{-- <div class="input-box">
-                            <input type="checkbox" name="category" value="handbags" id="handbags">
-                            <label for="handbags">handbags (9)</label>
-                        </div>
-                        <div class="input-box">
-                            <input type="checkbox" name="category" value="shoes" id="shoes">
-                            <label for="shoes">shoes (9)</label>
-                        </div>
-                        <div class="input-box">
-                            <input type="checkbox" name="category" value="clothing" id="clothing">
-                            <label for="clothing">clothing (9)</label>
-                        </div> --}}
-                    </div>
-                    <!-- categories end -->
+                <div class="row">
+                    <!-- section title start -->
 
-                    <!-- Availability start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Availability</h3>
-                        <div class="input-box">
-                            <input type="checkbox" name="instock" value="instock" id="stock">
-                            <label for="stock">in stock (9)</label>
+                    {{-- <div class="col-sm-12 col-md-12  mt-40">
+                        <div class="section-heading">
+                            <h2> <img src="{{asset('themes/frontend/img/icon/icon_title_topseller.png')}}" alt="">
+                                top seller</h2>
                         </div>
-                    </div>
-                    <!-- Availability end -->
-
-                    <!-- conditions start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">conditions</h3>
-                        <div class="input-box">
-                            <input type="checkbox" name="new" value="new" id="new">
-                            <label for="new"> new (9)</label>
+                        <!-- section title start -->
+                        <div class="my-account-accordion  mt-40">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div v-for="category in categories" class="panel panel-default">
+                                    <div class="panel-heading" role="tab" :id="category.name">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" :href="'#'+ category.name"
+                                                aria-expanded="false" :aria-controls="category.name">
+                                                <i class="fa fa-list-ol"></i>
+                                                @{{category.name}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div :id="category.name" class="panel-collapse collapse in" role="tabpanel"
+                                        aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="account-title">
+                                                        <h4>Here are the orders you've placed since your
+                                                            account was created.</h4>
+                                                    </div>
+                                                    <div class="order-history">
+                                                        <p>You have not placed any orders.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <!-- conditions end -->
-
-                    <!-- Manufacturer start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Brand</h3>
-                        <div v-bind:key="brand.id" v-for="brand in brands" class="input-box">
-                            <input type="checkbox" name="FashionManufacturer" value="FashionManufacturer" id="manufac">
-                            <label for="manufac">@{{brand.name}}</label>
-                        </div>
-                    </div>
-                    <!-- Manufacturer end -->
-
-                    <!-- Price start -->
-                    <div class="sidebar-widget">
-                        <h3 class="sidebar-title">Price</h3>
-                        <div class="price-slider-amount">
-                            Range: <input type="text" id="amount" name="price" placeholder="Add Your Price" />
-                        </div>
-                        <div id="slider-range"></div>
-                    </div>
-                    <!-- Price end -->
-
-
+                    </div> --}}
                 </div>
-                <!-- sidebar end -->
-
                 <!-- top seller items start -->
                 <div class="row">
                     <div class="col-md-12 mt-40">
                         <!-- section title start -->
                         <div class="section-heading">
                             <h2> <img src="{{asset('themes/frontend/img/icon/icon_title_topseller.png')}}" alt="">
-                                top
-                                seller</h2>
+                                top seller</h2>
                         </div>
                         <!-- section title start -->
                         <!-- new arrival start -->
@@ -213,7 +186,8 @@
                 <!-- category options start -->
                 <div class="category-options mt-40">
                     <div class="category-title">
-                        <h2>fashion <span class="text-right">there are @{{products.length}} products</span></h2>
+                        <h2>SEARCH "@{{searchTerm}}"<span class="text-right">there are @{{searchedProducts.length}}
+                                products</span></h2>
                     </div>
                     <div class="category-bar">
                         <!-- tab menu start -->
@@ -252,7 +226,7 @@
                                 <div class="col-md-12">
                                     <div class="gird-items">
                                         <!-- single product item start -->
-                                        <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item">
+                                        <div v-bind:key="product.id" v-for="product in searchedProducts" class="single-product-item">
                                             <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                                 <img :src="product.image || '/img/logo.png'" />
 
@@ -267,21 +241,23 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                 </div> --}}
-                                                <h3 class="item-price"> @{{product.price}} 
+                                                <h3 class="item-price"> @{{product.price}}
                                                     {{-- <span class="old-price">$30.51</span> --}}
                                                 </h3>
                                                 <div class="actions">
-                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
+                                                    <a href="#" @click.prevent="addToCart(product)" class="single-action"
+                                                        data-toggle="modal" data-target="#confirm-modal">add to cart</a>
                                                 </div>
                                                 <div class="hover-content">
                                                     {{-- <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i>
                                                     </a>
                                                     <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
                                                     </a> --}}
-                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                        <i class="zmdi zmdi-search"></i> 
+                                                    <a href="#" @click.prevent="singleProductModal(product)" class="single-action"
+                                                        data-toggle="modal" data-target="#item-modal">
+                                                        <i class="zmdi zmdi-search"></i>
                                                     </a>
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -295,7 +271,7 @@
                                 <div class="col-md-12">
                                     <div class="list-category-items">
                                         <!-- single product item start -->
-                                        <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item floating">
+                                        <div v-bind:key="product.id" v-for="product in searchedProducts" class="single-product-item floating">
                                             <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                                 <img :src="product.image || '/img/logo.png'" />
                                                 <span class="sale"></span>
@@ -320,8 +296,9 @@
                                                     </a>
                                                     <a href="#" class="single-action"> <i class="zmdi zmdi-refresh-alt"></i>
                                                     </a> --}}
-                                                    {{-- <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">
-                                                        <i class="zmdi zmdi-search"></i> 
+                                                    {{-- <a href="#" @click.prevent="singleProductModal(product)" class="single-action"
+                                                        data-toggle="modal" data-target="#item-modal">
+                                                        <i class="zmdi zmdi-search"></i>
                                                     </a> --}}
                                                 </div>
                                                 <div class="stock">

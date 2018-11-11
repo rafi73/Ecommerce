@@ -1,8 +1,7 @@
 @extends('frontend')
 @section('content')
 
-@include('partials.breadcrumb')
-@section('navigation', 'Cart')
+@include('partials.breadcrumb', ['pageName' => 'Cart'])
 
     <!-- cart area start -->
     <div class="cart-area mt-40">

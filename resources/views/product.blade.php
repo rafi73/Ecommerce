@@ -1,8 +1,7 @@
 @extends('frontend')
 @section('content')
 
-@include('partials.breadcrumb')
-@section('navigation', 'Product')
+@include('partials.breadcrumb', ['pageName' => 'Product'])
 
 <!-- product details start -->
 <div class="mt-40">

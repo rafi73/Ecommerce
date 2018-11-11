@@ -1,8 +1,8 @@
 @extends('frontend')
 @section('content')
 
-@include('partials.breadcrumb')
-@section('navigation', 'Checkout')
+@include('partials.breadcrumb', ['pageName' => 'Contact'])
+
 <!-- checkout area start -->
 <div class="checkout-area mt-40">
     <div class="container">

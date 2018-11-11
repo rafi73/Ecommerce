@@ -1,8 +1,7 @@
 @extends('frontend')
 @section('content')
 
-@include('partials.breadcrumb')
-@section('navigation', 'Shop')
+@include('partials.breadcrumb', ['pageName' => 'category'])
 
 <!-- products area start -->
 <div class="pt-40">
@@ -145,7 +144,7 @@
                 <!-- category options start -->
                 <div class="category-options mt-40">
                     <div class="category-title">
-                        <h2>fashion <span class="text-right">there are @{{products.length}} products</span></h2>
+                        <h2>fashion <span class="text-right">there are @{{categoryWiseProducts.length}} products</span></h2>
                     </div>
                     <div class="category-bar">
                         <!-- tab menu start -->
@@ -227,7 +226,7 @@
                                 <div class="col-md-12">
                                     <div class="list-category-items">
                                         <!-- single product item start -->
-                                        <div v-bind:key="product.id" v-for="product in brand.products" class="single-product-item floating">
+                                        <div v-bind:key="product.id" v-for="product in categoryWiseProducts" class="single-product-item floating">
                                             <a href="#" @click.prevent="goToProduct(product)" class="item-img">
                                                 <img :src="product.image || '/img/logo.png'" />
                                                 <span class="sale"></span>

@@ -162,3 +162,6 @@ Route::get('frontend-category-wise-products/{id}', 'ProductController@getProduct
 // List category
 Route::get('frontend-sub-category-wise-products/{id}', 'ProductController@getProductsByCategory');
 
+// List category
+Route::get('frontend-search-products/{term}', 'ProductController@getSearchedProductFrontend');
+

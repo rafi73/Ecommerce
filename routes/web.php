@@ -46,6 +46,8 @@ Route::view('/site/category/{id}', 'category')->name('category');
 
 Route::view('/site/sub-category/{id}', 'subCategory')->name('sub-category');
 
+Route::view('/site/search/{term}', 'search')->name('search');
+
 Route::get('{any}', function () {
     return view('index');
 })->where('any', '.*');
