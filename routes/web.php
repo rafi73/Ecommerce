@@ -49,6 +49,7 @@ Route::view('/site/sub-category/{id}', 'subCategory')->name('sub-category');
 Route::view('/site/search/{term}', 'search')->name('search');
 
 Route::view('/site/authentication', 'authentication')->name('authentication');
+Route::view('/site/invoice/{id}', 'invoice')->name('invoice');
 
 Route::get('{any}', function () {
     return view('index');

@@ -38,6 +38,8 @@ class CustomerController extends Controller
         $customer->email= $request->input('email');
         $customer->password= bcrypt($request->input('password'));
         $customer->save();
+
+        return new CustomerResource($customer);
     }
 
 

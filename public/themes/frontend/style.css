@@ -3360,3 +3360,9 @@ form .single-color:nth-child(4) span:after {
 .modal.fade {
     z-index: 10000000 !important;
   }
+
+
+.invoice {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}

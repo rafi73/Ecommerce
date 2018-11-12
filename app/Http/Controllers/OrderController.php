@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrderDetail;
+use App\Http\Resources\OrderResource;
 
 class OrderController extends Controller
 {
@@ -49,7 +50,7 @@ class OrderController extends Controller
             $orderDetail->save();
         }
         
-        
+        return new OrderResource($order);
     }
 
 

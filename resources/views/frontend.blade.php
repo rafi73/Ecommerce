@@ -186,7 +186,9 @@
                     name: null
                 },
                 productWiseSpec: [],
-                
+                order: {
+                    customer: {}
+                }
 
             },
             created() {
@@ -223,6 +225,12 @@
                 else if (window.location.pathname.split('/')[2] == 'search') {
                     let term = window.location.pathname.split('/')[3]
                     this.searchProduct(term)
+                    this.searchTerm = term
+                }
+
+                else if (window.location.pathname.split('/')[2] == 'invoice') {
+                    let orderId = window.location.pathname.split('/')[3]
+                    this.getOrder(orderId)
                     this.searchTerm = term
                 }
 
@@ -758,6 +766,12 @@
                     url = url.replace(':id', subCategory.id)
                     document.location.href = url
                 },
+                goToInvoice(order) {
+                    console.log(order)
+                    let url = "{{ route('invoice', ':id') }}"
+                    url = url.replace(':id', order.id)
+                    document.location.href = url
+                },
                 addToCart(product) {
                     this.selectedProduct = product
                     if (localStorage.getItem("cart")) {
@@ -847,6 +861,17 @@
                     axios.get(`/api/frontend-brand/${id}`)
                         .then(function (response) {
                             ref.brand = response.data.data
+                            console.log(response)
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        })
+                },
+                getOrder(id) {
+                    let ref = this
+                    axios.get(`/api/frontend-order/${id}`)
+                        .then(function (response) {
+                            ref.order = response.data.data
                             console.log(response)
                         })
                         .catch(function (error) {
@@ -986,14 +1011,18 @@
                     console.log(this.register)
 
                     if(this.register.password !== this.register.confirmPassword){
-                        console.log('Password is not same')
+                        alert('Password and Confirm password are not same!')
                         return
                     }
                     axios.post('/api/customer-register', this.register)
                     .then(
                         (response) => {
                             console.log(response)
-                            document.location.href = "{{ route('home') }}"
+                            if(response){
+                                this.loggedInCustomer = response.data.data
+                                localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
+                                document.location.href = "{{ route('checkout') }}"
+                            }
                         }
                     )
                     .catch(
@@ -1015,6 +1044,8 @@
                                 localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
                                 document.location.href = "{{ route('checkout') }}"
                             }
+                            else    
+                                alert('Email or Password error!')
                         }   
                     )
                     .catch(
@@ -1038,11 +1069,11 @@
                     .then(
                         (response) => {
                             console.log(response)
-                            
+                            let order = response.data.data
                             alert('Order Placed successfully!')
-
                             this.cartProducts = []
                             localStorage.removeItem('cart')
+                            this.goToInvoice(order)
                         }   
                     )
                     .catch(
