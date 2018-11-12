@@ -7,7 +7,7 @@
 <div class="checkout-area mt-40">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <!-- client address start -->
                 <div class="client-address">
                     <!-- section title start -->
@@ -39,7 +39,39 @@
                 </div>
                 <!-- client address end -->
             </div>
-            <div class="col-md-6 sm-mt-40 xs-mt-40">
+            <div class="col-md-4">
+                <!-- client address start -->
+                <div class="client-address">
+                    <!-- section title start -->
+                    <div class="section-small-title">
+                        <h3>shipping details</h3>
+                    </div>
+                    <!-- section title start -->
+                    <!-- client address form -->
+                    <div class="client-address-form">
+                        <form action="#">
+                            <!-- input name -->
+                            <input type="text" placeholder="your name here">
+                            <!--input email address-->
+                            <input type="email" placeholder="your email address">
+                            <!-- input phone number -->
+                            <input type="text" placeholder="Phone number here">
+                            <!-- input company name -->
+                            <input type="text" placeholder="company name here">
+                            <!-- input country name -->
+                            <input type="text" placeholder="country">
+                            <!-- input state -->
+                            <input type="text" placeholder="state">
+                            <!-- input town/city -->
+                            <input type="text" placeholder="town/city">
+                            <!-- input your details address -->
+                            <textarea cols="3" rows="5" placeholder="Your address here"></textarea>
+                        </form>
+                    </div>
+                </div>
+                <!-- client address end -->
+            </div>
+            <div class="col-md-4 sm-mt-40 xs-mt-40">
                 <!-- total cart area start -->
                 <div class="cart-total">
                     <!-- section title start -->
@@ -57,8 +89,7 @@
                     <!-- vat cost -->
                     <p class="no-border">vat <span class="pull-right">$00.00</span> </p>
                     <!-- grand total -->
-                    <p class="total-price">grand total <span class="pull-right">@{{cartProducts.reduce((a, b) => +a +
-                            +b.price, 0)}}</span> </p>
+                    <p class="total-price">grand total <span class="pull-right">@{{totalPrice}}</span> </p>
                 </div>
                 <!-- total cart area end -->
                 <!-- payment method start -->
@@ -108,12 +139,12 @@
                 <!-- payment method start -->
                 <!-- shopping button start -->
                 <div class="shopping-button">
-                    <a href="#">place order</a>
+                    <a href="#" @click.prevent="submitOrder(cartProducts)">place order</a>
                 </div>
                 <!-- shopping button end -->
             </div>
         </div>
     </div>
-</div>
+</div> 
 <!-- checkout area end -->
 @endsection

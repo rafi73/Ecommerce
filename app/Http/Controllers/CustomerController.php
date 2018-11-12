@@ -86,13 +86,14 @@ class CustomerController extends Controller
 
         $customer = Customer::where('email', $email)->first();
 
+        if(!$customer)
+            return $customer;
+        
         // Check if sale password is correct
         if (Hash::check($password, $customer->password)) 
         {
             return new CustomerResource($customer);
-        }
-        
-        return null;   
+        } 
         
     }
 }

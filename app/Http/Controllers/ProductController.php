@@ -81,8 +81,11 @@ class ProductController extends Controller
         // Get Products
         $product = Product::findOrFail($id);
 
+        $productWiseSpec = ProductWiseSpecification::with('specification')->where("product_id", $id)->get();
+
+        return response()->json(['product' => $product, 'productWiseSpec' => $productWiseSpec]);
         // Return single Products as a resource
-        return new ProductResource($product);
+        //return new ProductResource($product);
     }
 
 

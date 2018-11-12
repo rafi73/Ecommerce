@@ -21,20 +21,25 @@
                                 <p>Reference: <span>@{{product.reference}}</span></p>
                                 <p>Condition: <span>@{{product.condition}}</span></p>
                             </div>
-                            <h3 class="item-price"> @{{product.price}} <span class="old-price">$30.51</span> </h3>
+                            <h3 class="item-price"> @{{product.price}} 
+                                {{-- <span class="old-price">$30.51</span>  --}}
+                            </h3>
                             <p class="product-descriptions">@{{product.description}}</p>
-                            <div class="cart-plus-minus">
+                            <div >
                                 <label>Quantity: </label>
-                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
+                                <input class="cart-plus-minus-box" v-model="product.quantity" type="text" name="a" >
+                                <div @click.prevent="product.quantity++" class="qtybutton">-</div>
+                                <div @click.prevent="product.quantity--" class="qtybutton">+</div>
                             </div>
+                            @{{product}}
                             <div class="actions">
-                                <a href="#" @click.prevent="addToCart(product)" class="single-action">add to cart</a>
+                                <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
                                 {{-- <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>
                                 <a href="#" class="single-action"> <i class="fa fa-print"></i> </a>
                                 <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a> --}}
                             </div>
                             <div class="stock">
-                                <p> 300 Items <span>In stock</span></p>
+                                {{-- <p> 300 Items <span>In stock</span></p> --}}
                             </div>
                             <div class="social-share">
                                 <a href="#" target="_blank"><i class="fa fa-twitter"></i> twitter</a>
@@ -48,46 +53,161 @@
                 </div>
             </div>
         </div>
-        
-                <div class="col-md-6">
-                    <h3>Pills left</h3>
-                    <!-- tabs left -->
-                    <div class="tabbable">
-                        <ul class="nav nav-pills nav-stacked col-md-3">
-                            <li><a href="#a" data-toggle="tab">One</a></li>
-                            <li class="active"><a href="#b" data-toggle="tab">Two</a></li>
-                            <li><a href="#c" data-toggle="tab">Twee</a></li>
-                        </ul>
-                        <div class="tab-content col-md-9">
-                            <div class="tab-pane active" id="a">Lorem ipsum dolor sit amet, charetra varius rci quis tortor imperdiet venenatis quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero.</div>
-                            <div class="tab-pane" id="b">Secondo sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. Aliquam in felis sit amet augue.</div>
-                            <div class="tab-pane" id="c">Thirdamuno, ipsum dolor sit amet, consectetur adipiscing elit. Duis elementum auctor accumsan. Duis pharetra
-                            varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae. </div>
+
+        {{-- <div class="col-md-6">
+            <h3>Pills left</h3>
+            <!-- tabs left -->
+            <div class="tabbable">
+                <ul class="nav nav-pills nav-stacked col-md-3">
+                    <li><a href="#a" data-toggle="tab">One</a></li>
+                    <li class="active"><a href="#b" data-toggle="tab">Two</a></li>
+                    <li><a href="#c" data-toggle="tab">Twee</a></li>
+                </ul>
+                <div class="tab-content col-md-9">
+                    <div class="tab-pane active" id="a">Lorem ipsum dolor sit amet, charetra varius rci quis tortor
+                        imperdiet venenatis quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                        condimentum vitae, gravida a libero.</div>
+                    <div class="tab-pane" id="b">Secondo sed ac orci quis tortor imperdiet venenatis. Duis elementum
+                        auctor accumsan. Aliquam in felis sit amet augue.</div>
+                    <div class="tab-pane" id="c">Thirdamuno, ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                        elementum auctor accumsan. Duis pharetra
+                        varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae.
+                    </div>
+                </div>
+            </div>
+            <!-- /tabs -->
+        </div>
+
+        <div class="col-md-6">
+            <h3>Pills right</h3>
+
+            <!-- tabs right -->
+            <div class="tabbable">
+                <ul class="nav nav-pills nav-stacked col-sm-3 col-sm-push-9">
+                    <li class="active"><a href="#d" data-toggle="tab">One</a></li>
+                    <li><a href="#e" data-toggle="tab">Two</a></li>
+                    <li><a href="#f" data-toggle="tab">Twee</a></li>
+                </ul>
+                <div class="tab-content col-sm-9  col-sm-pull-3">
+                    <div class="tab-pane active" id="d">Lorem ipsum dolor sit amet, rci quis tortor imperdiet
+                        venenatischaretra varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                        condimentum vitae, gravida a libero.</div>
+                    <div class="tab-pane" id="e">Secondo sed ac orci quis tortor imperdiet venenatis. Duis elementum
+                        auctor rci quis tortor imperdiet venenatis. Aliquam in felis sit amet augue.</div>
+                    <div class="tab-pane" id="d">Thirdamuno, ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                        pharetra varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum
+                        vitae. </div>
+                </div>
+            </div>
+            <!-- /tabs -->
+
+        </div> --}}
+
+        <div class="my-account-accordion">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fa fa-list-ol"></i>
+                                Data Sheet
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="account-title">
+                                        <div class="sidebar">
+                                            <!-- categories start -->
+                                                <a href="#" v-for="spec in productWiseSpec" class="blog-category">
+                                                    @{{spec.specification.name}} - @{{spec.description}}
+                                                </a>
+                                            <!-- categories end -->
+                                            
+                                        </div>
+                                        <!-- sidebar end -->
+                                    </div>
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- /tabs -->
                 </div>
-        
-                <div class="col-md-6">
-                    <h3>Pills right</h3>
-        
-                    <!-- tabs right -->
-                    <div class="tabbable">
-                        <ul class="nav nav-pills nav-stacked col-sm-3 col-sm-push-9">
-                            <li class="active"><a href="#d" data-toggle="tab">One</a></li>
-                            <li><a href="#e" data-toggle="tab">Two</a></li>
-                            <li><a href="#f" data-toggle="tab">Twee</a></li>
-                        </ul>
-                        <div class="tab-content col-sm-9  col-sm-pull-3">
-                            <div class="tab-pane active" id="d">Lorem ipsum dolor sit amet, rci quis tortor imperdiet venenatischaretra varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero.</div>
-                            <div class="tab-pane" id="e">Secondo sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor rci quis tortor imperdiet venenatis. Aliquam in felis sit amet augue.</div>
-                            <div class="tab-pane" id="d">Thirdamuno, ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae. </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fa fa-file-o"></i>
+                                More Info
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="account-title">
+                                        <h4>@{{product.more_info}}</h4>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- /tabs -->
-        
                 </div>
-        
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <i class="fa fa-building-o"></i>
+                                Whats inside box
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="my-address">
+                                        <p>@{{product.inside_box}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <i class="fa fa-user"></i>
+                               Reviews
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="delivery-details">
+                                    <form action="#">
+                                        <div class="list-style">
+                                            
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
         <hr>
 
         <!-- random product section heading start -->

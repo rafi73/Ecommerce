@@ -5,7 +5,7 @@
 			<v-app id="inspire">
 				<v-card>
 					<v-card-title class="grey lighten-4">
-						<h3 class="headline mb-0">{{ $t('sub_category') }}</h3>
+						<h3 class="headline mb-0">{{ $t('specification') }}</h3>
 						<v-spacer></v-spacer>
 						<v-text-field v-model="search" md4 append-icon="search" label="Search" single-line hide-details></v-text-field>
 						<v-btn @click.prevent="addNew()" slot="activator" color="primary" dark class="mb-2">{{ $t('new_item') }}</v-btn>
@@ -18,12 +18,12 @@
 									<v-container grid-list-md>
 										<v-layout wrap>
 											<v-flex xs12 sm12 md12>
-												<v-text-field v-validate="'required'" v-model="specification.name" :counter="10" :error-messages="errors.collect('name')" :label="`${$t('sub_category_name')}`" data-vv-name="name" required ></v-text-field>
+												<v-text-field v-validate="'required'" v-model="specification.name" :counter="10" :error-messages="errors.collect('name')" :label="`${$t('specification_name')}`" data-vv-name="name" required ></v-text-field>
 											</v-flex>
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-model="specification.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('sub_category_description')}`" data-vv-name="description" required ></v-textarea>
+												<v-textarea v-model="specification.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('specification_description')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
-											<v-checkbox :label="`${$t('sub_category_active')}: ${specification.active}`" ></v-checkbox>
+											<v-checkbox :label="`${$t('specification_active')}: ${specification.active}`" ></v-checkbox>
 										</v-layout>
 									</v-container>
 								</v-card-text>

@@ -184,17 +184,23 @@
                 },
                 loggedInCustomer: {
                     name: null
-                }
+                },
+                productWiseSpec: [],
+                
 
             },
             created() {
+                //localStorage.removeItem('customer')
                 console.log('Testing console. from Home')
                 this.getCartProducts()
-                this.getBrands()
                 this.getCategories()
                 this.getProducts()
 
-                if (window.location.pathname.split('/')[2] == 'product') {
+                if (window.location.pathname.split('/')[2] == 'home') {
+                    this.getBrands()
+                }
+
+                else if (window.location.pathname.split('/')[2] == 'product') {
                     let productId = window.location.pathname.split('/')[3]
                     this.getProduct(productId)
                 }
@@ -220,7 +226,11 @@
                     this.searchTerm = term
                 }
 
-                this.loggedInCustomer.name = localStorage.getItem('customer')
+                console.log('loggedInCustomer', localStorage.getItem('customer'))
+
+
+                this.loggedInCustomer =  localStorage.getItem('customer') ?  JSON.parse(localStorage.getItem('customer')) : {}
+                console.log('loggedInCustomer', this.loggedInCustomer)
 
             },
             mounted: function () {
@@ -808,6 +818,7 @@
                         .then(function (response) {
                             console.log(response)
                             ref.products = response.data.data
+                            
 
                             Vue.nextTick(function () {
                                 ref.installNewArrivalCarousel()
@@ -821,7 +832,10 @@
                     let ref = this
                     axios.get(`/api/frontend-product/${id}`)
                         .then(function (response) {
-                            ref.product = response.data.data
+                            ref.product = response.data.product
+                            ref.productWiseSpec = response.data.productWiseSpec
+
+                            ref.product.quantity = 1
                             console.log(response)
                         })
                         .catch(function (error) {
@@ -996,25 +1010,52 @@
                     .then(
                         (response) => {
                             console.log(response)
-                            //document.location.href = "{{ route('home') }}"\
                             if(response){
                                 this.loggedInCustomer = response.data.data
-                                localStorage.setItem('customer', this.loggedInCustomer.name)
-                                document.location.href = "{{ route('home') }}"
+                                localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
+                                document.location.href = "{{ route('checkout') }}"
                             }
-                               
                         }   
                     )
                     .catch(
                         (error) => {
                             console.log(error)
-                            
                         }
                     )
                 },
                 customerLogout(){
                     localStorage.removeItem('customer')
                     this.loggedInCustomer = {}
+                },
+                submitOrder(cartProducts){
+                    console.log(cartProducts)
+                    let order = {}
+                    order.details = cartProducts
+                    order.customer_id = this.loggedInCustomer.id
+                    order.total = this.totalPrice
+                    
+                    axios.post('/api/place-order', order)
+                    .then(
+                        (response) => {
+                            console.log(response)
+                            
+                            alert('Order Placed successfully!')
+
+                            this.cartProducts = []
+                            localStorage.removeItem('cart')
+                        }   
+                    )
+                    .catch(
+                        (error) => {
+                            console.log(error)
+                        }
+                    )
+                },
+                goToCheckout(){
+                    if(localStorage.getItem('customer'))
+                        document.location.href = "{{ route('checkout') }}"
+                    else    
+                        document.location.href = "{{ route('authentication') }}"
                 }
             },
             computed: {

@@ -312,7 +312,7 @@
 				})
 			},
 			addNew(){
-				this.category = {}
+				this.category = { active: true}
 				this.imgInput = ``
 				this.dialogInput = true
 				this.edit = false

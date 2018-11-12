@@ -168,3 +168,5 @@ Route::get('frontend-search-products/{term}', 'ProductController@getSearchedProd
 Route::post('customer-register', 'CustomerController@store');
 
 Route::post('customer-login', 'CustomerController@login');
+
+Route::post('place-order', 'OrderController@store');
