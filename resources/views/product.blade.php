@@ -31,7 +31,6 @@
                                 <div @click.prevent="product.quantity++" class="qtybutton">-</div>
                                 <div @click.prevent="product.quantity--" class="qtybutton">+</div>
                             </div>
-                            @{{product}}
                             <div class="actions">
                                 <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
                                 {{-- <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>

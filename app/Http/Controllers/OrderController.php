@@ -63,7 +63,7 @@ class OrderController extends Controller
     public function show($id)
     {
         // Get Orders
-        $order = Order::findOrFail($id);
+        $order = Order::with(array('orderDetails', 'orderDetails.product'))->findOrFail($id);
 
         // Return single Orders as a resource
         return new OrderResource($order);
@@ -84,28 +84,5 @@ class OrderController extends Controller
         if($order->delete()) {
             return new OrderResource($order);
         }    
-    }
-
-    /**
-     * Display the specified resource.
-     *$
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function login(Request $request)
-    {
-        $email = $request->input('email');
-        $password = $request->input('password');
-
-        $order = Order::where('email', $email)->first();
-
-        // Check if sale password is correct
-        if (Hash::check($password, $order->password)) 
-        {
-            return new OrderResource($order);
-        }
-        
-        return null;   
-        
     }
 }

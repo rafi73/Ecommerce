@@ -1,7 +1,7 @@
 @extends('frontend')
 @section('content')
 
-@include('partials.breadcrumb', ['pageName' => 'About'])
+@include('partials.breadcrumb', ['pageName' => 'Invoice'])
 
 <!-- checkout area start -->
 <div class="invoice container">
@@ -55,12 +55,12 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="orderDetail in order.orderDetails">
-                                        <td>@{{orderDetail.product.id}}</td>
-                                        <td>Software</td>
-                                        <td>LTS Versions</td>
-                                        <td>21</td>
-                                        <td>$321</td>
-                                        <td>$3452</td>
+                                        <td>@{{orderDetail.product_id}}</td>
+                                        <td>@{{orderDetail.product.name}}</td>
+                                        <td>@{{orderDetail.product.description}}</td>
+                                        <td>@{{orderDetail.quantity}}</td>
+                                        <td>@{{orderDetail.product.price}}</td>
+                                        <td>@{{parseFloat(orderDetail.product.price * orderDetail.quantity).toFixed(2)}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -70,17 +70,17 @@
                     <div class="d-flex flex-row-reverse bg-dark text-white p-4">
                         <div class="py-3 px-5 text-right">
                             <div class="mb-2">Grand Total</div>
-                            <div class="h2 font-weight-light">$234,234</div>
+                        <div class="h2 font-weight-light">@{{order.total}}</div>
                         </div>
 
                         <div class="py-3 px-5 text-right">
                             <div class="mb-2">Discount</div>
-                            <div class="h2 font-weight-light">10%</div>
+                            <div class="h2 font-weight-light">0%</div>
                         </div>
 
                         <div class="py-3 px-5 text-right">
                             <div class="mb-2">Sub - Total amount</div>
-                            <div class="h2 font-weight-light">$32,432</div>
+                            <div class="h2 font-weight-light">@{{order.total}}</div>
                         </div>
                     </div>
                 </div>

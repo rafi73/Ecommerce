@@ -17,6 +17,7 @@ class OrderResource extends JsonResource
         return [
             'id' => $this->id,
             'customer' => $this->customer,
+            'total' => $this->total,
             'created_at' => $this->created_at->format('Y-m-d H:i:s A'),
             'orderDetails' => $this->orderDetails
         ];

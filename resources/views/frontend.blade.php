@@ -231,7 +231,6 @@
                 else if (window.location.pathname.split('/')[2] == 'invoice') {
                     let orderId = window.location.pathname.split('/')[3]
                     this.getOrder(orderId)
-                    this.searchTerm = term
                 }
 
                 console.log('loggedInCustomer', localStorage.getItem('customer'))
