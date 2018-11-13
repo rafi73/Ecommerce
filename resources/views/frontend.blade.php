@@ -1032,8 +1032,7 @@
                     )
                 },
                 customerLogin(){
-                    console.log(this.login)
-
+                    let ref = this
                     axios.post('/api/customer-login', this.login)
                     .then(
                         (response) => {
@@ -1041,7 +1040,11 @@
                             if(response){
                                 this.loggedInCustomer = response.data.data
                                 localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
-                                document.location.href = "{{ route('checkout') }}"
+
+                                if(ref.cartProducts.length)
+                                    document.location.href = "{{ route('checkout') }}"
+                                else    
+                                    document.location.href = "{{ route('home') }}"
                             }
                             else    
                                 alert('Email or Password error!')

@@ -1,7 +1,6 @@
 @extends('frontend')
 @section('content')
 
-@include('partials.breadcrumb', ['pageName' => 'Invoice'])
 
 <!-- checkout area start -->
 <div class="invoice container">
@@ -15,7 +14,7 @@
                         </div>
 
                         <div class="col-md-6 text-right">
-                        <p class="font-weight-bold mb-1">Invoice #@{{order.id}}</p>
+                            <p class="font-weight-bold mb-1">Invoice #@{{order.id}}</p>
                             <p class="text-muted">@{{order.created_at}}</p>
                         </div>
                     </div>
@@ -88,7 +87,7 @@
         </div>
     </div>
 
-    <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://www.clicknet.com.my/en/">clicknet.com.my/en/</a></div>
+    <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://www.clicknet.com.my/en/">clicknet.com.my</a></div>
 
 </div>
 <!-- checkout area end -->

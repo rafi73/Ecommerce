@@ -106,7 +106,11 @@
 				)
 				.catch(
 					(error) => {
+						this.busy = false
 						console.log(error)
+						if(error.response.status == 401){
+							alert('Username or Password error!')
+						}
 					}
 				)
             },

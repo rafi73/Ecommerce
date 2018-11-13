@@ -163,7 +163,6 @@
                 </div>
                 <!-- electronics items end -->
             </div>
-
         </div>
 
         <!-- category section heading start -->
@@ -193,19 +192,17 @@
                                 <a href="#"><img :src="category.image || '/img/logo.png'" /></a>
                             </div>
                             <div class="box-content">
-                                <a href="#">@{{category.name}}</a>
+                                <a href="#" @click.prevent="goToCategory(category)">@{{category.name}}</a>
                                 <ul class="item-list">
-                                    <li><a href="shop.html" target="_blank">All-in-One Computers</a></li>
-                                    <li><a href="shop.html" target="_blank">towers only</a></li>
-                                    <li><a href="shop.html" target="_blank">Refurbished Desktops</a></li>
-                                    <li><a href="shop.html" target="_blank">Gaming Desktops</a></li>
+                                    <li v-for="subCategory in category.sub_categories.slice(0,4)">
+                                        <a href="#" @click.prevent="goToSubCategory(subCategory)" target="_blank">@{{subCategory.name}}</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <!-- single box item end -->
                     </div>
                     <!-- box item end -->
-
                 </div>
             </div>
         </div>

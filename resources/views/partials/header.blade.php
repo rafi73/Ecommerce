@@ -1,5 +1,5 @@
- <!-- header start -->
- <header>
+<!-- header start -->
+<header>
     <!-- header top start -->
     <div class="header-top-area">
         <div class="container container-header">
@@ -21,10 +21,10 @@
                                 {{-- <li><a href="#">languages <span>English <i class="fa fa-angle-down"></i>
                                         </span></a>
                                     <ul>
-                                        <li><a href="#"><img src="{{asset('themes/frontend/img/languages/1.jpg')}}"
-                                                    alt=""> English </a></li>
-                                        <li><a href="#"><img src="{{asset('themes/frontend/img/languages/2.jpg')}}"
-                                                    alt=""> Arab </a></li>
+                                        <li><a href="#"><img src="{{asset('themes/frontend/img/languages/1.jpg')}}" alt="">
+                                                English </a></li>
+                                        <li><a href="#"><img src="{{asset('themes/frontend/img/languages/2.jpg')}}" alt="">
+                                                Arab </a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">currenct <span>USD <i class="fa fa-angle-down"></i> </span></a>
@@ -34,24 +34,24 @@
                                     </ul>
                                 </li> --}}
                                 <li v-if="loggedInCustomer.name">
-                                    <a href="#"> 
-                                        <span > @{{loggedInCustomer.name}}
+                                    <a href="#">
+                                        <span> @{{loggedInCustomer.name}}
                                         </span>
                                     </a>
                                 </li>
                                 <li v-if="loggedInCustomer.name">
-                                    <a href="#" @click.prevent="customerLogout()"> 
-                                        <span> Logout 
+                                    <a href="#" @click.prevent="customerLogout()">
+                                        <span> Logout
                                         </span>
                                     </a>
                                 </li>
                                 <li v-else>
-                                        <a href="{{ URL::route('authentication') }}" > 
-                                            <span> Login 
-                                            </span>
-                                        </a>
-                                    </li>
-                               
+                                    <a href="{{ URL::route('authentication') }}">
+                                        <span> Login
+                                        </span>
+                                    </a>
+                                </li>
+
                                 {{-- <li><a href="#">My Account <i class="fa fa-angle-down"></i> </a>
                                     <ul>
                                         <li><a href="#">my account</a></li>
@@ -86,7 +86,7 @@
                                 <div class="header-search">
                                     <form action="#" method="GET">
                                         <input type="text" v-model="searchTerm" @keyup.enter.native="goToSearch(searchTerm)" placeholder="Search entire store here ...">
-                                       
+
                                         <button @click.prevent="goToSearch(searchTerm)" type="submit">
                                             <i class="zmdi zmdi-search"></i>
                                         </button>
@@ -99,17 +99,15 @@
                             <!-- total cart start -->
                             <div class="total-cart">
                                 <div class="cart-button">
-                                    <a href="#"> 
-                                        <i class="zmdi zmdi-shopping-cart"></i> 
-                                        <strong> MY CART </strong> 
-                                    <div  class="cart-quantity">@{{cartProducts.length}}</div>
+                                    <a href="#">
+                                        <i class="zmdi zmdi-shopping-cart"></i>
+                                        <strong> MY CART </strong>
+                                        <div class="cart-quantity">@{{cartProducts.length}}</div>
                                         <span class="price"></span>
-                                        
                                         @{{totalPrice}}
-
                                     </a>
                                 </div>
-                                <div class="cart-item">
+                                <div v-if="cartProducts.length" class="cart-item">
                                     <div v-bind:key="product.id" v-for="product in cartProducts" class="single-item">
                                         <div class="item-img">
                                             <a href="#" @click.prevent="goToProduct(product)">
@@ -159,15 +157,15 @@
                         </div>
                         <div class="catagory-list-menu hidden-menu">
                             <ul>
-                                <li v-bind:key="category.id" v-for="category in categories" v-bind:class="category.sub_categories.length ? 'arrow': ''"> 
-                                    <a href="#" @click.prevent="goToCategory(category)"> 
-                                        {{-- <img src="{{asset('themes/frontend/img/menu-icon/10.jpg')}}" alt="">  --}}
+                                <li v-bind:key="category.id" v-for="category in categories" v-bind:class="category.sub_categories.length ? 'arrow': ''">
+                                    <a href="#" @click.prevent="goToCategory(category)">
+                                        {{-- <img src="{{asset('themes/frontend/img/menu-icon/10.jpg')}}" alt=""> --}}
                                         @{{category.name}}
                                     </a>
-                                     <!-- category sub menu start -->
-                                     <ul v-if="category.sub_categories.length" class="c-sub-menu">
-                                        <li v-if="subcategory" v-bind:key="subcategory.id" v-for="subcategory in category.sub_categories"> 
-                                            <a href="#" @click.prevent="goToSubCategory(subcategory)">@{{subcategory.name}}</a> 
+                                    <!-- category sub menu start -->
+                                    <ul v-if="category.sub_categories.length" class="c-sub-menu">
+                                        <li v-if="subcategory" v-bind:key="subcategory.id" v-for="subcategory in category.sub_categories">
+                                            <a href="#" @click.prevent="goToSubCategory(subcategory)">@{{subcategory.name}}</a>
                                         </li>
                                     </ul>
                                     <!-- category sub menu end -->
@@ -183,7 +181,7 @@
                             <li><a href="{{ URL::route('home') }}">Home</a></li>
                             <li><a href="{{ URL::route('about') }}">About Us</a></li>
                             <li><a href="{{ URL::route('contact') }}">Contact</a></li>
-                            
+
                         </ul>
                     </div>
                     <div id="mobileMenu"></div>

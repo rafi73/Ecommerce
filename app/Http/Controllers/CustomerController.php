@@ -35,7 +35,7 @@ class CustomerController extends Controller
         $customer = new Customer;
 
         $customer->name= $request->input('name');
-        $customer->email= $request->input('email');
+        $customer->email= strtolower($request->input('email'));
         $customer->password= bcrypt($request->input('password'));
         $customer->save();
 
