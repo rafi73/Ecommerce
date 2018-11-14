@@ -49,7 +49,14 @@ Route::view('/site/sub-category/{id}', 'subCategory')->name('sub-category');
 Route::view('/site/search/{term}', 'search')->name('search');
 
 Route::view('/site/authentication', 'authentication')->name('authentication');
+
 Route::view('/site/invoice/{id}', 'invoice')->name('invoice');
+
+Route::view('/site/dealer', 'dealer')->name('dealer');
+
+Route::view('/site/quotation', 'quotation')->name('quotation');
+
+Route::view('/site/pricelist', 'pricelist')->name('pricelist');
 
 Route::get('{any}', function () {
     return view('index');

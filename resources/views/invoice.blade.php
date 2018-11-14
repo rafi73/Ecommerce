@@ -10,7 +10,9 @@
                 <div class="card-body p-0">
                     <div class="row p-5">
                         <div class="col-md-6">
-                            <a href="{{ URL::route('home') }}"> <img src="{{asset('themes/frontend/img/logo.jpg')}}" alt=""></a>
+                            <a href="{{ URL::route('home') }}"> 
+                                <img src="{{asset('themes/frontend/img/logo.png')}}" alt="" class="logo">
+                            </a>
                         </div>
 
                         <div class="col-md-6 text-right">

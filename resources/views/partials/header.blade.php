@@ -75,7 +75,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12">
                     <!-- logo start -->
-                    <a href="{{ URL::route('home') }}"> <img src="{{asset('themes/frontend/img/logo.jpg')}}" alt=""></a>
+                    <a href="{{ URL::route('home') }}"> <img src="{{asset('themes/frontend/img/logo.png')}}" alt="" class="logo"></a>
                     <!-- logo end -->
                 </div>
                 <div class="col-md-9 col-sm-12">
@@ -180,8 +180,10 @@
                         <ul>
                             <li><a href="{{ URL::route('home') }}">Home</a></li>
                             <li><a href="{{ URL::route('about') }}">About Us</a></li>
+                            <li><a href="{{ URL::route('dealer') }}">Become a dealer</a></li>
+                            <li><a href="{{ URL::route('quotation') }}">Quotation</a></li>
+                            <li><a href="{{ URL::route('pricelist') }}">Pricelist</a></li>
                             <li><a href="{{ URL::route('contact') }}">Contact</a></li>
-
                         </ul>
                     </div>
                     <div id="mobileMenu"></div>

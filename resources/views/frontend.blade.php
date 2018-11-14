@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- favicon -->
     <link rel="shortcut icon" href="../images/favicon.ico">
-    <title>RMS</title>
+    <title>Clicknet</title>
 
 
     @section('css')
