@@ -11024,4 +11024,8 @@ a:hover {
 .multiselect__option--highlight {
   background: #1976d2 !important;
 }
+.is-danger {
+  color: #ff6b6b;
+  font-size: 12px;
+}
 /*# sourceMappingURL=resources/assets/stylus/app.css.map */

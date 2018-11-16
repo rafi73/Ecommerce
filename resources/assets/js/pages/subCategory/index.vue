@@ -18,10 +18,20 @@
 									<v-container grid-list-md>
 										<v-layout wrap>
 											<v-flex xs12 sm12 md12>
-												<multiselect v-model="selectedCategory" :options="categories" @select="onSelectCategory" track-by="id" label="name"
+												<!-- <multiselect v-model="selectedCategory" :class="{ 'is-danger': !selectedCategory }" :options="categories" @select="onSelectCategory" track-by="id" label="name"
 													placeholder="Select Category" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
 													data-vv-as="category">
+												</multiselect> -->
+												 <multiselect 
+													data-vv-name="category"
+													v-model="selectedCategory"
+													track-by="id"
+													label="name"
+													:options="categories"
+													@select="onSelectCategory"
+													v-validate="'required'">
 												</multiselect>
+												<span class="v-messages error--text" v-show="errors.has('category')">{{ errors.first('category') }}</span>   
 											</v-flex>
 											<v-flex xs12 sm12 md12>
 												<v-text-field v-validate="'required'" v-model="subCategory.name" :counter="10" :error-messages="errors.collect('name')" :label="`${$t('sub_category_name')}`" data-vv-name="name" required ></v-text-field>
@@ -34,7 +44,7 @@
 												<v-text-field :label="`${$t('sub_category_image')}`" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
 												<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked">
 											</v-flex>
-											<v-checkbox :label="`${$t('sub_category_active')}: ${subCategory.active}`" ></v-checkbox>
+											<v-checkbox :label="`${$t('sub_category_active')}: ${subCategory.active}`" v-model="subCategory.active"></v-checkbox>
 										</v-layout>
 									</v-container>
 								</v-card-text>
@@ -90,7 +100,9 @@
 					</v-btn>
 				</v-card-actions>
 			</v-card>
+			
 		</v-dialog>
+		{{subCategory}}
 	</v-layout>
 </template>
 

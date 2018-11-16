@@ -18,7 +18,7 @@ class SubCategoryController extends Controller
     public function index()
     {
         // Get Categorys
-        $subCategories = SubCategory::orderBy('created_at', 'desc')->Where('active', 1)->paginate(10);
+        $subCategories = SubCategory::orderBy('created_at', 'desc')->paginate(10);
 
         // Return collection of Categorys as a resource
         return SubCategoryResource::collection($subCategories);
