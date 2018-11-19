@@ -135,6 +135,10 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::put('product', 'ProductController@store');
     // Delete product
     Route::delete('product/{id}', 'ProductController@destroy');
+    // List group-information with parameters
+    Route::post('price-list-file', 'PriceListController@storeUploadData');
+
+    Route::post('orders', 'OrderController@index');
 });
 
 Route::post('register', 'AuthController@register');
@@ -173,3 +177,4 @@ Route::post('place-order', 'OrderController@store');
 
 // List single product
 Route::get('frontend-order/{id}', 'OrderController@show');
+

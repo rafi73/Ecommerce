@@ -85,6 +85,20 @@
 							path: '/product' 
 						} 
 					},
+					{ 
+						title: 'Price List', 
+						icon: 'category', 
+						route: { 
+							path: '/price-list' 
+						} 
+					},
+					{ 
+						title: 'Orders', 
+						icon: 'category', 
+						route: { 
+							path: '/orders' 
+						} 
+					},
 				]
 			}
 		}

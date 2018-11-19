@@ -102,7 +102,6 @@
 			</v-card>
 			
 		</v-dialog>
-		{{subCategory}}
 	</v-layout>
 </template>
 

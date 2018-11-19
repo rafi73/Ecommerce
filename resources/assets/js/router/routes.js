@@ -74,6 +74,16 @@ export default ({ authGuard, guestGuard }) => [
 			name: 'product',
 			component: require('~/pages/product/index.vue')
 		},
+		{
+			path: '/price-list',
+			name: 'price-list',
+			component: require('~/pages/priceList/index.vue')
+		},
+		{
+			path: '/orders',
+			name: 'orders',
+			component: require('~/pages/orders/index.vue')
+		},
 	]),
 
 	// Guest routes.

@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         // Get Orders
-        $orders = Order::orderBy('created_at', 'desc')->Where('active', 1)->paginate(10);
+        $orders = Order::with('orderDetails')->orderBy('created_at', 'desc')->paginate(10);
 
         // Return collection of Orders as a resource
         return OrderResource::collection($orders);
@@ -33,14 +33,12 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $order = new Order;
-
         $order->customer_id= $request->input('customer_id');
         $order->discount= 0;
         $order->total= $request->input('total');
         $order->save();
 
         $orderDetails = $request->input('details');
-
         foreach ($orderDetails as $key => $value) 
         {
             $orderDetail = new OrderDetail;

@@ -32,7 +32,7 @@
   "password_updated": "Your password has been updated!",
   "new_password": "New Password",
   "password_length_hint": "At least 8 characters",
-  "nav_menu_title": "Clicknet Technology",
+  "nav_menu_title": "",
   "new_item": "New Item",
   "delete_confirm_title": "Are you sure want to delete this item?",
   "delete_confirm_text": "If you preceed, we not be able to recover this item!",
@@ -73,5 +73,8 @@
   "product_discount_price": "Discount Price",
   "product_more_info": "More Info",
   "product_inside_box": "Inside Box",
-  "product_active": "Active"
+  "product_active": "Active",
+
+  "price_list": "Price List",
+  "orders": "Orders"
 }
