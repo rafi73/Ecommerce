@@ -178,3 +178,8 @@ Route::post('place-order', 'OrderController@store');
 // List single product
 Route::get('frontend-order/{id}', 'OrderController@show');
 
+
+Route::post('dealer-register', 'CustomerController@registerDealer');
+
+Route::post('dealer-login', 'CustomerController@loginDealer');
+

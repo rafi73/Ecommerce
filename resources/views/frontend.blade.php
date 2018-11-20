@@ -188,7 +188,8 @@
                 productWiseSpec: [],
                 order: {
                     customer: {}
-                }
+                },
+                dealerAuth: false
 
             },
             created() {
@@ -1089,7 +1090,54 @@
                         document.location.href = "{{ route('checkout') }}"
                     else    
                         document.location.href = "{{ route('authentication') }}"
-                }
+                },
+                dealerRegistration(){
+                    console.log(this.register)
+
+                    if(this.register.password !== this.register.confirmPassword){
+                        alert('Password and Confirm password are not same!')
+                        return
+                    }
+                    axios.post('/api/dealer-register', this.register)
+                    .then(
+                        (response) => {
+                            console.log(response)
+                            if(response){
+                                this.loggedInCustomer = response.data.data
+                                localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
+                                //document.location.href = "{{ route('checkout') }}"
+                            }
+                        }
+                    )
+                    .catch(
+                        (error) => {
+                            console.log(error)
+                            
+                        }
+                    )
+                },
+                dealerLogin(){
+                    let ref = this
+                    axios.post('/api/dealer-login', this.login)
+                    .then(
+                        (response) => {
+                            console.log(response)
+                            if(response){
+                                //this.loggedInCustomer = response.data.data
+                                //localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
+
+                                this.dealerAuth = true
+                            }
+                            else    
+                                alert('Email or Password error!')
+                        }   
+                    )
+                    .catch(
+                        (error) => {
+                            console.log(error)
+                        }
+                    )
+                },
             },
             computed: {
                 totalPrice() {

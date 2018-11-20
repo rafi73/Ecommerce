@@ -37,6 +37,7 @@ class CustomerController extends Controller
         $customer->name= $request->input('name');
         $customer->email= strtolower($request->input('email'));
         $customer->password= bcrypt($request->input('password'));
+        $customer->is_dealer = false;
         $customer->save();
 
         return new CustomerResource($customer);
@@ -89,6 +90,49 @@ class CustomerController extends Controller
         $customer = Customer::where('email', $email)->first();
 
         if(!$customer)
+            return $customer;
+        
+        // Check if sale password is correct
+        if (Hash::check($password, $customer->password)) 
+        {
+            return new CustomerResource($customer);
+        } 
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function registerDealer(Request $request)
+    {
+        $customer = new Customer;
+
+        $customer->name= $request->input('name');
+        $customer->email= strtolower($request->input('email'));
+        $customer->password= bcrypt($request->input('password'));
+        $customer->is_dealer = true;
+        $customer->save();
+
+        return new CustomerResource($customer);
+    }
+
+    /**
+     * Display the specified resource.
+     *$
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function loginDealer(Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $customer = Customer::where('email', $email)->first();
+
+        if(!$customer || $customer->is_dealer == 1)
             return $customer;
         
         // Check if sale password is correct
