@@ -23,7 +23,7 @@
 											<v-flex xs12 sm12 md12>
 												<v-textarea v-model="specification.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('specification_description')}`" data-vv-name="description" required ></v-textarea>
 											</v-flex>
-											<v-checkbox :label="`${$t('specification_active')}: ${specification.active}`" ></v-checkbox>
+											<v-checkbox :label="`${$t('specification_active')}: ${specification.active}`" v-model="specification.active" ></v-checkbox>
 										</v-layout>
 									</v-container>
 								</v-card-text>

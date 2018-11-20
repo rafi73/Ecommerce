@@ -16,7 +16,7 @@ class SpecificationController extends Controller
     public function index()
     {
         // Get Specifications
-        $specifications = Specification::orderBy('created_at', 'desc')->Where('active', 1)->paginate(10);
+        $specifications = Specification::orderBy('created_at', 'desc')->paginate(10);
 
         // Return collection of Specifications as a resource
         return SpecificationResource::collection($specifications);

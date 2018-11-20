@@ -85,7 +85,7 @@
 												:error-messages="errors.collect('name')" :label="`${specification.specification.name}`" required></v-text-field>
 											</v-flex>
 
-											<v-checkbox :label="`${$t('product_active')}: ${product.active}`" ></v-checkbox>
+											<v-checkbox :label="`${$t('product_active')}: ${product.active}`" v-model="product.active" ></v-checkbox>
 										</v-layout>
 									</v-container>
 								</v-card-text>

@@ -36,7 +36,7 @@
 												<input type="file" style="display: none" ref="banner" accept="image/*" @change="onFilePickedBanner">
 											</v-flex>
 											
-											<v-checkbox :label="`${$t('brand_active')}: ${brand.active}`" ></v-checkbox>
+											<v-checkbox :label="`${$t('brand_active')}: ${brand.active}`" v-model="brand.active" ></v-checkbox>
 										</v-layout>
 									</v-container>
 								</v-card-text>

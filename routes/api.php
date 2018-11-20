@@ -138,7 +138,7 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     // List group-information with parameters
     Route::post('price-list-file', 'PriceListController@storeUploadData');
 
-    Route::post('orders', 'OrderController@index');
+    Route::get('orders', 'OrderController@index');
 });
 
 Route::post('register', 'AuthController@register');

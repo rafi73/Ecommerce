@@ -16,7 +16,7 @@ class BrandController extends Controller
     public function index()
     {
         // Get Brands
-        $brands = Brand::orderBy('created_at', 'desc')->Where('active', 1)->paginate(10);
+        $brands = Brand::orderBy('created_at', 'desc')->paginate(10);
 
         // Return collection of Brands as a resource
         return BrandResource::collection($brands);

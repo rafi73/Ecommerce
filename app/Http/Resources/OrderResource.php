@@ -19,7 +19,10 @@ class OrderResource extends JsonResource
             'customer' => $this->customer,
             'total' => $this->total,
             'created_at' => $this->created_at->format('Y-m-d H:i:s A'),
-            'orderDetails' => $this->orderDetails
+            'orderDetails' => $this->orderDetails,
+            'customer_name' => $this->customer->name,
+            'customer_email' => $this->customer->email,
+            
         ];
     }
     public function with($request) {

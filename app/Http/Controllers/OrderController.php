@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         // Get Orders
-        $orders = Order::with('orderDetails')->orderBy('created_at', 'desc')->paginate(10);
+        $orders = Order::with(['orderDetails', 'orderDetails.product'])->orderBy('created_at', 'desc')->paginate(10);
 
         // Return collection of Orders as a resource
         return OrderResource::collection($orders);

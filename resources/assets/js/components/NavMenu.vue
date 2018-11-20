@@ -36,13 +36,13 @@
 							name: 'home' 
 						} 
 					},
-					{ 
-						title: 'Account', 
-						icon: 'account_box', 
-						route: { 
-							name: 'settings.profile' 
-						} 
-					},
+					// { 
+					// 	title: 'Account', 
+					// 	icon: 'account_box', 
+					// 	route: { 
+					// 		name: 'settings.profile' 
+					// 	} 
+					// },
 					{ 
 						title: 'Category', 
 						icon: 'category', 
