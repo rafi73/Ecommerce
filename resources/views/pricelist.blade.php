@@ -38,9 +38,13 @@
             </div>
         </div>
         <div v-else>
-            <p>Logged in</p>
+            <div class="authentication">
+                <div class="border-title">
+                    <h3>Download Price List</h3>
+                </div>
+                <button type="submit" @click.prevent="downloadPriceList()">Download</button>
+            </div>
         </div>
-        @{{dealerAuth}}
     </div>
 </div>
 <!-- authentication content end -->

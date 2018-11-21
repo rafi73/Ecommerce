@@ -92,9 +92,9 @@
 </template>
 
 <script>
-	import Profile from "~/pages/settings/profile";
-	import Password from "~/pages/settings/password";
-	import Form from "vform";
+	import Profile from "~/pages/settings/profile"
+	import Password from "~/pages/settings/password"
+	import Form from "vform"
 	import { mapGetters } from "vuex"
 	import Multiselect from 'vue-multiselect'
 
@@ -172,40 +172,40 @@
 		},
 		computed: {
 			formTitle() {
-				return this.editedIndex === -1 ? "New Item" : "Edit Item";
+				return this.editedIndex === -1 ? "New Item" : "Edit Item"
 			}
 		},
 		watch: {
 			dialog(val) {
-				val || this.close();
+				val || this.close()
 			}
 		},
 		created() {
-			//this.initialize();
+			//this.initialize()
 			this.fetchAll()
 			this.fetchCategories()
 		},
 		methods: {
 			async update() {
-				if (await this.formHasErrors()) return;
+				if (await this.formHasErrors()) return
 
-				this.$emit("busy", true);
+				this.$emit("busy", true)
 
-				const { data } = await this.form.patch("/api/settings/profile");
+				const { data } = await this.form.patch("/api/settings/profile")
 
-				await this.$store.dispatch("updateUser", { user: data });
-				this.$emit("busy", false);
+				await this.$store.dispatch("updateUser", { user: data })
+				this.$emit("busy", false)
 
 				this.$store.dispatch("responseMessage", {
 					type: "success",
 					text: this.$t("info_updated")
-				});
+				})
 			},
 			pickLogo() {
-				this.$refs.logo.click();
+				this.$refs.logo.click()
 			},
 			pickBanner() {
-				this.$refs.banner.click();
+				this.$refs.banner.click()
 			},
 			editItem(item) {
 				this.brand = Object.assign({}, item)
@@ -277,45 +277,45 @@
 				
 			},
 			onLogoPicked(e) {
-				const files = e.target.files;
+				const files = e.target.files
 				if (files[0] !== undefined) {
-					this.logo = files[0].name;
+					this.logo = files[0].name
 					if (this.logo.lastIndexOf(".") <= 0) {
-						return;
+						return
 					}
-					const fr = new FileReader();
-					fr.readAsDataURL(files[0]);
+					const fr = new FileReader()
+					fr.readAsDataURL(files[0])
 					fr.addEventListener("load", () => {
 						this.logo.imgInput = fr.result
 						this.logo.imageFile = files[0] // this is an image file that can be sent to server...
 						this.brand.logo = this.logo.imgInput
 						//console.log(this.logo.imgInput, this.logo.imageFile)
-					});
+					})
 				} else {
-					this.logo = "";
-					this.logo.imageFile = "";
-					this.logo.imgInput = "";
+					this.logo = ""
+					this.logo.imageFile = ""
+					this.logo.imgInput = ""
 				}
 			},
 			onBannerPicked(e) {
-				const files = e.target.files;
+				const files = e.target.files
 				if (files[0] !== undefined) {
-					this.logo = files[0].name;
+					this.logo = files[0].name
 					if (this.logo.lastIndexOf(".") <= 0) {
-						return;
+						return
 					}
-					const fr = new FileReader();
-					fr.readAsDataURL(files[0]);
+					const fr = new FileReader()
+					fr.readAsDataURL(files[0])
 					fr.addEventListener("load", () => {
 						this.logo.imgInput = fr.result
 						this.logo.imageFile = files[0] // this is an image file that can be sent to server...
 						this.brand.banner = this.logo.imgInput
 						//console.log(this.logo.imgInput, this.logo.imageFile)
-					});
+					})
 				} else {
-					this.logo = "";
-					this.logo.imageFile = "";
-					this.logo.imgInput = "";
+					this.logo = ""
+					this.logo.imageFile = ""
+					this.logo.imgInput = ""
 				}
 			},
 			fetchAll() {
@@ -377,51 +377,51 @@
 				})
 			},
 			pickFileLogo() {
-				this.$refs.logo.click();
+				this.$refs.logo.click()
 			},
 			onFilePickedLogo(e) {
-				const files = e.target.files;
+				const files = e.target.files
 				if (files[0] !== undefined) {
-					this.logo.imageName = files[0].name;
+					this.logo.imageName = files[0].name
 					if (this.logo.imageName.lastIndexOf(".") <= 0) {
-						return;
+						return
 					}
-					const fr = new FileReader();
-					fr.readAsDataURL(files[0]);
+					const fr = new FileReader()
+					fr.readAsDataURL(files[0])
 					fr.addEventListener("load", () => {
 						this.logo.imgInput = fr.result
 						this.logo.imageFile = files[0] // this is an image file that can be sent to server...
 						this.brand.logo = this.logo.imgInput
 						//console.log(this.logo.imgInput, this.logo.imageFile)
-					});
+					})
 				} else {
-					this.logo.imageName = "";
-					this.logo.imageFile = "";
-					this.logo.imgInput = "";
+					this.logo.imageName = ""
+					this.logo.imageFile = ""
+					this.logo.imgInput = ""
 				}
 			},
 			pickFileBanner() {
-				this.$refs.banner.click();
+				this.$refs.banner.click()
 			},
 			onFilePickedBanner(e) {
-				const files = e.target.files;
+				const files = e.target.files
 				if (files[0] !== undefined) {
-					this.banner.imageName = files[0].name;
+					this.banner.imageName = files[0].name
 					if (this.banner.imageName.lastIndexOf(".") <= 0) {
-						return;
+						return
 					}
-					const fr = new FileReader();
-					fr.readAsDataURL(files[0]);
+					const fr = new FileReader()
+					fr.readAsDataURL(files[0])
 					fr.addEventListener("load", () => {
 						this.banner.imgInput = fr.result
 						this.banner.imageFile = files[0] // this is an image file that can be sent to server...
 						this.brand.banner = this.banner.imgInput
 						//console.log(this.banner.imgInput, this.banner.imageFile)
-					});
+					})
 				} else {
-					this.banner.imageName = "";
-					this.banner.imageFile = "";
-					this.banner.imgInput = "";
+					this.banner.imageName = ""
+					this.banner.imageFile = ""
+					this.banner.imgInput = ""
 				}
 			},
 		}

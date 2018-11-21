@@ -170,12 +170,7 @@
                     }
                 )
                 .then(response => {
-                        this.$swal({
-                            title: "アップロード完了",
-                            text: 'Uploaded',
-                            type: "success",
-                            confirmButtonText: "OK"
-                        })
+                        alert('Succesfully uploaded!')
 
                         this.uploadedFile = null
                         const input = this.$refs.file;

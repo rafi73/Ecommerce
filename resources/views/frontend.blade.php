@@ -189,7 +189,8 @@
                 order: {
                     customer: {}
                 },
-                dealerAuth: false
+                dealerAuth: false,
+                quoteRequest: {}
 
             },
             created() {
@@ -1138,6 +1139,26 @@
                         }
                     )
                 },
+                sendQuoteRequest(quoteRequest){
+                    console.log(quoteRequest)
+                    axios.post('/api/quote-request', quoteRequest)
+                    .then(
+                        (response) => {
+                            console.log(response)
+                            let order = response.data.data
+                            alert('Request sent successfully!')
+                            this.quoteRequest = {}
+                        }   
+                    )
+                    .catch(
+                        (error) => {
+                            console.log(error)
+                        }
+                    )
+                },
+                downloadPriceList(){
+                    window.location.href = '/api/price-list/download'
+                }
             },
             computed: {
                 totalPrice() {

@@ -139,6 +139,17 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::post('price-list-file', 'PriceListController@storeUploadData');
 
     Route::get('orders', 'OrderController@index');
+
+    # 1.1 quote-request routes
+    // List quote-request
+    Route::get('quote-requests', 'QuoteRequestController@index');
+    // List single quote-request
+    Route::get('quote-request/{id}', 'QuoteRequestController@show');
+    
+    // Update quote-request
+    Route::put('quote-request', 'QuoteRequestController@store');
+    // Delete quote-request
+    Route::delete('quote-request/{id}', 'QuoteRequestController@destroy');
 });
 
 Route::post('register', 'AuthController@register');
@@ -183,3 +194,8 @@ Route::post('dealer-register', 'CustomerController@registerDealer');
 
 Route::post('dealer-login', 'CustomerController@loginDealer');
 
+// Create new quote-request
+Route::post('quote-request', 'QuoteRequestController@store');
+
+// Download attachments
+Route::get('price-list/download', 'PriceListController@downloadPriceList');

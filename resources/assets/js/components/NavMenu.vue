@@ -93,10 +93,17 @@
 						} 
 					},
 					{ 
-						title: 'Orders', 
+						title: 'Order', 
 						icon: 'category', 
 						route: { 
-							path: '/orders' 
+							path: '/order' 
+						} 
+					},
+					{ 
+						title: 'Quote Request', 
+						icon: 'category', 
+						route: { 
+							path: '/quote-request' 
 						} 
 					},
 				]

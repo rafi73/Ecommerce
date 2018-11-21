@@ -26,10 +26,24 @@ class PriceListController extends Controller
 
 
             $path = public_path().'/uploads/price-list';
-            $uplaod = $file->move($path, $fileName);
+            $uplaod = $file->move($path, "price-list.xlsx");
         }   
 
         return response()->json(['data' => "Successfully sent to server!"]); 
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function downloadPriceList()
+    {
+        $path = public_path().'/uploads/price-list/';
+        return response()->download($path. "price-list.xlsx");
+    }
+
+
 
 }

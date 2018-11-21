@@ -80,9 +80,14 @@ export default ({ authGuard, guestGuard }) => [
 			component: require('~/pages/priceList/index.vue')
 		},
 		{
-			path: '/orders',
-			name: 'orders',
-			component: require('~/pages/orders/index.vue')
+			path: '/order',
+			name: 'order',
+			component: require('~/pages/order/index.vue')
+		},
+		{
+			path: '/quote-request',
+			name: 'quote-request',
+			component: require('~/pages/quoteRequest/index.vue')
 		},
 	]),
 
