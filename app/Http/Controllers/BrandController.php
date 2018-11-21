@@ -122,4 +122,39 @@ class BrandController extends Controller
         // Return collection of Brands as a resource
         return BrandResource::collection($brands);
     } 
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getDatatable()
+    {
+        $sortBy = \Request::get('sortBy') ?: '';
+        $rowsPerPage = \Request::get('rowsPerPage') ?: 5;
+
+        $sortType = filter_var(\Request::get('descending'), FILTER_VALIDATE_BOOLEAN);;
+        switch (\Request::get('descending')) {
+            case 'null':
+                $sortType = null;
+                break;
+            case 'true':
+                $sortType = 'desc';
+                break;
+            case 'false':
+                $sortType = 'asc';
+                break;
+        }
+        // Get Brands
+        $brands = Brand::orderBy($sortBy, $sortType)
+                        // ->where(function($query) use ($sortBy, $sortType)  {
+                        //     if(isset($sortType)) {
+                        //         $query->orderBy($sortBy, $sortType);
+                        //     }
+                        // })
+                        ->paginate($rowsPerPage);
+
+        // Return collection of Brands as a resource
+        return BrandResource::collection($brands);
+    }
 }

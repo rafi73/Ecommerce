@@ -123,6 +123,8 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::put('brand', 'BrandController@store');
     // Delete brand
     Route::delete('brand/{id}', 'BrandController@destroy');
+    // List brand
+    Route::get('brands-datatable', 'BrandController@getDatatable');
 
      # 1.1 product routes
     // List product
