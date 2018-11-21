@@ -132,8 +132,9 @@ class BrandController extends Controller
     {
         $sortBy = \Request::get('sortBy') ?: '';
         $rowsPerPage = \Request::get('rowsPerPage') ?: 5;
+        $page = \Request::get('page');
 
-        $sortType = filter_var(\Request::get('descending'), FILTER_VALIDATE_BOOLEAN);;
+        $sortType;// =  filter_var(\Request::get('descending'), FILTER_VALIDATE_BOOLEAN);
         switch (\Request::get('descending')) {
             case 'null':
                 $sortType = null;
@@ -145,13 +146,12 @@ class BrandController extends Controller
                 $sortType = 'asc';
                 break;
         }
-        // Get Brands
-        $brands = Brand::orderBy($sortBy, $sortType)
-                        // ->where(function($query) use ($sortBy, $sortType)  {
-                        //     if(isset($sortType)) {
-                        //         $query->orderBy($sortBy, $sortType);
-                        //     }
-                        // })
+        // Get Brands   
+        $brands = Brand::orderBy(function($query) use ($sortBy, $sortType)  {
+                            if(isset($sortType)) {
+                                $query->orderBy($sortBy, $sortType);
+                            }
+                        })
                         ->paginate($rowsPerPage);
 
         // Return collection of Brands as a resource
