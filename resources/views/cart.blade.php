@@ -57,7 +57,7 @@
                                     <!-- price end -->
                                     <!-- quantity start -->
                                     <td class="quantity">
-                                    <input class="" type="text" name="qtybutton" v-model="product.quantity">
+                                    <input class="" type="text" v-on:keypress="isNumber($event)" name="qtybutton" v-model="product.quantity">
                                     </td>
                                     <!-- quantity end -->
                                     <!-- remove icon start -->

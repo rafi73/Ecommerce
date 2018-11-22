@@ -18,6 +18,7 @@ class CustomerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
+            'is_dealer' => $this->is_dealer,
         ];
     }
     public function with($request) {

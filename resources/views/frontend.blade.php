@@ -194,7 +194,9 @@
 
             },
             created() {
-                //localStorage.removeItem('customer')
+                this.loggedInCustomer =  localStorage.getItem('customer') ?  JSON.parse(localStorage.getItem('customer')) : {}
+                console.log('loggedInCustomer', this.loggedInCustomer)
+                //localStorage.removeItem('cart')
                 console.log('Testing console. from Home')
                 this.getCartProducts()
                 this.getCategories()
@@ -230,17 +232,15 @@
                     this.searchTerm = term
                 }
 
+                else if (window.location.pathname.split('/')[2] == 'pricelist') {
+                    if(this.loggedInCustomer.is_dealer == 1)
+                        this.dealerAuth = true
+                }
+
                 else if (window.location.pathname.split('/')[2] == 'invoice') {
                     let orderId = window.location.pathname.split('/')[3]
                     this.getOrder(orderId)
                 }
-
-                console.log('loggedInCustomer', localStorage.getItem('customer'))
-
-
-                this.loggedInCustomer =  localStorage.getItem('customer') ?  JSON.parse(localStorage.getItem('customer')) : {}
-                console.log('loggedInCustomer', this.loggedInCustomer)
-
             },
             mounted: function () {
                 let ref = this
@@ -1124,8 +1124,8 @@
                         (response) => {
                             console.log(response)
                             if(response){
-                                //this.loggedInCustomer = response.data.data
-                                //localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
+                                this.loggedInCustomer = response.data.data
+                                localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
 
                                 this.dealerAuth = true
                             }
@@ -1158,6 +1158,19 @@
                 },
                 downloadPriceList(){
                     window.location.href = '/api/price-list/download'
+                },
+                isNumber: function(evt) {
+                    evt = (evt) ? evt : window.event
+                    var charCode = (evt.which) ? evt.which : evt.keyCode
+                    if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+                        evt.preventDefault()
+                    } 
+                    else {
+                        this.$nextTick(() => {
+                            localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+                        })
+                        return true
+                    }
                 }
             },
             computed: {

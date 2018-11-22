@@ -132,7 +132,7 @@ class CustomerController extends Controller
 
         $customer = Customer::where('email', $email)->first();
 
-        if(!$customer || $customer->is_dealer == 1)
+        if(!$customer || $customer->is_dealer != 1)
             return $customer;
         
         // Check if sale password is correct
