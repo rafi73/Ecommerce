@@ -152,6 +152,18 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::put('quote-request', 'QuoteRequestController@store');
     // Delete quote-request
     Route::delete('quote-request/{id}', 'QuoteRequestController@destroy');
+
+     # 1.1 customer routes
+    // List customer
+    Route::get('customers', 'CustomerController@index');
+    // List single customer
+    Route::get('customer/{id}', 'CustomerController@show');
+    // Create new customer
+    Route::post('customer', 'CustomerController@store');
+    // Update customer
+    Route::put('customer', 'CustomerController@store');
+    // Delete customer
+    Route::delete('customer/{id}', 'CustomerController@destroy');
 });
 
 Route::post('register', 'AuthController@register');

@@ -16,8 +16,34 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        // Get Customers
-        $customers = Customer::orderBy('created_at', 'desc')->Where('active', 1)->paginate(10);
+        $sortBy = \Request::get('sortBy');
+        $rowsPerPage = \Request::get('rowsPerPage');
+        $search = \Request::get('search');
+
+        switch (\Request::get('descending')) 
+        {
+            case 'null':
+                $sortType = null;
+                break;
+            case 'true':
+                $sortType = 'desc';
+                break;
+            case 'false':
+                $sortType = 'asc';
+                break;
+        }
+        // Get Brands   
+        $query = Customer::where(function ($query) use($search) {
+                            $query->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('email', 'like', '%' . $search . '%');
+                        });
+
+        if (isset($sortType)) 
+        {
+            $query = $query->orderBy($sortBy, $sortType);
+        }
+        
+        $customers = $query->paginate($rowsPerPage);
 
         // Return collection of Customers as a resource
         return CustomerResource::collection($customers);
@@ -32,12 +58,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $customer = new Customer;
+        $customer = $request->isMethod('put') ? Customer::findOrFail($request->id) : new Customer;
 
         $customer->name= $request->input('name');
         $customer->email= strtolower($request->input('email'));
         $customer->password= bcrypt($request->input('password'));
-        $customer->is_dealer = false;
+        $customer->is_dealer = $request->input('is_dealer');
+        $customer->active = $request->input('active');
         $customer->save();
 
         return new CustomerResource($customer);

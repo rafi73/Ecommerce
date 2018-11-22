@@ -106,6 +106,13 @@
 							path: '/quote-request' 
 						} 
 					},
+					{ 
+						title: 'Customer', 
+						icon: 'category', 
+						route: { 
+							path: '/customer' 
+						} 
+					},
 				]
 			}
 		}

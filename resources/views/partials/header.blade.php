@@ -180,7 +180,7 @@
                         <ul>
                             <li><a href="{{ URL::route('home') }}">Home</a></li>
                             <li><a href="{{ URL::route('about') }}">About Us</a></li>
-                            <li><a href="{{ URL::route('dealer') }}">Become a dealer</a></li>
+                            {{-- <li><a href="{{ URL::route('dealer') }}">Become a dealer</a></li> --}}
                             <li><a href="{{ URL::route('quotation') }}">Quotation</a></li>
                             <li><a href="{{ URL::route('pricelist') }}">Pricelist</a></li>
                             <li><a href="{{ URL::route('contact') }}">Contact</a></li>

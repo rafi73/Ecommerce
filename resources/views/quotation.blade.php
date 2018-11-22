@@ -8,6 +8,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10  col-sm-offset-1">
+                    {{-- QUOTE SUMMARY
+                    This Service is specially design for corporate customer that need to get a quotation for their offices.
+                    
+                    Please follow the step below to get a quote from us.
+                    
+                    1) Search Product and Add to cart
+                    2) Fill up detail
+                    3) If there is any special product / requirement please fill up the message box
+                    4) Submit
+                    5) And official quotation will send to you in the next working day.
+                    
+                    Please do not hesitate to contact us if you need any further assistant. Thank you. --}}
                 <div class="authentication">
                     <div class="border-title">
                         <h3>REQUEST FOR QUOTE</h3>

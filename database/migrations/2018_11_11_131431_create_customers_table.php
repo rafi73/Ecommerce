@@ -18,7 +18,13 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->string('phone')->nullable();
+            $table->string('company')->nullable();
+            $table->string('country')->nullable();
+            $table->string('state')->nullable();
+            $table->string('address')->nullable();
             $table->boolean('is_dealer');
+            $table->boolean('active');
             $table->timestamps();
         });
     }

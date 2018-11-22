@@ -1,9 +1,10 @@
 <template>
     <div id="app">
-        <v-loading ref="loading"></v-loading>
+        
         <transition name="page" mode="out-in">
             <component v-if="layout" :is="layout"></component>
         </transition>
+        <v-loading ref="loading"></v-loading>
     </div>
 </template>
 

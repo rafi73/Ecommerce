@@ -176,7 +176,9 @@
                 register:{
                     name: null,
                     email: null,
-                    password: null
+                    password: null,
+                    is_dealer: false,
+                    active: true
                 },
                 login:{
                     email:null,

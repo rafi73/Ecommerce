@@ -89,6 +89,11 @@ export default ({ authGuard, guestGuard }) => [
 			name: 'quote-request',
 			component: require('~/pages/quoteRequest/index.vue')
 		},
+		{
+			path: '/customer',
+			name: 'customer',
+			component: require('~/pages/customer/index.vue')
+		},
 	]),
 
 	// Guest routes.

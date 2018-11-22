@@ -18,7 +18,10 @@ class CustomerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'is_dealer' => $this->is_dealer,
+            'is_dealer' => $this->is_dealer == 1 ? true : false,
+            'active' => $this->active == 1 ? true : false,
+            'created_at' => $this->created_at->format('Y-m-d H:i:s A'),
+            'updated_at' => $this->updated_at->format('Y-m-d H:i:s A'),
         ];
     }
     public function with($request) {
