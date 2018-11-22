@@ -93,9 +93,16 @@
 							remember: this.remember
 						})
 
+						// this.$store.dispatch('saveUser', {
+						// 	user: response.data.user,
+						// 	remember: this.remember
+						// })
+
 						console.log(response.data.access_token)
 						localStorage.setItem('token', response.data.access_token);
 						axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access_token}`
+
+						//this.$store.commit('changeUser', response.data.user)
 
 						// Fetch the user.
 						this.$store.dispatch('fetchUser')

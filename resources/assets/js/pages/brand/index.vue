@@ -1,62 +1,37 @@
 <template>
 	<v-layout row>
 		<v-flex xs12>
-			<progress-bar :show="busy"></progress-bar>
 			<v-app id="inspire">
 				<v-card>
 					<v-card-title class="grey lighten-4">
 						<h3 class="headline mb-0">{{ $t('brand') }}</h3>
 						<v-spacer></v-spacer>
-						<v-text-field v-model="search" md4 append-icon="search" label="Search" single-line hide-details></v-text-field>
-						<v-btn @click.prevent="addNew()" slot="activator" color="primary" dark class="mb-2">{{ $t('new_item') }}</v-btn>
-						<v-dialog v-model="dialogInput" max-width="1000px">
-							<v-card>
-								<v-card-title>
-									<span class="headline">{{ formTitle }}</span>
-								</v-card-title>
-								<v-card-text>
-									<v-container grid-list-md>
-										<v-layout wrap>
-											<v-flex xs12 sm12 md12>
-												<v-text-field v-validate="'required'" v-model="brand.name" :counter="10" :error-messages="errors.collect('name')" :label="`${$t('brand_name')}`" data-vv-name="name" required ></v-text-field>
-											</v-flex>
-											<v-flex xs12 sm12 md12>
-												<v-textarea v-model="brand.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('brand_description')}`" data-vv-name="description" required ></v-textarea>
-											</v-flex>
-											
-											<v-flex xs12 sm12 md12>
-												<img :src="logo.imgInput" height="150" v-if="logo.imgInput" />
-												<v-text-field :label="`${$t('brand_logo')}`" @click='pickFileLogo' v-model='logo.imageName' prepend-icon='attach_file'></v-text-field>
-												<input type="file" style="display: none" ref="logo" accept="image/*" @change="onFilePickedLogo">
-											</v-flex>
-
-											<v-flex xs12 sm12 md12>
-												<img :src="banner.imgInput" height="150" v-if="banner.imgInput" />
-												<v-text-field :label="`${$t('brand_banner')}`" @click='pickFileBanner()' v-model='banner.imageName' prepend-icon='attach_file'></v-text-field>
-												<input type="file" style="display: none" ref="banner" accept="image/*" @change="onFilePickedBanner">
-											</v-flex>
-											
-											<v-checkbox :label="`${$t('brand_active')}: ${brand.active}`" v-model="brand.active" ></v-checkbox>
-										</v-layout>
-									</v-container>
-								</v-card-text>
-
-								<v-card-actions>
-									<v-spacer></v-spacer>
-									<v-btn color="blue darken-1" flat @click.native="close()">{{ $t('cancel') }}</v-btn>
-									<v-btn color="blue darken-1" flat @click.native="save()">{{ $t('save') }}</v-btn>
-								</v-card-actions>
-							</v-card>
-						</v-dialog>
+						<v-spacer></v-spacer>
+						<v-spacer></v-spacer>
+						<v-spacer></v-spacer>
+						<v-spacer></v-spacer>
+						<v-text-field v-on:keyup.enter="fetchAll()" v-model="search" md4 append-icon="search" label="Search" single-line
+						 hide-details></v-text-field>
+						<v-btn @click.prevent="datatbleSearch()" fab dark small color="primary">
+							<v-icon dark>search</v-icon>
+						</v-btn>
+						<v-btn @click.prevent="clearSearch()" fab dark small color="pink">
+							<v-icon dark>close</v-icon>
+						</v-btn>
+						<v-btn @click.prevent="addNew()" fab dark small color="teal">
+							<v-icon dark>add</v-icon>
+						</v-btn>
 					</v-card-title>
 
 					<v-divider></v-divider>
-					<v-data-table :headers="headers" :items="brands" :search="search">
+					<v-data-table :headers="headers" :items="brands" :pagination.sync="pagination" :total-items="totalItems" :loading="loading" :rows-per-page-items="rowsPerPageItems">
 						<template slot="items" slot-scope="props">
 							<td>{{ props.item.name }}</td>
 							<td>{{ props.item.description }}</td>
-							<td>{{ props.item.active }}</td>
-							<td>
+							<td class="text-xs-center">{{ props.item.created_at }}</td>
+							<td class="text-xs-center">{{ props.item.updated_at }}</td>
+							<td class="text-xs-center">{{ props.item.active }}</td>
+							<td class="text-xs-center">
 								<v-icon small class="mr-2" @click="editItem(props.item)">
 									edit
 								</v-icon>
@@ -65,13 +40,57 @@
 								</v-icon>
 							</td>
 						</template>
-						<v-alert slot="no-results" :value="true" color="error" icon="warning">
-							Your search for "{{ search }}" found no results.
-						</v-alert>
 					</v-data-table>
+					<div class="mb-2 text-xs-center">
+						<v-pagination v-model="pagination.page" :length="lastPage" :total-visible="8" @input="next" circle></v-pagination>
+					</div>
 				</v-card>
 			</v-app>
 		</v-flex>
+
+		<v-dialog v-model="dialogInput" max-width="1000px">
+			<v-card>
+				<v-card-title>
+					<span class="headline">{{ formTitle }}</span>
+				</v-card-title>
+				<v-card-text>
+					<v-container grid-list-md>
+						<v-layout wrap>
+							<v-flex xs12 sm12 md12>
+								<v-text-field v-validate="'required'" v-model="brand.name" :counter="10" :error-messages="errors.collect('name')"
+								 :label="`${$t('brand_name')}`" data-vv-name="name" required></v-text-field>
+							</v-flex>
+							<v-flex xs12 sm12 md12>
+								<v-textarea v-model="brand.description" :counter="10" :error-messages="errors.collect('description')" :label="`${$t('brand_description')}`"
+								 data-vv-name="description" required></v-textarea>
+							</v-flex>
+
+							<v-flex xs12 sm12 md12>
+								<img :src="logo.imgInput" height="150" v-if="logo.imgInput" />
+								<v-text-field :label="`${$t('brand_logo')}`" @click='pickFileLogo' v-model='logo.imageName' prepend-icon='attach_file'></v-text-field>
+								<input type="file" style="display: none" ref="logo" accept="image/*" @change="onFilePickedLogo">
+							</v-flex>
+
+							<v-flex xs12 sm12 md12>
+								<img :src="banner.imgInput" height="150" v-if="banner.imgInput" />
+								<v-text-field :label="`${$t('brand_banner')}`" @click='pickFileBanner()' v-model='banner.imageName'
+								 prepend-icon='attach_file'></v-text-field>
+								<input type="file" style="display: none" ref="banner" accept="image/*" @change="onFilePickedBanner">
+							</v-flex>
+
+							<v-checkbox :label="`${$t('brand_active')}: ${brand.active}`" v-model="brand.active"></v-checkbox>
+						</v-layout>
+					</v-container>
+				</v-card-text>
+
+				<v-card-actions>
+					<v-spacer></v-spacer>
+					<v-btn color="blue darken-1" flat @click.native="close()">{{ $t('cancel') }}</v-btn>
+					<v-btn color="blue darken-1" flat @click.native="save()">{{ $t('save') }}</v-btn>
+				</v-card-actions>
+			</v-card>
+		</v-dialog>
+
 		<v-dialog v-model="dialogConfirmDelete" max-width="500">
 			<v-card>
 				<v-card-title class="headline">{{ $t('delete_confirm_title') }}</v-card-title>
@@ -82,12 +101,18 @@
 						Disagree
 					</v-btn>
 
-					<v-btn color="red darken-1" flat="flat" @click="erase()" >
+					<v-btn color="red darken-1" flat="flat" @click="erase()">
 						Agree
 					</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-dialog>
+
+		<v-snackbar v-model="snackbar.active" :bottom="snackbar.y === 'bottom'" :left="snackbar.x === 'left'" :multi-line="snackbar.mode === 'multi-line'"
+		 :right="snackbar.x === 'right'" :timeout="snackbar.timeout" :top="snackbar.y === 'top'" :vertical="snackbar.mode === 'vertical'">
+			{{ snackbar.message }}
+			<v-btn color="pink" flat @click="snackbar.active = false">Close</v-btn>
+		</v-snackbar>
 	</v-layout>
 </template>
 
@@ -103,125 +128,72 @@
 		components: {
 			"profile-view": Profile,
 			"password-view": Password,
-			Multiselect 
+			Multiselect
 		},
 		data() {
 			return {
-				brand: {},
-				busy: false,
-				form: new Form({
-					name: "",
-					email: ""
-				}),
-				dialog: false,
+				loading: true,
+				rowsPerPageItems: [10, 20, 30, 40],
+				pagination: {
+					rowsPerPage: 10
+				},
 				headers: [
-					{
-						text: 'Name',
-						value: 'name'
-					},
-					{
-						text: 'Description',
-						value: 'description'
-					},
-					{
-						text: 'Active',
-						value: 'active'
-					},
-					{
-						text: "Actions",
-						value: "name",
-						sortable: false
-					}
+					{ text: 'Name', align: 'left', value: 'name' },
+					{ text: 'Description', align: 'left', value: 'description' },
+					{ text: 'Created At', align: 'center', value: 'created_at' },
+					{ text: 'Updated At', align: 'center', value: 'updated_at' },
+					{ text: 'Active', align: 'center', value: 'active' },
+					{ text: "Actions", align: 'center', sortable: false }
 				],
-				desserts: [],
-				editedIndex: -1,
-				editedItem: {
-					name: "",
-					calories: 0,
-					fat: 0,
-					carbs: 0,
-					protein: 0
-				},
-				defaultItem: {
-					name: "",
-					calories: 0,
-					fat: 0,
-					carbs: 0,
-					protein: 0
-				},
-				search: '',
+				brand: {},
+				search: "",
+				dialogInput: false,
 				brands: [],
+				totalItems: 0,
+				lastPage: 0,
 				dialogConfirmDelete: false,
-				edit : false,
-				dialogInput : false,
-				selectedCategory : null,
+				edit: false,
+				dialogInput: false,
+				selectedCategory: null,
 				categories: [],
-				logo : {
+				logo: {
 					imageName: "",
 					imgInput: "",
 					imageFile: "",
 				},
-				banner : {
+				banner: {
 					imageName: "",
 					imgInput: "",
 					imageFile: "",
-				}
-				
-
-			}
-		},
-		computed: {
-			formTitle() {
-				return this.editedIndex === -1 ? "New Item" : "Edit Item"
+				},
+				snackbar: {
+					active: false,
+					y: 'bottom',
+					x: 'right',
+					mode: '',
+					timeout: 3000,
+					message: ''
+				},
+				formTitle: ''
 			}
 		},
 		watch: {
-			dialog(val) {
-				val || this.close()
+			pagination() {
+				this.fetchAll()
 			}
 		},
 		created() {
-			//this.initialize()
-			this.fetchAll()
-			this.fetchCategories()
+			console.log(this.$store.state)
+			//this.fetchAll()
 		},
 		methods: {
-			async update() {
-				if (await this.formHasErrors()) return
-
-				this.$emit("busy", true)
-
-				const { data } = await this.form.patch("/api/settings/profile")
-
-				await this.$store.dispatch("updateUser", { user: data })
-				this.$emit("busy", false)
-
-				this.$store.dispatch("responseMessage", {
-					type: "success",
-					text: this.$t("info_updated")
-				})
-			},
 			pickLogo() {
 				this.$refs.logo.click()
 			},
 			pickBanner() {
 				this.$refs.banner.click()
 			},
-			editItem(item) {
-				this.brand = Object.assign({}, item)
-				this.dialogInput = true
-				this.edit = true
-				this.logo.imageName = null
-				this.logo.imgInput = this.brand.logo
-				this.banner.imageName = null
-				this.banner.imgInput = this.brand.banner
-			},
-			deleteItem(item) {
-				//const index = this.desserts.indexOf(item)
-				this.dialogConfirmDelete = true
-				this.brand = item
-				//confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
-			},
+
 			close() {
 				this.dialogInput = false
 				setTimeout(() => {
@@ -230,18 +202,18 @@
 				}, 300)
 			},
 			save() {
-				//if (this.formHasErrors()) return
 				this.$validator.validate().then(result => {
-                    if (result){
-						this.busy = true
+					if (result) {
+						this.loading = true
 						if (this.edit) {
-							// Object.assign(this.desserts[this.editedIndex], this.editedItem)
 							console.log('edit', this.editedItem)
 							this.brand.updated_by = 0
 
 							axios.put('/api/brand', this.brand)
 								.then(
 									(response) => {
+										this.showSnackbar('Item updated successfully !')
+										this.loading = false
 										console.log(response)
 										this.fetchAll()
 									}
@@ -252,13 +224,14 @@
 									}
 								)
 						} else {
-							//this.desserts.push(this.editedItem)
 							console.log('save', this.editedItem)
 							this.brand.created_by = 0
 							this.brand.updated_by = 0
 							axios.post('/api/brand', this.brand)
 								.then(
 									(response) => {
+										this.showSnackbar('Item added successfully !')
+										this.loading = false
 										console.log(response)
 										this.fetchAll()
 									}
@@ -270,11 +243,9 @@
 								)
 						}
 						this.close()
-						this.busy = false
 						this.edit = false
 					}
 				})
-				
 			},
 			onLogoPicked(e) {
 				const files = e.target.files
@@ -287,9 +258,8 @@
 					fr.readAsDataURL(files[0])
 					fr.addEventListener("load", () => {
 						this.logo.imgInput = fr.result
-						this.logo.imageFile = files[0] // this is an image file that can be sent to server...
+						this.logo.imageFile = files[0] 
 						this.brand.logo = this.logo.imgInput
-						//console.log(this.logo.imgInput, this.logo.imageFile)
 					})
 				} else {
 					this.logo = ""
@@ -308,9 +278,8 @@
 					fr.readAsDataURL(files[0])
 					fr.addEventListener("load", () => {
 						this.logo.imgInput = fr.result
-						this.logo.imageFile = files[0] // this is an image file that can be sent to server...
+						this.logo.imageFile = files[0] 
 						this.brand.banner = this.logo.imgInput
-						//console.log(this.logo.imgInput, this.logo.imageFile)
 					})
 				} else {
 					this.logo = ""
@@ -319,35 +288,50 @@
 				}
 			},
 			fetchAll() {
-				this.busy = true
-				axios.get(`/api/brands`)
-				.then(response => {
-					this.brands = response.data.data
-					console.log(response.data.data)
-					this.busy = false
-				})
-				.catch(error => {
-					if (error.response) {
-						console.log(error.response)
-					}
-				})
+				console.log(this.pagination)
+				this.loading = true
+				let url = `/api/brands-datatable`
+				let params = `?page=${this.pagination.page}
+								&rowsPerPage=${this.pagination.rowsPerPage}
+								&sortBy=${this.pagination.sortBy}
+								&descending=${this.pagination.descending}
+								&search=${this.search}`
+
+				axios.get(url + params)
+					.then(response => {
+						this.brands = response.data.data
+						this.totalItems = response.data.meta.total
+						this.lastPage = response.data.meta.last_page
+						console.log(response.data)
+						this.loading = false
+					})
+					.catch(error => {
+						if (error.response) {
+							console.log(error.response);
+							if (error.response.status === 401) {
+								window.location.href = '/login'
+							}
+						}
+					})
 			},
 			erase() {
 				this.dialogConfirmDelete = false
-				this.busy = true
+				this.loading = true
 				axios.delete(`/api/brand/${this.brand.id}`)
-				.then(response => {
-					this.busy = false
-					this.fetchAll()
-				})
-				.catch(error => {
-					if (error.response) {
-						console.log(error.response)
-					}
-				})
+					.then(response => {
+						this.loading = false
+						this.fetchAll()
+						this.showSnackbar('Item deleated successfully !')
+					})
+					.catch(error => {
+						if (error.response) {
+							console.log(error.response)
+						}
+					})
 			},
-			addNew(){
-				this.brand = {active: true}
+			addNew() {
+				this.formTitle = "Add Item"
+				this.brand = { active: true }
 				this.logo.imgInput = ``
 				this.selectedCategory = null
 				this.dialogInput = true
@@ -357,24 +341,19 @@
 				this.logo.imgInput = null
 				this.banner.imgInput = null
 			},
-			onSelectCategory(selectedOption, id){
-                if(selectedOption){
-					this.brand.category_id = selectedOption.id
-				}
+			editItem(item) {
+				this.formTitle = "Edit Item"
+				this.brand = Object.assign({}, item)
+				this.dialogInput = true
+				this.edit = true
+				this.logo.imageName = null
+				this.logo.imgInput = this.brand.logo
+				this.banner.imageName = null
+				this.banner.imgInput = this.brand.banner
 			},
-			fetchCategories() {
-				this.busy = true
-				axios.get(`/api/categories`)
-				.then(response => {
-					this.categories = response.data.data
-					console.log(response.data.data)
-					this.busy = false
-				})
-				.catch(error => {
-					if (error.response) {
-						console.log(error.response)
-					}
-				})
+			deleteItem(item) {
+				this.dialogConfirmDelete = true
+				this.brand = item
 			},
 			pickFileLogo() {
 				this.$refs.logo.click()
@@ -390,9 +369,8 @@
 					fr.readAsDataURL(files[0])
 					fr.addEventListener("load", () => {
 						this.logo.imgInput = fr.result
-						this.logo.imageFile = files[0] // this is an image file that can be sent to server...
+						this.logo.imageFile = files[0]
 						this.brand.logo = this.logo.imgInput
-						//console.log(this.logo.imgInput, this.logo.imageFile)
 					})
 				} else {
 					this.logo.imageName = ""
@@ -414,9 +392,8 @@
 					fr.readAsDataURL(files[0])
 					fr.addEventListener("load", () => {
 						this.banner.imgInput = fr.result
-						this.banner.imageFile = files[0] // this is an image file that can be sent to server...
+						this.banner.imageFile = files[0]
 						this.brand.banner = this.banner.imgInput
-						//console.log(this.banner.imgInput, this.banner.imageFile)
 					})
 				} else {
 					this.banner.imageName = ""
@@ -424,6 +401,29 @@
 					this.banner.imgInput = ""
 				}
 			},
+			datatbleSearch() {
+				if (this.search.length) {
+					this.pagination.page = 1
+					this.fetchAll()
+					console.log(this.pagination)
+					this.snackbar = true
+				}
+			},
+			showSnackbar(message) {
+				this.snackbar.active = true
+				this.snackbar.message = message
+			},
+			next(page) {
+				console.log(page)
+				this.pagination.page = page
+				this.fetchAll()
+			},
+			clearSearch() {
+				if (this.search.length) {
+					this.search = ""
+					this.fetchAll()
+				}
+			}
 		}
 	}
 </script>

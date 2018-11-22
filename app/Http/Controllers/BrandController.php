@@ -130,12 +130,12 @@ class BrandController extends Controller
      */
     public function getDatatable()
     {
-        $sortBy = \Request::get('sortBy') ?: '';
-        $rowsPerPage = \Request::get('rowsPerPage') ?: 5;
-        $page = \Request::get('page');
+        $sortBy = \Request::get('sortBy');
+        $rowsPerPage = \Request::get('rowsPerPage');
+        $search = \Request::get('search');
 
-        $sortType;// =  filter_var(\Request::get('descending'), FILTER_VALIDATE_BOOLEAN);
-        switch (\Request::get('descending')) {
+        switch (\Request::get('descending')) 
+        {
             case 'null':
                 $sortType = null;
                 break;
@@ -147,12 +147,16 @@ class BrandController extends Controller
                 break;
         }
         // Get Brands   
-        $brands = Brand::orderBy(function($query) use ($sortBy, $sortType)  {
-                            if(isset($sortType)) {
-                                $query->orderBy($sortBy, $sortType);
-                            }
-                        })
-                        ->paginate($rowsPerPage);
+        $query = Brand::where(function ($query) use($search) {
+                            $query->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('description', 'like', '%' . $search . '%');
+                        });
+
+        if (isset($sortType)) 
+        {
+            $query = $query->orderBy($sortBy, $sortType);
+        }
+        $brands = $query->paginate($rowsPerPage);
 
         // Return collection of Brands as a resource
         return BrandResource::collection($brands);

@@ -42,6 +42,10 @@ export const actions = {
 		commit(types.SAVE_TOKEN, payload)
 	},
 
+	saveUser({ commit, dispatch }, payload) {
+		commit(types.SAVE_USER, payload)
+	},
+
 	async fetchUser({ commit }) {
 		try {
 			const { data } = await axios.get('/api/user')
