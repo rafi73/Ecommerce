@@ -19,21 +19,19 @@
                     <div class="client-address-form">
                         <form action="#">
                             <!-- input name -->
-                            <input type="text" placeholder="your name here">
+                            <input type="text" v-model="billing.name" placeholder="your name here">
                             <!--input email address-->
-                            <input type="email" placeholder="your email address">
+                            <input type="email" v-model="billing.email"  placeholder="your email address">
                             <!-- input phone number -->
-                            <input type="text" placeholder="Phone number here">
+                            <input type="text" v-model="billing.phone"  placeholder="Phone number here">
                             <!-- input company name -->
-                            <input type="text" placeholder="company name here">
+                            <input type="text" v-model="billing.company"  placeholder="company name here">
                             <!-- input country name -->
-                            <input type="text" placeholder="country">
+                            <input type="text" v-model="billing.country"  placeholder="country">
                             <!-- input state -->
-                            <input type="text" placeholder="state">
-                            <!-- input town/city -->
-                            <input type="text" placeholder="town/city">
+                            <input type="text" v-model="billing.state"  placeholder="state">
                             <!-- input your details address -->
-                            <textarea cols="3" rows="5" placeholder="Your address here"></textarea>
+                            <textarea cols="3" rows="5"  v-model="billing.address" placeholder="Your address here"></textarea>
                         </form>
                     </div>
                 </div>
@@ -51,21 +49,19 @@
                     <div class="client-address-form">
                         <form action="#">
                             <!-- input name -->
-                            <input type="text" placeholder="your name here">
+                            <input type="text" v-model="shipping.name" placeholder="your name here">
                             <!--input email address-->
-                            <input type="email" placeholder="your email address">
+                            <input type="email" v-model="shipping.email"  placeholder="your email address">
                             <!-- input phone number -->
-                            <input type="text" placeholder="Phone number here">
+                            <input type="text" v-model="shipping.phone"  placeholder="Phone number here">
                             <!-- input company name -->
-                            <input type="text" placeholder="company name here">
+                            <input type="text" v-model="shipping.company"  placeholder="company name here">
                             <!-- input country name -->
-                            <input type="text" placeholder="country">
+                            <input type="text" v-model="shipping.country"  placeholder="country">
                             <!-- input state -->
-                            <input type="text" placeholder="state">
-                            <!-- input town/city -->
-                            <input type="text" placeholder="town/city">
+                            <input type="text" v-model="shipping.state"  placeholder="state">
                             <!-- input your details address -->
-                            <textarea cols="3" rows="5" placeholder="Your address here"></textarea>
+                            <textarea cols="3" rows="5"  v-model="shipping.address" placeholder="Your address here"></textarea>
                         </form>
                     </div>
                 </div>
@@ -87,7 +83,7 @@
                         </span>
                     </p>
                     <!-- vat cost -->
-                    <p class="no-border">vat <span class="pull-right">$00.00</span> </p>
+                    <p class="no-border">vat <span class="pull-right">0.00</span> </p>
                     <!-- grand total -->
                     <p class="total-price">grand total <span class="pull-right">@{{totalPrice}}</span> </p>
                 </div>

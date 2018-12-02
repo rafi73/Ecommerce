@@ -16,7 +16,7 @@ class QuoteRequestController extends Controller
     public function index()
     {
         // Get QuoteRequests
-        $quoteRequests = QuoteRequest::orderBy('created_at', 'desc')->paginate(10);
+        $quoteRequests = QuoteRequest::orderBy('created_at', 'desc')->paginate(100);
 
         // Return collection of QuoteRequests as a resource
         return QuoteRequestResource::collection($quoteRequests);

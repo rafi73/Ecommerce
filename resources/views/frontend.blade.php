@@ -192,12 +192,15 @@
                     customer: {}
                 },
                 dealerAuth: false,
-                quoteRequest: {}
+                quoteRequest: {},
+                billing: {},
+                shipping: {}
 
             },
             created() {
                 this.loggedInCustomer =  localStorage.getItem('customer') ?  JSON.parse(localStorage.getItem('customer')) : {}
                 console.log('loggedInCustomer', this.loggedInCustomer)
+                //localStorage.removeItem('cart')
                 //localStorage.removeItem('cart')
                 console.log('Testing console. from Home')
                 this.getCartProducts()
@@ -242,6 +245,11 @@
                 else if (window.location.pathname.split('/')[2] == 'invoice') {
                     let orderId = window.location.pathname.split('/')[3]
                     this.getOrder(orderId)
+                }
+
+                 else if (window.location.pathname.split('/')[2] == 'checkout') {
+                    this.billing = Object.assign({}, this.loggedInCustomer)
+                    this.shipping = Object.assign({}, this.loggedInCustomer)
                 }
             },
             mounted: function () {
@@ -1041,7 +1049,7 @@
                     .then(
                         (response) => {
                             console.log(response)
-                            if(response){
+                            if(response.data){
                                 this.loggedInCustomer = response.data.data
                                 localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
 
@@ -1070,6 +1078,8 @@
                     order.details = cartProducts
                     order.customer_id = this.loggedInCustomer.id
                     order.total = this.totalPrice
+                    order.billing = this.billing
+                    order.shipping = this.shipping
                     
                     axios.post('/api/place-order', order)
                     .then(
@@ -1110,6 +1120,7 @@
                                 localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
                                 //document.location.href = "{{ route('checkout') }}"
                             }
+                            
                         }
                     )
                     .catch(
@@ -1125,7 +1136,8 @@
                     .then(
                         (response) => {
                             console.log(response)
-                            if(response){
+                            if(response.data){
+                                console.log(response)
                                 this.loggedInCustomer = response.data.data
                                 localStorage.setItem('customer', JSON.stringify(this.loggedInCustomer))
 

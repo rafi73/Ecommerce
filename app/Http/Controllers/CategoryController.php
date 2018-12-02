@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         // Get Categorys
-        $categories = Category::orderBy('created_at', 'desc')->paginate(10);
+        $categories = Category::orderBy('created_at', 'desc')->paginate(100);
 
         // Return collection of Categorys as a resource
         return CategoryResource::collection($categories);

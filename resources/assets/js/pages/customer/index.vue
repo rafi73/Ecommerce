@@ -60,8 +60,29 @@
 							</v-flex>
 							<v-flex xs12 sm12 md12>
 								<v-text-field v-validate="'required'" v-model="customer.email" :counter="10" :error-messages="errors.collect('email')"
-								 :label="`${$t('customer_name')}`" data-vv-name="email" required></v-text-field>
+								 :label="`${$t('customer_email')}`" data-vv-name="email" required></v-text-field>
 							</v-flex>
+							<v-flex xs12 sm12 md12>
+								<v-text-field v-validate="'required'" v-model="customer.phone" :counter="10" :error-messages="errors.collect('phone')"
+								 :label="`${$t('customer_phone')}`" data-vv-name="phone" required></v-text-field>
+							</v-flex>
+							<v-flex xs12 sm12 md12>
+								<v-text-field v-validate="'required'" v-model="customer.company" :counter="10" :error-messages="errors.collect('company')"
+								 :label="`${$t('customer_company')}`" data-vv-name="company" required></v-text-field>
+							</v-flex>
+							<v-flex xs12 sm12 md12>
+								<v-text-field v-validate="'required'" v-model="customer.country" :counter="10" :error-messages="errors.collect('country')"
+								 :label="`${$t('customer_country')}`" data-vv-name="country" required></v-text-field>
+							</v-flex>
+							<v-flex xs12 sm12 md12>
+								<v-text-field v-validate="'required'" v-model="customer.state" :counter="10" :error-messages="errors.collect('state')"
+								 :label="`${$t('customer_state')}`" data-vv-name="state" required></v-text-field>
+							</v-flex>
+							<v-flex xs12 sm12 md12>
+								<v-text-field v-validate="'required'" v-model="customer.address" :counter="10" :error-messages="errors.collect('address')"
+								 :label="`${$t('customer_address')}`" data-vv-name="address" required></v-text-field>
+							</v-flex>
+							
 
 							
 							<v-checkbox :label="`${$t('customer_dealer')}: ${customer.is_dealer}`" v-model="customer.is_dealer"></v-checkbox>

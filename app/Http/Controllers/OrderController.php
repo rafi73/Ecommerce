@@ -17,9 +17,42 @@ class OrderController extends Controller
     public function index()
     {
         // Get Orders
-        $orders = Order::with(['orderDetails', 'orderDetails.product'])->orderBy('created_at', 'desc')->paginate(10);
+        // $orders = Order::with(['orderDetails', 'orderDetails.product'])->orderBy('created_at', 'desc')->paginate(10);
 
-        // Return collection of Orders as a resource
+        // // Return collection of Orders as a resource
+        // return OrderResource::collection($orders);
+
+
+        $sortBy = \Request::get('sortBy');
+        $rowsPerPage = \Request::get('rowsPerPage');
+        $search = \Request::get('search');
+
+        switch (\Request::get('descending')) 
+        {
+            case 'null':
+                $sortType = null;
+                break;
+            case 'true':
+                $sortType = 'desc';
+                break;
+            case 'false':
+                $sortType = 'asc';
+                break;
+        }
+        // Get Brands   
+        $query = Order::with(['orderDetails', 'orderDetails.product'])
+                        ->where(function ($query) use($search) {
+                            $query->where('billing_name', 'like', '%' . $search . '%')
+                            ->orWhere('shipping_name', 'like', '%' . $search . '%');
+                        });
+
+        // if (isset($sortType)) 
+        // {
+        //     $query = $query->orderBy($sortBy, $sortType);
+        // }
+        $orders = $query->paginate($rowsPerPage);
+
+        // Return collection of Brands as a resource
         return OrderResource::collection($orders);
     }
 
@@ -36,19 +69,34 @@ class OrderController extends Controller
         $order->customer_id= $request->input('customer_id');
         $order->discount= 0;
         $order->total= $request->input('total');
-        $order->save();
+        $order->billing_name= $request->input('billing')['name'];
+        $order->billing_email= $request->input('billing')['email'];
+        $order->billing_phone= $request->input('billing')['phone'];
+        $order->billing_company= $request->input('billing')['company'];
+        $order->billing_country= $request->input('billing')['country'];
+        $order->billing_state= $request->input('billing')['state'];
+        $order->billing_address= $request->input('billing')['address'];
+        $order->shipping_name= $request->input('billing')['name'];
+        $order->shipping_email= $request->input('billing')['email'];
+        $order->shipping_phone= $request->input('billing')['phone'];
+        $order->shipping_company= $request->input('billing')['company'];
+        $order->shipping_country= $request->input('billing')['country'];
+        $order->shipping_state= $request->input('billing')['state'];
+        $order->shipping_address= $request->input('billing')['address'];
 
-        $orderDetails = $request->input('details');
-        foreach ($orderDetails as $key => $value) 
+        if($order->save()) 
         {
-            $orderDetail = new OrderDetail;
-            $orderDetail->order_id = $order->id;
-            $orderDetail->product_id = $value['id'];
-            $orderDetail->quantity = $value['quantity'];
-            $orderDetail->save();
+            $orderDetails = $request->input('details');
+            foreach ($orderDetails as $key => $value) 
+            {
+                $orderDetail = new OrderDetail;
+                $orderDetail->order_id = $order->id;
+                $orderDetail->product_id = $value['id'];
+                $orderDetail->quantity = $value['quantity'];
+                $orderDetail->save();
+            }
+            return new OrderResource($order);
         }
-        
-        return new OrderResource($order);
     }
 
 
@@ -65,6 +113,9 @@ class OrderController extends Controller
 
         // Return single Orders as a resource
         return new OrderResource($order);
+
+
+       
     }
 
 

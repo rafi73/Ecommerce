@@ -16,7 +16,7 @@ class ProductWiseSpecificationController extends Controller
     public function index()
     {
         // Get Categorys
-        $productWiseSpecifications = ProductWiseSpecification::orderBy('created_at', 'desc')->Where('active', 1)->paginate(10);
+        $productWiseSpecifications = ProductWiseSpecification::orderBy('created_at', 'desc')->Where('active', 1)->paginate(100);
 
         // Return collection of Categorys as a resource
         return ProductWiseSpecificationResouerce::collection($productWiseSpecifications);

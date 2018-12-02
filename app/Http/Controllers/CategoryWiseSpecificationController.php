@@ -18,7 +18,7 @@ class CategoryWiseSpecificationController extends Controller
     public function index()
     {
         // Get Categorys
-        $categories = CategoryWiseSpecification::orderBy('created_at', 'desc')->Where('active', 1)->paginate(10);
+        $categories = CategoryWiseSpecification::orderBy('created_at', 'desc')->Where('active', 1)->paginate(100);
 
         // Return collection of Categorys as a resource
         return CategoryWiseSpecificationResouerce::collection($categories);

@@ -24,20 +24,27 @@
                     <hr class="my-5">
 
                     <div class="row pb-5 p-5">
-                        <div class="col-md-6">
-                            <p class="font-weight-bold mb-4">Client Information</p>
-                            <p class="mb-1">@{{order.customer.name}}</p>
-                            <p>Acme Inc</p>
-                            <p class="mb-1">Berlin, Germany</p>
-                            <p class="mb-1">6781 45P</p>
+                        <div class="col-md-2">
+                            <p class="font-weight-bold mb-4">Billing Information</p>
+                            <p class="mb-1">@{{order.billing_name}}</p>
+                            <p>@{{order.billing_company}}</p>
+                            <p class="mb-1">@{{order.billing_state}}, @{{order.billing_country}}</p>
+                            <p class="mb-1">@{{order.billing_phone}}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="font-weight-bold mb-4">Shipping Information</p>
+                            <p class="mb-1">@{{order.shipping_name}}</p>
+                            <p>@{{order.shipping_company}}</p>
+                            <p class="mb-1">@{{order.shipping_state}}, @{{order.shipping_country}}</p>
+                            <p class="mb-1">@{{order.shipping_phone}}</p>
                         </div>
 
-                        <div class="col-md-6 text-right">
+                        <div class="col-md-6  col-md-offset-2 text-right">
                             <p class="font-weight-bold mb-4">Payment Details</p>
                             <p class="mb-1"><span class="text-muted">VAT: </span> 1425782</p>
                             <p class="mb-1"><span class="text-muted">VAT ID: </span> 10253642</p>
                             <p class="mb-1"><span class="text-muted">Payment Type: </span> Root</p>
-                            <p class="mb-1"><span class="text-muted">Name: </span> John Doe</p>
+                            <p class="mb-1"><span class="text-muted">Name: </span> @{{order.customer_name}}</p>
                         </div>
                     </div>
 

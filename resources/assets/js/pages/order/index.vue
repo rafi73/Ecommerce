@@ -1,14 +1,13 @@
 <template>
 	<v-layout row>
 		<v-flex xs12>
-			<progress-bar :show="busy"></progress-bar>
 			<v-app id="inspire">
-				<v-card>
+				<!-- <v-card>
 					<v-card-title class="grey lighten-4">
 						<h3 class="headline mb-0">{{ $t('Order') }}</h3>
 						<v-spacer></v-spacer>
 						<v-text-field v-model="search" md4 append-icon="search" label="Search" single-line hide-details></v-text-field>
-						
+
 					</v-card-title>
 
 					<v-divider></v-divider>
@@ -29,6 +28,45 @@
 							Your search for "{{ search }}" found no results.
 						</v-alert>
 					</v-data-table>
+				</v-card> -->
+
+				<v-card>
+					<v-card-title class="grey lighten-4">
+						<h3 class="headline mb-0">{{ $t('order') }}</h3>
+						<v-spacer></v-spacer>
+						<v-spacer></v-spacer>
+						<v-spacer></v-spacer>
+						<v-spacer></v-spacer>
+						<v-spacer></v-spacer>
+						<v-text-field v-on:keyup.enter="fetchAll()" v-model="search" md4 append-icon="search" label="Search" single-line
+						 hide-details></v-text-field>
+						<v-btn @click.prevent="datatbleSearch()" fab dark small color="primary">
+							<v-icon dark>search</v-icon>
+						</v-btn>
+						<v-btn @click.prevent="clearSearch()" fab dark small color="pink">
+							<v-icon dark>close</v-icon>
+						</v-btn>
+					</v-card-title>
+
+					<v-divider></v-divider>
+					<v-data-table :headers="headers" :items="orders" :pagination.sync="pagination" :total-items="totalItems" :loading="loading"
+					 :rows-per-page-items="rowsPerPageItems">
+						<template slot="items" slot-scope="props">
+							<td>{{ props.item.id }}</td>
+							<td>{{ props.item.customer_name }}</td>
+							<td>{{ props.item.customer_email }}</td>
+							<td>{{ props.item.total }}</td>
+							<td>{{ props.item.created_at }}</td>
+							<td>
+								<v-icon small class="mr-2" @click="showDetails(props.item)">
+									details
+								</v-icon>
+							</td>
+						</template>
+					</v-data-table>
+					<div class="mb-2 text-xs-center">
+						<v-pagination v-model="pagination.page" :length="lastPage" :total-visible="8" @input="next" circle></v-pagination>
+					</div>
 				</v-card>
 			</v-app>
 		</v-flex>
@@ -40,10 +78,40 @@
 				<v-card-text>
 					<v-container grid-list-md>
 						<v-layout class="text-center" wrap>
-							<v-data-table :items="orderDetails" class="elevation-1" hide-actions :headers="orderDetailsheaders" >
+							<v-layout wrap>
+								<v-flex xs12 sm12 md12>
+									<v-text-field v-validate="'required'" v-model="order.billing_name" :counter="10" :error-messages="errors.collect('name')"
+									 :label="`${$t('order_name')}`" data-vv-name="name" required></v-text-field>
+								</v-flex>
+								<v-flex xs12 sm12 md12>
+									<v-text-field v-validate="'required'" v-model="order.billing_email" :counter="10" :error-messages="errors.collect('email')"
+									 :label="`${$t('order_email')}`" data-vv-name="email" required></v-text-field>
+								</v-flex>
+								<v-flex xs12 sm12 md12>
+									<v-text-field v-validate="'required'" v-model="order.billing_phone" :counter="10" :error-messages="errors.collect('phone')"
+									 :label="`${$t('order_phone')}`" data-vv-name="phone" required></v-text-field>
+								</v-flex>
+								<v-flex xs12 sm12 md12>
+									<v-text-field v-validate="'required'" v-model="order.billing_company" :counter="10" :error-messages="errors.collect('company')"
+									 :label="`${$t('order_company')}`" data-vv-name="company" required></v-text-field>
+								</v-flex>
+								<v-flex xs12 sm12 md12>
+									<v-text-field v-validate="'required'" v-model="order.billing_country" :counter="10" :error-messages="errors.collect('country')"
+									 :label="`${$t('order_country')}`" data-vv-name="country" required></v-text-field>
+								</v-flex>
+								<v-flex xs12 sm12 md12>
+									<v-text-field v-validate="'required'" v-model="order.billing_state" :counter="10" :error-messages="errors.collect('state')"
+									 :label="`${$t('order_state')}`" data-vv-name="state" required></v-text-field>
+								</v-flex>
+								<v-flex xs12 sm12 md12>
+									<v-text-field v-validate="'required'" v-model="order.billing_address" :counter="10" :error-messages="errors.collect('address')"
+									 :label="`${$t('order_address')}`" data-vv-name="address" required></v-text-field>
+								</v-flex>
+							</v-layout>
+							<v-data-table :items="order.orderDetails" class="elevation-1" hide-actions :headers="orderDetailsheaders">
 								<template slot="items" slot-scope="props">
 									<td>{{ props.item.product.name }}</td>
-									<td >{{ props.item.product.description }}</td>
+									<td>{{ props.item.product.description }}</td>
 									<td class="text-xs-center">{{ props.item.quantity }}</td>
 									<td class="text-xs-right">{{ props.item.product.price }}</td>
 									<td class="text-xs-right">{{ parseFloat(props.item.product.price * props.item.quantity).toFixed(2) }}</td>
@@ -74,22 +142,15 @@
 		components: {
 			"profile-view": Profile,
 			"password-view": Password,
-			Multiselect 
+			Multiselect
 		},
 		data() {
 			return {
-				product: {
-					specification: {}
+				loading: true,
+				rowsPerPageItems: [10, 20, 30, 40],
+				pagination: {
+					rowsPerPage: 10
 				},
-				busy: false,
-				form: new Form({
-					name: "",
-					email: ""
-				}),
-				imageName: "",
-				imgInput: "",
-				imageFile: "",
-				dialog: false,
 				headers: [
 					{
 						text: 'Order #',
@@ -117,24 +178,42 @@
 						sortable: false
 					}
 				],
-				desserts: [],
-				editedIndex: -1,
-				editedItem: {
-					name: "",
-					calories: 0,
-					fat: 0,
-					carbs: 0,
-					protein: 0
-				},
-				defaultItem: {
-					name: "",
-					calories: 0,
-					fat: 0,
-					carbs: 0,
-					protein: 0
-				},
-				search: '',
-				subCategories: [],
+				brand: {},
+				search: "",
+				dialogInput: false,
+				brands: [],
+				totalItems: 0,
+				lastPage: 0,
+				dialogConfirmDelete: false,
+				edit: false,
+				dialogInput: false,
+				headers: [
+					{
+						text: 'Order #',
+						value: 'id'
+					},
+					{
+						text: 'Customer Name',
+						value: 'customer_name'
+					},
+					{
+						text: 'Customer Email',
+						value: 'customer_email'
+					},
+					{
+						text: 'Total',
+						value: 'total'
+					},
+					{
+						text: 'Date',
+						value: 'created_at'
+					},
+					{
+						text: "Actions",
+						value: "name",
+						sortable: false
+					}
+				],
 				dialogDetails: false,
 				orderDetailsheaders: [
 					{
@@ -158,8 +237,8 @@
 						value: "name",
 					}
 				],
-				orders : [],
-				orderDetails: []
+				orders: [],
+				order: {}
 			}
 		},
 		computed: {
@@ -168,39 +247,73 @@
 			}
 		},
 		watch: {
-			dialog(val) {
-				val || this.close();
+			pagination() {
+				this.fetchAll()
 			}
 		},
 		created() {
 			this.fetchAll()
-
 		},
 		methods: {
-			
 			fetchAll() {
-				this.busy = true
-				axios.get(`/api/orders`)
-				.then(response => {
-					this.orders = response.data.data
-					console.log(response.data.data)
-					this.busy = false
-				})
-				.catch(error => {
-					if (error.response) {
-						console.log(error.response)
-					}
-				})
+				console.log(this.pagination)
+				this.loading = true
+				let url = `/api/orders`
+				let params = `?page=${this.pagination.page}
+								&rowsPerPage=${this.pagination.rowsPerPage}
+								&sortBy=${this.pagination.sortBy}
+								&descending=${this.pagination.descending}
+								&search=${this.search}`
+
+				axios.get(url + params)
+					.then(response => {
+						this.orders = response.data.data
+						this.totalItems = response.data.meta.total
+						this.lastPage = response.data.meta.last_page
+						console.log(response.data)
+						this.loading = false
+					})
+					.catch(error => {
+						if (error.response) {
+							console.log(error.response);
+							if (error.response.status === 401) {
+								window.location.href = '/login'
+							}
+						}
+					})
 			},
-			showDetails(order){
+			showDetails(order) {
 				console.log(order)
 				this.dialogDetails = true
-				this.orderDetails = order.orderDetails
+				this.order = order
 			},
 			close() {
 				this.dialogDetails = false
 			},
-			
+			datatbleSearch() {
+				if (this.search.length) {
+					this.pagination.page = 1
+					this.fetchAll()
+					console.log(this.pagination)
+					this.snackbar = true
+				}
+			},
+			showSnackbar(message) {
+				this.snackbar.active = true
+				this.snackbar.message = message
+			},
+			next(page) {
+				console.log(page)
+				this.pagination.page = page
+				this.fetchAll()
+			},
+			clearSearch() {
+				if (this.search.length) {
+					this.search = ""
+					this.fetchAll()
+				}
+			}
+
 		}
 	}
 </script>

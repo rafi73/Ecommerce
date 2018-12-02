@@ -40,8 +40,9 @@ class PriceListController extends Controller
      */
     public function downloadPriceList()
     {
-        $path = public_path().'/uploads/price-list/';
-        return response()->download($path. "price-list.xlsx");
+        $file = public_path().'/uploads/price-list/price-list.xlsx';
+        if (file_exists($file))
+            return response()->download($file);
     }
 
 

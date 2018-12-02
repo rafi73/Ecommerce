@@ -48,7 +48,6 @@ class CustomerController extends Controller
         // Return collection of Customers as a resource
         return CustomerResource::collection($customers);
     }
-
     
     /**
      * Store a newly created resource in storage.
@@ -62,7 +61,17 @@ class CustomerController extends Controller
 
         $customer->name= $request->input('name');
         $customer->email= strtolower($request->input('email'));
-        $customer->password= bcrypt($request->input('password'));
+
+        if($request->input('password') != null)
+        {
+            $customer->password= bcrypt($request->input('password'));
+        }
+        
+        $customer->phone= $request->input('phone');
+        $customer->company= $request->input('company');
+        $customer->country= $request->input('country');
+        $customer->state= $request->input('state');
+        $customer->address= $request->input('address');
         $customer->is_dealer = $request->input('is_dealer');
         $customer->active = $request->input('active');
         $customer->save();
@@ -117,14 +126,15 @@ class CustomerController extends Controller
         $customer = Customer::where('email', $email)->first();
 
         if(!$customer)
+        {
             return $customer;
-        
-        // Check if sale password is correct
-        if (Hash::check($password, $customer->password)) 
+        }
+        else if (Hash::check($password, $customer->password)) 
         {
             return new CustomerResource($customer);
         } 
         
+        return null;
     }
 
     /**
@@ -160,13 +170,14 @@ class CustomerController extends Controller
         $customer = Customer::where('email', $email)->first();
 
         if(!$customer || $customer->is_dealer != 1)
-            return $customer;
-        
-        // Check if sale password is correct
-        if (Hash::check($password, $customer->password)) 
+        {
+            return null;
+        }
+        else if (Hash::check($password, $customer->password)) 
         {
             return new CustomerResource($customer);
         } 
         
+        return null;
     }
 }

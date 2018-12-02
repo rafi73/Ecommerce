@@ -76,5 +76,16 @@
   "product_active": "Active",
 
   "price_list": "Price List",
-  "orders": "Orders"
+  "orders": "Orders",
+
+  "customer": "Customer",
+  "customer_name": "Name",
+  "customer_email": "Email",
+  "customer_phone": "Phone",
+  "customer_company": "Company",
+  "customer_country": "Country",
+  "customer_state": "State",
+  "customer_address": "Address",
+  "customer_dealer": "Dealer",
+  "customer_active": "Active"
 }

@@ -21,6 +21,16 @@
                     <input type="password" v-model="register.password" name="password" placeholder="password" >
                     <label for="password">Confirm Password</label>
                     <input type="password" v-model="register.confirmPassword" name="password" placeholder="password">
+                    <label for="name" class="mt-10">Phone</label>
+                    <input type="text" v-model="register.phone" placeholder="phone"  name="phone">
+                    <label for="name" class="mt-10">Company</label>
+                    <input type="text" v-model="register.company" placeholder="company"  name="company">
+                    <label for="name" class="mt-10">Country</label>
+                    <input type="text" v-model="register.country" placeholder="country"  name="country">
+                    <label for="name" class="mt-10">State</label>
+                    <input type="text" v-model="register.state" placeholder="state"  name="state">
+                    <label for="name" class="mt-10">Address</label>
+                    <input type="text" v-model="register.address" placeholder="address"  name="address">
                     <button type="submit" @click.prevent="customerRegistration()">create an account</button>
                 </div>
             </div>
