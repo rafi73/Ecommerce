@@ -10,6 +10,14 @@ import { i18n } from '~/plugins'
 import App from '~/components/App'
 import '~/components'
 
+// Editor
+import wysiwyg from "vue-wysiwyg"
+Vue.use(wysiwyg, {
+    image: {
+        uploadURL: "/api/product/images/upload",
+        dropzoneOptions: {}
+    },
+})
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false

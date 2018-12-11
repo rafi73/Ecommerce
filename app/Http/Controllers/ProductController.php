@@ -162,4 +162,11 @@ class ProductController extends Controller
         return ProductResource::collection($products);
     }
 
+    public function postImageUpload(Request $request)
+    {
+        $extension = $request->file('file')->getClientOriginalExtension();
+        $fileName = str_random(8).'.'.$extension;
+        $request->file('file')->storeAs('uploads', $fileName);
+        return '/uploads/'.$fileName;
+    }
 }

@@ -40,8 +40,9 @@
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="product.description" :counter="200" :error-messages="errors.collect('description')" 
-												:label="`${$t('product_description')}`" data-vv-name="description" required ></v-textarea>
+												<!-- <v-textarea v-validate="'required'" v-model="product.description" :counter="200" :error-messages="errors.collect('description')" 
+												:label="`${$t('product_description')}`" data-vv-name="description" required ></v-textarea> -->
+												 <wysiwyg v-model="product.description" v-validate="'required'" name="content" data-vv-as="掲載内容" type="text">dd</wysiwyg>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
@@ -71,13 +72,15 @@
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="product.more_info" :counter="200" :error-messages="errors.collect('more info')" 
-												:label="`${$t('product_more_info')}`" name="more_info" data-vv-name="more info" required ></v-textarea>
+												<!-- <v-textarea v-validate="'required'" v-model="product.more_info" :counter="200" :error-messages="errors.collect('more info')" 
+												:label="`${$t('product_more_info')}`" name="more_info" data-vv-name="more info" required ></v-textarea> -->
+												<wysiwyg v-model="product.more_info" v-validate="'required'" name="content" data-vv-as="掲載内容" type="text">dd</wysiwyg>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<v-textarea v-validate="'required'" v-model="product.inside_box" :counter="200" :error-messages="errors.collect('inside_box')" 
-												:label="`${$t('product_inside_box')}`" data-vv-name="inside_box" required ></v-textarea>
+												<!-- <v-textarea v-validate="'required'" v-model="product.inside_box" :counter="200" :error-messages="errors.collect('inside_box')" 
+												:label="`${$t('product_inside_box')}`" data-vv-name="inside_box" required ></v-textarea> -->
+												<wysiwyg v-model="product.inside_box" v-validate="'required'" name="content" data-vv-as="掲載内容" type="text">dd</wysiwyg>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 v-for="(specification, index) in categoryWiseSpecifications" :key="index">
