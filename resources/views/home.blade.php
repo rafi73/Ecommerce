@@ -71,7 +71,7 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                         </div> --}}
-                                        <h3 class="item-price">RM@{{product.price - product.discount_price}} </h3>
+                                        <h3 class="item-price">RM@{{getPrice(product.price - product.discount_price)}} </h3>
                                         <div class="actions">
                                             <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
                                             {{-- <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">check</a> --}}
@@ -150,7 +150,7 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                         </div> --}}
-                                        <h3 class="item-price">RM@{{product.price - product.discount_price}} </h3>
+                                        <h3 class="item-price">RM@{{getPrice(product.price - product.discount_price)}} </h3>
                                         <div class="actions">
                                                 <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
                                             {{-- <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">check</a> --}}

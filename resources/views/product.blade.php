@@ -12,14 +12,14 @@
                     <!-- single product item start -->
                     <div class="single-product-item floating">
                         <a href="#" class="item-img">
-                            <img :src="product.image.toString().split(',')[0] || '/img/logo.png'" />
+                            <img :src="getFirstImage(product.image) || '/img/logo.png'" />
                             {{-- <span class="sale"></span> --}}
                         </a>
-                    <div class="item-img">
+                    {{-- <div class="item-img">
                         <img src="#"  class="img-rounded">
                         <img src="#"  class="img-circle">
                         <img src="#" class="img-thumbnail">
-                    </div>
+                    </div> --}}
                         <div class="item-info">
                             <h2><span class="item-title large">@{{product.name}}</span></h2>
                             <div class="info">
@@ -29,14 +29,14 @@
 
                             <h3 class="old-price" v-show="product.discount_price > 0">
                                 <span class="old-price-span">
-                                    RM@{{product.price}} 
+                                    RM@{{getPrice(product.price)}} 
                                 </span>
                                 <span class="item-price item-price-discount">
-                                    &nbsp; -RM@{{product.discount_price}}
+                                    &nbsp; -RM@{{getPrice(product.discount_price)}}
                                 </span>
                             </h3>
                             <h2 class="item-price">
-                                RM@{{product.price - product.discount_price}}
+                                RM@{{getPrice(product.price - product.discount_price)}}
                             </h2>
                             <p class="product-descriptions" v-html="product.description"></p>
                             <div>

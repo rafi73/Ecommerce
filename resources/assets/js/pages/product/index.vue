@@ -396,7 +396,7 @@
 							axios.put('/api/product', this.product)
 								.then(
 									(response) => {
-										this.showSnackbar('Item added successfully !')
+										this.showSnackbar('Item Updated Successfully')
 										console.log(response)
 										this.fetchAll()
 									}
@@ -417,6 +417,7 @@
 							axios.post('/api/product', this.product)
 								.then(
 									(response) => {
+										this.showSnackbar('Item Added Successfully')
 										console.log(response)
 										this.fetchAll()
 									}

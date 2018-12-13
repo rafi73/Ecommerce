@@ -112,7 +112,7 @@
             =========================================== -->
     <!-- JQuery library
             =========================================== -->
-    <script src="{{asset('themes/frontend/js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{asset('themes/frontend/js/jquery-1.12.4.min.js')}}"></script>
 
     <!-- Bootstrap js
             =========================================== -->
@@ -1184,6 +1184,14 @@
                             localStorage.setItem("cart", JSON.stringify(this.cartProducts))
                         })
                         return true
+                    }
+                },
+                getPrice(price){
+                    return parseFloat(price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                },
+                getFirstImage(images){
+                    if(images){
+                        return images.toString().split(',')[0]
                     }
                 }
             },
