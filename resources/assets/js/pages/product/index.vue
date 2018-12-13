@@ -35,6 +35,7 @@
 								</div>
 							</td>
 							<td>{{ props.item.active }}</td>
+							<td>{{ props.item.created_at }}</td>
 							<td>
 								<v-icon small class="mr-2" @click="editItem(props.item)">
 									edit
@@ -105,7 +106,7 @@
 
 							<v-flex xs12 sm12 md12>
 								<span>Images</span>
-								<vue-upload-multiple-image 
+							<div class="multiple-image">	<vue-upload-multiple-image 
 									@upload-success="uploadImageSuccess" 
 									@before-remove="beforeRemove"
 									@edit-image="editImage" 
@@ -118,7 +119,13 @@
 									v-validate="!product.image ? 'required':''" 
 									name="image">
 								</vue-upload-multiple-image>
+								</div>
 								<span class="is-danger" v-show="errors.has('image')">{{ errors.first('image') }}</span>  
+							</v-flex>
+
+							<v-flex xs12 sm12 md12 >
+								<v-text-field v-validate="'required'" v-model="product.reference" :counter="200" 
+								:error-messages="errors.collect('product_reference')" :label="`${ $t('product_reference')}`" name="product_reference" data-vv-as="product reference"></v-text-field>
 							</v-flex>
 
 							<v-flex xs12 sm12 md12 >
@@ -209,22 +216,22 @@
         margin-top: 60px;
     }
 
-    h1,
+    .multiple-image h1,
     h2 {
         font-weight: normal;
     }
 
-    ul {
+    .multiple-image ul {
         list-style-type: none;
         padding: 0;
     }
 
-    li {
+    .multiple-image li {
         display: inline-block;
-        margin: 0 10px;
+        margin: 0 0px;
     }
 
-    a {
+    .multiple-image a {
         color: #42b983;
     }
 </style>
@@ -268,6 +275,10 @@
 					{
 						text: 'Active',
 						value: 'active'
+					},
+					{
+						text: 'Created At',
+						value: 'created_at'
 					},
 					{
 						text: "Actions",
@@ -334,6 +345,8 @@
 			}
 		},
 		created() {
+			this.pagination.sortBy = 'created_at'
+			this.pagination.descending = 'true'
 			this.fetchAll()
 			this.fetchCategories()
 			this.fetchBrands()

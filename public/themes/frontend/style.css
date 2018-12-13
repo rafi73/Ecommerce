@@ -1431,6 +1431,7 @@ header {
     font-size: 16px;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .item-price .old-price {
@@ -3386,3 +3387,15 @@ form .single-color:nth-child(4) span:after {
     height:100%;
     resize:none;
 }
+
+.old-price-span{
+    font-size: 16px;
+    color: #acacac;
+    text-decoration: line-through;
+}
+
+.item-price-discount{
+    color:red;
+    font-size: 14px !important; 
+}
+

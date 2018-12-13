@@ -12,32 +12,43 @@
                     <!-- single product item start -->
                     <div class="single-product-item floating">
                         <a href="#" class="item-img">
-                            <img :src="product.image || '/img/logo.png'" />
-                            <span class="sale"></span>
+                            <img :src="product.image.toString().split(',')[0] || '/img/logo.png'" />
+                            {{-- <span class="sale"></span> --}}
                         </a>
+                    <div class="item-img">
+                        <img src="#"  class="img-rounded">
+                        <img src="#"  class="img-circle">
+                        <img src="#" class="img-thumbnail">
+                    </div>
                         <div class="item-info">
                             <h2><span class="item-title large">@{{product.name}}</span></h2>
                             <div class="info">
                                 <p>Reference: <span>@{{product.reference}}</span></p>
                                 <p>Condition: <span>@{{product.condition}}</span></p>
                             </div>
-                            <h3 class=" old-price"> @{{product.price}} 
-                                <span class="item-price">
-                                        @{{product.discount_price}} 
-                                    </span>
+
+                            <h3 class="old-price" v-show="product.discount_price > 0">
+                                <span class="old-price-span">
+                                    RM@{{product.price}} 
+                                </span>
+                                <span class="item-price item-price-discount">
+                                    &nbsp; -RM@{{product.discount_price}}
+                                </span>
                             </h3>
-                            <h2 class="item-price"> 
-                                    @{{product.price - product.discount_price}}
+                            <h2 class="item-price">
+                                RM@{{product.price - product.discount_price}}
                             </h2>
-                            <p class="product-descriptions">@{{product.description}}</p>
-                            <div >
+                            <p class="product-descriptions" v-html="product.description"></p>
+                            <div>
                                 <label>Quantity: </label>
-                                <input class="cart-plus-minus-box" v-model="product.quantity" type="text" name="a" >
+                                <input class="cart-plus-minus-box" v-model="product.quantity" type="text" name="a">
                                 <div @click.prevent="product.quantity++" class="qtybutton">-</div>
                                 <div @click.prevent="product.quantity--" class="qtybutton">+</div>
                             </div>
+                            <br />
                             <div class="actions">
-                                <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
+                                <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal"
+                                    data-target="#confirm-modal">add to cart</a>
                                 {{-- <a href="#" class="single-action"> <i class="fa fa-envelope"></i> </a>
                                 <a href="#" class="single-action"> <i class="fa fa-print"></i> </a>
                                 <a href="#" class="single-action"> <i class="zmdi zmdi-favorite-outline"></i> </a> --}}
@@ -126,15 +137,15 @@
                                     <div class="account-title">
                                         <div class="sidebar">
                                             <!-- categories start -->
-                                                <a href="#" v-for="spec in productWiseSpec" class="blog-category">
-                                                    @{{spec.specification.name}} - @{{spec.description}}
-                                                </a>
+                                            <a href="#" v-for="spec in productWiseSpec" class="blog-category">
+                                                @{{spec.specification.name}} - @{{spec.description}}
+                                            </a>
                                             <!-- categories end -->
-                                            
+
                                         </div>
                                         <!-- sidebar end -->
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -143,8 +154,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingTwo">
                         <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
                                 <i class="fa fa-file-o"></i>
                                 More Info
                             </a>
@@ -155,7 +166,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="account-title">
-                                        <h4>@{{product.more_info}}</h4>
+                                        <h4 v-html="product.more_info"></h4>
                                     </div>
                                 </div>
                             </div>
@@ -165,8 +176,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingThree">
                         <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                                aria-expanded="false" aria-controls="collapseThree">
                                 <i class="fa fa-building-o"></i>
                                 Whats inside box
                             </a>
@@ -187,10 +198,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingFour">
                         <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                                href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
+                                aria-expanded="false" aria-controls="collapseFour">
                                 <i class="fa fa-user"></i>
-                               Reviews
+                                Reviews
                             </a>
                         </h4>
                     </div>
@@ -200,7 +211,7 @@
                                 <div class="delivery-details">
                                     <form action="#">
                                         <div class="list-style">
-                                            
+
                                         </div>
                                     </form>
                                 </div>
@@ -208,7 +219,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 

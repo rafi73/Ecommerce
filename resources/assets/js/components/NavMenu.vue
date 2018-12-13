@@ -4,7 +4,7 @@
 			<v-list>
 				<v-list-tile>
 					<v-list-tile-title class="title">
-						{{ name }}
+						<img class="object-fit-cover" :src="'/img/v.png'" />
 					</v-list-tile-title>
 				</v-list-tile>
 			</v-list>

@@ -59,8 +59,8 @@
                             <div  class="products">
                                 <div v-bind:key="product.id" v-for="product in brand.products" class="item">
                                     <a href="#" @click.prevent="goToProduct(product)" class="item-img">
-                                        <img :src="product.image || '/img/logo.png'" />
-                                        <span class="sale"></span>
+                                        <img :src="product.image.toString().split(',')[0] || '/img/logo.png'" />
+                                        <span  v-show="product.new == 1"  class="new"></span>
                                     </a>
                                     <div class="item-info text-center">
                                         <h2><a href="#" @click.prevent="goToProduct(product)" class="item-title">@{{product.name}}</a></h2>
@@ -71,7 +71,7 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                         </div> --}}
-                                        <h3 class="item-price"> @{{product.price}} </h3>
+                                        <h3 class="item-price">RM@{{product.price - product.discount_price}} </h3>
                                         <div class="actions">
                                             <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
                                             {{-- <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">check</a> --}}
@@ -138,8 +138,8 @@
                             <div class="products">
                                 <div v-bind:key="product.id" v-for="product in brand.products" class="item">
                                     <a href="#" @click.prevent="goToProduct(product)" class="item-img">
-                                        <img :src="product.image || '/img/logo.png'" />
-                                        <span class="sale"></span>
+                                        <img :src="product.image.toString().split(',')[0] || '/img/logo.png'" />
+                                        <span v-show="product.new == 1" class="new"></span>
                                     </a>
                                     <div class="item-info text-center">
                                         <h2><a href="#" @click.prevent="goToProduct(product)" class="item-title">@{{product.name}}</a></h2>
@@ -150,7 +150,7 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                         </div> --}}
-                                        <h3 class="item-price"> @{{product.price}} </h3>
+                                        <h3 class="item-price">RM@{{product.price - product.discount_price}} </h3>
                                         <div class="actions">
                                                 <a href="#" @click.prevent="addToCart(product)" class="single-action" data-toggle="modal" data-target="#confirm-modal">add to cart</a>
                                             {{-- <a href="#" @click.prevent="singleProductModal(product)" class="single-action" data-toggle="modal" data-target="#item-modal">check</a> --}}

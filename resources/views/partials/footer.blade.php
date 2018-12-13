@@ -19,11 +19,11 @@
                 </div>
                 <div class="col-md-3 col-sm-5 xs-mt-20">
                     <div class="social-icons text-right">
-                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-rss"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+                        <a href="https://www.facebook.com/Clicknet.SunwayPyramid/" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://youtu.be/b9YApJIGsmk" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/clicknet_sunwaypyramid/" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="https://shopee.com.my/search?keyword=clicknet%20store" target="_blank"><img src="/img/Shoppe.png"/></a>
+                        <a href="https://www.lazada.com.my/shop/clicknet-store/?spm=a2o4k.pdp.seller.1.59b67735PAAHXq" target="_blank"><img src="/img/lazada.png"/></a>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                         <h3>about us</h3>
                     </div>
                     <div class="widget-address">
-                        <p> <span> address : </span> licknet Technology Sdn Bhd, Unit 16, Digital Center, F1.39B, Sunway Pyramid, 3, Jalan PJS 11/15, Bandar Sunway, 46150 Subang Jaya, Selangor.</p>
+                        <p> <span> address : </span>Clicknet Technology Sdn Bhd, Unit 16, Digital Center, F1.39B, Sunway Pyramid, 3, Jalan PJS 11/15, Bandar Sunway, 46150 Subang Jaya, Selangor.</p>
                         <p> <span> Phone : </span> <a href="tel:0356120015"></a> 03 5612 0015</p>
                         <p> <span> Email : </span> <a href="mailto:sales@clicknet.com.my"></a>
                             sales@clicknet.com.my</p>
