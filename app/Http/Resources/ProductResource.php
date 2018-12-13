@@ -31,6 +31,7 @@ class ProductResource extends JsonResource
             'more_info' => $this->more_info,
             'inside_box' => $this->inside_box,
             'active' => $this->active == 1 ? true : false,
+            'new' => $this->new == 1 ? true : false,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
             'created_at' => $this->created_at->format('Y-m-d'),

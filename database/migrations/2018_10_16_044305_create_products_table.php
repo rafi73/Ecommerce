@@ -21,12 +21,12 @@ class CreateProductsTable extends Migration
             $table->integer('brand_id');
             $table->longtext('description');
             $table->string('image');
-            $table->string('reference')->nullable();
+            $table->string('reference');
             $table->string('condition');
             $table->decimal('price');
-            $table->decimal('discount_price')->nullable();
-            $table->longtext('more_info');
-            $table->string('inside_box');
+            $table->decimal('discount_price');
+            $table->longtext('more_info')->nullable();
+            $table->longtext('inside_box');
             $table->boolean('active');
             $table->boolean('new');
             $table->integer('created_by');

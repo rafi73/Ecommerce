@@ -40,9 +40,9 @@ class ProductController extends Controller
         $product->sub_category_id= $request->input('sub_category_id');
         $product->brand_id= $request->input('brand_id');
         $product->description= $request->input('description');
-        $product->image= $request->input('image')? ImageProcessing::saveBase64ImagePng($request->input('image')) : NULL;
+        $product->image= $this->manageImages($request->input('image'), $product->image);
         $product->reference= $request->input('reference');
-        $product->condition= $request->input('description');
+        $product->condition= $request->input('condition');
         $product->price= $request->input('price');
         $product->discount_price= $request->input('discount_price');
         $product->more_info= $request->input('more_info');
@@ -203,7 +203,6 @@ class ProductController extends Controller
                     } 
                 }
             }
-            
             return $images;
         }
     }

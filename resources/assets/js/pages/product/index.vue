@@ -9,7 +9,7 @@
 						<v-spacer></v-spacer>
 						<v-text-field v-model="search" md4 append-icon="search" label="Search" single-line hide-details></v-text-field>
 						<v-btn @click.prevent="addNew()" slot="activator" color="primary" dark class="mb-2">{{ $t('new_item') }}</v-btn>
-						<v-dialog v-model="dialogInput" max-width="1000">
+						<v-dialog v-model="dialogInput" max-width="1200">
 							<v-card>
 								<v-card-title>
 									<span class="headline">{{ formTitle }}</span>
@@ -18,9 +18,17 @@
 									<v-container grid-list-md>
 										<v-layout wrap>
 											<v-flex xs12 sm4 md4>
-												<multiselect v-model="selectedCategory" :options="categories" @select="onSelectCategory" track-by="id" label="name"
-													placeholder="Select Category" selectLabel="" :error-messages="errors.collect('category')" deselectLabel="" selectedLabel="" v-validate="'required'" name="category">
+												<multiselect 
+													placeholder="Select Category"
+													data-vv-name="category"
+													v-model="selectedCategory"
+													track-by="id"
+													label="name"
+													:options="categories"
+													@select="onSelectCategory"
+													v-validate="'required'">
 												</multiselect>
+												<span class="v-messages error--text" v-show="errors.has('category')">{{ errors.first('category') }}</span>   
 											</v-flex>
 											<v-flex xs12 sm4 md4>
 												<multiselect v-model="selectedSubCategory" :options="subCategories" @select="onSelectSubCategory" track-by="id" label="name"
@@ -28,76 +36,85 @@
 												</multiselect>
 											</v-flex>
 											<v-flex xs12 sm4 md4>
-												<multiselect v-model="selectedBrand" :options="brands" @select="onSelectBrand" track-by="id" label="name"
-													placeholder="Select Brand" selectLabel="" deselectLabel="" selectedLabel="" v-validate="'required'" name="category"
-													data-vv-as="category">
+												<multiselect 
+													placeholder="Select Brand"
+													data-vv-name="brand"
+													v-model="selectedBrand"
+													track-by="id"
+													label="name"
+													:options="brands"
+													@select="onSelectBrand"
+													v-validate="'required'">
 												</multiselect>
+												<span class="v-messages error--text" v-show="errors.has('brand')">{{ errors.first('brand') }}</span>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
 												<v-text-field v-validate="'required'" v-model="product.name" :counter="300" 
-												:error-messages="errors.collect('name')" :label="`${ $t('product_name')}`" ></v-text-field>
+												:error-messages="errors.collect('name')" :label="`${ $t('product_name')}`" name="name" data-vv-as="name"></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<!-- <v-textarea v-validate="'required'" v-model="product.description" :counter="200" :error-messages="errors.collect('description')" 
-												:label="`${$t('product_description')}`" data-vv-name="description" required ></v-textarea> -->
-												 <wysiwyg v-model="product.description" v-validate="'required'" label="Testing" name="content" data-vv-as="掲載内容" type="text">dd</wysiwyg>
-												 {{product.description}}
+												<span>Description</span>
+												<wysiwyg v-model="product.description" v-validate="'required'" name="description" data-vv-as="description" type="text"></wysiwyg>
+												<span class="is-danger">{{ errors.first('description') }}</span>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<!-- <img :src="imgInput" height="150" v-if="imgInput" />
-												<v-text-field :label="`${$t('product_image')}`" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
-												<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked"> -->
+												<span>Images</span>
 												<vue-upload-multiple-image 
 													@upload-success="uploadImageSuccess" 
 													@before-remove="beforeRemove"
 													@edit-image="editImage" 
 													@data-change="dataChange" 
 													:data-images="images"
-													:dragText=BROWSESRTEXT
-													:browseText=FILEUPLOAD
+													:dragText=DRAG_TEXT
+													:browseText=UPLOAD_TEXT
 													:maxImage=MAX_UPLOAD
-													:showPrimary=false>
+													:showPrimary=false  
+													v-validate="!product.image ? 'required':''" 
+													name="image">
 												</vue-upload-multiple-image>
-											</v-flex>
-											
-											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.reference" :counter="200" 
-												:error-messages="errors.collect('name')" :label="`${ $t('product_reference')}`" ></v-text-field>
+												<span class="is-danger" v-show="errors.has('image')">{{ errors.first('image') }}</span>  
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
 												<v-text-field v-validate="'required'" v-model="product.condition" :counter="200" 
-												:error-messages="errors.collect('name')" :label="`${ $t('product_conditoin')}`" ></v-text-field>
+												:error-messages="errors.collect('product_condition')" :label="`${ $t('product_conditoin')}`" name="product_condition" data-vv-as="product condition"></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
 												<v-text-field v-validate="'required|decimal:2'" v-model="product.price" :counter="10" 
-												:error-messages="errors.collect('price')" :label="`${ $t('product_price')}`" data-vv-name="price" required></v-text-field>
+												:error-messages="errors.collect('price')" :label="`${ $t('product_price')}`" data-vv-name="price" ></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
 												<v-text-field v-validate="'required|decimal:2'" v-model="product.discount_price" :counter="10" 
-												:error-messages="errors.collect('discount price')" :label="`${ $t('product_discount_price')}`" data-vv-name="discount_price" required ></v-text-field>
+												:error-messages="errors.collect('discount_price')" :label="`${ $t('product_discount_price')}`" name="discount_price" data-vv-as="discount price"  ></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<!-- <v-textarea v-validate="'required'" v-model="product.more_info" :counter="200" :error-messages="errors.collect('more info')" 
-												:label="`${$t('product_more_info')}`" name="more_info" data-vv-name="more info" required ></v-textarea> -->
-												<wysiwyg v-model="product.more_info" v-validate="'required'" name="content" data-vv-as="掲載内容" type="text">dd</wysiwyg>
+												<span>More Info</span>
+												<wysiwyg v-model="product.more_info" v-validate="'required'" name="more_info" data-vv-as="more info" type="text"></wysiwyg>
+												<span class="is-danger">{{ errors.first('more_info') }}</span>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<!-- <v-textarea v-validate="'required'" v-model="product.inside_box" :counter="200" :error-messages="errors.collect('inside_box')" 
-												:label="`${$t('product_inside_box')}`" data-vv-name="inside_box" required ></v-textarea> -->
-												<wysiwyg v-model="product.inside_box" v-validate="'required'" name="content" data-vv-as="掲載内容" type="text">dd</wysiwyg>
+												<span>Inside Box</span>
+												<wysiwyg v-model="product.inside_box" v-validate="'required'" name="more_info" data-vv-as="more info" type="text"></wysiwyg>
+												<span class="is-danger">{{ errors.first('more_info') }}</span>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 v-for="(specification, index) in categoryWiseSpecifications" :key="index">
-												<v-text-field v-validate="'required'" v-model="productSpecifications[specification.specification.id]" :counter="200" 
-												:error-messages="errors.collect('name')" :label="`${specification.specification.name}`" required></v-text-field>
+												<v-text-field 
+													v-validate="'required'" 
+													:name="`${specification.specification.name}`" 
+													:data-vv-as="`${specification.specification.name}`"
+													v-model="productSpecifications[specification.specification.id]" 
+													:counter="200" 
+													:error-messages="errors.collect(`${specification.specification.name}`)" 
+													:label="`${specification.specification.name}`" >
+												</v-text-field>
 											</v-flex>
 
 											<v-checkbox :label="`${$t('product_active')}: ${product.active}`" v-model="product.active" ></v-checkbox>
@@ -122,7 +139,7 @@
 							<td>{{ props.item.category.name }}</td>
 							<td>
 								<div class="image-container">
-									<img class="object-fit-cover" :src="props.item.image || '/img/v.png'" />
+									<img class="object-fit-cover" :src="props.item.image.toString().split(',')[0] || '/img/v.png'" />
 								</div>
 							</td>
 							<td>{{ props.item.active }}</td>
@@ -162,7 +179,6 @@
 </template>
 
 <style>
-
     #my-strictly-unique-vue-upload-multiple-image {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -205,7 +221,8 @@
 		components: {
 			"profile-view": Profile,
 			"password-view": Password,
-			Multiselect 
+			Multiselect,
+			VueUploadMultipleImage
 		},
 		data() {
 			return {
@@ -213,13 +230,6 @@
 					specification: {}
 				},
 				busy: false,
-				form: new Form({
-					name: "",
-					email: ""
-				}),
-				imageName: "",
-				imgInput: "",
-				imageFile: "",
 				dialog: false,
 				headers: [
 					{
@@ -275,14 +285,15 @@
 				products: [],
 				productWiseSpecifications: [],
 				MAX_UPLOAD:5,
-                FILEUPLOAD:'Click Here To Upload',
-                BROWSESRTEXT:'Drag & Drop Files'
+                UPLOAD_TEXT:'Click Here To Upload',
+				DRAG_TEXT:'Drag & Drop Files',
+				images:[],
 			}
 		},
 		computed: {
 			formTitle() {
 				return this.editedIndex === -1 ? "New Item" : "Edit Item";
-			}
+			},
 		},
 		watch: {
 			dialog(val) {
@@ -296,27 +307,9 @@
 
 		},
 		methods: {
-			async update() {
-				if (await this.formHasErrors()) return;
-
-				this.$emit("busy", true);
-
-				const { data } = await this.form.patch("/api/settings/profile");
-
-				await this.$store.dispatch("updateUser", { user: data });
-				this.$emit("busy", false);
-
-				this.$store.dispatch("responseMessage", {
-					type: "success",
-					text: this.$t("info_updated")
-				});
-			},
-			pickFile() {
-				this.$refs.image.click();
-			},
 			editItem(item) {
 				this.product = Object.assign({}, item)
-				this.imgInput = this.product.image
+				//this.imgInput = this.product.image
 				this.selectedCategory = this.categories.find(x => x.id === this.product.category.id)
 				this.selectedSubCategory = this.subCategories.find(x => x.id === this.product.sub_category_id)
 				this.selectedBrand = this.brands.find(x => x.id === this.product.brand_id)
@@ -325,12 +318,20 @@
 				this.dialogInput = true
 				this.edit = true
 				this.productSpecifications = {}
+
+				let images = this.product.image.split(',')
+				images.forEach(element => {
+					this.images.push({
+						path: element,
+						default: 1,
+						highlight: 1,
+						caption: 'caption to display. receive',
+					})
+				})
 			},
 			deleteItem(item) {
-				//const index = this.desserts.indexOf(item)
 				this.dialogConfirmDelete = true
 				this.product = item
-				//confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
 			},
 			close() {
 				this.dialogInput = false
@@ -341,8 +342,6 @@
 			},
 			save() {
 				this.product.specification = this.productSpecifications
-
-				//if (this.formHasErrors()) return
 				this.$validator.validate().then(result => {
                     if (result){
 						this.busy = true
@@ -389,29 +388,10 @@
 						this.edit = false
 						this.productSpecifications = {}
 					}
-				})
-				
-			},
-			onFilePicked(e) {
-				const files = e.target.files;
-				if (files[0] !== undefined) {
-					this.imageName = files[0].name;
-					if (this.imageName.lastIndexOf(".") <= 0) {
-						return;
+					else{
+						console.log('validation failed')
 					}
-					const fr = new FileReader();
-					fr.readAsDataURL(files[0]);
-					fr.addEventListener("load", () => {
-						this.imgInput = fr.result
-						this.imageFile = files[0] // this is an image file that can be sent to server...
-						this.product.image = this.imgInput
-						//console.log(this.imgInput, this.imageFile)
-					});
-				} else {
-					this.imageName = "";
-					this.imageFile = "";
-					this.imgInput = "";
-				}
+				})
 			},
 			fetchAll() {
 				this.busy = true
@@ -442,7 +422,7 @@
 				})
 			},
 			addNew(){
-				this.product = {image: null, active: true, new: true}
+				this.product = {active: true, new: true}
 				this.imgInput = ``
 				this.selectedCategory = null
 				this.selectedSubCategory = null
