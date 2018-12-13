@@ -141,6 +141,8 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::post('price-list-file', 'PriceListController@storeUploadData');
     // Editor Image Upload
     Route::post('product/images/upload', 'ProductController@postImageUpload');
+    // List brand
+    Route::get('products-datatable', 'ProductController@getDatatable');
 
     Route::get('orders', 'OrderController@index');
 

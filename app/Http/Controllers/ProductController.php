@@ -206,4 +206,43 @@ class ProductController extends Controller
             return $images;
         }
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getDatatable()
+    {
+        $sortBy = \Request::get('sortBy');
+        $rowsPerPage = \Request::get('rowsPerPage');
+        $search = \Request::get('search');
+
+        switch (\Request::get('descending')) 
+        {
+            case 'null':
+                $sortType = null;
+                break;
+            case 'true':
+                $sortType = 'desc';
+                break;
+            case 'false':
+                $sortType = 'asc';
+                break;
+        }
+        // Get Products   
+        $query = Product::where(function ($query) use($search) {
+                            $query->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('description', 'like', '%' . $search . '%');
+                        });
+
+        if (isset($sortType)) 
+        {
+            $query = $query->orderBy($sortBy, $sortType);
+        }
+        $products = $query->paginate($rowsPerPage);
+
+        // Return collection of Brands as a resource
+        return ProductResource::collection($products);
+    }
 }
