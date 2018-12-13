@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->longtext('more_info');
             $table->string('inside_box');
             $table->boolean('active');
+            $table->boolean('new');
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

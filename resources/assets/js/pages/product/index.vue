@@ -35,20 +35,32 @@
 											</v-flex>
 
 											<v-flex xs12 sm12 md12 >
-												<v-text-field v-validate="'required'" v-model="product.name" :counter="200" 
+												<v-text-field v-validate="'required'" v-model="product.name" :counter="300" 
 												:error-messages="errors.collect('name')" :label="`${ $t('product_name')}`" ></v-text-field>
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
 												<!-- <v-textarea v-validate="'required'" v-model="product.description" :counter="200" :error-messages="errors.collect('description')" 
 												:label="`${$t('product_description')}`" data-vv-name="description" required ></v-textarea> -->
-												 <wysiwyg v-model="product.description" v-validate="'required'" name="content" data-vv-as="掲載内容" type="text">dd</wysiwyg>
+												 <wysiwyg v-model="product.description" v-validate="'required'" label="Testing" name="content" data-vv-as="掲載内容" type="text">dd</wysiwyg>
+												 {{product.description}}
 											</v-flex>
 
 											<v-flex xs12 sm12 md12>
-												<img :src="imgInput" height="150" v-if="imgInput" />
+												<!-- <img :src="imgInput" height="150" v-if="imgInput" />
 												<v-text-field :label="`${$t('product_image')}`" @click='pickFile' v-model='imageName' prepend-icon='attach_file'></v-text-field>
-												<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked">
+												<input type="file" style="display: none" ref="image" accept="image/*" @change="onFilePicked"> -->
+												<vue-upload-multiple-image 
+													@upload-success="uploadImageSuccess" 
+													@before-remove="beforeRemove"
+													@edit-image="editImage" 
+													@data-change="dataChange" 
+													:data-images="images"
+													:dragText=BROWSESRTEXT
+													:browseText=FILEUPLOAD
+													:maxImage=MAX_UPLOAD
+													:showPrimary=false>
+												</vue-upload-multiple-image>
 											</v-flex>
 											
 											<v-flex xs12 sm12 md12 >
@@ -89,6 +101,7 @@
 											</v-flex>
 
 											<v-checkbox :label="`${$t('product_active')}: ${product.active}`" v-model="product.active" ></v-checkbox>
+											<v-checkbox :label="`${$t('New')}: ${product.new}`" v-model="product.new" ></v-checkbox>
 										</v-layout>
 									</v-container>
 								</v-card-text>
@@ -148,12 +161,44 @@
 	</v-layout>
 </template>
 
+<style>
+
+    #my-strictly-unique-vue-upload-multiple-image {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
+
+    h1,
+    h2 {
+        font-weight: normal;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    a {
+        color: #42b983;
+    }
+</style>
+
 <script>
 	import Profile from "~/pages/settings/profile";
 	import Password from "~/pages/settings/password";
 	import Form from "vform";
 	import { mapGetters } from "vuex"
 	import Multiselect from 'vue-multiselect'
+	import VueUploadMultipleImage from 'vue-upload-multiple-image'
 
 	export default {
 		name: "settings-view",
@@ -228,7 +273,10 @@
 				categoryWiseSpecifications: [],
 				productSpecifications: {},
 				products: [],
-				productWiseSpecifications: []
+				productWiseSpecifications: [],
+				MAX_UPLOAD:5,
+                FILEUPLOAD:'Click Here To Upload',
+                BROWSESRTEXT:'Drag & Drop Files'
 			}
 		},
 		computed: {
@@ -394,7 +442,7 @@
 				})
 			},
 			addNew(){
-				this.product = {image: null, active: true}
+				this.product = {image: null, active: true, new: true}
 				this.imgInput = ``
 				this.selectedCategory = null
 				this.selectedSubCategory = null
@@ -501,6 +549,49 @@
 					}
 				})
 			},
+			onFileChange(e) {
+                let ref = this;
+                const file = e.target.files[0]
+                this.url = URL.createObjectURL(file)
+                var reader = new FileReader()
+                reader.readAsDataURL(file)
+                reader.onloadend = function () {
+                    let base64data = reader.result
+                    console.log(base64data)
+                    ref.product.image = base64data;
+                };
+            },
+            
+            uploadImageSuccess(formData, index, fileList) {
+                console.log(fileList)
+                this.product.image = fileList  
+                if(fileList.length > this.MAX_UPLOAD){
+                    alert('Max image limit  exceeded!')
+                }
+            },
+            
+            beforeRemove(index, done, fileList) {
+                console.log('index', index, fileList)
+                var r = confirm("remove image")
+                if (r == true) {
+                    done()
+                    let images = []
+                    fileList.forEach(element => {
+                        images.push(element.path)
+                    })
+                    this.product.image = images.join()
+                }
+                else {
+                }
+            },
+            
+            editImage(formData, index, fileList) {
+                console.log('edit data', formData, index, fileList)
+            },
+            
+            dataChange(data) {
+                console.log(data)
+            }
 		}
 	}
 </script>

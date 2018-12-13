@@ -18,6 +18,10 @@ Vue.use(wysiwyg, {
         dropzoneOptions: {}
     },
 })
+
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false

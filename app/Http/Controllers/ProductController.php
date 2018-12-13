@@ -48,6 +48,7 @@ class ProductController extends Controller
         $product->more_info= $request->input('more_info');
         $product->inside_box= $request->input('inside_box');
         $product->active= $request->input('active');
+        $product->new= $request->input('new');
         $product->created_by= $request->input('created_by');
         $product->updated_by= $request->input('updated_by');
 
@@ -164,9 +165,46 @@ class ProductController extends Controller
 
     public function postImageUpload(Request $request)
     {
+        
+        $path = public_path().'/uploads/';
+        if (!file_exists($path)) 
+        {
+            mkdir($path, 0777, true);
+        }
+
         $extension = $request->file('file')->getClientOriginalExtension();
         $fileName = str_random(8).'.'.$extension;
-        $request->file('file')->storeAs('uploads', $fileName);
+        $file = $request->file('file');
+        $file->move($path, $fileName);
         return '/uploads/'.$fileName;
+    }
+
+    public function manageImages($images, $previousImages)
+    {
+        if(is_array($images))
+        {
+            $imagePaths = [];
+            foreach ($images as $key => $value) 
+            {
+                array_push($imagePaths, ImageProcessing::saveBase64ImagePng($value['path']));
+            }
+            return implode(',', $imagePaths);
+        }
+        else
+        {
+            if($previousImages)
+            {
+                $deletedImages = array_diff(explode(",", $previousImages), explode(",", $images));
+                foreach ($deletedImages as $key => $value)
+                {
+                    if (file_exists(public_path().$value))
+                    {
+                        unlink(public_path().$value);
+                    } 
+                }
+            }
+            
+            return $images;
+        }
     }
 }

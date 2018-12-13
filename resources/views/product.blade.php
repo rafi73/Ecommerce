@@ -21,9 +21,14 @@
                                 <p>Reference: <span>@{{product.reference}}</span></p>
                                 <p>Condition: <span>@{{product.condition}}</span></p>
                             </div>
-                            <h3 class="item-price"> @{{product.price}} 
-                                {{-- <span class="old-price">$30.51</span>  --}}
+                            <h3 class=" old-price"> @{{product.price}} 
+                                <span class="item-price">
+                                        @{{product.discount_price}} 
+                                    </span>
                             </h3>
+                            <h2 class="item-price"> 
+                                    @{{product.price - product.discount_price}}
+                            </h2>
                             <p class="product-descriptions">@{{product.description}}</p>
                             <div >
                                 <label>Quantity: </label>
