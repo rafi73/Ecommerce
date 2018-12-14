@@ -68,6 +68,7 @@
                 </div>
             </div>
         </div>
+        
 
         {{-- <div class="col-md-6">
             <h3>Pills left</h3>
@@ -188,7 +189,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="my-address">
-                                        <p>@{{product.inside_box}}</p>
+                                        <p v-html="product.inside_box"></p>
                                     </div>
                                 </div>
                             </div>

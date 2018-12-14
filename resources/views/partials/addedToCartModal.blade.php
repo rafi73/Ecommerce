@@ -11,8 +11,8 @@
                         <div class="col-md-6">
                             <div class="single-product-item floating">
                                 <a href="#" @click.prevent="goToProduct(selectedProduct)" class="item-img">
-                                    <img :src="selectedProduct.image || '/img/logo.png'" />
-                                    <span class="sale"></span>
+                                    <img :src="getFirstImage(selectedProduct.image) || '/img/logo.png'" />
+                                    <span v-show="selectedProduct.new" class="new"></span>
                                 </a>
                                 <div class="item-info">
                                     <h2><span class="item-title large">@{{selectedProduct.name}}</span></h2>
@@ -20,10 +20,10 @@
                                         <p>Reference: <span>@{{selectedProduct.reference}}</span></p>
                                         <p>Condition: <span>@{{selectedProduct.condition}}</span></p>
                                     </div>
-                                    <h3 class="item-price"> @{{selectedProduct.price}}
+                                    <h3 class="item-price"> RM@{{getPrice(selectedProduct.price - selectedProduct.discount_price)}}
                                         {{-- <span class="old-price">$30.51</span> --}}
                                     </h3>
-                                    <p class="product-descriptions">@{{selectedProduct.description}}</p>
+                                    <p class="product-descriptions" v-html="selectedProduct.description"></p>
                                 </div>
                             </div>
                         </div>
