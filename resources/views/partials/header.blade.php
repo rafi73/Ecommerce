@@ -104,14 +104,14 @@
                                         <strong> MY CART </strong>
                                         <div class="cart-quantity">@{{cartProducts.length}}</div>
                                         <span class="price"></span>
-                                        @{{totalPrice}}
+                                        RM@{{totalPrice}}
                                     </a>
                                 </div>
                                 <div v-if="cartProducts.length" class="cart-item">
                                     <div v-bind:key="product.id" v-for="product in cartProducts" class="single-item">
                                         <div class="item-img">
                                             <a href="#" @click.prevent="goToProduct(product)">
-                                                <img :src="product.image || '/img/logo.png'" />
+                                                <img :src="getFirstImage(product.image) || '/img/logo.png'" />
                                             </a>
                                         </div>
                                         <div class="item-info">
@@ -121,14 +121,14 @@
                                             </a>
                                             <a href="#">S,</a>
                                             <a href="#"> Yellow</a>
-                                            <span>@{{product.price}}</span>
+                                            <span>RM@{{getPrice(product.price - product.discount_price)}}</span>
                                         </div>
                                         <span class="single-item-remove" @click.precent="removeProduct(product)">x</span>
                                     </div>
                                     <div class="subtotal">
-                                        <h3> Tax: <span>0.00</span> </h3>
-                                        <h3> Shipping: <span>0.00</span> </h3>
-                                        <h3> Total: <span>@{{totalPrice}}</span> </h3>
+                                        <h3> Tax: <span>RM0.00</span> </h3>
+                                        <h3> Shipping: <span>RM0.00</span> </h3>
+                                        <h3> Total: <span>RM@{{totalPrice}}</span> </h3>
                                     </div>
                                     <div class="checkout">
                                         <a href="{{ URL::route('cart') }}"> check out <i class="fa fa-angle-right"></i>

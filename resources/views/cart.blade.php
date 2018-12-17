@@ -34,15 +34,14 @@
                                     <!-- product img end -->
                                     <td class="item-img">
                                         <a href="#" @click.prevent="goToProduct(product)">
-                                            <img :src="product.image || '/img/logo.png'" />
+                                            <img :src="getFirstImage(product.image) || '/img/logo.png'" />
                                         </a>
                                     </td>
                                     <!-- product img end -->
                                     <!-- product name start -->
                                     <td class="cart-product-name text-left">
                                     <a href="single-product.html">@{{product.name}}</a>
-                                        <p>SKU : demo_33</p>
-                                        <p>Size : S, Color : Yellow</p>
+                                        <p>Reference : @{{product.name}}</p>
                                     </td>
                                     <!-- product name end -->
                                     <!-- stock status start -->
@@ -52,7 +51,7 @@
                                     <!-- stock status end -->
                                     <!-- price start -->
                                     <td class="unit-price text-right">
-                                        <span>@{{product.price}}</span>
+                                        <span>RM@{{getPrice(product.price - product.discount_price)}}</span>
                                     </td>
                                     <!-- price end -->
                                     <!-- quantity start -->
@@ -67,7 +66,7 @@
                                     <!-- remove icon end -->
                                     <!-- price start -->
                                     <td class="unit-price text-right">
-                                    <span>@{{ product.price * product.quantity}}</span>
+                                    <span>RM@{{ getPrice((product.price - product.discount_price) * product.quantity)}}</span>
                                     </td>
                                     <!-- price end -->
                                 </tr>
@@ -76,15 +75,15 @@
                                 <tr>
                                     <td colspan="3" rowspan="3"></td>
                                     <td colspan="3"> <strong> Total products</strong></td>
-                                    <td colspan="1">@{{totalPrice}}</td>
+                                    <td colspan="1">RM@{{totalPrice}}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"><strong>Total shipping</strong></td>
-                                    <td colspan="1">0.00</td>
+                                    <td colspan="1">RM0.00</td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"><strong>Total</strong></td>
-                                    <td colspan="1">@{{totalPrice}}</td>
+                                    <td colspan="1">RM@{{totalPrice}}</td>
                                 </tr>
                             </tfoot>
                         </table>

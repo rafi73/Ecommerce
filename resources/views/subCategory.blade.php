@@ -29,7 +29,7 @@
                                 <!-- single product item start -->
                                 <div v-bind:key="product.id" v-for="product in products" class="single-product-item floating">
                                     <a href="product-details.html" class="item-img">
-                                        <img :src="product.image || '/img/logo.png'" />
+                                        <img :src="getFirstImage(product.image) || '/img/logo.png'" />
                                     </a>
                                     <div class="item-info">
                                         <h2><a href="product-details.html" class="item-title">@{{product.name}}</a></h2>
@@ -40,7 +40,7 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                         </div> --}}
-                                        <h3 class="item-price"> @{{product.price}}</h3>
+                                        <h3 class="item-price"> RM@{{getPrice(product.price - product.discount_price)}}</h3>
                                     </div>
                                 </div>
                                 <!-- single product item end -->
@@ -188,9 +188,8 @@
                                         <!-- single product item start -->
                                         <div v-bind:key="product.id" v-for="product in subCategoryWiseProducts" class="single-product-item">
                                             <a href="#" @click.prevent="goToProduct(product)" class="item-img">
-                                                <img :src="product.image || '/img/logo.png'" />
-
-                                                <span class="sale"></span>
+                                                <img :src="getFirstImage(product.image) || '/img/logo.png'" />
+                                                <span v-show="product.new" class="new"></span>
                                             </a>
                                             <div class="item-info text-center">
                                                 <h2><a href="product-details.html" class="item-title">@{{product.name}}</a></h2>
@@ -201,7 +200,7 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                 </div> --}}
-                                                <h3 class="item-price"> @{{product.price}} 
+                                                <h3 class="item-price"> RM@{{getPrice(product.price - product.discount_price)}} 
                                                     {{-- <span class="old-price">$30.51</span> --}}
                                                 </h3>
                                                 <div class="actions">
@@ -231,8 +230,8 @@
                                         <!-- single product item start -->
                                         <div v-bind:key="product.id" v-for="product in subCategoryWiseProducts" class="single-product-item floating">
                                             <a href="#" @click.prevent="goToProduct(product)" class="item-img">
-                                                <img :src="product.image || '/img/logo.png'" />
-                                                <span class="sale"></span>
+                                                <img :src="getFirstImage(product.image) || '/img/logo.png'" />
+                                                <span v-show="product.new" class="new"></span>
                                             </a>
                                             <div class="item-info">
                                                 <h2><a href="product-details.html" class="item-title large">@{{product.name}}</a></h2>
@@ -243,10 +242,10 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                 </div> --}}
-                                                <h3 class="item-price">@{{product.price}}
+                                                <h3 class="item-price">RM@{{getPrice(product.price - product.discount_price)}}
                                                     {{-- <span class="old-price">$30.51</span> --}}
                                                 </h3>
-                                                <p class="product-descriptions"> @{{product.description}}</p>
+                                                <p class="product-descriptions" v-html="product.description"></p>
                                                 <div class="actions">
                                                     {{-- <a href="#" @click.prevent="addToCart(product)" class="single-action">add
                                                         to cart</a>

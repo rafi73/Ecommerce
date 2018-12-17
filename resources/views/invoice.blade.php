@@ -65,10 +65,10 @@
                                     <tr v-for="orderDetail in order.orderDetails">
                                         <td>@{{orderDetail.product_id}}</td>
                                         <td>@{{orderDetail.product.name}}</td>
-                                        <td>@{{orderDetail.product.description}}</td>
+                                        <td v-html="orderDetail.product.description"></td>
                                         <td>@{{orderDetail.quantity}}</td>
-                                        <td>@{{orderDetail.product.price}}</td>
-                                        <td>@{{parseFloat(orderDetail.product.price * orderDetail.quantity).toFixed(2)}}</td>
+                                        <td>RM@{{getPrice(orderDetail.product.price - orderDetail.product.discount_price)}}</td>
+                                        <td>RM@{{getPrice((orderDetail.product.price - orderDetail.product.discount_price) * orderDetail.quantity)}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -78,7 +78,7 @@
                     <div class="d-flex flex-row-reverse bg-dark text-white p-4">
                         <div class="py-3 px-5 text-right">
                             <div class="mb-2">Grand Total</div>
-                        <div class="h2 font-weight-light">@{{order.total}}</div>
+                        <div class="h2 font-weight-light">RM@{{getPrice(order.total)}}</div>
                         </div>
 
                         <div class="py-3 px-5 text-right">
@@ -88,7 +88,7 @@
 
                         <div class="py-3 px-5 text-right">
                             <div class="mb-2">Sub - Total amount</div>
-                            <div class="h2 font-weight-light">@{{order.total}}</div>
+                            <div class="h2 font-weight-light">RM@{{getPrice(order.total)}}</div>
                         </div>
                     </div>
                 </div>

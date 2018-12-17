@@ -79,13 +79,13 @@
                     <p v-bind:key="product.id" v-for="product in cartProducts">
                         @{{product.name}} x @{{product.quantity}}
                         <span class="pull-right">
-                            @{{ product.quantity * product.price}}
+                            RM@{{ getPrice((product.price - product.discount_price) * product.quantity)}}
                         </span>
                     </p>
                     <!-- vat cost -->
-                    <p class="no-border">vat <span class="pull-right">0.00</span> </p>
+                    <p class="no-border">vat <span class="pull-right">RM0.00</span> </p>
                     <!-- grand total -->
-                    <p class="total-price">grand total <span class="pull-right">@{{totalPrice}}</span> </p>
+                    <p class="total-price">grand total <span class="pull-right">RM@{{totalPrice}}</span> </p>
                 </div>
                 <!-- total cart area end -->
                 <!-- payment method start -->

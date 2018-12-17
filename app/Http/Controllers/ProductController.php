@@ -129,7 +129,7 @@ class ProductController extends Controller
     public function getProductsByCategory($categoryId)
     {
         // Get Products
-        $products = Product::orderBy('created_at', 'desc')->Where('category_id', $categoryId)->Where('active', 1)->paginate(10);
+        $products = Product::orderBy('created_at', 'desc')->Where('category_id', $categoryId)->Where('active', 1)->paginate(20);
 
         // Return collection of Products as a resource
         return ProductResource::collection($products);
@@ -143,7 +143,7 @@ class ProductController extends Controller
     public function getProductsBySubCategory($subCategoryId)
     {
         // Get Products
-        $products = Product::orderBy('created_at', 'desc')->Where('category_id', $subCategoryId)->Where('active', 1)->paginate(10);
+        $products = Product::orderBy('created_at', 'desc')->Where('sub_category_id', $subCategoryId)->Where('active', 1)->paginate(20);
 
         // Return collection of Products as a resource
         return ProductResource::collection($products);
@@ -165,7 +165,6 @@ class ProductController extends Controller
 
     public function postImageUpload(Request $request)
     {
-        
         $path = public_path().'/uploads/';
         if (!file_exists($path)) 
         {

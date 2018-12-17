@@ -53,7 +53,7 @@
 			</v-app>
 		</v-flex>
 
-		<v-dialog v-model="dialogInput" max-width="1200">
+		<v-dialog v-model="dialogInput" max-width="1200" persistent="true">
 			<v-card>
 				<v-card-title>
 					<span class="headline">{{ formTitle }}</span>
