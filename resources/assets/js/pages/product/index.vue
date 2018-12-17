@@ -106,21 +106,22 @@
 
 							<v-flex xs12 sm12 md12>
 								<span>Images</span>
-							<div class="multiple-image">	<vue-upload-multiple-image 
-									@upload-success="uploadImageSuccess" 
-									@before-remove="beforeRemove"
-									@edit-image="editImage" 
-									@data-change="dataChange" 
-									:data-images="images"
-									:dragText=DRAG_TEXT
-									:browseText=UPLOAD_TEXT
-									:maxImage=MAX_UPLOAD
-									:showPrimary=false  
-									v-validate="!product.image ? 'required':''" 
-									name="image">
-								</vue-upload-multiple-image>
+								<div class="multiple-image">	
+									<vue-upload-multiple-image 
+										@upload-success="uploadImageSuccess" 
+										@before-remove="beforeRemove"
+										@edit-image="editImage" 
+										@data-change="dataChange" 
+										:data-images="images"
+										:dragText=DRAG_TEXT
+										:browseText=UPLOAD_TEXT
+										:maxImage=MAX_UPLOAD
+										:showPrimary=false  
+										v-validate="!product.image ? 'required':''" 
+										name="image">
+									</vue-upload-multiple-image>
 								</div>
-								<span class="is-danger" v-show="errors.has('image')">{{ errors.first('image') }}</span>  
+								<span class="is-danger" >{{ errors.first('image') }}</span>  
 							</v-flex>
 
 							<v-flex xs12 sm12 md12 >
@@ -270,7 +271,8 @@
 					},
 					{
 						text: 'Image',
-						value: 'image'
+						value: 'image', 
+						align: 'center'
 					},
 					{
 						text: 'Active',
@@ -480,7 +482,7 @@
 				})
 			},
 			addNew(){
-				this.product = {active: true, new: true}
+				this.product = {image:null, active: true, new: true}
 				this.imgInput = ``
 				this.selectedCategory = null
 				this.selectedSubCategory = null
@@ -587,18 +589,6 @@
 					}
 				})
 			},
-			onFileChange(e) {
-                let ref = this;
-                const file = e.target.files[0]
-                this.url = URL.createObjectURL(file)
-                var reader = new FileReader()
-                reader.readAsDataURL(file)
-                reader.onloadend = function () {
-                    let base64data = reader.result
-                    console.log(base64data)
-                    ref.product.image = base64data;
-                };
-            },
             
             uploadImageSuccess(formData, index, fileList) {
                 console.log(fileList)
